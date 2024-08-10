@@ -15,7 +15,7 @@ public class Player : Entity
     [Header("Move info")]
     [SerializeField] public float moveSpeed = 12f;
     [SerializeField] public float jumpForce = 12f;
-
+    [SerializeField] public float swordReturnImpact;
     [Header("Dash info")] 
     [SerializeField] public float dashSpeed = 12f;
     [SerializeField] public float dashDuration = 1.5f;
@@ -23,7 +23,8 @@ public class Player : Entity
 
 
 
-    public SkillManager skillManager;
+    public SkillManager skillManager { get; private set; }
+    public GameObject sword { get; private set; }
 
     #region States
     public PlayerStateMachine stateMachine { get; private set; }
@@ -79,6 +80,23 @@ public class Player : Entity
         CheckDashInput();
 
     }
+
+
+    public void AssignSword(GameObject newSword)
+    {
+        sword = newSword;
+    }
+
+    public void CatchSword()
+    {
+        stateMachine.ChangeState(catchSwordState);
+        Destroy(sword);
+    }
+    
+    
+    
+    
+    
 
     public IEnumerator BusyFor(float seconds)
     {
