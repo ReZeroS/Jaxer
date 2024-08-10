@@ -17,12 +17,27 @@ public class SwordSkillController : MonoBehaviour
     [SerializeField] private float returnSpeed = 12f;
 
 
-    public float bounceSpeed;
-    public bool isBouncing = true;
-    public int amountOfBounce = 4;
-    public List<Transform> enemyTargetList;
+    [Header("Bounce info")]
+    [SerializeField] private float bounceSpeed;
+    private bool isBouncing;
+    private int amountOfBounce;
+    private List<Transform> enemyTargetList;
     public int targetIndex;
+    
+    [Header("Pierce info")]
+    private int pierceAmount;
 
+    [Header("Spin info")] 
+    private float maxTravelDistance;
+    private float spinDuration;
+    private float spinTimer;
+    private bool spinWasStopped;
+    private bool isSpinning;
+    private float spinDirection;
+
+    private float hitTimer;
+    private float hitCooldown;
+    
 
     private void Awake()
     {
@@ -36,7 +51,28 @@ public class SwordSkillController : MonoBehaviour
         player = assignedPlayer;
         rb.velocity = velocity;
         rb.gravityScale = gravity;
-        animator.SetBool("Rotate", true);
+
+        if (pierceAmount <= 0)
+        {       
+            animator.SetBool("Rotate", true);
+        }
+
+        spinDirection = Mathf.Clamp(rb.velocity.x, -1, 1);
+    }
+    
+    public void SetUpBounce(bool isBounce, int amountBounce)
+    {
+        isBouncing = isBounce;
+        amountOfBounce = amountBounce;
+        enemyTargetList = new List<Transform>();
+    }
+    
+    public void SetUpSpin(bool isSpin, float maxDistance, float duration, float cooldown)
+    {
+        isSpinning = isSpin;
+        maxTravelDistance = maxDistance;
+        spinDuration = duration;
+        hitCooldown = cooldown;
     }
 
 
@@ -67,6 +103,58 @@ public class SwordSkillController : MonoBehaviour
             }
         }
 
+        BounceLogic();
+
+        SpinLogic();
+    }
+
+    private void SpinLogic()
+    {
+        if (isSpinning)
+        {
+            if (Vector2.Distance(player.transform.position, transform.position) > maxTravelDistance && !spinWasStopped)
+            {
+                StopWhenSpinning();
+            }
+
+            if (spinWasStopped)
+            {
+                spinTimer -= Time.deltaTime;
+                transform.position = Vector2.MoveTowards(
+                    transform.position,
+                    new Vector2(transform.position.x * spinDirection, transform.position.y), 
+                    1.5f * Time.deltaTime
+                    );
+                if (spinTimer < 0)
+                {
+                    isReturning = true;
+                    isSpinning = false;
+                }
+
+                hitTimer -= Time.deltaTime;
+                if (hitTimer < 0)
+                {
+                    hitTimer = hitCooldown;
+                    
+                    Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(transform.position, 1);
+                    foreach (var hit in collider2Ds)
+                    { 
+                        hit.GetComponent<Enemy>()?.Damage();
+                    }
+                }
+            }
+        }
+    }
+
+    private void StopWhenSpinning()
+    {
+        spinWasStopped = true;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        spinTimer = spinDuration;
+    }
+
+    private void BounceLogic()
+    {
         if (isBouncing && enemyTargetList.Count > 0)
         {
             Vector2 targetPosition = enemyTargetList[targetIndex].position;
@@ -76,6 +164,8 @@ public class SwordSkillController : MonoBehaviour
             // 足够靠近敌人时去另一个敌人那
             if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
             {
+                enemyTargetList[targetIndex].GetComponent<Enemy>()?.Damage();
+                
                 targetIndex = (targetIndex + 1) % enemyTargetList.Count;
                 amountOfBounce--;
                 if (amountOfBounce <= 0)
@@ -94,8 +184,17 @@ public class SwordSkillController : MonoBehaviour
         {
             return;
         }
+        collision.GetComponent<Enemy>()?.Damage(); 
 
 
+        SetUpTargetsForBounce(collision);
+
+
+        StuckIntoCollision(collision);
+    }
+
+    private void SetUpTargetsForBounce(Collider2D collision)
+    {
         if (collision.GetComponent<Enemy>() != null)
         {
             if (isBouncing && enemyTargetList.Count <= 0)
@@ -110,13 +209,23 @@ public class SwordSkillController : MonoBehaviour
                 }
             }
         }
-
-
-        StuckIntoCollision(collision);
     }
 
     private void StuckIntoCollision(Collider2D collision)
     {
+        if (pierceAmount > 0 && collision.GetComponent<Enemy>() != null)
+        {
+            pierceAmount--;
+            return;
+        }
+
+        if (isSpinning)
+        {
+            StopWhenSpinning();
+            return;
+        }
+        
+        
         canRotate = false;
         cd.enabled = false;
 
@@ -131,5 +240,10 @@ public class SwordSkillController : MonoBehaviour
         // 插在敌人身上，跟随敌人
         animator.SetBool("Rotate", false);
         transform.parent = collision.transform;
+    }
+
+    public void SetUpPierce(int pierceCount)
+    {
+        pierceAmount = pierceCount;
     }
 }
