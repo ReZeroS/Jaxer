@@ -16641,6 +16641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coolDown: 0
   coolDownTimer: 0
+  crystalPrefb: {fileID: 6643280069315218410, guid: d47e7e92667d24df2b93a4234524aecc, type: 3}
 --- !u!1 &2041732457
 GameObject:
   m_ObjectHideFlags: 0

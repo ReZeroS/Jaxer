@@ -61,6 +61,7 @@
     <Compile Include="Assets/Scripts/Player/Player.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerPrimaryAttackState.cs" />
     <Compile Include="Assets/Scripts/Manager/InputManager.cs" />
+    <Compile Include="Assets/Scripts/Skill/SkillController/CrystalSkillController.cs" />
     <Compile Include="Assets/Scripts/Base/EntityFx.cs" />
     <Compile Include="Assets/Scripts/Scene/ParallaxBackground.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerWallJumpState.cs" />
