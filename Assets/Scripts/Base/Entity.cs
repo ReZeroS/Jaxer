@@ -9,6 +9,7 @@ public class Entity : MonoBehaviour
     public Animator animator { get; private set; }
     public Rigidbody2D rb { get; private set; }
     public EntityFx fx { get; private set; }
+    public SpriteRenderer sr { get; private set; }
     #endregion
 
     [Header("Knocked info")] 
@@ -36,8 +37,9 @@ public class Entity : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        sr = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
+        rb = GetComponent<Rigidbody2D>();
         fx = GetComponent<EntityFx>();
     }
 
@@ -126,6 +128,18 @@ public class Entity : MonoBehaviour
     }
     #endregion
 
+
+    public void MakeTransparent(bool transparent)
+    {
+        if (transparent)
+        {
+            sr.color = Color.clear;
+        }
+        else
+        {
+            sr.color = Color.white;
+        }
+    }
    
 
 }

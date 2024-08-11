@@ -14,10 +14,10 @@ public class CloneSkill : Skill
 
     [SerializeField] private float cloneDuration;
     [SerializeField] private bool canAttack;
-    public void CreateClone(Transform transform)
+    public void CreateClone(Transform trans, Vector3 offset)
     {
         GameObject newGameObject = Instantiate(gb);
-        newGameObject.GetComponent<CloneSkillController>().SetupClone(transform, cloneDuration, canAttack);
+        newGameObject.GetComponent<CloneSkillController>().SetupClone(trans, cloneDuration, canAttack, offset);
     }
     
     

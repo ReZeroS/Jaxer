@@ -75,7 +75,7 @@ public class SwordSkillController : MonoBehaviour
 
         // too far to return
         // god of war 4 Leviathan Axe 这里后面改成弹射也得弹回来，不用destroy了，控制最大的弹射速度，看重力影响最多多远
-        Invoke("DestroyMe", 7);
+        Invoke(nameof(DestroyMe), 7);
     }
 
     public void SetUpBounce(bool isBounce, float bounceSp, int amountBounce)

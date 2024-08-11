@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Assets/Scripts/Player/PlayerGroundState.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerWallSlideState.cs" />
+    <Compile Include="Assets/Scripts/Skill/CrystalSkill.cs" />
     <Compile Include="Assets/Scripts/Trigger/EnemySkeletonAnimationTrigger.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerDashState.cs" />
     <Compile Include="Assets/Scripts/Enemy/EnemyState.cs" />
@@ -56,12 +57,14 @@
     <Compile Include="Assets/Scripts/Player/PlayerJumpState.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerCounterAttackState.cs" />
     <Compile Include="Assets/Scripts/Skill/SkillController/BlackholeSkillController.cs" />
+    <Compile Include="Assets/Scripts/Skill/BlackholeSkill.cs" />
     <Compile Include="Assets/Scripts/Player/Player.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerPrimaryAttackState.cs" />
     <Compile Include="Assets/Scripts/Manager/InputManager.cs" />
     <Compile Include="Assets/Scripts/Base/EntityFx.cs" />
     <Compile Include="Assets/Scripts/Scene/ParallaxBackground.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerWallJumpState.cs" />
+    <Compile Include="Assets/Scripts/Player/PlayerBlackholeState.cs" />
     <Compile Include="Assets/Scripts/Base/Entity.cs" />
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeletonIdleState.cs" />
     <Compile Include="Assets/Scripts/Enemy/Enemy.cs" />

@@ -22,13 +22,13 @@ public class CloneSkillController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void SetupClone(Transform _newTransform, float cloneDuration, bool canAttack)
+    public void SetupClone(Transform _newTransform, float cloneDuration, bool canAttack, Vector3 offset)
     {
         if (canAttack)
         {
             animator.SetInteger("AttackNumber", Random.Range(1, 4));
         }
-        transform.position = _newTransform.position;
+        transform.position = _newTransform.position + offset;
         cloneTimer = cloneDuration;
         FaceClosestTarget();
     }
