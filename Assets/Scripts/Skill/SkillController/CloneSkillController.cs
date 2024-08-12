@@ -15,6 +15,7 @@ public class CloneSkillController : MonoBehaviour
     [SerializeField] private Transform attackCheck;
     [SerializeField] private float attackRadius = .8f;
     private Transform closestEnemy;
+    private static readonly int AttackNumber = Animator.StringToHash("AttackNumber");
 
     private void Awake()
     {
@@ -22,14 +23,16 @@ public class CloneSkillController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void SetupClone(Transform _newTransform, float cloneDuration, bool canAttack, Vector3 offset)
+    public void SetupClone(Transform newTransform, float cloneDuration, bool canAttack, Vector3 offset,
+        Transform findClosestEnemy)
     {
         if (canAttack)
         {
-            animator.SetInteger("AttackNumber", Random.Range(1, 4));
+            animator.SetInteger(AttackNumber, Random.Range(1, 4));
         }
-        transform.position = _newTransform.position + offset;
+        transform.position = newTransform.position + offset;
         cloneTimer = cloneDuration;
+        closestEnemy = findClosestEnemy;
         FaceClosestTarget();
     }
 
@@ -66,31 +69,14 @@ public class CloneSkillController : MonoBehaviour
 
     private void FaceClosestTarget()
     {
-        Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(transform.position, 25);
-        float closeDistance = Mathf.Infinity;
-        foreach (var hit in collider2Ds)
-        {
-            if (hit.GetComponent<Enemy>())
-            {
-                float curDistance = Vector2.Distance(hit.transform.position, transform.position);
-                if (curDistance < closeDistance)
-                {
-                    closeDistance = curDistance;
-                    closestEnemy = hit.transform;
-                }
-            }
-        }
-
-        if (closestEnemy != null)
+        if (closestEnemy)
         {
             if (transform.position.x > closestEnemy.position.x)
             {
                 transform.Rotate(0, 180, 0);
             }
         }
-        
     }
-    
-    
+
     
 }

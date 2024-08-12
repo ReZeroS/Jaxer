@@ -17,7 +17,8 @@ public class CloneSkill : Skill
     public void CreateClone(Transform trans, Vector3 offset)
     {
         GameObject newGameObject = Instantiate(gb);
-        newGameObject.GetComponent<CloneSkillController>().SetupClone(trans, cloneDuration, canAttack, offset);
+        newGameObject.GetComponent<CloneSkillController>().SetupClone(trans, cloneDuration, canAttack, 
+            offset, FindClosestEnemy(newGameObject.transform));
     }
     
     

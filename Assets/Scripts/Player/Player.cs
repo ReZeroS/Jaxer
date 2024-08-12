@@ -81,6 +81,11 @@ public class Player : Entity
 
         CheckDashInput();
 
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            skillManager.crystalSkill.CanUseSkill();
+        }
+
     }
 
 
