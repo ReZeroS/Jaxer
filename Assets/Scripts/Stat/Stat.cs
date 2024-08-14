@@ -9,7 +9,7 @@ public class Stat
 
 
 
-   private List<int> modifers;
+   private List<int> modifers = new();
 
 
    public int GetValue()
@@ -34,6 +34,11 @@ public class Stat
    {
       modifers.Remove(modif);
    }
-   
+
+
+   public void SetDefaultVal(int defaultVal)
+   {
+      baseValue = defaultVal;
+   }
    
 }
