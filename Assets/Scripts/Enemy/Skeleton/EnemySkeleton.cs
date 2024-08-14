@@ -1,22 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class EnemySkeleton : Enemy
 {
-
     #region States
 
     public EnemySkeletonIdleState idleState { get; private set; }
     public EnemySkeletonMoveState moveState { get; private set; }
     public EnemySkeletonBattleState battleState { get; private set; }
     public EnemySkeletonAttackState attackState { get; private set; }
-    
     public EnemySkeletonStunnedState stunnedState { get; private set; }
+    public EnemySkeletonDeadState deadState { get; private set; }
 
     #endregion
-    
-    
+
+
     protected override void Awake()
     {
         base.Awake();
@@ -25,9 +20,10 @@ public class EnemySkeleton : Enemy
         battleState = new EnemySkeletonBattleState(stateMachine, this, this, "Move");
         attackState = new EnemySkeletonAttackState(stateMachine, this, this, "Attack");
         stunnedState = new EnemySkeletonStunnedState(stateMachine, this, this, "Stunned");
+        deadState = new EnemySkeletonDeadState(stateMachine, this, this, "Idle");
     }
-    
-    
+
+
     protected override void Start()
     {
         base.Start();
@@ -49,5 +45,12 @@ public class EnemySkeleton : Enemy
         }
 
         return false;
+    }
+
+
+    public override void Die()
+    {
+        base.Die();
+        stateMachine.ChangeState(deadState);
     }
 }

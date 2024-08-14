@@ -15,6 +15,13 @@ public class CloneSkillController : MonoBehaviour
     [SerializeField] private Transform attackCheck;
     [SerializeField] private float attackRadius = .8f;
     private Transform closestEnemy;
+    private bool canDuplicateClone;
+    private float duplicateCloneRate;
+    private int facingDir = 1;
+    
+    
+    
+    
     private static readonly int AttackNumber = Animator.StringToHash("AttackNumber");
 
     private void Awake()
@@ -24,7 +31,7 @@ public class CloneSkillController : MonoBehaviour
     }
 
     public void SetupClone(Transform newTransform, float cloneDuration, bool canAttack, Vector3 offset,
-        Transform findClosestEnemy)
+        Transform findClosestEnemy, bool canCreateDuplicateClone, float duplicateCloneTriggerRate)
     {
         if (canAttack)
         {
@@ -33,6 +40,8 @@ public class CloneSkillController : MonoBehaviour
         transform.position = newTransform.position + offset;
         cloneTimer = cloneDuration;
         closestEnemy = findClosestEnemy;
+        canDuplicateClone = canCreateDuplicateClone;
+        duplicateCloneRate = duplicateCloneTriggerRate;
         FaceClosestTarget();
     }
 
@@ -62,7 +71,16 @@ public class CloneSkillController : MonoBehaviour
         {
             if (hit.GetComponent<Enemy>() != null)
             {
-                hit.GetComponent<Enemy>().Damage();
+                hit.GetComponent<Enemy>().DamageEffect();
+                if (canDuplicateClone)
+                {
+                    if (Random.Range(0, 100) < duplicateCloneRate)
+                    {
+                        SkillManager.instance.cloneSkill.CreateClone(hit.transform , new Vector3(0.5f * facingDir, 0));
+                    }
+                }
+                
+                
             }
         }
     }
@@ -73,6 +91,7 @@ public class CloneSkillController : MonoBehaviour
         {
             if (transform.position.x > closestEnemy.position.x)
             {
+                facingDir = -1;
                 transform.Rotate(0, 180, 0);
             }
         }

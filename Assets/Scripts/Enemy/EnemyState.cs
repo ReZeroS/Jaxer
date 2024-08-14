@@ -30,6 +30,7 @@ public class EnemyState
         rb = baseEnemy.rb;
         triggerCalled = false;
         baseEnemy.animator.SetBool(animationName, true);
+        baseEnemy.AssignLastAnimationName(animationName);
     }
     
 

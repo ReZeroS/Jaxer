@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CrystalSkillController : MonoBehaviour
 {
@@ -17,7 +18,8 @@ public class CrystalSkillController : MonoBehaviour
 
     private bool canGrow;
     private float growSpeed = 5;
-    private Transform closestTraget;
+    private Transform closestTarget;
+    [SerializeField] private LayerMask whatIsEnemy;
     
 
     private float crystalExistTimer;
@@ -30,7 +32,17 @@ public class CrystalSkillController : MonoBehaviour
         canExplode = canEx;
         canMove = canMv;
         moveSpeed = moveSp;
-        closestTraget = findClosestEnemy;
+        closestTarget = findClosestEnemy;
+    }
+
+    public void ChooseRandomEnemy()
+    {
+        float blackholeRadius = SkillManager.instance.blackholeSkill.GetBlackholeRadius();
+        Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(transform.position, blackholeRadius, whatIsEnemy);
+        if (collider2Ds.Length > 0)
+        {
+            closestTarget = collider2Ds[Random.Range(0, collider2Ds.Length)].transform;
+        }
     }
 
 
@@ -45,8 +57,8 @@ public class CrystalSkillController : MonoBehaviour
         if (canMove)
         {
             transform.position =
-                Vector2.MoveTowards(transform.position, closestTraget.position, moveSpeed * Time.deltaTime);
-            if (Vector2.Distance(transform.position, closestTraget.position) < 2)
+                Vector2.MoveTowards(transform.position, closestTarget.position, moveSpeed * Time.deltaTime);
+            if (Vector2.Distance(transform.position, closestTarget.position) < 2)
             {
                 FinishedCrystal();
                 // can not move after explode 
@@ -87,7 +99,7 @@ public class CrystalSkillController : MonoBehaviour
         foreach (var hit in collider2Ds)
         {
             Enemy enemy = hit.GetComponent<Enemy>(); 
-            enemy?.Damage();
+            enemy?.DamageEffect();
         }
     }
 

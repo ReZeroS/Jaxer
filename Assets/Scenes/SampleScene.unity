@@ -253,8 +253,9 @@ GameObject:
   - component: {fileID: 116671586}
   - component: {fileID: 116671587}
   - component: {fileID: 116671589}
-  - component: {fileID: 116671588}
   - component: {fileID: 116671590}
+  - component: {fileID: 116671591}
+  - component: {fileID: 116671592}
   m_Layer: 8
   m_Name: EnemySkeleton
   m_TagString: Untagged
@@ -321,51 +322,6 @@ MonoBehaviour:
   stunnedDuration: 1
   stunnedDirection: {x: 10, y: 12}
   counterImage: {fileID: 2044189826}
---- !u!61 &116671588
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 116671585}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.2681384}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.5362768}
-  m_EdgeRadius: 0
 --- !u!50 &116671589
 Rigidbody2D:
   serializedVersion: 4
@@ -407,6 +363,60 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitDuration: 0.15
   hitMaterial: {fileID: 2100000, guid: d834dfb2cda8a4109b1482c752b51e12, type: 2}
+--- !u!114 &116671591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116671585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 407367570f9794d4dabb8fe0d5f268d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength:
+    baseValue: 0
+  damage:
+    baseValue: 0
+  maxHealth:
+    baseValue: 0
+  currentHealth: 0
+--- !u!70 &116671592
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116671585}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.15280628, y: 0.116852045}
+  m_Size: {x: 1.0932484, y: 1.9887471}
+  m_Direction: 0
 --- !u!1 &169563308
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,7 +556,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355760015}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.166, y: -0.326, z: 0}
+  m_LocalPosition: {x: 1.06, y: -0.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15443,6 +15453,7 @@ GameObject:
   - component: {fileID: 1143869897}
   - component: {fileID: 1143869898}
   - component: {fileID: 1143869899}
+  - component: {fileID: 1143869900}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -15582,6 +15593,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitDuration: 0.15
   hitMaterial: {fileID: 2100000, guid: d834dfb2cda8a4109b1482c752b51e12, type: 2}
+--- !u!114 &1143869900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143869894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc50f9eda5ef9409ebf42f91ce25ae0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength:
+    baseValue: 0
+  damage:
+    baseValue: 0
+  maxHealth:
+    baseValue: 0
+  currentHealth: 0
 --- !u!1 &1182185118
 GameObject:
   m_ObjectHideFlags: 0
@@ -16504,8 +16534,8 @@ GameObject:
   - component: {fileID: 2038865054}
   - component: {fileID: 2038865053}
   - component: {fileID: 2038865052}
-  - component: {fileID: 2038865055}
   - component: {fileID: 2038865056}
+  - component: {fileID: 2038865055}
   - component: {fileID: 2038865057}
   - component: {fileID: 2038865058}
   m_Layer: 0
@@ -16527,8 +16557,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6924a1ba95ffb4069a28b60ee943c326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coolDown: 1
-  coolDownTimer: 0
 --- !u!114 &2038865053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16568,11 +16596,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6bdde1237e8c4d8f9267a59f4ce8b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coolDown: 1
-  coolDownTimer: 0
   gb: {fileID: 3292077062973884840, guid: a333fb1714be043f68b05e2cda30b00d, type: 3}
   cloneDuration: 1.5
   canAttack: 1
+  createCloneOnDashStart: 0
+  createCloneOnDashOver: 0
+  createCloneOnCounterAttack: 0
+  canCreateDuplicateClone: 0
+  duplicateCloneTriggerRate: 99
+  crystalInsteadOfClone: 1
 --- !u!114 &2038865056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16585,8 +16617,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b087a06aaa4404d91a045874e49d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coolDown: 0
-  coolDownTimer: 0
   swordType: 2
   bounceAmount: 5
   bounceSpeed: 20
@@ -16618,9 +16648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccee0aaa86e494e00898cc778c23e4c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coolDown: 0
-  coolDownTimer: 0
-  amountOfAttacks: 4
+  amountOfAttacks: 7
   cloneAttackCooldown: 0.35
   blackholePrefab: {fileID: 1170210461129138936, guid: c3288ff985a89410382c7733ba90e85c, type: 3}
   maxSize: 15
@@ -16639,13 +16667,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07da7ec3efc5438cb94c279b5420549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coolDown: 0
-  coolDownTimer: 0
   crystalDuration: 1.5
   crystalPrefb: {fileID: 6643280069315218410, guid: d47e7e92667d24df2b93a4234524aecc, type: 3}
+  cloneInsteadOfCrystal: 1
   canExplode: 1
   canMoveToEnemy: 1
   moveSpeed: 15
+  canUseMultiStacks: 1
+  amountOfStacks: 3
+  multiStackCooldown: 4
+  useTimeWindow: 2.5
+  crystalLeft:
+  - {fileID: 6643280069315218410, guid: d47e7e92667d24df2b93a4234524aecc, type: 3}
+  - {fileID: 6643280069315218410, guid: d47e7e92667d24df2b93a4234524aecc, type: 3}
+  - {fileID: 6643280069315218410, guid: d47e7e92667d24df2b93a4234524aecc, type: 3}
 --- !u!1 &2041732457
 GameObject:
   m_ObjectHideFlags: 0

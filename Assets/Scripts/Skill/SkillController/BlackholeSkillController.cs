@@ -43,6 +43,10 @@ public class BlackholeSkillController : MonoBehaviour
         amountOfAttacks = attackCount;
         cloneCooldown = cloneAttackCool;
         blackholeTimer = blackholeDuration;
+        if (SkillManager.instance.cloneSkill.crystalInsteadOfClone)
+        {
+            playerCanDisappear = false;
+        }
     }
     
     
@@ -116,9 +120,17 @@ public class BlackholeSkillController : MonoBehaviour
         if (cloneAttackTimer < 0 && cloneAttackReleased && amountOfAttacks > 0)
         {
             cloneAttackTimer = cloneCooldown;
-            int randomIndex = Random.Range(0, targets.Count);
-            
-            SkillManager.instance.cloneSkill.CreateClone(targets[randomIndex].transform, new Vector2(2, 0));
+
+            if (SkillManager.instance.cloneSkill.crystalInsteadOfClone)
+            {
+                SkillManager.instance.crystalSkill.CreateCrystal();
+                SkillManager.instance.crystalSkill.CurrentCrystalChooseRandomTarget();
+            }
+            else
+            {
+                int randomIndex = Random.Range(0, targets.Count);
+                SkillManager.instance.cloneSkill.CreateClone(targets[randomIndex].transform, new Vector2(2, 0));
+            }
             amountOfAttacks--;
             if (amountOfAttacks <= 0)
             {

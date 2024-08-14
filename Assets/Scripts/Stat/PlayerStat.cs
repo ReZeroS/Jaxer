@@ -1,0 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerStat : CharacterStat
+{
+
+    private Player player;
+    protected override void Start()
+    {
+        base.Start();
+
+        player = PlayerManager.instance.player;
+    }
+
+    public override void TakeDamage(int dam)
+    {
+        base.TakeDamage(dam);
+        PlayerManager.instance.player.DamageEffect();
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        player.Die();
+    }
+}

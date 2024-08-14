@@ -10,6 +10,9 @@ public class Entity : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
     public EntityFx fx { get; private set; }
     public SpriteRenderer sr { get; private set; }
+    public CharacterStat stat { get; private set; }
+    
+    public CapsuleCollider2D cd { get; private set; }
     #endregion
 
     [Header("Knocked info")] 
@@ -41,6 +44,8 @@ public class Entity : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         fx = GetComponent<EntityFx>();
+        stat = GetComponent<CharacterStat>();
+        cd = GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame
@@ -51,16 +56,16 @@ public class Entity : MonoBehaviour
 
 
 
-    public virtual void Damage()
+    public virtual void DamageEffect()
     {
-        fx.StartCoroutine("FlashFx");
-        StartCoroutine("HitKnockBack");
+        fx.StartCoroutine(nameof(EntityFx.FlashFx));
+        StartCoroutine(nameof(HitKnockBack));
     }
 
     protected virtual IEnumerator HitKnockBack()
     {
         isKnocked = true;
-        rb.velocity = new Vector2(knockedDir.x * facingDir, knockedDir.y);
+        rb.velocity = new Vector2(knockedDir.x * -facingDir, knockedDir.y);
         yield return new WaitForSeconds(knockBackDuration);
         isKnocked = false;
     }
@@ -140,6 +145,11 @@ public class Entity : MonoBehaviour
             sr.color = Color.white;
         }
     }
-   
+
+
+    public virtual void Die()
+    {
+        
+    }
 
 }

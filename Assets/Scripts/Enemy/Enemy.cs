@@ -29,7 +29,7 @@ public class Enemy : Entity
     
     
     public EnemyStateMachine stateMachine { get; private set; }
-
+    public string lastAnimationBoolName { get; private set; }
 
     protected override void Awake()
     {
@@ -107,5 +107,13 @@ public class Enemy : Entity
     
     
     public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
+
+
+
+    public virtual void AssignLastAnimationName(String lastName)
+    {
+        lastAnimationBoolName = lastName;
+    }
+    
     
 }
