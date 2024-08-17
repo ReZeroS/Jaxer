@@ -71,7 +71,7 @@ public class CrystalSkill : Skill
         currentCrystal = Instantiate(crystalPrefb, player.transform.position, Quaternion.identity);
         CrystalSkillController controller = currentCrystal.GetComponent<CrystalSkillController>();
         controller.SetupCrystal(crystalDuration, canExplode, canMoveToEnemy, moveSpeed,
-            FindClosestEnemy(currentCrystal.transform));
+            FindClosestEnemy(currentCrystal.transform), player);
     }
 
     public void CurrentCrystalChooseRandomTarget() =>
@@ -95,7 +95,7 @@ public class CrystalSkill : Skill
                 crystalLeft.Remove(crystalSpawn); 
                 CrystalSkillController skillController = newCrystal.GetComponent<CrystalSkillController>();
                 skillController.SetupCrystal(crystalDuration, canExplode, canMoveToEnemy, moveSpeed,
-                    FindClosestEnemy(newCrystal.transform));
+                    FindClosestEnemy(newCrystal.transform), player);
 
                 if (crystalLeft.Count <= 0)
                 {

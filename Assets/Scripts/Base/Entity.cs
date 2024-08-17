@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
@@ -32,6 +31,11 @@ public class Entity : MonoBehaviour
 
     public int facingDir { get; private set; } = 1;
     public bool facingRight { get; private set; } = true;
+    
+    public event Action onFlipped;
+
+
+    
     protected virtual void Awake()
     {
        
@@ -55,10 +59,20 @@ public class Entity : MonoBehaviour
     }
 
 
-
-    public virtual void DamageEffect()
+    public virtual void SlowEntityBy(float slowPercentage, float slowDuration)
     {
-        fx.StartCoroutine(nameof(EntityFx.FlashFx));
+        
+    }
+
+
+    protected virtual void ReturnDefaultSpeed()
+    {
+        animator.speed = 1;
+    }
+
+
+    public virtual void DamageImpact()
+    {
         StartCoroutine(nameof(HitKnockBack));
     }
 
@@ -130,21 +144,12 @@ public class Entity : MonoBehaviour
         facingDir *= -1;
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
+        onFlipped?.Invoke();
     }
     #endregion
 
 
-    public void MakeTransparent(bool transparent)
-    {
-        if (transparent)
-        {
-            sr.color = Color.clear;
-        }
-        else
-        {
-            sr.color = Color.white;
-        }
-    }
+ 
 
 
     public virtual void Die()

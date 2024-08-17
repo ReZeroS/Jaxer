@@ -16,7 +16,6 @@ public class PlayerStat : CharacterStat
     public override void TakeDamage(int dam)
     {
         base.TakeDamage(dam);
-        PlayerManager.instance.player.DamageEffect();
     }
 
     public override void Die()

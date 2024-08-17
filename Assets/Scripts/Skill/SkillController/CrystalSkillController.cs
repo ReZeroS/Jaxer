@@ -1,12 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class CrystalSkillController : MonoBehaviour
 {
 
+    private Player player;
     private Animator animator => GetComponent<Animator>();
     private CircleCollider2D cd => GetComponent<CircleCollider2D>();
 
@@ -26,13 +24,14 @@ public class CrystalSkillController : MonoBehaviour
     private static readonly int Explode = Animator.StringToHash("Explode");
 
     public void SetupCrystal(float crystalDuration, bool canEx, bool canMv, float moveSp,
-        Transform findClosestEnemy)
+        Transform findClosestEnemy, Player pl)
     {
         crystalExistTimer = crystalDuration;
         canExplode = canEx;
         canMove = canMv;
         moveSpeed = moveSp;
         closestTarget = findClosestEnemy;
+        player = pl;
     }
 
     public void ChooseRandomEnemy()
@@ -98,8 +97,12 @@ public class CrystalSkillController : MonoBehaviour
         
         foreach (var hit in collider2Ds)
         {
-            Enemy enemy = hit.GetComponent<Enemy>(); 
-            enemy?.DamageEffect();
+            Enemy enemy = hit.GetComponent<Enemy>();
+            if (enemy)
+            {
+                player.stat.DoMagicalDamage(enemy.GetComponent<CharacterStat>());
+                enemy.DamageImpact();
+            }
         }
     }
 

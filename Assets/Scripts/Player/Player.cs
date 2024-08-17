@@ -13,13 +13,17 @@ public class Player : Entity
     
     public bool isBusy { get; private set; }
     [Header("Move info")]
-    [SerializeField] public float moveSpeed = 12f;
-    [SerializeField] public float jumpForce = 12f;
-    [SerializeField] public float swordReturnImpact;
+    public float moveSpeed = 12f; 
+    public float jumpForce = 12f;
+    public float swordReturnImpact;
+    public float defaultMoveSpeed;
+    public float defaultJumpForce;
+    public float defaultDashSpeed;
+    
     [Header("Dash info")] 
-    [SerializeField] public float dashSpeed = 12f;
-    [SerializeField] public float dashDuration = 1.5f;
-    [SerializeField] public float dashDir { get; private set; }
+    public float dashSpeed = 12f;
+    public float dashDuration = 1.5f;
+    public float dashDir { get; private set; }
 
 
 
@@ -75,6 +79,11 @@ public class Player : Entity
         base.Start();
         skillManager = SkillManager.instance;
         stateMachine.Initialize(playerIdleState);
+
+
+        defaultMoveSpeed = moveSpeed;
+        defaultJumpForce = jumpForce;
+        defaultDashSpeed = dashSpeed;
     }
 
     protected override void Update()
@@ -89,6 +98,25 @@ public class Player : Entity
             skillManager.crystalSkill.CanUseSkill();
         }
 
+    }
+
+
+    public override void SlowEntityBy(float slowPercentage, float slowDuration)
+    {
+        base.SlowEntityBy(slowPercentage, slowDuration);
+        moveSpeed *= (1 - slowPercentage);
+        jumpForce *= (1 - slowPercentage);
+        dashSpeed *= (1 - slowPercentage);
+        animator.speed *= (1 - slowPercentage);
+        Invoke(nameof(ReturnDefaultSpeed), slowDuration);
+    }
+
+    protected override void ReturnDefaultSpeed()
+    {
+        base.ReturnDefaultSpeed();
+        moveSpeed = defaultMoveSpeed;
+        jumpForce = defaultJumpForce;
+        dashSpeed = defaultDashSpeed;
     }
 
 
