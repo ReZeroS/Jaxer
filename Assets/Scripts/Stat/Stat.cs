@@ -9,7 +9,7 @@ public class Stat
 
 
 
-   private List<int> modifers = new();
+   public List<int> modifers = new();
 
 
    public int GetValue()

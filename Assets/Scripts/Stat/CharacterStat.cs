@@ -9,7 +9,6 @@ public class CharacterStat : MonoBehaviour
 {
     [Header("Major stats")]
     public Stat strength;
-
     public Stat agility;
     public Stat intelligence;
     public Stat vitality;
@@ -30,7 +29,6 @@ public class CharacterStat : MonoBehaviour
 
     [Header("Magic stats")]
     public Stat fireDamage;
-
     public Stat iceDamage;
     public Stat lightingDamage;
 
