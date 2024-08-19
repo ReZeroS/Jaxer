@@ -92,6 +92,7 @@
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeletonDeadState.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerMoveState.cs" />
     <Compile Include="Assets/Scripts/Stat/PlayerStat.cs" />
+    <Compile Include="Assets/Scripts/Inventory/ItemDrop.cs" />
     <Compile Include="Assets/Scripts/Skill/DashSkill.cs" />
     <Compile Include="Assets/Scripts/Skill/SkillController/BlackholeHotkeyController.cs" />
     <Compile Include="Assets/Scripts/Stat/EnemyStat.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Assets/Scripts/Player/PlayerStateMachine.cs" />
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeletonBattleState.cs" />
     <Compile Include="Assets/Scripts/Skill/Skill.cs" />
+    <Compile Include="Assets/Scripts/Inventory/ItemObjectTrigger.cs" />
     <Compile Include="Assets/Scripts/Skill/CloneSkill.cs" />
     <Compile Include="Assets/Scripts/Stat/CharacterStat.cs" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

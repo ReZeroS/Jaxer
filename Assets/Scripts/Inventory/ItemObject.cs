@@ -6,21 +6,30 @@ using UnityEngine;
 public class ItemObject : MonoBehaviour
 {
     [SerializeField] private ItemData itemData;
+    [SerializeField] private Rigidbody2D rb;
 
-    private void OnValidate()
+    private void SetupVisuals()
     {
+        if (itemData == null)
+        {
+            return;
+        }
         GetComponent<SpriteRenderer>().sprite = itemData.icon;
         gameObject.name = "Item object-" + itemData.itemName;
     }
-
-
-
-    private void OnTriggerEnter2D(Collider2D other)
+    
+    
+    public void SetupItem(ItemData item, Vector2 vel)
     {
-        if (other.GetComponent<Player>() != null)
-        {
-            Inventory.instance.AddItem(itemData);
-            Destroy(gameObject);
-        }
+        itemData = item;
+        rb.velocity = vel;
+        SetupVisuals();
+    }
+
+
+    public void PickUpItem()
+    {
+        Inventory.instance.AddItem(itemData);
+        Destroy(gameObject);
     }
 }

@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb5568d0054b042c5a3a1f1fd6ea97d9, type: 3}
-  m_Name: Iron
+  m_Name: AnimalSkin
   m_EditorClassIdentifier: 
-  itemName: Iron
-  icon: {fileID: -3612140, guid: 9c7355b0cb8a5024bba44738f70d9e74, type: 3}
+  itemType: 0
+  itemName: Aminal skin
+  icon: {fileID: -973012730, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
+  dropChance: 30.5
