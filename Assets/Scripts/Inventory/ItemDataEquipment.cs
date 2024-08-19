@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum EquipmentType
@@ -37,10 +38,12 @@ public class ItemDataEquipment : ItemData
 
     [Header("Magic ints")]
     public int fireDamage;
-
     public int iceDamage;
     public int lightingDamage;
 
+    [Header("Craft requirements")]
+    public List<InventoryItem> craftingMaterials;
+    
 
     public void AddModifiers()
     {

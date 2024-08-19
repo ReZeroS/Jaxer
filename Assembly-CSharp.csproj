@@ -55,6 +55,7 @@
     <Compile Include="Assets/Scripts/Enemy/EnemyState.cs" />
     <Compile Include="Assets/Scripts/Trigger/PlayerAnimationTrigger.cs" />
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeletonGroundState.cs" />
+    <Compile Include="Assets/Scripts/UI/UICraftSlot.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerAnimSwordState.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerJumpState.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerCounterAttackState.cs" />

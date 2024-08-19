@@ -81,7 +81,7 @@ public class Inventory : MonoBehaviour
         UpdateSlotUI();
     }
 
-    private void UnEquipmentItem(ItemDataEquipment itemToRemove)
+    public void UnEquipmentItem(ItemDataEquipment itemToRemove)
     {
         if (equipmentDictionary.TryGetValue(itemToRemove, out InventoryItem value))
         {
@@ -205,7 +205,36 @@ public class Inventory : MonoBehaviour
         
         UpdateSlotUI();
     }
-    
+
+
+
+    public bool CanCraft(ItemDataEquipment itemToCraft, List<InventoryItem> requireMaterials)
+    {
+        List<InventoryItem> materialsToRemove = new List<InventoryItem>();
+        for (var i = 0; i < requireMaterials.Count; i++)
+        {
+            var itemData = requireMaterials[i].data;
+            if (stashDictionary.TryGetValue(itemData, out InventoryItem stashValue))
+            {
+                if (stashValue.stackSize < requireMaterials[i].stackSize)
+                {
+                    return false;
+                }
+                materialsToRemove.Add(stashValue);
+            }
+            else
+            {
+                return false;
+            }
+        }
+        for (var i = 0; i < materialsToRemove.Count; i++)
+        {
+            RemoveItem(materialsToRemove[i].data);
+        }
+        
+        AddItem(itemToCraft);
+        return true;
+    }
     
     
 }
