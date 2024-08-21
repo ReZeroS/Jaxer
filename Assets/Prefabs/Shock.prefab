@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3905630297908240529}
   - component: {fileID: 367980710924884522}
   m_Layer: 0
-  m_Name: Thunder
+  m_Name: Shock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

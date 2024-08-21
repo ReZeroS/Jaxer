@@ -21,7 +21,7 @@ public class UIItemSlot : MonoBehaviour, IPointerDownHandler
 
         itemImage.color = Color.white;
         
-        if (item != null)
+        if (item.data != null)
         {
             itemImage.sprite = item.data.icon;
             if (item.stackSize > 1)
@@ -53,16 +53,18 @@ public class UIItemSlot : MonoBehaviour, IPointerDownHandler
         {
             return;
         }
+
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            Inventory.instance.RemoveItem(item.data);
+            return;
+        }
+        
         if (item.data.itemType == ItemType.Equipment)
         {
             Inventory.instance.EquipItem(item.data);
         }
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

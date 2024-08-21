@@ -27,6 +27,8 @@ public class Inventory : MonoBehaviour
     private UIItemSlot[] stashItemSlots;
     private UIEquipmentSlot[] equipmentItemSlots;
     
+    [Header("Start Equipment")]
+    public List<ItemData> startingEquipment;
     
     private void Awake()
     {
@@ -52,7 +54,16 @@ public class Inventory : MonoBehaviour
         inventoryItemSlots = inventorySlotParent.GetComponentsInChildren<UIItemSlot>();
         stashItemSlots = stashSlotParent.GetComponentsInChildren<UIItemSlot>();
         equipmentItemSlots = equipmentSlotParent.GetComponentsInChildren<UIEquipmentSlot>();
-        
+
+        AddStartingItems();
+    }
+
+    private void AddStartingItems()
+    {
+        for (var i = 0; i < startingEquipment.Count; i++)
+        {
+            AddItem(startingEquipment[i]);
+        }
     }
 
     public void EquipItem(ItemData itemData)
@@ -235,6 +246,22 @@ public class Inventory : MonoBehaviour
         AddItem(itemToCraft);
         return true;
     }
-    
-    
+
+
+    public List<InventoryItem> GetEquipmentList()
+    {
+        return equipmentItems;
+    }
+
+    public ItemDataEquipment GetEquipment(EquipmentType equipmentType)
+    {
+        foreach (var (itemDataEquipment, _) in equipmentDictionary)
+        {
+            if (itemDataEquipment.equipmentType == equipmentType)
+            {
+                return itemDataEquipment;
+            }
+        }
+        return null;
+    }
 }

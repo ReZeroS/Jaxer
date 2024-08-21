@@ -69,7 +69,7 @@ public class CharacterStat : MonoBehaviour
 
 
     public int currentHealth;
-    protected bool isDead;
+    public bool isDead { get; private set; }
 
 
     protected virtual void Start()

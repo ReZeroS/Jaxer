@@ -17677,6 +17677,7 @@ GameObject:
   - component: {fileID: 1143869898}
   - component: {fileID: 1143869899}
   - component: {fileID: 1143869900}
+  - component: {fileID: 1143869901}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -17889,6 +17890,22 @@ MonoBehaviour:
   ailmentsDuration: 4
   shockStrikePrefab: {fileID: 234479301323268367, guid: 02f14fe30bd4749878164318c2c0d584, type: 3}
   currentHealth: 0
+--- !u!114 &1143869901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143869894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd880951b96b488dba9cb987bfe9211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleItemDrop: 0
+  possibleDrop: []
+  dropPrefab: {fileID: 0}
+  changeToLooseItems: 0
 --- !u!1 &1149125448
 GameObject:
   m_ObjectHideFlags: 0
@@ -19950,6 +19967,9 @@ MonoBehaviour:
   inventorySlotParent: {fileID: 1026774112}
   stashSlotParent: {fileID: 690857274}
   equipmentSlotParent: {fileID: 1087712527}
+  startingEquipment:
+  - {fileID: 11400000, guid: 05f801a4cb98240d0b8c48db40744d6a, type: 2}
+  - {fileID: 11400000, guid: a32040f1fa0534b529318517b6a807a4, type: 2}
 --- !u!4 &1848227430
 Transform:
   m_ObjectHideFlags: 0
@@ -21406,7 +21426,7 @@ MonoBehaviour:
   itemImage: {fileID: 5976512136299132581}
   itemText: {fileID: 5904693818273717154}
   item:
-    data: {fileID: 11400000, guid: 0a47c89daeee143c5954fdef919f324a, type: 2}
+    data: {fileID: 11400000, guid: 05f801a4cb98240d0b8c48db40744d6a, type: 2}
     stackSize: 0
 --- !u!222 &7311814435981630987
 CanvasRenderer:

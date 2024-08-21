@@ -15,6 +15,10 @@ public class ItemDataEquipment : ItemData
 {
     public EquipmentType equipmentType;
 
+    [Header("Item effects")]
+    public List<ItemEffects> itemEffects;
+
+    
     [Header("Major ints")]
     public int strength;
 
@@ -43,8 +47,8 @@ public class ItemDataEquipment : ItemData
 
     [Header("Craft requirements")]
     public List<InventoryItem> craftingMaterials;
-    
 
+    
     public void AddModifiers()
     {
         PlayerStat playerStat = PlayerManager.instance.player.GetComponent<PlayerStat>();
@@ -88,6 +92,14 @@ public class ItemDataEquipment : ItemData
         playerStat.fireDamage.RemoveModifer(fireDamage);
         playerStat.iceDamage.RemoveModifer(iceDamage);
         playerStat.lightingDamage.RemoveModifer(lightingDamage);
+    }
+
+    public void Effect(Transform enemyTransform)
+    {
+        foreach (ItemEffects itemEffect in itemEffects)
+        {
+            itemEffect.ExecuteEffect(enemyTransform);
+        }
     }
     
     
