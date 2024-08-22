@@ -19970,6 +19970,8 @@ MonoBehaviour:
   startingEquipment:
   - {fileID: 11400000, guid: 05f801a4cb98240d0b8c48db40744d6a, type: 2}
   - {fileID: 11400000, guid: a32040f1fa0534b529318517b6a807a4, type: 2}
+  - {fileID: 11400000, guid: d9d3c90f3de0848e48508949847055f6, type: 2}
+  - {fileID: 11400000, guid: 8988e746cbd914caea1570b832326306, type: 2}
 --- !u!4 &1848227430
 Transform:
   m_ObjectHideFlags: 0
@@ -20781,7 +20783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b087a06aaa4404d91a045874e49d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swordType: 2
+  swordType: 1
   bounceAmount: 5
   bounceSpeed: 20
   bounceGravity: 5

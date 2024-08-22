@@ -5,9 +5,9 @@ public class ThunderStrikeEffects : ItemEffects
 {
     [SerializeField] private GameObject thunderStrikePrefab;
 
-    public override void ExecuteEffect(Transform enemyTransform)
+    public override void ExecuteEffect(Transform respawnPosition)
     {
-        GameObject thunder = Instantiate(thunderStrikePrefab, enemyTransform.position, Quaternion.identity);
+        GameObject thunder = Instantiate(thunderStrikePrefab, respawnPosition.position, Quaternion.identity);
         Destroy(thunder, .5f);
     }
 }

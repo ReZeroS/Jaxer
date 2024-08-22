@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerPrimaryAttackState : PlayerState
 {
 
-    private int comboCounter;
+    public int comboCounter { get; private set; }
     private float lastTimeAttacked;
     private int comboWindow = 2;
     public PlayerPrimaryAttackState(PlayerStateMachine stateMachine, Player player, string animBoolName) : base(stateMachine, player, animBoolName)

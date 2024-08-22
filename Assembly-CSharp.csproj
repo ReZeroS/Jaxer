@@ -58,6 +58,7 @@
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeletonGroundState.cs" />
     <Compile Include="Assets/Scripts/UI/UICraftSlot.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerAnimSwordState.cs" />
+    <Compile Include="Assets/Scripts/Skill/SkillController/IceAndFirecController.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerJumpState.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerCounterAttackState.cs" />
     <Compile Include="Assets/Scripts/Inventory/Inventory.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Assets/Scripts/UI/UIEquipmentSlot.cs" />
     <Compile Include="Assets/Scripts/Manager/InputManager.cs" />
     <Compile Include="Assets/Scripts/Skill/SkillController/CrystalSkillController.cs" />
+    <Compile Include="Assets/Scripts/Inventory/Effects/IceAndFireEffects.cs" />
     <Compile Include="Assets/Scripts/Base/EntityFx.cs" />
     <Compile Include="Assets/Scripts/Scene/ParallaxBackground.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerWallJumpState.cs" />

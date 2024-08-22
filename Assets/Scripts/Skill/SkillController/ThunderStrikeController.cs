@@ -3,7 +3,7 @@ using UnityEngine;
 public class ThunderStrikeController : MonoBehaviour
 {
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.GetComponent<Enemy>() != null)
         {

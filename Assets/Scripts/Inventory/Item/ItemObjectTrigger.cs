@@ -7,11 +7,15 @@ public class ItemObjectTrigger : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<CharacterStat>().isDead)
+        CharacterStat characterStat = other.GetComponent<CharacterStat>();
+        if (characterStat == null)
         {
             return;
         }
-        
+        if (characterStat.isDead)
+        {
+            return;
+        }
         
         if (other.GetComponent<Player>() != null)
         {

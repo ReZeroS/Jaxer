@@ -101,7 +101,8 @@ public class CrystalSkillController : MonoBehaviour
             if (enemy)
             {
                 player.stat.DoMagicalDamage(enemy.GetComponent<CharacterStat>());
-                enemy.DamageImpact();
+                ItemDataEquipment amulet = Inventory.instance.GetEquipment(EquipmentType.Amulet);
+                amulet?.Effect(enemy.transform);
             }
         }
     }
