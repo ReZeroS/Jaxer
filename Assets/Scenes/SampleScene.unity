@@ -17864,7 +17864,7 @@ MonoBehaviour:
     baseValue: 0
     modifers: 
   maxHealth:
-    baseValue: 10000
+    baseValue: 100
     modifers: 
   armor:
     baseValue: 0
@@ -19972,6 +19972,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a32040f1fa0534b529318517b6a807a4, type: 2}
   - {fileID: 11400000, guid: d9d3c90f3de0848e48508949847055f6, type: 2}
   - {fileID: 11400000, guid: 8988e746cbd914caea1570b832326306, type: 2}
+  - {fileID: 11400000, guid: 8e958862b258541c58911a9b662c4425, type: 2}
 --- !u!4 &1848227430
 Transform:
   m_ObjectHideFlags: 0

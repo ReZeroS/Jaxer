@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "ice and fire effect", menuName = "Data/Item effect/IceAndFire")]
 public class IceAndFireEffects : ItemEffects

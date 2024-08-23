@@ -96,6 +96,11 @@ public class Player : Entity
         if (Input.GetKeyDown(KeyCode.F))
         {
             skillManager.crystalSkill.CanUseSkill();
+        }  
+        
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Inventory.instance.UseFlask();
         }
 
     }

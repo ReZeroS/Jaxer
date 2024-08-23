@@ -223,7 +223,7 @@ public class SwordSkillController : MonoBehaviour
             return;
         }
         player.stat.DoDamage(enemy.GetComponent<CharacterStat>());
-        enemy.StartCoroutine("FreezeTimeFor", freezeTimeDuration);
+        enemy.FreezeTimeFor(freezeTimeDuration);
         
         ItemDataEquipment amulet = Inventory.instance.GetEquipment(EquipmentType.Amulet);
         amulet?.Effect(enemy.transform);

@@ -15,6 +15,11 @@ public class ItemDataEquipment : ItemData
 {
     public EquipmentType equipmentType;
 
+    [Header("Item cooldown")]
+    public float itemCooldown; 
+    public float lastTimeUsed;
+    public float itemStartCooldown;
+
     [Header("Item effects")]
     public List<ItemEffects> itemEffects;
 

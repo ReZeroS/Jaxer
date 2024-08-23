@@ -24,4 +24,14 @@ public class PlayerStat : CharacterStat
         player.Die();
         GetComponent<PlayerItemDrop>()?.GenerateDrop();
     }
+
+    protected override void DecreaseHealthBy(int dam)
+    {
+        base.DecreaseHealthBy(dam);
+        ItemDataEquipment curEquipment = Inventory.instance.GetEquipment(EquipmentType.Armor);
+        if (curEquipment != null)
+        {
+            curEquipment.Effect(player.transform);
+        }
+    }
 }

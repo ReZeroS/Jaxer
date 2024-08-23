@@ -29,7 +29,7 @@ public class Inventory : MonoBehaviour
     
     [Header("Start Equipment")]
     public List<ItemData> startingEquipment;
-    
+
     private void Awake()
     {
         if (instance == null)
@@ -264,4 +264,39 @@ public class Inventory : MonoBehaviour
         }
         return null;
     }
+
+    public void UseFlask()
+    {
+        ItemDataEquipment currentFlask = GetEquipment(EquipmentType.Flask);
+
+        if (!currentFlask)
+        {
+            return;
+        }
+        
+        bool canUseFlask = Time.time > currentFlask.lastTimeUsed + currentFlask.itemCooldown;
+
+        if (canUseFlask)
+        {
+            currentFlask.itemCooldown = currentFlask.itemStartCooldown;
+            currentFlask.Effect(null);
+            currentFlask.lastTimeUsed = Time.time;
+        }
+    }
+    
+    
+    public bool CanUseArmor()
+    {
+        ItemDataEquipment currentArmor = GetEquipment(EquipmentType.Armor);
+        if (Time.time > currentArmor.lastTimeUsed + currentArmor.itemCooldown)
+        {
+            currentArmor.itemCooldown = currentArmor.itemStartCooldown;
+            currentArmor.lastTimeUsed = Time.time;
+            return true;
+        }
+
+        return false;
+    }
+    
+    
 }

@@ -121,8 +121,9 @@ public class CharacterStat : MonoBehaviour
 
 
         totalDamage = CheckTargetArmor(targetsStat, totalDamage);
-        // targetsStat.TakeDamage(totalDamage);
-        DoMagicalDamage(targetsStat);
+        targetsStat.TakeDamage(totalDamage);
+        
+        DoMagicalDamage(targetsStat);// remove if you do not want to do magical damage on primary attack
     }
 
 
@@ -290,6 +291,36 @@ public class CharacterStat : MonoBehaviour
             Die();
         }
     }
+    
+    public virtual void IncreaseHealthBy(int amount)
+    {
+        currentHealth += amount;
+        if (currentHealth > GetMaxHealthVal())
+        {
+            currentHealth = GetMaxHealthVal();
+        }
+        onHealthChanged?.Invoke();
+    }
+
+    public virtual void IncreaseStatBy(int modifer, float duration, Stat statToModify)
+    {
+        if (statToModify == null)
+        {
+            return;
+        }
+        
+        StartCoroutine(StatModCoroutine(modifer, duration, statToModify));
+
+    }
+
+    private IEnumerator StatModCoroutine(int modifer, float duration, Stat statToModify)
+    {
+        statToModify.AddModifer(modifer);
+        yield return new WaitForSeconds(duration);
+        statToModify.RemoveModifer(modifer);
+    }
+    
+    
 
     protected virtual void DecreaseHealthBy(int dam)
     {
