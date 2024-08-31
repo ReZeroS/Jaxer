@@ -1,14 +1,30 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
+
+public enum StatType
+{
+    strength,
+    agility,
+    intelligence,
+    vitality,
+    damage,
+    health,
+    critiChance,
+    critPower,
+    armor,
+    evasion,
+    magicRes,
+    fireDamage,
+    lightningDamage
+}
 
 public class CharacterStat : MonoBehaviour
 {
     [Header("Major stats")]
     public Stat strength;
+
     public Stat agility;
     public Stat intelligence;
     public Stat vitality;
@@ -29,6 +45,7 @@ public class CharacterStat : MonoBehaviour
 
     [Header("Magic stats")]
     public Stat fireDamage;
+
     public Stat iceDamage;
     public Stat lightingDamage;
 
@@ -106,7 +123,7 @@ public class CharacterStat : MonoBehaviour
         }
     }
 
-  
+
     public virtual void DoDamage(CharacterStat targetsStat)
     {
         if (TargetCanAvoidAttack(targetsStat)) return;
@@ -122,12 +139,13 @@ public class CharacterStat : MonoBehaviour
 
         totalDamage = CheckTargetArmor(targetsStat, totalDamage);
         targetsStat.TakeDamage(totalDamage);
-        
-        DoMagicalDamage(targetsStat);// remove if you do not want to do magical damage on primary attack
+
+        DoMagicalDamage(targetsStat); // remove if you do not want to do magical damage on primary attack
     }
 
 
     #region Magical damage
+
     public virtual void DoMagicalDamage(CharacterStat targetStat)
     {
         int fireDamageStat = fireDamage.GetValue();
@@ -186,8 +204,8 @@ public class CharacterStat : MonoBehaviour
         {
             targetStat.SetupShockDamage(Mathf.RoundToInt(lightingDamageStat * 0.1f));
         }
-        
-        
+
+
         targetStat.ApplyAliments(canApplyIgnite, canApplyChill, canApplyShock);
     }
 
@@ -240,7 +258,7 @@ public class CharacterStat : MonoBehaviour
         {
             return;
         }
-        
+
         isShocked = shock;
         shockedTimer = ailmentsDuration;
         entityFx.ShockFxFor(ailmentsDuration);
@@ -257,7 +275,7 @@ public class CharacterStat : MonoBehaviour
             );
         }
     }
-    
+
     private void ApplyIgniteDamage()
     {
         if (igniteDamageTimer < 0)
@@ -273,16 +291,16 @@ public class CharacterStat : MonoBehaviour
     }
 
 
-    
     public void SetupIgniteDamage(int dam) => igniteDamage = dam;
     public void SetupShockDamage(int dam) => shockDamage = dam;
+
     #endregion
 
-    
+
     public virtual void TakeDamage(int dam)
     {
         DecreaseHealthBy(dam);
-        
+
         GetComponent<Entity>().DamageImpact();
         entityFx.StartCoroutine(nameof(EntityFx.FlashFx));
 
@@ -291,7 +309,7 @@ public class CharacterStat : MonoBehaviour
             Die();
         }
     }
-    
+
     public virtual void IncreaseHealthBy(int amount)
     {
         currentHealth += amount;
@@ -299,6 +317,7 @@ public class CharacterStat : MonoBehaviour
         {
             currentHealth = GetMaxHealthVal();
         }
+
         onHealthChanged?.Invoke();
     }
 
@@ -308,9 +327,8 @@ public class CharacterStat : MonoBehaviour
         {
             return;
         }
-        
-        StartCoroutine(StatModCoroutine(modifer, duration, statToModify));
 
+        StartCoroutine(StatModCoroutine(modifer, duration, statToModify));
     }
 
     private IEnumerator StatModCoroutine(int modifer, float duration, Stat statToModify)
@@ -319,8 +337,7 @@ public class CharacterStat : MonoBehaviour
         yield return new WaitForSeconds(duration);
         statToModify.RemoveModifer(modifer);
     }
-    
-    
+
 
     protected virtual void DecreaseHealthBy(int dam)
     {
@@ -335,6 +352,7 @@ public class CharacterStat : MonoBehaviour
     }
 
     #region Stat Calculate
+
     private int CheckTargetArmor(CharacterStat targetsStat, int totalDamage)
     {
         if (targetsStat.isChilled)
@@ -357,7 +375,7 @@ public class CharacterStat : MonoBehaviour
         totalMagicalDamage = Mathf.Clamp(totalMagicalDamage, 0, int.MaxValue);
         return totalMagicalDamage;
     }
-    
+
     private bool TargetCanAvoidAttack(CharacterStat targetsStat)
     {
         int totalEvasion = targetsStat.evasion.GetValue() + targetsStat.agility.GetValue();
@@ -374,8 +392,6 @@ public class CharacterStat : MonoBehaviour
 
         return false;
     }
-
-   
 
 
     private bool CanCrit()
@@ -402,6 +418,42 @@ public class CharacterStat : MonoBehaviour
     {
         return maxHealth.GetValue() + agility.GetValue() * 5;
     }
-    
+
     #endregion
+
+
+    public Stat StatOfType(StatType buffType)
+    {
+        switch (buffType)
+        {
+            case StatType.strength:
+                return strength;
+            case StatType.agility:
+                return agility;
+            case StatType.intelligence:
+                return intelligence;
+            case StatType.vitality:
+                return vitality;
+            case StatType.damage:
+                return damage;
+            case StatType.health:
+                return maxHealth;
+            case StatType.critiChance:
+                return critChance;
+            case StatType.critPower:
+                return critPower;
+            case StatType.armor:
+                return armor;
+            case StatType.evasion:
+                return evasion;
+            case StatType.magicRes:
+                return magicResistance;
+            case StatType.fireDamage:
+                return fireDamage;
+            case StatType.lightningDamage:
+                return lightingDamage;
+            default:
+                return null;
+        }
+    }
 }

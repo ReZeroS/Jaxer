@@ -52,6 +52,7 @@
     <Compile Include="Assets/Scripts/Trigger/EnemySkeletonAnimationTrigger.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerDashState.cs" />
     <Compile Include="Assets/Scripts/Inventory/Effects/HealEffects.cs" />
+    <Compile Include="Assets/Scripts/UI/UIStatSlot.cs" />
     <Compile Include="Assets/Scripts/Inventory/Effects/BuffEffects.cs" />
     <Compile Include="Assets/Scripts/Skill/SkillController/ThunderStrikeController.cs" />
     <Compile Include="Assets/Scripts/Skill/SkillController/ShockStrikeController.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Assets/Scripts/Inventory/Effects/ThunderStrikeEffects.cs" />
     <Compile Include="Assets/Scripts/Enemy/Enemy.cs" />
     <Compile Include="Assets/Scripts/Inventory/InventoryItem.cs" />
+    <Compile Include="Assets/Scripts/UI/UI.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerDeathState.cs" />
     <Compile Include="Assets/Scripts/Skill/SkillController/SwordSkillController.cs" />
     <Compile Include="Assets/Scripts/Finder/FindUtil.cs" />

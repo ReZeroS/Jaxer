@@ -22,10 +22,12 @@ public class Inventory : MonoBehaviour
 
     [SerializeField] private Transform stashSlotParent;
     [SerializeField] private Transform equipmentSlotParent;
+    [SerializeField] private Transform statSlotParent;
     
     private UIItemSlot[] inventoryItemSlots;
     private UIItemSlot[] stashItemSlots;
     private UIEquipmentSlot[] equipmentItemSlots;
+    private UIStatSlot[] statSlots;
     
     [Header("Start Equipment")]
     public List<ItemData> startingEquipment;
@@ -54,6 +56,7 @@ public class Inventory : MonoBehaviour
         inventoryItemSlots = inventorySlotParent.GetComponentsInChildren<UIItemSlot>();
         stashItemSlots = stashSlotParent.GetComponentsInChildren<UIItemSlot>();
         equipmentItemSlots = equipmentSlotParent.GetComponentsInChildren<UIEquipmentSlot>();
+        statSlots = statSlotParent.GetComponentsInChildren<UIStatSlot>();
 
         AddStartingItems();
     }
@@ -140,13 +143,22 @@ public class Inventory : MonoBehaviour
         {
             stashItemSlots[i].UpdateSlot(stashItems[i]);
         }
+
+
+
+        for (int i = 0; i < statSlots.Length; i++)
+        {
+            statSlots[i].UpdateStatValueUI();
+        }
+        
+        
     }
     
     
 
     public void AddItem(ItemData item)
     {
-        if (item.itemType == ItemType.Equipment)
+        if (item.itemType == ItemType.Equipment && CanAddItem())
         {
             AddToInventory(item);
         } else if (item.itemType == ItemType.Material)
@@ -216,6 +228,17 @@ public class Inventory : MonoBehaviour
         
         UpdateSlotUI();
     }
+
+    public bool CanAddItem()
+    {
+        if (inventoryItems.Count >= inventoryItemSlots.Length)
+        {
+            return false;
+        }
+
+        return true;
+    }
+    
 
 
 
