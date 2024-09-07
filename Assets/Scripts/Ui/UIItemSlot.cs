@@ -4,15 +4,20 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 //todo use gamepad controller 
-public class UIItemSlot : MonoBehaviour, IPointerDownHandler
+public class UIItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
-    [SerializeField] private Image itemImage;
-    [SerializeField] private TextMeshProUGUI itemText;
+    [SerializeField] protected Image itemImage;
+    [SerializeField] protected TextMeshProUGUI itemText;
 
     public InventoryItem item;
 
+    protected UI ui;
 
+    protected virtual void Start()
+    {
+        ui = GetComponentInParent<UI>();
+    }
 
     public void UpdateSlot(InventoryItem newItem)
     {
@@ -64,7 +69,19 @@ public class UIItemSlot : MonoBehaviour, IPointerDownHandler
         {
             Inventory.instance.EquipItem(item.data);
         }
+        
+        ui.itemTooltip.HideTooltip();
     }
 
-    
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        ui.itemTooltip.ShowTooltip(item.data as ItemDataEquipment);
+        
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        ui.itemTooltip.HideTooltip();
+    }
 }

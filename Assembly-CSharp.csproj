@@ -51,6 +51,7 @@
     <Compile Include="Assets/Scripts/Skill/CrystalSkill.cs" />
     <Compile Include="Assets/Scripts/Trigger/EnemySkeletonAnimationTrigger.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerDashState.cs" />
+    <Compile Include="Assets/Scripts/UI/UIStatTooltip.cs" />
     <Compile Include="Assets/Scripts/Inventory/Effects/HealEffects.cs" />
     <Compile Include="Assets/Scripts/UI/UIStatSlot.cs" />
     <Compile Include="Assets/Scripts/Inventory/Effects/BuffEffects.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Assets/Scripts/Skill/SkillController/BlackholeSkillController.cs" />
     <Compile Include="Assets/Scripts/UI/UIItemSlot.cs" />
     <Compile Include="Assets/Scripts/Skill/BlackholeSkill.cs" />
+    <Compile Include="Assets/Scripts/UI/UICraftWindow.cs" />
     <Compile Include="Assets/Scripts/Player/Player.cs" />
     <Compile Include="Assets/Scripts/Inventory/Item/ItemObject.cs" />
     <Compile Include="Assets/Scripts/Inventory/Item/ItemDataEquipment.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="Assets/Scripts/UI/UIEquipmentSlot.cs" />
     <Compile Include="Assets/Scripts/Manager/InputManager.cs" />
     <Compile Include="Assets/Scripts/Skill/SkillController/CrystalSkillController.cs" />
+    <Compile Include="Assets/Scripts/UI/UIItemtooltip.cs" />
     <Compile Include="Assets/Scripts/Inventory/Effects/IceAndFireEffects.cs" />
     <Compile Include="Assets/Scripts/Base/EntityFx.cs" />
     <Compile Include="Assets/Scripts/Scene/ParallaxBackground.cs" />
@@ -102,6 +105,7 @@
     <Compile Include="Assets/Scripts/Skill/SwordSkill.cs" />
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeletonDeadState.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerMoveState.cs" />
+    <Compile Include="Assets/Scripts/UI/UICraftList.cs" />
     <Compile Include="Assets/Scripts/Stat/PlayerStat.cs" />
     <Compile Include="Assets/Scripts/Skill/DashSkill.cs" />
     <Compile Include="Assets/Scripts/Skill/SkillController/BlackholeHotkeyController.cs" />

@@ -1,19 +1,32 @@
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class UICraftSlot : UIItemSlot
 {
-    private void OnEnable()
+    protected override void Start()
     {
-        UpdateSlot(item);
+        base.Start();
     }
-
-    public override void OnPointerDown(PointerEventData eventData)
+    
+    public void SetupCraftSlot(ItemDataEquipment itemDataEquipment)
     {
-        ItemDataEquipment itemToCraft = item.data as ItemDataEquipment;
-        if (itemToCraft == null)
+        Debug.Log("Setting up craft slot with item: " + itemDataEquipment.name);
+        if (!itemDataEquipment)
         {
             return;
         }
-        Inventory.instance.CanCraft(itemToCraft, itemToCraft.craftingMaterials);
+        
+        item.data = itemDataEquipment;
+        itemImage.sprite = itemDataEquipment.icon; 
+        itemText.text = itemDataEquipment.name;
+    }
+    
+    
+    
+
+    public override void OnPointerDown(PointerEventData eventData)
+    {
+        Debug.Log("craft slot clicked" + item.data.name);
+        ui.craftWindow.SetupCraftWindow(item.data as ItemDataEquipment);
     }
 }

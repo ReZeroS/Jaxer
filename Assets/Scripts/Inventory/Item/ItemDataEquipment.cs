@@ -16,14 +16,15 @@ public class ItemDataEquipment : ItemData
     public EquipmentType equipmentType;
 
     [Header("Item cooldown")]
-    public float itemCooldown; 
+    public float itemCooldown;
+
     public float lastTimeUsed;
     public float itemStartCooldown;
 
     [Header("Item effects")]
     public List<ItemEffects> itemEffects;
 
-    
+
     [Header("Major ints")]
     public int strength;
 
@@ -47,12 +48,16 @@ public class ItemDataEquipment : ItemData
 
     [Header("Magic ints")]
     public int fireDamage;
+
     public int iceDamage;
     public int lightingDamage;
 
     [Header("Craft requirements")]
     public List<InventoryItem> craftingMaterials;
 
+
+    private int descriptionLength;
+    
     
     public void AddModifiers()
     {
@@ -71,11 +76,10 @@ public class ItemDataEquipment : ItemData
         playerStat.armor.AddModifer(armor);
         playerStat.evasion.AddModifer(evasion);
         playerStat.magicResistance.AddModifer(magicResistance);
-        
+
         playerStat.fireDamage.AddModifer(fireDamage);
         playerStat.iceDamage.AddModifer(iceDamage);
         playerStat.lightingDamage.AddModifer(lightingDamage);
-        
     }
 
 
@@ -97,6 +101,15 @@ public class ItemDataEquipment : ItemData
         playerStat.fireDamage.RemoveModifer(fireDamage);
         playerStat.iceDamage.RemoveModifer(iceDamage);
         playerStat.lightingDamage.RemoveModifer(lightingDamage);
+        if (descriptionLength < 5)
+        {
+            for (int i = 0; i < 5 - descriptionLength; i++)
+            {
+                sb.AppendLine();
+                sb.Append(" ");
+            }
+        }
+        
     }
 
     public void Effect(Transform enemyTransform)
@@ -106,6 +119,51 @@ public class ItemDataEquipment : ItemData
             itemEffect.ExecuteEffect(enemyTransform);
         }
     }
-    
-    
+
+
+    public override string GetDescription()
+    {
+        sb.Length = 0;
+        
+
+        AddItemDescription(strength, "Strength");
+        AddItemDescription(agility, "Agility");
+        AddItemDescription(intelligence, "Intelligence");
+        AddItemDescription(vitality, "Vitality");
+        
+
+        AddItemDescription(damage, "Damage");
+        AddItemDescription(critChance, "Crit Chance");
+        AddItemDescription(critPower, "Crit Power");
+
+        AddItemDescription(health, "Health");
+        AddItemDescription(armor, "Armor");
+        AddItemDescription(evasion, "Evasion");
+        AddItemDescription(magicResistance, "Magic Resistance");
+
+        AddItemDescription(fireDamage, "Fire Damage");
+        AddItemDescription(iceDamage, "Ice Damage");
+        AddItemDescription(lightingDamage, "Lighting Damage");
+        
+        
+        return sb.ToString();
+    }
+
+    public void AddItemDescription(int val, string name)
+    {
+        if (val != 0)
+        {
+            if (sb.Length > 0)
+            {
+                sb.AppendLine();
+            }
+
+            if (val > 0)
+            {
+                sb.Append(name + ": " + val);
+            }
+
+            descriptionLength++;
+        }
+    }
 }
