@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCounterAttackState : PlayerState
@@ -35,10 +33,14 @@ public class PlayerCounterAttackState : PlayerState
                 {
                     stateTimer = 10f;
                     player.animator.SetBool(CounterAttackSuccessful, true);
+                    
+                    player.skillManager.parrySkill.UseSkill();
+                    
+                    // Create a clone on counter attack
                     if (canCreateClone)
                     {
                         canCreateClone = false;         
-                        player.skillManager.cloneSkill.CreateCloneOnCounterAttack(hit.transform);
+                        player.skillManager.parrySkill.MakeMirageOnParry(hit.transform);
                     }
                 }
             }

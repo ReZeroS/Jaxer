@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,7 +9,8 @@ public class CloneSkillController : MonoBehaviour
     private Animator animator;
     [SerializeField] private float loseSpeed;
     private float cloneTimer;
-
+    
+    [SerializeField] private float attackMultiplier;
     [SerializeField] private Transform attackCheck;
     [SerializeField] private float attackRadius = .8f;
     private Transform closestEnemy;
@@ -32,7 +30,7 @@ public class CloneSkillController : MonoBehaviour
     }
 
     public void SetupClone(Transform newTransform, float cloneDuration, bool canAttack, Vector3 offset,
-        Transform findClosestEnemy, bool canCreateDuplicateClone, float duplicateCloneTriggerRate, Player pl)
+        Transform findClosestEnemy, bool canCreateDuplicateClone, float duplicateCloneTriggerRate, Player pl, float atkMultiplier)
     {
         if (canAttack)
         {
@@ -44,6 +42,7 @@ public class CloneSkillController : MonoBehaviour
         canDuplicateClone = canCreateDuplicateClone;
         duplicateCloneRate = duplicateCloneTriggerRate;
         player = pl;
+        attackMultiplier = atkMultiplier;
         FaceClosestTarget();
     }
 
@@ -73,7 +72,16 @@ public class CloneSkillController : MonoBehaviour
         {
             if (hit.GetComponent<Enemy>() != null)
             {
-                player.stat.DoDamage(hit.GetComponent<CharacterStat>());
+                PlayerStat playerStat = player.GetComponent<PlayerStat>();
+                EnemyStat enemyStat = hit.GetComponent<EnemyStat>();
+                playerStat.CloneDoDamage(enemyStat, attackMultiplier);
+
+
+                if (player.skillManager.cloneSkill.canApplyOnHitEffect)
+                {
+                    Inventory.instance.GetEquipment(EquipmentType.Weapon)?.Effect(hit.transform);
+                }
+                
                 if (canDuplicateClone)
                 {
                     if (Random.Range(0, 100) < duplicateCloneRate)
@@ -81,8 +89,6 @@ public class CloneSkillController : MonoBehaviour
                         SkillManager.instance.cloneSkill.CreateClone(hit.transform , new Vector3(0.5f * facingDir, 0));
                     }
                 }
-                
-                
             }
         }
     }

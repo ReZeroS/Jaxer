@@ -17,6 +17,11 @@ MonoBehaviour:
   icon: {fileID: 1025091068, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
   dropChance: 32.3
   equipmentType: 0
+  itemEffects: []
+  itemCooldown: 0
+  lastTimeUsed: 0
+  itemStartCooldown: 0
+  itemEffectDescription: hahahah33
   strength: 0
   agility: 0
   intelligence: 0

@@ -17,11 +17,12 @@ MonoBehaviour:
   icon: {fileID: 367297872, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
   dropChance: 0
   equipmentType: 0
+  itemEffects:
+  - {fileID: 11400000, guid: 96c9508932f7147bc8b6b2b26697b382, type: 2}
   itemCooldown: 0
   lastTimeUsed: 0
   itemStartCooldown: 0
-  itemEffects:
-  - {fileID: 11400000, guid: 96c9508932f7147bc8b6b2b26697b382, type: 2}
+  itemEffectDescription: hahahah
   strength: 0
   agility: 0
   intelligence: 0

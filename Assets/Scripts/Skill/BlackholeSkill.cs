@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class BlackholeSkill : Skill
 {
     
     [Header("Blackhole Attack")]
+    [SerializeField] private UISkillTreeSlot blackholeUnlockButton;
+    public bool blackholeUnlocked { get; private set; }
     [SerializeField] private int amountOfAttacks;
     [SerializeField] private float cloneAttackCooldown;
 
@@ -19,6 +19,13 @@ public class BlackholeSkill : Skill
 
 
     private BlackholeSkillController skillController;
+
+
+    protected override void Start()
+    {
+        base.Start();
+        blackholeUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockBlackhole);
+    }
 
     public override bool CanUseSkill()
     {
@@ -33,6 +40,13 @@ public class BlackholeSkill : Skill
         skillController.SetupBlackhole(maxSize, growSpeed, shrinkSpeed, amountOfAttacks, cloneAttackCooldown, blackholeDuration);
     }
 
+    private void UnlockBlackhole()
+    {
+        if (blackholeUnlockButton.unlocked)
+        {
+            blackholeUnlocked = true;
+        }
+    }
 
     public bool SkillCompleted()
     {

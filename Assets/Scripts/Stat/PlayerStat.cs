@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class PlayerStat : CharacterStat
 {
 
@@ -25,6 +21,12 @@ public class PlayerStat : CharacterStat
         GetComponent<PlayerItemDrop>()?.GenerateDrop();
     }
 
+    public override void OnEvasion()
+    {
+        base.OnEvasion();
+        player.skillManager.dodgeSkill.CreateMirageDodge();
+    }
+
     protected override void DecreaseHealthBy(int dam)
     {
         base.DecreaseHealthBy(dam);
@@ -34,4 +36,34 @@ public class PlayerStat : CharacterStat
             curEquipment.Effect(player.transform);
         }
     }
+
+
+    public void CloneDoDamage(CharacterStat targetsStat, float attackMultiplier)
+    {
+        if (TargetCanAvoidAttack(targetsStat)) return;
+
+
+        int totalDamage = damage.GetValue() + strength.GetValue();
+
+        if (attackMultiplier > 0)
+        {
+            totalDamage = (int)(totalDamage * attackMultiplier);
+        }
+        
+        if (CanCrit())
+        {
+            totalDamage = CalculateCriticalDamage(totalDamage);
+        }
+
+
+        totalDamage = CheckTargetArmor(targetsStat, totalDamage);
+        targetsStat.TakeDamage(totalDamage);
+
+        DoMagicalDamage(targetsStat); // remove if you do not want to do magical damage on primary attack
+    }
+    
+    
+    
+    
+    
 }

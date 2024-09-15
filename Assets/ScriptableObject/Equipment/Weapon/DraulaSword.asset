@@ -19,6 +19,10 @@ MonoBehaviour:
   equipmentType: 0
   itemEffects:
   - {fileID: 11400000, guid: 1664c5d15304e4ae69f471ecb2a038b5, type: 2}
+  itemCooldown: 0
+  lastTimeUsed: 0
+  itemStartCooldown: 0
+  itemEffectDescription: hahahah11
   strength: 0
   agility: 0
   intelligence: 0

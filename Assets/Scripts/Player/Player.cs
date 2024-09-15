@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Entity
@@ -93,7 +91,7 @@ public class Player : Entity
 
         CheckDashInput();
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && skillManager.crystalSkill.crystalUnlocked)
         {
             skillManager.crystalSkill.CanUseSkill();
         }  
@@ -148,7 +146,15 @@ public class Player : Entity
 
     private void CheckDashInput()
     {
+        
+        
+        
         if (IsWallDetected())
+        {
+            return;
+        }
+
+        if (skillManager.dashSkill.dashUnlocked == false)
         {
             return;
         }

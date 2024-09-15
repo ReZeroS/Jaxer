@@ -5,16 +5,16 @@ public class DashSkill : Skill
 {
 
     [Header("Dash")]
-    public bool dashUnlocked;
     [SerializeField] private UISkillTreeSlot dashUnlockedButton;
-    
+    public bool dashUnlocked { get; private set; }
+
     [Header("Clone on dash")]
-    public bool cloneOnDashUnlocked;
     [SerializeField] private UISkillTreeSlot cloneOnDashUnlockedButton;
+    public bool cloneOnDashUnlocked { get; private set; }
 
     [Header("Clone on arrived")]
-    public bool cloneOnArrivedUnlocked;
     [SerializeField] private UISkillTreeSlot cloneOnArrivedUnlockedButton;
+    public bool cloneOnArrivedUnlocked { get; private set; }
 
     
     public override void UseSkill()
@@ -57,7 +57,21 @@ public class DashSkill : Skill
         }
     }
     
-    
+    public void CloneOnDash()
+    {
+        if (cloneOnDashUnlocked)
+        {
+            SkillManager.instance.cloneSkill.CreateClone(player.transform, Vector3.zero);
+        }
+    }
+
+    public void CloneOnArrival()
+    {
+        if (cloneOnArrivedUnlocked)
+        {
+            SkillManager.instance.cloneSkill.CreateClone(player.transform, Vector3.zero);
+        }
+    }
 
 
 

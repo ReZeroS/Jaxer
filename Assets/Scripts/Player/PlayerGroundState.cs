@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerGroundState : PlayerState
@@ -17,18 +15,18 @@ public class PlayerGroundState : PlayerState
     {
         base.Update();
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) && player.skillManager.blackholeSkill.blackholeUnlocked)
         {
             stateMachine.ChangeState(player.blackholeState);
         }
         
         
-        if (Input.GetKeyDown(KeyCode.Mouse1) && HasNoSword())
+        if (Input.GetKeyDown(KeyCode.Mouse1) && HasNoSword() && player.skillManager.swordSkill.swordUnlocked)
         {
             stateMachine.ChangeState(player.animSwordState);
         }
 
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I) && player.skillManager.parrySkill.parryUnlocked)
         {
             stateMachine.ChangeState(player.couterAttackState);
         }
