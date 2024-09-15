@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class UI : MonoBehaviour
 {
@@ -8,9 +7,10 @@ public class UI : MonoBehaviour
     [SerializeField] private GameObject craftingUI;
     [SerializeField] private GameObject optionsUI;
     
-    
     public UIItemtooltip itemTooltip;
     public UIStatTooltip statTooltip;
+    public UISkillTooltip skillTooltip;
+
     public UICraftWindow craftWindow;
     
     private void Start()

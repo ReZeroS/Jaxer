@@ -90,6 +90,7 @@
     <Compile Include="Assets/Scripts/Enemy/Enemy.cs" />
     <Compile Include="Assets/Scripts/Inventory/InventoryItem.cs" />
     <Compile Include="Assets/Scripts/UI/UI.cs" />
+    <Compile Include="Assets/Scripts/UI/UISkillTooltip.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerDeathState.cs" />
     <Compile Include="Assets/Scripts/Skill/SkillController/SwordSkillController.cs" />
     <Compile Include="Assets/Scripts/Finder/FindUtil.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Assets/Scripts/Stat/Stat.cs" />
     <Compile Include="Assets/Scripts/Inventory/Item/ItemObjectTrigger.cs" />
     <Compile Include="Assets/Scripts/Inventory/Item/ItemData.cs" />
+    <Compile Include="Assets/Scripts/UI/UISkillTreeSlot.cs" />
     <Compile Include="Assets/Scripts/Enemy/EnemyStateMachine.cs" />
     <Compile Include="Assets/Scripts/Skill/SkillController/CloneSkillController.cs" />
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeleton.cs" />

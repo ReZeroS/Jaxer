@@ -15,40 +15,35 @@ public class ItemDataEquipment : ItemData
 {
     public EquipmentType equipmentType;
 
-    [Header("Item cooldown")]
+    
+    [Header("Unique effects")]
+    public List<ItemEffects> itemEffects;
     public float itemCooldown;
-
     public float lastTimeUsed;
     public float itemStartCooldown;
 
-    [Header("Item effects")]
-    public List<ItemEffects> itemEffects;
-
-
+    [TextArea] public string itemEffectDescription;
+    
     [Header("Major ints")]
     public int strength;
-
     public int agility;
     public int intelligence;
     public int vitality;
 
     [Header("Offensive int")]
     public int damage;
-
     public int critChance;
     public int critPower;
 
 
     [Header("Defensive ints")]
     public int health;
-
     public int armor;
     public int evasion;
     public int magicResistance;
 
     [Header("Magic ints")]
     public int fireDamage;
-
     public int iceDamage;
     public int lightingDamage;
 
@@ -101,14 +96,9 @@ public class ItemDataEquipment : ItemData
         playerStat.fireDamage.RemoveModifer(fireDamage);
         playerStat.iceDamage.RemoveModifer(iceDamage);
         playerStat.lightingDamage.RemoveModifer(lightingDamage);
-        if (descriptionLength < 5)
-        {
-            for (int i = 0; i < 5 - descriptionLength; i++)
-            {
-                sb.AppendLine();
-                sb.Append(" ");
-            }
-        }
+       
+
+       
         
     }
 
@@ -145,6 +135,20 @@ public class ItemDataEquipment : ItemData
         AddItemDescription(iceDamage, "Ice Damage");
         AddItemDescription(lightingDamage, "Lighting Damage");
         
+        if (descriptionLength < 5)
+        {
+            for (int i = 0; i < 5 - descriptionLength; i++)
+            {
+                sb.AppendLine();
+                sb.Append(" ");
+            }
+        }
+        
+        if (itemEffectDescription.Length > 0)
+        {
+            sb.AppendLine();
+            sb.Append(itemEffectDescription);
+        }
         
         return sb.ToString();
     }

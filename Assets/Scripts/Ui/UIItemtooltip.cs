@@ -16,7 +16,7 @@ public class UIItemtooltip : MonoBehaviour
         itemName.text = itemData.itemName;
         itemType.text = itemData.itemType.ToString();
         itemDescription.text = itemData.GetDescription();
-        
+         
         gameObject.SetActive(true);
     }
 
