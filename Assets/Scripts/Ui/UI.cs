@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class UI : MonoBehaviour
 {
+    
+    [SerializeField] public UIFadeScreen fadeScreen;
+    
+    
     [SerializeField] private GameObject characterUI;
     [SerializeField] private GameObject skillTreeUI;
     [SerializeField] private GameObject craftingUI;
@@ -18,7 +22,7 @@ public class UI : MonoBehaviour
     private void Awake()
     {
         SwitchTo(skillTreeUI); // we need to assign events on skill tree slots before assign events on skill scripts
-        
+        fadeScreen.gameObject.SetActive(true);
     }
 
     private void Start()
@@ -63,7 +67,11 @@ public class UI : MonoBehaviour
     {
         for (int i = 0; i <  transform.childCount; i++)
         {
-            transform.GetChild(i).gameObject.SetActive(false);
+            bool fadeScreen = transform.GetChild(i).gameObject.GetComponent<UIFadeScreen>();
+            if (!fadeScreen)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
         }
 
         if (menu)
@@ -88,13 +96,16 @@ public class UI : MonoBehaviour
     {
         for (int i = 0; i < transform.childCount; i++)
         {
-            if (transform.GetChild(i).gameObject.activeSelf)
+            if (transform.GetChild(i).gameObject.activeSelf
+                && !transform.GetChild(i).gameObject.GetComponent<UIFadeScreen>())
             {
                 return;
             }
         }
         SwitchTo(inGameUI);
     }
+    
+    
     
     
 }

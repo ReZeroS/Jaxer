@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerDeathState : PlayerState
@@ -16,6 +14,9 @@ public class PlayerDeathState : PlayerState
     {
         base.Enter();
         player.SetZeroVelocity();
+        GameObject.Find("Canvas").GetComponent<UI>().fadeScreen.FadeOut();
+        // WaitForSeconds wait = new WaitForSeconds(2f);
+        GameManager.instance.RestartGame();
     }
 
     public override void Update()

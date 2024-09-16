@@ -12,11 +12,17 @@ public class GameData
     public List<string> equipmentIdList;
     
 
+    public SerializableDictionary<string, bool> checkpoint;
+    public string closestCheckpointId;
+    
     public GameData()
     {
         currency = 0;
         skillTree = new SerializableDictionary<string, bool>();
         inventory = new SerializableDictionary<string, int>();
         equipmentIdList = new List<string>();
+        
+        closestCheckpointId = string.Empty;
+        checkpoint = new SerializableDictionary<string, bool>();
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -30,7 +31,7 @@ public class SaveManager : MonoBehaviour
 
     
     [ContextMenu("Delete Save File")]
-    private void DeleteSaveFile()
+    public void DeleteSaveFile()
     {
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, encryptData);
         dataHandler.DeleteData();
@@ -38,9 +39,15 @@ public class SaveManager : MonoBehaviour
     
     private void Start()
     {
-        Debug.Log("SaveManager Start" + Application.persistentDataPath);
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, encryptData);
         saveManagers = FindAllSaveManagers();
+        
+        StartCoroutine(LoadAfterGameManagerStart());
+    }
+    
+    private IEnumerator LoadAfterGameManagerStart()
+    {
+        yield return new WaitUntil(() => GameManager.instance);
         LoadGame();
     }
 
@@ -79,6 +86,16 @@ public class SaveManager : MonoBehaviour
     {
         IEnumerable<ISaveManager> saveManagers = FindObjectsOfType<MonoBehaviour>(true).OfType<ISaveManager>();
         return saveManagers.ToList();
+    }
+
+
+    public bool HasSaveData()
+    {
+        if (dataHandler.LoadData() != null)
+        {
+            return true;
+        }
+        return false;
     }
 
 
