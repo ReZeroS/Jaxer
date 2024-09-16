@@ -52,13 +52,9 @@ public class GameManager : MonoBehaviour, ISaveManager
                 }
             }
         }
-
-
-        Debug.Log("find closest checkpoint" +gameData.closestCheckpointId);
-        Debug.Log("Loading Game Data" + checkpoints.Length);
+        
         foreach (var checkpoint in checkpoints)
         {
-            Debug.Log("Checkpoint Id: " + checkpoint.checkpointId + " Is Activated: " + checkpoint.isActivated);
             if (gameData.closestCheckpointId == checkpoint.checkpointId)
             {
                 PlayerManager.instance.player.transform.position = checkpoint.transform.position;

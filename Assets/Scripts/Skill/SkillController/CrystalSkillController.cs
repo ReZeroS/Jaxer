@@ -98,8 +98,10 @@ public class CrystalSkillController : MonoBehaviour
         foreach (var hit in collider2Ds)
         {
             Enemy enemy = hit.GetComponent<Enemy>();
+            hit.GetComponent<Entity>()?.SetKnockBackDir(transform);
             if (enemy)
             {
+                
                 player.stat.DoMagicalDamage(enemy.GetComponent<CharacterStat>());
                 ItemDataEquipment amulet = Inventory.instance.GetEquipment(EquipmentType.Amulet);
                 amulet?.Effect(enemy.transform);

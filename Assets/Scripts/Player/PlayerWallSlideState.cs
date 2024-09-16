@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerWallSlideState : PlayerState
@@ -17,6 +15,13 @@ public class PlayerWallSlideState : PlayerState
     public override void Update()
     {
         base.Update();
+
+        if (!player.IsWallDetected())
+        {
+            stateMachine.ChangeState(player.playerAirState);
+            return;
+        }
+        
 
         if (Input.GetKeyDown(KeyCode.K))
         {

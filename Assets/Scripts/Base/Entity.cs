@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Entity : MonoBehaviour
 {
@@ -14,10 +15,13 @@ public class Entity : MonoBehaviour
     public CapsuleCollider2D cd { get; private set; }
     #endregion
 
+    [FormerlySerializedAs("knockedBackpower")]
+    [FormerlySerializedAs("knockedDir")]
     [Header("Knocked info")] 
-    [SerializeField] protected Vector2 knockedDir;
+    [SerializeField] protected Vector2 knockedBackPower;
     [SerializeField] protected float knockBackDuration;
     protected bool isKnocked;
+    public int knockBackDir { get; private set; }
     
     [Header("Collision")] 
     [SerializeField] protected Transform groundCheck;
@@ -76,10 +80,22 @@ public class Entity : MonoBehaviour
         StartCoroutine(nameof(HitKnockBack));
     }
 
+    public virtual void SetKnockBackDir(Transform damageDirection)
+    {
+        if (damageDirection.position.x > transform.position.x)
+        {
+            knockBackDir = -1;
+        } else if (damageDirection.position.x < transform.position.x)
+        {
+            knockBackDir = 1;
+        }
+    }
+    
+
     protected virtual IEnumerator HitKnockBack()
     {
         isKnocked = true;
-        rb.velocity = new Vector2(knockedDir.x * -facingDir, knockedDir.y);
+        rb.velocity = new Vector2(knockedBackPower.x * knockBackDir, knockedBackPower.y);
         yield return new WaitForSeconds(knockBackDuration);
         isKnocked = false;
     }

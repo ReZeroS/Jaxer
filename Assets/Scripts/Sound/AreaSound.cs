@@ -18,7 +18,7 @@ public class AreaSound : MonoBehaviour
     {
         if (other.GetComponent<Player>())
         {
-            AudioManager.instance.FadeOutSfxTime(areaSoundIndex, 2f);
+            AudioManager.instance?.FadeOutSfxTime(areaSoundIndex, 2f);
         }
     }
     

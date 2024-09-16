@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAirState : PlayerState
@@ -20,9 +18,10 @@ public class PlayerAirState : PlayerState
         {
             player.SetVelocity(xInput*player.moveSpeed*0.7f, rb.velocity.y);
         }
-        
+        Debug.Log("IsWallDetected" + player.IsWallDetected());
         if (player.IsWallDetected())
         {
+            Debug.Log("change to wall slide");
             stateMachine.ChangeState(player.playerWallSlideState);
         }
         
