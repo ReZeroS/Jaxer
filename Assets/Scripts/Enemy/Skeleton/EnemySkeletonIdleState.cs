@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class EnemySkeletonIdleState : EnemySkeletonGroundState
 {
 
@@ -29,6 +25,7 @@ public class EnemySkeletonIdleState : EnemySkeletonGroundState
     public override void Exit()
     {
         base.Exit();
+        AudioManager.instance.PlaySFX(14, enemySkeleton.transform);
     }
 
 

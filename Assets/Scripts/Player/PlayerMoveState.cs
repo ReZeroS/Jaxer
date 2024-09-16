@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class PlayerMoveState : PlayerGroundState
 {
 
@@ -14,6 +10,7 @@ public class PlayerMoveState : PlayerGroundState
     public override void Enter()
     {
         base.Enter(); 
+        AudioManager.instance.PlaySFX(14);
     }
 
     public override void Update()
@@ -28,6 +25,7 @@ public class PlayerMoveState : PlayerGroundState
     public override void Exit()
     {
         base.Exit();
+        AudioManager.instance.StopSFX(14);
     }
 
 

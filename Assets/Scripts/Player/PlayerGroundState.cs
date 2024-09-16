@@ -17,6 +17,10 @@ public class PlayerGroundState : PlayerState
 
         if (Input.GetKeyDown(KeyCode.X) && player.skillManager.blackholeSkill.blackholeUnlocked)
         {
+            if (player.skillManager.blackholeSkill.IsInCoolDown())
+            {
+                return;
+            }
             stateMachine.ChangeState(player.blackholeState);
         }
         

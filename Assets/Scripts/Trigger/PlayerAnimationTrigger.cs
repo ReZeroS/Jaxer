@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAnimationTrigger : MonoBehaviour
@@ -14,6 +11,8 @@ public class PlayerAnimationTrigger : MonoBehaviour
 
     private void AttackTrigger()
     {
+        AudioManager.instance.PlaySFX(2);
+
         Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackRadius);
         foreach (var hit in collider2Ds)
         {

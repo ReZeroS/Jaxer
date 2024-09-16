@@ -44,6 +44,8 @@ public class BlackholeSkill : Skill
         GameObject newBlackhole = Instantiate(blackholePrefab, player.transform.position, Quaternion.identity);
         skillController = newBlackhole.GetComponent<BlackholeSkillController>();
         skillController.SetupBlackhole(maxSize, growSpeed, shrinkSpeed, amountOfAttacks, cloneAttackCooldown, blackholeDuration);
+        AudioManager.instance.PlaySFX(3);
+        AudioManager.instance.PlaySFX(6);
     }
 
     private void UnlockBlackhole()
@@ -72,6 +74,7 @@ public class BlackholeSkill : Skill
     {
         return maxSize / 2;
     }
-    
-    
+
+
+    public bool IsInCoolDown() => coolDownTimer > 0;
 }
