@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UI : MonoBehaviour
+public class UI : MonoBehaviour, ISaveManager
 {
     
     [SerializeField] public UIFadeScreen fadeScreen;
@@ -18,6 +18,8 @@ public class UI : MonoBehaviour
 
     public UICraftWindow craftWindow;
 
+    [SerializeField] private UIVolumeSlider[] volumeSettings;
+    
 
     private void Awake()
     {
@@ -76,6 +78,7 @@ public class UI : MonoBehaviour
 
         if (menu)
         {
+            AudioManager.instance.PlaySFX(7);
             menu.SetActive(true);
         }
         
@@ -104,8 +107,28 @@ public class UI : MonoBehaviour
         }
         SwitchTo(inGameUI);
     }
-    
-    
-    
-    
+
+    public void LoadData(GameData gameData)
+    {
+        var savedVolumeSettingMap = gameData.volumeSettings;
+        foreach (var savedVolumeSetting in savedVolumeSettingMap)
+        {
+            foreach (var volumeSlider in volumeSettings)
+            {
+                if (savedVolumeSetting.Key == volumeSlider.parameter)
+                {
+                    volumeSlider.SetVolume(savedVolumeSetting.Value);
+                }
+            }
+        }
+    }
+
+    public void SaveData(ref GameData gameData)
+    {
+        gameData.volumeSettings.Clear();
+        foreach (var setting in volumeSettings)
+        {
+            gameData.volumeSettings.Add(setting.parameter, setting.slider.value);
+        }
+    }
 }

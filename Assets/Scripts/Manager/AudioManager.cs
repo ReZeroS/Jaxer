@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -109,5 +110,51 @@ public class AudioManager : MonoBehaviour
     
     
     private void AllowPlaySFX() => canPlaySFX = true;
+
+
+    public void FadeOutSfxTime(int index, float time)
+    {
+        StartCoroutine(FadeOut(sfxList[index], time));
+    }
+    
+    public void FadeInSfxTime(int index, float time)
+    {
+        StartCoroutine(FadeIn(sfxList[index], time));
+    }
+    
+    
+    private IEnumerator FadeIn(AudioSource audioSource, float duration)
+    {
+        float startVolume = 0.0f;
+        float targetVolume = audioSource.volume;
+
+        audioSource.volume = startVolume;
+        audioSource.Play();
+
+        while (audioSource.volume < targetVolume)
+        {
+            audioSource.volume += (Time.deltaTime / duration) * targetVolume;
+            yield return null;
+        }
+
+        audioSource.volume = targetVolume;
+    }
+
+    private IEnumerator FadeOut(AudioSource audioSource, float duration)
+    {
+        float startVolume = audioSource.volume;
+        float targetVolume = 0.0f;
+
+        while (audioSource.volume > targetVolume)
+        {
+            audioSource.volume -= (Time.deltaTime / duration) * startVolume;
+            yield return null;
+        }
+
+        audioSource.Stop();
+        audioSource.volume = startVolume;
+    }
+    
+    
     
 }

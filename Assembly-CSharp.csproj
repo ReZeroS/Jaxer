@@ -91,6 +91,7 @@
     <Compile Include="Assets/Scripts/Player/PlayerBlackholeState.cs" />
     <Compile Include="Assets/Scripts/Base/Entity.cs" />
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeletonIdleState.cs" />
+    <Compile Include="Assets/Scripts/Sound/AreaSound.cs" />
     <Compile Include="Assets/Scripts/Inventory/Effects/ThunderStrikeEffects.cs" />
     <Compile Include="Assets/Scripts/UI/UIFadeScreen.cs" />
     <Compile Include="Assets/Scripts/Enemy/Enemy.cs" />
