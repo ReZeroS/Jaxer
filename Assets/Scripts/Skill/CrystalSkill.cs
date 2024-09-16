@@ -47,6 +47,16 @@ public class CrystalSkill : Skill
         unlockCrystalMultiStackButton.GetComponent<Button>().onClick.AddListener(UnlockCrystalMultiStack);
     }
 
+    public override void CheckUnlock()
+    {
+        base.CheckUnlock();
+        UnlockCrystal();
+        UnlockCrystalExplosive();
+        UnlockCrystalMirage();
+        UnlockCrystalMoving();
+        UnlockCrystalMultiStack();
+    }
+
     #region Unlock skill
     public void UnlockCrystal()
     {
@@ -153,7 +163,7 @@ public class CrystalSkill : Skill
                     Invoke(nameof(ResetAbility), useTimeWindow);
                 }
                 
-                coolDown = 0;
+                cooldown = 0;
                 // use last one 
                 GameObject crystalSpawn = crystalLeft[^1];
                 GameObject newCrystal = Instantiate(crystalSpawn, player.transform.position, Quaternion.identity);
@@ -165,7 +175,7 @@ public class CrystalSkill : Skill
                 if (crystalLeft.Count <= 0)
                 {
                     // 进冷却
-                    coolDown = multiStackCooldown;
+                    cooldown = multiStackCooldown;
                     RefillCrystal();
                 }
                 return true;

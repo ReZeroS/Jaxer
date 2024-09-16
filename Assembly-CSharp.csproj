@@ -83,6 +83,8 @@
     <Compile Include="Assets/Scripts/Inventory/Effects/IceAndFireEffects.cs" />
     <Compile Include="Assets/Scripts/Base/EntityFx.cs" />
     <Compile Include="Assets/Scripts/Scene/ParallaxBackground.cs" />
+    <Compile Include="Assets/Scripts/LoadAndSave/ISaveManager.cs" />
+    <Compile Include="Assets/Scripts/UI/UIInGame.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerWallJumpState.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerBlackholeState.cs" />
     <Compile Include="Assets/Scripts/Base/Entity.cs" />
@@ -92,6 +94,7 @@
     <Compile Include="Assets/Scripts/Inventory/InventoryItem.cs" />
     <Compile Include="Assets/Scripts/UI/UI.cs" />
     <Compile Include="Assets/Scripts/Skill/ParrySkill.cs" />
+    <Compile Include="Assets/Scripts/LoadAndSave/SerializableDictionary.cs" />
     <Compile Include="Assets/Scripts/UI/UISkillTooltip.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerDeathState.cs" />
     <Compile Include="Assets/Scripts/Skill/SkillController/SwordSkillController.cs" />
@@ -110,6 +113,7 @@
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeletonDeadState.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerMoveState.cs" />
     <Compile Include="Assets/Scripts/UI/UICraftList.cs" />
+    <Compile Include="Assets/Scripts/LoadAndSave/FileDataHandler.cs" />
     <Compile Include="Assets/Scripts/Stat/PlayerStat.cs" />
     <Compile Include="Assets/Scripts/Skill/DashSkill.cs" />
     <Compile Include="Assets/Scripts/Skill/SkillController/BlackholeHotkeyController.cs" />
@@ -122,9 +126,12 @@
     <Compile Include="Assets/Scripts/Inventory/PlayerItemDrop.cs" />
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeletonAttackState.cs" />
     <Compile Include="Assets/Scripts/Inventory/Effects/ItemEffects.cs" />
+    <Compile Include="Assets/Scripts/LoadAndSave/SaveManager.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerAirState.cs" />
     <Compile Include="Assets/Scripts/Manager/PlayerManager.cs" />
+    <Compile Include="Assets/Scripts/UI/UITooltip.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerStateMachine.cs" />
+    <Compile Include="Assets/Scripts/LoadAndSave/GameData.cs" />
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeletonBattleState.cs" />
     <Compile Include="Assets/Scripts/Skill/Skill.cs" />
     <Compile Include="Assets/Scripts/Skill/CloneSkill.cs" />

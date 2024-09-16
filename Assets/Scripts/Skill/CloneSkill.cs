@@ -113,10 +113,17 @@ public class CloneSkill : Skill
         yield return new WaitForSeconds(0.4f);
         CreateClone(trans, offset);
     }
-    
-    
-    
-    
+
+
+    public override void CheckUnlock()
+    {
+        base.CheckUnlock();
+        UnlockCloneAttack();
+        UnlockAggresiveClone();
+        UnlockMultipleClone();
+        UnlockCrystalInsteadOfClone();
+    }
+
     public override bool CanUseSkill()
     {
         return base.CanUseSkill();

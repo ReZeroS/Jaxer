@@ -1,16 +1,17 @@
 using TMPro;
 using UnityEngine;
 
-public class UISkillTooltip : MonoBehaviour
+public class UISkillTooltip : UITooltip
 {
 
     [SerializeField] private TextMeshProUGUI skillName;
     [SerializeField] private TextMeshProUGUI skillDescription;
     
-    public void ShowTooltip(string name, string description)
+    public void ShowTooltip(string na, string description, Vector2 position)
     {
-        skillName.text = name;
+        skillName.text = na;
         skillDescription.text = description;
+        AdjustPosition(position);
         gameObject.SetActive(true);
     }
 

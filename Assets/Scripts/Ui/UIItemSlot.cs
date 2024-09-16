@@ -77,33 +77,8 @@ public class UIItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
         {
             return;
         }
-
-        Vector2 pointerPosition = eventData.position;
-
-        var halfScreenWidth = Screen.width / 2;
-        float xOffset, yOffset;
-        if (pointerPosition.x > halfScreenWidth)
-        {
-            xOffset = -150;
-        }
-        else
-        {
-            xOffset = 150;
-        }
-
-        var halfScreenHeight = Screen.height / 2;
-        if (pointerPosition.y > halfScreenHeight)
-        {
-            yOffset = -150;
-        }
-        else
-        {
-            yOffset = 150;
-        }
-
-        ui.itemTooltip.ShowTooltip(item.data as ItemDataEquipment);
-        ui.itemTooltip.transform.position = new Vector2(pointerPosition.x + xOffset, pointerPosition.y + yOffset);
-    }
+        ui.itemTooltip.ShowTooltip(item.data as ItemDataEquipment, eventData.position);
+      }
 
     public void OnPointerExit(PointerEventData eventData)
     {

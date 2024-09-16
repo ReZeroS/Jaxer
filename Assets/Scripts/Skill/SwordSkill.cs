@@ -114,6 +114,17 @@ public class SwordSkill : Skill
         }
     }
 
+    public override void CheckUnlock()
+    {
+        base.CheckUnlock();
+        UnlockSword();
+        UnlockTimeStop();
+        UnlockVulnerable();
+        UnlockBounce();
+        UnlockPierce();
+        UnlockSpin();   
+    }
+
     public void CreateSword()
     {
         GameObject createdSword = Instantiate(swordPrefab, player.transform.position,

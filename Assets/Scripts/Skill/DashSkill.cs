@@ -16,7 +16,15 @@ public class DashSkill : Skill
     [SerializeField] private UISkillTreeSlot cloneOnArrivedUnlockedButton;
     public bool cloneOnArrivedUnlocked { get; private set; }
 
-    
+
+    public override void CheckUnlock()
+    {
+        base.CheckUnlock();
+        UnlockDash();
+        UnlockCloneOnDash();
+        UnlockCloneOnArrived();
+    }
+
     public override void UseSkill()
     {
         base.UseSkill();

@@ -27,6 +27,12 @@ public class BlackholeSkill : Skill
         blackholeUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockBlackhole);
     }
 
+    public override void CheckUnlock()
+    {
+        base.CheckUnlock();
+        UnlockBlackhole();
+    }
+
     public override bool CanUseSkill()
     {
         return base.CanUseSkill();

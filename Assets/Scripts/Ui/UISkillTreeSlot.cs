@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UISkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UISkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISaveManager
 {
     [SerializeField] private UI ui;
     [SerializeField] private Image skillImage;
@@ -36,7 +36,10 @@ public class UISkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExit
         
 
         skillImage.color = lockedSkillColor;
-
+        if (unlocked)
+        {
+            skillImage.color = Color.white;
+        }
     }
 
 
@@ -74,36 +77,32 @@ public class UISkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        ui.skillTooltip.ShowTooltip(skillName, skillDescription);
-        Vector2 pointerPosition = eventData.position;
-
-        var halfScreenWidth = Screen.width / 2;
-        float xOffset, yOffset;
-        if (pointerPosition.x > halfScreenWidth)
-        {
-            xOffset = -150;
-        }
-        else
-        {
-            xOffset = 150;
-        }
-
-        var halfScreenHeight = Screen.height /2;
-        if (pointerPosition.y > halfScreenHeight)
-        {
-            yOffset = -150;
-        }
-        else
-        {
-            yOffset = 150;
-        }
-
-        ui.skillTooltip.transform.position = new Vector2(pointerPosition.x + xOffset, pointerPosition.y + yOffset);
-        
+        ui.skillTooltip.ShowTooltip(skillName, skillDescription, eventData.position);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         ui.skillTooltip.HideTooltip();
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        if (gameData.skillTree.TryGetValue(skillName, out bool savedUnlocked))
+        {
+            unlocked = savedUnlocked;
+        }
+    }
+
+    public void SaveData(ref GameData gameData)
+    {
+        if (gameData.skillTree.TryGetValue(skillName, out _))
+        {
+            gameData.skillTree.Remove(skillName);
+            gameData.skillTree.Add(skillName, unlocked);
+        }
+        else
+        {
+            gameData.skillTree.Add(skillName, unlocked);
+        }
     }
 }

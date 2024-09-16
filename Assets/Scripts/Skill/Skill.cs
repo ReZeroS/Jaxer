@@ -1,17 +1,15 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Skill : MonoBehaviour
 {
-    protected float coolDown;
+    public float cooldown;
     protected float coolDownTimer;
     protected Player player;
 
     protected virtual void Start()
     {
         player = PlayerManager.instance.player;
+        CheckUnlock();
     }
 
     protected virtual void Update()
@@ -19,12 +17,17 @@ public class Skill : MonoBehaviour
         coolDownTimer -= Time.deltaTime;
     }
 
+    public virtual void CheckUnlock()
+    {
+        
+    }
+
 
     public virtual bool CanUseSkill()
     {
         if (coolDownTimer < 0)
         {
-            coolDownTimer = coolDown;
+            coolDownTimer = cooldown;
             UseSkill();
             return true;
         }
