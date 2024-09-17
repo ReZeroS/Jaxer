@@ -72,6 +72,7 @@
     <Compile Include="Assets/Scripts/Skill/SkillController/BlackholeSkillController.cs" />
     <Compile Include="Assets/Scripts/UI/UIItemSlot.cs" />
     <Compile Include="Assets/Scripts/Skill/BlackholeSkill.cs" />
+    <Compile Include="Assets/Scripts/Fx/PlayerFx.cs" />
     <Compile Include="Assets/Scripts/UI/UICraftWindow.cs" />
     <Compile Include="Assets/Scripts/Player/Player.cs" />
     <Compile Include="Assets/Scripts/Inventory/Item/ItemObject.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Assets/Scripts/Enemy/EnemyStateMachine.cs" />
     <Compile Include="Assets/Scripts/Skill/SkillController/CloneSkillController.cs" />
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeleton.cs" />
+    <Compile Include="Assets/Scripts/Fx/AfterImageFx.cs" />
     <Compile Include="Assets/Scripts/UI/HealthBar.cs" />
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeletonMoveState.cs" />
     <Compile Include="Assets/Scripts/Skill/SwordSkill.cs" />

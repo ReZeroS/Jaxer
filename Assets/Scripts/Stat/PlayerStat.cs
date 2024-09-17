@@ -36,6 +36,7 @@ public class PlayerStat : CharacterStat
         if (dam > GetMaxHealthVal() * 0.3f)
         {
             player.SetKnockBackPower(new Vector2(6, 10));
+            player.fx.ScreenShakeForHighDamageImpact(player.facingDir);
             AudioManager.instance.PlaySFX(34);
         }
         

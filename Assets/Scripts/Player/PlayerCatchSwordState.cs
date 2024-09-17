@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCatchSwordState : PlayerState
@@ -16,7 +14,9 @@ public class PlayerCatchSwordState : PlayerState
     {
         base.Enter();
         sword = player.sword.transform;
-        
+
+        player.fx.PlayDustFx();
+        player.fx.ScreenShakeForSwordImpact(player.facingDir);
         
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (mousePosition.x < player.transform.position.x && player.facingRight)

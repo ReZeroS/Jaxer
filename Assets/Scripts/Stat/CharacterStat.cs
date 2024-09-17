@@ -146,10 +146,13 @@ public class CharacterStat : MonoBehaviour
         targetsStat.GetComponent<Entity>()?.SetKnockBackDir(transform);
         int totalDamage = damage.GetValue() + strength.GetValue();
 
-        if (CanCrit())
+        bool canCrit = CanCrit();
+        if (canCrit)
         {
             totalDamage = CalculateCriticalDamage(totalDamage);
         }
+        
+        entityFx.CreateHitFx(targetsStat.transform, canCrit);
 
 
         totalDamage = CheckTargetArmor(targetsStat, totalDamage);

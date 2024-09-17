@@ -22,12 +22,12 @@ public class Player : Entity
     public float dashSpeed = 12f;
     public float dashDuration = 1.5f;
     public float dashDir { get; private set; }
-
-
-
+    
 
     public SkillManager skillManager { get; private set; }
     public GameObject sword { get; private set; }
+    
+    public PlayerFx fx { get; private set; }
 
     #region States
     public PlayerStateMachine stateMachine { get; private set; }
@@ -75,6 +75,7 @@ public class Player : Entity
     protected override void Start()
     {
         base.Start();
+        fx = GetComponent<PlayerFx>();
         skillManager = SkillManager.instance;
         stateMachine.Initialize(playerIdleState);
 

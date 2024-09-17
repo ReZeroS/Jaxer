@@ -1,5 +1,6 @@
 public class PlayerDashState : PlayerState
 {
+
     public PlayerDashState(PlayerStateMachine stateMachine, Player player, string animBoolName) : base(stateMachine, player, animBoolName)
     {
     }
@@ -22,6 +23,7 @@ public class PlayerDashState : PlayerState
         {
             stateMachine.ChangeState(player.playerIdleState);
         }
+        player.fx.CreateAfterImageFx();
     }
 
     public override void Exit()

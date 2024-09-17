@@ -156,7 +156,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -215,9 +215,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd73d8fb6f764cf78afa6f68972552b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnSpeed: 12
-  bounceSpeed: 20
-  isBouncing: 1
-  amountOfBounce: 4
-  enemyTargetList: []
   targetIndex: 0

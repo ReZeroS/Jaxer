@@ -27,7 +27,8 @@ public class Enemy : Entity
     protected bool canBeStunned;
     [SerializeField] protected GameObject counterImage;
     
-    
+    public EntityFx fx { get; private set; }
+
     
     public EnemyStateMachine stateMachine { get; private set; }
     public string lastAnimationBoolName { get; private set; }
@@ -38,6 +39,13 @@ public class Enemy : Entity
         stateMachine = new EnemyStateMachine();
         defaultMoveSpeed = moveSpeed;
     }
+
+    protected override void Start()
+    {
+        base.Start();
+        fx = GetComponent<EntityFx>();
+    }
+
 
     // Update is called once per frame
     protected override void Update()
