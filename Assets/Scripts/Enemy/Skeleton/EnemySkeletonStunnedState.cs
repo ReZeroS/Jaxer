@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySkeletonStunnedState : EnemyState
@@ -14,12 +12,10 @@ public class EnemySkeletonStunnedState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        enemySkeleton.fx.InvokeRepeating("RedColorBlink", 0, .1f);
+        enemySkeleton.fx.RedColorBlinkFor(0, .1f);
         
         stateTimer = enemySkeleton.stunnedDuration;
         rb.velocity = new Vector2(-enemySkeleton.facingDir*enemySkeleton.stunnedDirection.x, enemySkeleton.stunnedDirection.y);
-        
-        
     }
 
     public override void Update()
@@ -35,6 +31,6 @@ public class EnemySkeletonStunnedState : EnemyState
     public override void Exit()
     {
         base.Exit();
-        enemySkeleton.fx.Invoke(nameof(enemySkeleton.fx.CancelColor), 0);
+        enemySkeleton.fx.CancelColorFor(0);
     }
 }

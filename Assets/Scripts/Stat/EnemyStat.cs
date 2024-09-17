@@ -60,10 +60,12 @@ public class EnemyStat : CharacterStat
         base.TakeDamage(dam);
     }
 
-    public override void Die()
+    protected override void Die()
     {
         base.Die();
         enemy.Die();
         myDropSystem.GenerateDrop();
+        
+        Destroy(gameObject, 5);
     }
 }

@@ -15,6 +15,11 @@ public class EntityFx : MonoBehaviour
     [SerializeField] private Color[] igniteColor;
     [SerializeField] private Color[] shockColor;
     
+    [Header("Ailment Fx")]
+    [SerializeField] private ParticleSystem igniteFx;
+    [SerializeField] private ParticleSystem chillFx;
+    [SerializeField] private ParticleSystem shockFx;
+    
 
     private void Start()
     {
@@ -35,6 +40,10 @@ public class EntityFx : MonoBehaviour
     }
 
 
+    public void RedColorBlinkFor(float time, float repeatRate)
+    {
+        InvokeRepeating(nameof(RedColorBlink), 0, repeatRate);
+    }
     private void RedColorBlink()
     {
         if (sr.color != Color.white)
@@ -47,27 +56,39 @@ public class EntityFx : MonoBehaviour
         }
     }
 
-    public void CancelColor()
+    public void CancelColorFor(float time)
+    {
+        Invoke(nameof(CancelColor), time);
+    }
+
+    private void CancelColor()
     {
         CancelInvoke();
         sr.color = Color.white;
+        
+        igniteFx.Stop();
+        chillFx.Stop();
+        shockFx.Stop();
     }
 
 
     public void IgniteFxFor(float seconds)
     {
+        igniteFx.Play();
         InvokeRepeating(nameof(IgniteColorFx), 0, .3f);
         Invoke(nameof(CancelColor), seconds);
     }
     
     public void ChillFxFor(float seconds)
     {
+        chillFx.Play();
         InvokeRepeating(nameof(ChillColorFx), 0, .3f);
         Invoke(nameof(CancelColor), seconds);
     }
     
     public void ShockFxFor(float seconds)
     {
+        shockFx.Play();
         InvokeRepeating(nameof(ShockColorFx), 0, .3f);
         Invoke(nameof(CancelColor), seconds);
     }

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PlayerStat : CharacterStat
 {
 
@@ -14,7 +16,7 @@ public class PlayerStat : CharacterStat
         base.TakeDamage(dam);
     }
 
-    public override void Die()
+    protected override void Die()
     {
         base.Die();
         player.Die();
@@ -30,6 +32,13 @@ public class PlayerStat : CharacterStat
     protected override void DecreaseHealthBy(int dam)
     {
         base.DecreaseHealthBy(dam);
+
+        if (dam > GetMaxHealthVal() * 0.3f)
+        {
+            player.SetKnockBackPower(new Vector2(6, 10));
+            AudioManager.instance.PlaySFX(34);
+        }
+        
         ItemDataEquipment curEquipment = Inventory.instance.GetEquipment(EquipmentType.Armor);
         if (curEquipment != null)
         {

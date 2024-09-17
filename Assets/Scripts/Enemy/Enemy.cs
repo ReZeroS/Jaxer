@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : Entity
@@ -18,6 +17,8 @@ public class Enemy : Entity
     [Header("Attack info")] 
     public float attackDistance;
     public float attackCoolDown;
+    public float minAttackCooldown;
+    public float maxAttackCooldown;
     [HideInInspector] public float lastTimeAttacked;
 
     [Header("Stunned Info")] 

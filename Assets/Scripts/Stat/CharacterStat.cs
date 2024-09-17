@@ -88,6 +88,7 @@ public class CharacterStat : MonoBehaviour
     public int currentHealth;
     public bool isDead { get; private set; }
     public bool isVulnerable { get; private set; }
+    public bool isInvulnerable { get; private set; }
 
     protected virtual void Start()
     {
@@ -313,6 +314,11 @@ public class CharacterStat : MonoBehaviour
 
     public virtual void TakeDamage(int dam)
     {
+        if (isInvulnerable)
+        {
+            return;
+        }
+        
         DecreaseHealthBy(dam);
 
         GetComponent<Entity>().DamageImpact();
@@ -364,11 +370,27 @@ public class CharacterStat : MonoBehaviour
     }
 
 
-    public virtual void Die()
+    protected virtual void Die()
     {
         isDead = true;
     }
 
+    public void KillEntity()
+    {
+        if (isDead)
+        {
+            return;
+        }
+        Die();
+    }
+
+    public void MakeInvulnerable(bool invul)
+    {
+        isInvulnerable = invul;
+    }
+    
+    
+    
     #region Stat Calculate
 
     protected int CheckTargetArmor(CharacterStat targetsStat, int totalDamage)
@@ -432,9 +454,7 @@ public class CharacterStat : MonoBehaviour
     protected int CalculateCriticalDamage(int dam)
     {
         float totalCritPower = (critPower.GetValue() + strength.GetValue()) * 0.01f;
-        Debug.Log("total crit power %" + totalCritPower);
         float critDamage = dam * totalCritPower;
-        Debug.Log("Crit power before round" + critDamage);
         return Mathf.RoundToInt(critDamage);
     }
 

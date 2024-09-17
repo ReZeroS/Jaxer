@@ -9,6 +9,8 @@ public class PlayerDashState : PlayerState
         base.Enter();
         player.skillManager.dashSkill.CloneOnDash();
         stateTimer = player.dashDuration;
+        // todo make invulnerable as a skill
+        player.stat.MakeInvulnerable(true);
     }
 
     public override void Update()
@@ -27,5 +29,6 @@ public class PlayerDashState : PlayerState
         base.Exit();
         player.skillManager.dashSkill.CloneOnArrival();
         player.SetVelocity(0, rb.velocity.y);
+        player.stat.MakeInvulnerable(false);
     }
 }

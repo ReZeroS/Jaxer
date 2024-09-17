@@ -91,6 +91,10 @@ public class Entity : MonoBehaviour
         }
     }
     
+    public void SetKnockBackPower(Vector2 power)
+    {
+        knockedBackPower = power;
+    }
 
     protected virtual IEnumerator HitKnockBack()
     {
@@ -98,6 +102,7 @@ public class Entity : MonoBehaviour
         rb.velocity = new Vector2(knockedBackPower.x * knockBackDir, knockedBackPower.y);
         yield return new WaitForSeconds(knockBackDuration);
         isKnocked = false;
+        SetupZeroKnockBackPower();
     }
     
     
@@ -165,7 +170,11 @@ public class Entity : MonoBehaviour
     #endregion
 
 
- 
+
+    public virtual void SetupZeroKnockBackPower()
+    {
+        
+    }
 
 
     public virtual void Die()

@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySkeletonBattleState : EnemyState
 {
-    private Transform player;
+    private Transform playerTransform;
     private EnemySkeleton enemySkeleton;
     private int moveToBattleDir;
     
@@ -15,7 +13,13 @@ public class EnemySkeletonBattleState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        player = PlayerManager.instance.player.transform;
+
+        Player instancePlayer = PlayerManager.instance.player;
+        playerTransform = instancePlayer.transform;
+        if (instancePlayer.GetComponent<PlayerStat>().isDead)
+        {
+            stateMachine.ChangeState(enemySkeleton.moveState);
+        }
     }
 
     public override void Update()
@@ -35,7 +39,7 @@ public class EnemySkeletonBattleState : EnemyState
         }
         else
         {
-            if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemySkeleton.transform.position) > 15)
+            if (stateTimer < 0 || Vector2.Distance(playerTransform.transform.position, enemySkeleton.transform.position) > 15)
             {
                 stateMachine.ChangeState(enemySkeleton.idleState);
             }
@@ -43,10 +47,10 @@ public class EnemySkeletonBattleState : EnemyState
         
         
         
-        if (player.position.x > enemySkeleton.transform.position.x)
+        if (playerTransform.position.x > enemySkeleton.transform.position.x)
         {
             moveToBattleDir = 1;
-        } else if (player.position.x < enemySkeleton.transform.position.x)
+        } else if (playerTransform.position.x < enemySkeleton.transform.position.x)
         {
             moveToBattleDir = -1;
         }
@@ -62,6 +66,7 @@ public class EnemySkeletonBattleState : EnemyState
     {
         if (Time.time > enemySkeleton.lastTimeAttacked + enemySkeleton.attackCoolDown)
         {
+            enemySkeleton.attackCoolDown = Random.Range(enemySkeleton.minAttackCooldown, enemySkeleton.maxAttackCooldown);
             enemySkeleton.lastTimeAttacked = Time.time;
             return true;
         }

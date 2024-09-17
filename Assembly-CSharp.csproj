@@ -117,6 +117,7 @@
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeletonDeadState.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerMoveState.cs" />
     <Compile Include="Assets/Scripts/UI/UICraftList.cs" />
+    <Compile Include="Assets/Scripts/Manager/DeadZone.cs" />
     <Compile Include="Assets/Scripts/Manager/AudioManager.cs" />
     <Compile Include="Assets/Scripts/LoadAndSave/FileDataHandler.cs" />
     <Compile Include="Assets/Scripts/Stat/PlayerStat.cs" />

@@ -78,8 +78,20 @@ public class UI : MonoBehaviour, ISaveManager
 
         if (menu)
         {
-            AudioManager.instance.PlaySFX(7);
+            AudioManager.instance?.PlaySFX(7);
             menu.SetActive(true);
+        }
+
+        if (GameManager.instance != null)
+        {
+            if (menu == inGameUI)
+            {
+                GameManager.instance.PauseGame(false);
+            }
+            else
+            {
+                GameManager.instance.PauseGame(true);
+            }
         }
         
     }
