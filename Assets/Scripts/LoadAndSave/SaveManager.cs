@@ -13,7 +13,7 @@ public class SaveManager : MonoBehaviour
 
     private List<ISaveManager> saveManagers;
 
-    [SerializeField] private string fileName;  
+    [SerializeField] private string fileName = "idbfs/save.sap";  
     [SerializeField] private bool encryptData;
     private FileDataHandler dataHandler;
 

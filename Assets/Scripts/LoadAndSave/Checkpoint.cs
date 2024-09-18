@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
@@ -16,7 +17,7 @@ public class Checkpoint : MonoBehaviour
     [ContextMenu("Generate Id")]
     private void GenerateId()
     {
-        checkpointId = System.Guid.NewGuid().ToString();
+        checkpointId = Guid.NewGuid().ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

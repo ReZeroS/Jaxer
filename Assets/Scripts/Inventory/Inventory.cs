@@ -1,6 +1,8 @@
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class Inventory : MonoBehaviour, ISaveManager
 {
@@ -31,10 +33,13 @@ public class Inventory : MonoBehaviour, ISaveManager
     private UIStatSlot[] statSlots;
 
     [Header("Database")]
+    public List<ItemData> itemDatabase;
+
     public List<InventoryItem> loadedItems;
+
     public List<ItemDataEquipment> loadedEquipments;
-    
-    
+
+
     [Header("Start Equipment")]
     public List<ItemData> startingEquipment;
 
@@ -73,8 +78,8 @@ public class Inventory : MonoBehaviour, ISaveManager
         {
             EquipItem(loadedEquipment);
         }
-        
-        
+
+
         if (loadedItems.Count > 0)
         {
             foreach (var inventoryItem in loadedItems)
@@ -84,6 +89,7 @@ public class Inventory : MonoBehaviour, ISaveManager
                     AddItem(inventoryItem.data);
                 }
             }
+
             return;
         }
 
@@ -270,7 +276,7 @@ public class Inventory : MonoBehaviour, ISaveManager
 
     public bool CanCraft(ItemDataEquipment itemToCraft, List<InventoryItem> requireMaterials)
     {
-        Debug.Log("CanCraft Start" );
+        Debug.Log("CanCraft Start");
         List<InventoryItem> materialsToRemove = new List<InventoryItem>();
         for (var i = 0; i < requireMaterials.Count; i++)
         {
@@ -355,7 +361,7 @@ public class Inventory : MonoBehaviour, ISaveManager
 
     public void LoadData(GameData gameData)
     {
-        List<ItemData> itemDatas = GetItemDatabase();
+        List<ItemData> itemDatas = itemDatabase;
         foreach (var (key, value) in gameData.inventory)
         {
             foreach (var itemData in itemDatas)
@@ -379,9 +385,6 @@ public class Inventory : MonoBehaviour, ISaveManager
                 }
             }
         }
-        
-        
-        
     }
 
     public void SaveData(ref GameData gameData)
@@ -402,15 +405,17 @@ public class Inventory : MonoBehaviour, ISaveManager
         {
             gameData.equipmentIdList.Add(item.Key.itemId);
         }
-
     }
 
+#if UNITY_EDITOR
+    [ContextMenu("Generate Item Database")]
+    public void FillUpItemDatabase() => itemDatabase = new List<ItemData>(GetItemDatabase());
 
     private List<ItemData> GetItemDatabase()
     {
         List<ItemData> itemDatabase = new List<ItemData>();
-        string[] assetsNames = AssetDatabase.FindAssets("", new[] {"Assets/ScriptableObject/Items"});
-        
+        string[] assetsNames = AssetDatabase.FindAssets("", new[] { "Assets/ScriptableObject/Items" });
+
         foreach (var assetsName in assetsNames)
         {
             var guidToAssetPath = AssetDatabase.GUIDToAssetPath(assetsName);
@@ -420,9 +425,5 @@ public class Inventory : MonoBehaviour, ISaveManager
 
         return itemDatabase;
     }
-    
-    
-    
-    
-    
+#endif
 }
