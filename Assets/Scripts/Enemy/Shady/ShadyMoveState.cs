@@ -1,16 +1,15 @@
-public class EnemySkeletonMoveState : EnemySkeletonGroundState
+public class ShadyMoveState : ShadyGroundState
 {
-   
-
-    public EnemySkeletonMoveState(EnemyStateMachine stateMachine, Enemy baseEnemy, EnemySkeleton enemySkeleton, string animationName) : base(stateMachine, baseEnemy, enemySkeleton, animationName)
+    public ShadyMoveState(EnemyStateMachine stateMachine, Enemy baseEnemy, string animationName, EnemyShady enemyShady) : base(stateMachine, baseEnemy, animationName, enemyShady)
     {
     }
-
+    
+    
     public override void Enter()
     {
         base.Enter();
     }
-    
+
     public override void Update()
     {
         base.Update();
@@ -28,5 +27,6 @@ public class EnemySkeletonMoveState : EnemySkeletonGroundState
     {
         base.Exit();
     }
-
+    
+    
 }

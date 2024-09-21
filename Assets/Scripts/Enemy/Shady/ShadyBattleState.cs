@@ -1,19 +1,26 @@
 using UnityEngine;
 
-public class EnemySkeletonBattleState : EnemyState
+public class ShadyBattleState : ShadyState
 {
-    private Transform playerTransform;
-    private EnemySkeleton enemy;
+    protected Transform playerTransform;
     private int moveToBattleDir;
     
-    public EnemySkeletonBattleState(EnemyStateMachine stateMachine, Enemy baseEnemy, EnemySkeleton enemySkeleton, string animationName) : base(stateMachine, baseEnemy, animationName)
+    private float defaultMoveSpeed;
+
+    public ShadyBattleState(EnemyStateMachine stateMachine, Enemy baseEnemy, string animationName,
+        EnemyShady enemyShady) : base(stateMachine, baseEnemy, animationName, enemyShady)
     {
-        enemy = enemySkeleton;
     }
+
+
     public override void Enter()
     {
         base.Enter();
 
+        defaultMoveSpeed = enemy.moveSpeed;
+        
+        enemy.moveSpeed = enemy.battleMoveSpeed;
+        
         Player instancePlayer = PlayerManager.instance.player;
         playerTransform = instancePlayer.transform;
         if (instancePlayer.GetComponent<PlayerStat>().isDead)
@@ -31,10 +38,7 @@ public class EnemySkeletonBattleState : EnemyState
             stateTimer = enemy.battleTime;
             if (enemy.IsPlayerDetected().distance < enemy.attackDistance)
             {
-                if (CanAttack())
-                {
-                    stateMachine.ChangeState(enemy.attackState);
-                }
+                enemy.stat.KillEntity();
             }
         }
         else
@@ -44,22 +48,24 @@ public class EnemySkeletonBattleState : EnemyState
                 stateMachine.ChangeState(enemy.idleState);
             }
         }
-        
-        
-        
+
+
         if (playerTransform.position.x > enemy.transform.position.x)
         {
             moveToBattleDir = 1;
-        } else if (playerTransform.position.x < enemy.transform.position.x)
+        }
+        else if (playerTransform.position.x < enemy.transform.position.x)
         {
             moveToBattleDir = -1;
         }
-        enemy.SetVelocity(enemy.moveSpeed*moveToBattleDir, rb.velocity.y);
+
+        enemy.SetVelocity(enemy.moveSpeed * moveToBattleDir, rb.velocity.y);
     }
 
     public override void Exit()
     {
         base.Exit();
+        enemy.moveSpeed = defaultMoveSpeed;
     }
 
     private bool CanAttack()
@@ -73,6 +79,4 @@ public class EnemySkeletonBattleState : EnemyState
 
         return false;
     }
-
-    
 }

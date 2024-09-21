@@ -141,6 +141,10 @@ public class CharacterStat : MonoBehaviour
 
     public virtual void DoDamage(CharacterStat targetsStat)
     {
+        if (!targetsStat)
+        {
+            return;
+        }
         if (targetsStat.isInvulnerable)
         {
             return;

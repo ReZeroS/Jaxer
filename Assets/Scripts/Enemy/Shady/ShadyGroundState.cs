@@ -1,16 +1,15 @@
 using UnityEngine;
 
-public class EnemySkeletonGroundState : EnemyState
+public class ShadyGroundState : ShadyState
 {
-    protected EnemySkeleton enemy;
-
     protected Transform player;
-    
-    public EnemySkeletonGroundState(EnemyStateMachine stateMachine, Enemy baseEnemy, EnemySkeleton _enemySkeleton, string animationName) : base(stateMachine, baseEnemy, animationName)
-    {
-        enemy = _enemySkeleton;
-    }
 
+    
+    public ShadyGroundState(EnemyStateMachine stateMachine, Enemy baseEnemy, string animationName, EnemyShady enemyShady) : base(stateMachine, baseEnemy, animationName, enemyShady)
+    {
+    }
+    
+    
     public override void Enter()
     {
         base.Enter();
@@ -30,4 +29,6 @@ public class EnemySkeletonGroundState : EnemyState
     {
         base.Exit();
     }
+    
+    
 }

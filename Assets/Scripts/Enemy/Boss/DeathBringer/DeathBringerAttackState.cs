@@ -1,16 +1,13 @@
 using UnityEngine;
 
-public class EnemySkeletonAttackState : EnemyState
+public class DeathBringerAttackState : DeathBringerState
 {
-
-    private EnemySkeleton enemy;
     
-    public EnemySkeletonAttackState(EnemyStateMachine stateMachine, Enemy baseEnemy, EnemySkeleton _enemySkeleton, string animationName) : base(stateMachine, baseEnemy, animationName)
+    public DeathBringerAttackState(EnemyStateMachine stateMachine, Enemy baseEnemy, string animationName, EnemyDeathBringer curEnemy) : base(stateMachine, baseEnemy, animationName, curEnemy)
     {
-        enemy = _enemySkeleton;
     }
-
-
+    
+    
     public override void Enter()
     {
         base.Enter();
@@ -34,4 +31,6 @@ public class EnemySkeletonAttackState : EnemyState
         base.Exit();
         enemy.lastTimeAttacked = Time.time;
     }
+
+
 }

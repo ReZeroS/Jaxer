@@ -1,10 +1,9 @@
-public class EnemySkeletonIdleState : EnemySkeletonGroundState
+public class ShadyIdleState : ShadyGroundState
 {
-
-    
-    public EnemySkeletonIdleState(EnemyStateMachine stateMachine, Enemy baseEnemy, EnemySkeleton enemySkeleton, string animationName) : base(stateMachine, baseEnemy, enemySkeleton, animationName)
+    public ShadyIdleState(EnemyStateMachine stateMachine, Enemy baseEnemy, string animationName, EnemyShady enemyShady) : base(stateMachine, baseEnemy, animationName, enemyShady)
     {
     }
+    
     
     public override void Enter()
     {
@@ -25,8 +24,9 @@ public class EnemySkeletonIdleState : EnemySkeletonGroundState
     public override void Exit()
     {
         base.Exit();
-        AudioManager.instance.PlaySFX(14, enemy.transform);
+        // AudioManager.instance.PlaySFX(14, enemy.transform);
     }
 
-
+    
+    
 }

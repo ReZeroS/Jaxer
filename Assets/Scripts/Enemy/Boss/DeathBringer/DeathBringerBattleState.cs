@@ -1,15 +1,17 @@
 using UnityEngine;
 
-public class EnemySkeletonBattleState : EnemyState
+public class DeathBringerBattleState : DeathBringerState
 {
-    private Transform playerTransform;
-    private EnemySkeleton enemy;
-    private int moveToBattleDir;
     
-    public EnemySkeletonBattleState(EnemyStateMachine stateMachine, Enemy baseEnemy, EnemySkeleton enemySkeleton, string animationName) : base(stateMachine, baseEnemy, animationName)
+    private Transform playerTransform;
+    private int moveToBattleDir = 1;
+    
+    
+    public DeathBringerBattleState(EnemyStateMachine stateMachine, Enemy baseEnemy, string animationName, EnemyDeathBringer curEnemy) : base(stateMachine, baseEnemy, animationName, curEnemy)
     {
-        enemy = enemySkeleton;
     }
+    
+    
     public override void Enter()
     {
         base.Enter();
@@ -18,7 +20,7 @@ public class EnemySkeletonBattleState : EnemyState
         playerTransform = instancePlayer.transform;
         if (instancePlayer.GetComponent<PlayerStat>().isDead)
         {
-            stateMachine.ChangeState(enemy.moveState);
+            // stateMachine.ChangeState(enemy.moveState);
         }
     }
 
@@ -74,5 +76,5 @@ public class EnemySkeletonBattleState : EnemyState
         return false;
     }
 
-    
+
 }
