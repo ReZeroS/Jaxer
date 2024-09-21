@@ -26,14 +26,21 @@ public class PlayerCounterAttackState : PlayerState
         Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackRadius);
         foreach (var hit in collider2Ds)
         {
+            ArrowController arrowController = hit.GetComponent<ArrowController>();
+            if (arrowController)
+            {
+                arrowController.Flip();
+                SuccessfulCounter();
+            }
+
+
             Enemy enemy = hit.GetComponent<Enemy>();
             if (enemy)
             {
                 if (enemy.CanBeStunned())
                 {
-                    stateTimer = 10f;
-                    player.animator.SetBool(CounterAttackSuccessful, true);
-                    
+                    SuccessfulCounter();
+
                     player.skillManager.parrySkill.UseSkill();
                     
                     // Create a clone on counter attack
@@ -50,6 +57,12 @@ public class PlayerCounterAttackState : PlayerState
         {
             stateMachine.ChangeState(player.playerIdleState);
         }
+    }
+
+    private void SuccessfulCounter()
+    {
+        stateTimer = 10f;
+        player.animator.SetBool(CounterAttackSuccessful, true);
     }
 
     public override void Exit()

@@ -17,20 +17,21 @@ public class Entity : MonoBehaviour
     [FormerlySerializedAs("knockedBackpower")]
     [FormerlySerializedAs("knockedDir")]
     [Header("Knocked info")] 
-    [SerializeField] protected Vector2 knockedBackPower;
-    [SerializeField] protected float knockBackDuration;
+    [SerializeField] protected Vector2 knockedBackPower = new Vector2(7, 12);
+    [SerializeField] protected float knockBackDuration = 0.7f;
+    [SerializeField] protected Vector2 knockBackOffset = new Vector2(0.5f, 2);
     protected bool isKnocked;
     public int knockBackDir { get; private set; }
     
     [Header("Collision")] 
     [SerializeField] protected Transform groundCheck;
-    [SerializeField] protected float groundCheckDistance;
+    [SerializeField] protected float groundCheckDistance = 1;
     [SerializeField] protected Transform wallCheck;
-    [SerializeField] protected float wallCheckDistance;
+    [SerializeField] protected float wallCheckDistance = 0.8f;
     [SerializeField] protected LayerMask whatIsGround;
     [SerializeField] protected LayerMask whatIsWall;
     public Transform attackCheck;
-    public float attackRadius;
+    public float attackRadius = 1.2f;
 
     public int facingDir { get; private set; } = 1;
     public bool facingRight { get; private set; } = true;
@@ -97,7 +98,8 @@ public class Entity : MonoBehaviour
     protected virtual IEnumerator HitKnockBack()
     {
         isKnocked = true;
-        rb.velocity = new Vector2(knockedBackPower.x * knockBackDir, knockedBackPower.y);
+        if (knockedBackPower.x > 0 || knockedBackPower.y > 0) // this line makes freeze effect when get hit
+            rb.velocity = new Vector2(knockedBackPower.x * knockBackDir, knockedBackPower.y);
         yield return new WaitForSeconds(knockBackDuration);
         isKnocked = false;
         SetupZeroKnockBackPower();
@@ -141,7 +143,7 @@ public class Entity : MonoBehaviour
             new Vector3(wallCheck.position.x + wallCheckDistance * facingDir, wallCheck.position.y));
         if (attackCheck != null)
         {
-            Gizmos.DrawSphere(attackCheck.position, attackRadius);
+            Gizmos.DrawWireSphere(attackCheck.position, attackRadius);
         }
     }
     #endregion

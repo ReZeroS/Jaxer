@@ -141,6 +141,11 @@ public class CharacterStat : MonoBehaviour
 
     public virtual void DoDamage(CharacterStat targetsStat)
     {
+        if (targetsStat.isInvulnerable)
+        {
+            return;
+        }
+        
         if (TargetCanAvoidAttack(targetsStat)) return;
 
         targetsStat.GetComponent<Entity>()?.SetKnockBackDir(transform);

@@ -14,21 +14,21 @@ public class Enemy : Entity
     public float playerCheckDistance;
     
     [Header("Move info")] 
-    public float moveSpeed;
-    public float idleTime;
-    public float battleTime;
+    public float moveSpeed = 1.5f;
+    public float idleTime = 2;
+    public float battleTime = 7;
     private float defaultMoveSpeed;
 
     [Header("Attack info")] 
-    public float attackDistance;
-    public float attackCoolDown;
-    public float minAttackCooldown;
-    public float maxAttackCooldown;
+    public float attackDistance = 2;
+    public float attackCoolDown = 2;
+    public float minAttackCooldown = 1;
+    public float maxAttackCooldown = 2;
     [HideInInspector] public float lastTimeAttacked;
 
     [Header("Stunned Info")] 
-    public float stunnedDuration;
-    public Vector2 stunnedDirection;
+    public float stunnedDuration = 1;
+    public Vector2 stunnedDirection = new Vector2(10, 12);
     protected bool canBeStunned;
     [SerializeField] protected GameObject counterImage;
     
@@ -139,8 +139,13 @@ public class Enemy : Entity
     }
     
     
-    public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
+    public virtual void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
 
+
+    public virtual void AnimationSpecialTrigger()
+    {
+        
+    }
 
 
     public virtual void AssignLastAnimationName(String lastName)

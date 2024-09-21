@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class SlimeStunnedState : SlimeState
 {
-   
+    private static readonly int StunFold = Animator.StringToHash("StunFold");
+
     public SlimeStunnedState(EnemyStateMachine stateMachine, Enemy baseEnemy, string animationName, EnemySlime enemySlime) : base(stateMachine, baseEnemy, animationName, enemySlime)
     {
     }
@@ -20,6 +21,14 @@ public class SlimeStunnedState : SlimeState
     {
         base.Update();
 
+        if (rb.velocity.y < 0.1f && enemySlime.IsGroundDetected())
+        {
+            enemySlime.fx.CancelColorFor(0);
+            enemySlime.animator.SetTrigger(StunFold);
+            enemySlime.stat.MakeInvulnerable(true);
+        }
+        
+
         if (stateTimer < 0)
         {
             stateMachine.ChangeState(enemySlime.idleState);
@@ -29,7 +38,7 @@ public class SlimeStunnedState : SlimeState
     public override void Exit()
     {
         base.Exit();
-        enemySlime.fx.CancelColorFor(0);
+        enemySlime.stat.MakeInvulnerable(false);
     }
 
     
