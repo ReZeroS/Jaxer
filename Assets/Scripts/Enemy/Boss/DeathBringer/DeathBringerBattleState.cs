@@ -28,10 +28,11 @@ public class DeathBringerBattleState : DeathBringerState
     {
         base.Update();
 
-        if (enemy.IsPlayerDetected())
+        RaycastHit2D isPlayerDetected = enemy.IsPlayerDetected();
+        if (isPlayerDetected)
         {
             stateTimer = enemy.battleTime;
-            if (enemy.IsPlayerDetected().distance < enemy.attackDistance)
+            if (isPlayerDetected.distance < enemy.attackDistance)
             {
                 if (CanAttack())
                 {
@@ -39,13 +40,13 @@ public class DeathBringerBattleState : DeathBringerState
                 }
             }
         }
-        else
-        {
-            if (stateTimer < 0 || Vector2.Distance(playerTransform.transform.position, enemy.transform.position) > 15)
-            {
-                stateMachine.ChangeState(enemy.idleState);
-            }
-        }
+        // else boss does need idle
+        // {
+        //     if (stateTimer < 0 || Vector2.Distance(playerTransform.transform.position, enemy.transform.position) > 15)
+        //     {
+        //         stateMachine.ChangeState(enemy.idleState);
+        //     }
+        // }
         
         
         
@@ -56,6 +57,14 @@ public class DeathBringerBattleState : DeathBringerState
         {
             moveToBattleDir = -1;
         }
+        
+        // prevent slime from moving when player is detected and close to attack distance
+        if (isPlayerDetected && isPlayerDetected.distance < enemy.attackDistance - 0.1f)
+        {
+            return;
+        }
+        
+        
         enemy.SetVelocity(enemy.moveSpeed*moveToBattleDir, rb.velocity.y);
     }
 

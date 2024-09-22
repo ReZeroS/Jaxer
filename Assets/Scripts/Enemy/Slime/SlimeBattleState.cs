@@ -28,13 +28,11 @@ public class SlimeBattleState : SlimeState
         RaycastHit2D isPlayerDetected = enemySlime.IsPlayerDetected();
         if (isPlayerDetected)
         {
-            Debug.Log("Slime enemySlime.IsPlayerDetected " + isPlayerDetected);
             stateTimer = enemySlime.battleTime;
             if (isPlayerDetected.distance < enemySlime.attackDistance)
             {
                 if (CanAttack())
                 {
-                    Debug.Log("Slime try to Attack");
                     stateMachine.ChangeState(enemySlime.attackState);
                 }
             }
@@ -56,6 +54,13 @@ public class SlimeBattleState : SlimeState
         {
             moveToBattleDir = -1;
         }
+
+        // prevent slime from moving when player is detected and close to attack distance
+        if (isPlayerDetected && isPlayerDetected.distance < enemySlime.attackDistance - 0.1f)
+        {
+            return;
+        }
+        
         enemySlime.SetVelocity(enemySlime.moveSpeed*moveToBattleDir, rb.velocity.y);
     }
 

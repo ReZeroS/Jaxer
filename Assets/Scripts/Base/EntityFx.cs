@@ -30,11 +30,15 @@ public class EntityFx : MonoBehaviour
 
     [SerializeField] private GameObject hitCriticalFx;
 
+    private GameObject myHealthBar;
 
+    
+    
     protected virtual void Start()
     {
         sr = GetComponentInChildren<SpriteRenderer>();
         originMaterial = sr.material;
+        myHealthBar = GetComponentInChildren<HealthBar>()?.gameObject;
     }
 
     private void Update()
@@ -154,10 +158,12 @@ public class EntityFx : MonoBehaviour
         if (transparent)
         {
             sr.color = Color.clear;
+            myHealthBar.SetActive(false);
         }
         else
         {
             sr.color = Color.white;
+            myHealthBar.SetActive(true);
         }
     }
 

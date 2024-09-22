@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Scripts/Player/PlayerGroundState.cs" />
+    <Compile Include="Assets/Scripts/Skill/SkillController/Player/ThunderStrikeController.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerWallSlideState.cs" />
     <Compile Include="Assets/Scripts/Enemy/Boss/DeathBringer/DeathBringerIdleState.cs" />
     <Compile Include="Assets/Scripts/Inventory/Item/ItemDrop.cs" />
@@ -59,9 +60,8 @@
     <Compile Include="Assets/Scripts/Inventory/Effects/HealEffects.cs" />
     <Compile Include="Assets/Scripts/UI/UIStatSlot.cs" />
     <Compile Include="Assets/Scripts/Inventory/Effects/BuffEffects.cs" />
-    <Compile Include="Assets/Scripts/Skill/SkillController/ThunderStrikeController.cs" />
     <Compile Include="Assets/Scripts/UI/UIVolumeSlider.cs" />
-    <Compile Include="Assets/Scripts/Skill/SkillController/ShockStrikeController.cs" />
+    <Compile Include="Assets/Scripts/Trigger/EnemyDeathBringerTrigger.cs" />
     <Compile Include="Assets/Scripts/Enemy/EnemyState.cs" />
     <Compile Include="Assets/Scripts/Trigger/EnemyAnimationTrigger.cs" />
     <Compile Include="Assets/Scripts/Trigger/PlayerAnimationTrigger.cs" />
@@ -72,17 +72,17 @@
     <Compile Include="Assets/Scripts/Player/PlayerAnimSwordState.cs" />
     <Compile Include="Assets/Scripts/Inventory/Effects/FreezeEnemyEffects.cs" />
     <Compile Include="Assets/Scripts/Enemy/Shady/ShadyMoveState.cs" />
-    <Compile Include="Assets/Scripts/Skill/SkillController/IceAndFirecController.cs" />
+    <Compile Include="Assets/Scripts/Skill/SkillController/Player/CloneSkillController.cs" />
     <Compile Include="Assets/Scripts/Enemy/Slime/SlimeAttackState.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerJumpState.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerCounterAttackState.cs" />
     <Compile Include="Assets/Scripts/Inventory/Inventory.cs" />
-    <Compile Include="Assets/Scripts/Skill/SkillController/BlackholeSkillController.cs" />
     <Compile Include="Assets/Scripts/Enemy/Boss/DeathBringer/DeathBringerState.cs" />
     <Compile Include="Assets/Scripts/Enemy/Slime/SlimeDeadState.cs" />
     <Compile Include="Assets/Scripts/UI/UIItemSlot.cs" />
     <Compile Include="Assets/Scripts/Skill/Skill/DashSkill.cs" />
     <Compile Include="Assets/Scripts/Fx/PlayerFx.cs" />
+    <Compile Include="Assets/Scripts/Skill/SkillController/Player/BlackholeHotkeyController.cs" />
     <Compile Include="Assets/Scripts/UI/UICraftWindow.cs" />
     <Compile Include="Assets/Scripts/Player/Player.cs" />
     <Compile Include="Assets/Scripts/Inventory/Item/ItemObject.cs" />
@@ -91,7 +91,6 @@
     <Compile Include="Assets/Scripts/Player/PlayerPrimaryAttackState.cs" />
     <Compile Include="Assets/Scripts/UI/UIEquipmentSlot.cs" />
     <Compile Include="Assets/Scripts/Manager/InputManager.cs" />
-    <Compile Include="Assets/Scripts/Skill/SkillController/CrystalSkillController.cs" />
     <Compile Include="Assets/Scripts/Enemy/Boss/DeathBringer/DeathBringerBattleState.cs" />
     <Compile Include="Assets/Scripts/Skill/Skill/Skill.cs" />
     <Compile Include="Assets/Scripts/UI/UIItemtooltip.cs" />
@@ -120,6 +119,7 @@
     <Compile Include="Assets/Scripts/UI/UIFadeScreen.cs" />
     <Compile Include="Assets/Scripts/Enemy/Enemy.cs" />
     <Compile Include="Assets/Scripts/Enemy/Archer/ArcherBattleSate.cs" />
+    <Compile Include="Assets/Scripts/Skill/SkillController/Player/ShockStrikeController.cs" />
     <Compile Include="Assets/Scripts/Inventory/InventoryItem.cs" />
     <Compile Include="Assets/Scripts/Enemy/Slime/SlimeStunnedState.cs" />
     <Compile Include="Assets/Scripts/Enemy/Shady/ShadyStunnedState.cs" />
@@ -128,8 +128,8 @@
     <Compile Include="Assets/Scripts/LoadAndSave/SerializableDictionary.cs" />
     <Compile Include="Assets/Scripts/UI/UISkillTooltip.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerDeathState.cs" />
+    <Compile Include="Assets/Scripts/Skill/SkillController/Player/CrystalSkillController.cs" />
     <Compile Include="Assets/Scripts/Enemy/Boss/DeathBringer/DeathBringerAttackState.cs" />
-    <Compile Include="Assets/Scripts/Skill/SkillController/SwordSkillController.cs" />
     <Compile Include="Assets/Scripts/Finder/FindUtil.cs" />
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeletonStunnedState.cs" />
     <Compile Include="Assets/Scripts/Stat/Stat.cs" />
@@ -139,7 +139,6 @@
     <Compile Include="Assets/Scripts/Inventory/Item/ItemData.cs" />
     <Compile Include="Assets/Scripts/UI/UISkillTreeSlot.cs" />
     <Compile Include="Assets/Scripts/Enemy/EnemyStateMachine.cs" />
-    <Compile Include="Assets/Scripts/Skill/SkillController/CloneSkillController.cs" />
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeleton.cs" />
     <Compile Include="Assets/Scripts/Backup/BubbleDragon.cs" />
     <Compile Include="Assets/Scripts/Fx/AfterImageFx.cs" />
@@ -147,11 +146,14 @@
     <Compile Include="Assets/Scripts/Enemy/Shady/ShadyDeadState.cs" />
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeletonMoveState.cs" />
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeletonDeadState.cs" />
+    <Compile Include="Assets/Scripts/Skill/SkillController/Player/BlackholeSkillController.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerMoveState.cs" />
     <Compile Include="Assets/Scripts/UI/UICraftList.cs" />
+    <Compile Include="Assets/Scripts/Skill/SkillController/Player/SwordSkillController.cs" />
     <Compile Include="Assets/Scripts/Enemy/Boss/DeathBringer/DeathBringerSpellCastState.cs" />
     <Compile Include="Assets/Scripts/Enemy/Archer/ArcherDeadState.cs" />
     <Compile Include="Assets/Scripts/Manager/DeadZone.cs" />
+    <Compile Include="Assets/Scripts/Skill/SkillController/Player/IceAndFirecController.cs" />
     <Compile Include="Assets/Scripts/Enemy/Archer/ArcherAttackState.cs" />
     <Compile Include="Assets/Scripts/Enemy/Slime/SlimeGroundState.cs" />
     <Compile Include="Assets/Scripts/Manager/AudioManager.cs" />
@@ -159,7 +161,6 @@
     <Compile Include="Assets/Scripts/Stat/PlayerStat.cs" />
     <Compile Include="Assets/Scripts/Manager/GameManager.cs" />
     <Compile Include="Assets/Scripts/Enemy/Slime/SlimeMoveState.cs" />
-    <Compile Include="Assets/Scripts/Skill/SkillController/BlackholeHotkeyController.cs" />
     <Compile Include="Assets/Scripts/Enemy/Slime/SlimeBattleState.cs" />
     <Compile Include="Assets/Scripts/Stat/EnemyStat.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerIdleState.cs" />
@@ -177,6 +178,7 @@
     <Compile Include="Assets/Scripts/Player/PlayerAirState.cs" />
     <Compile Include="Assets/Scripts/Manager/PlayerManager.cs" />
     <Compile Include="Assets/Scripts/UI/UITooltip.cs" />
+    <Compile Include="Assets/Scripts/Skill/SkillController/Enemy/DeathBringerSpellController.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerStateMachine.cs" />
     <Compile Include="Assets/Scripts/LoadAndSave/GameData.cs" />
     <Compile Include="Assets/Scripts/Enemy/Archer/ArcherGroundState.cs" />

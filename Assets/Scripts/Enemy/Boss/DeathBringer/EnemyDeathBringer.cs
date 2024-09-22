@@ -4,8 +4,14 @@ public class EnemyDeathBringer : Enemy
 {
     [Header("Teleport Settings")]
     [SerializeField] private BoxCollider2D arena;
-
     [SerializeField] private Vector2 surroundingCheckSize;
+    
+    
+    [Header("Spell cast settings")]
+    [SerializeField] private GameObject spellPrefab;
+
+    private float lastTimeCast;
+    [SerializeField] private float spellCastCooldown = 2;
     
     
     
@@ -18,6 +24,12 @@ public class EnemyDeathBringer : Enemy
     public DeathBringerSpellCastState spellCastState { get; private set; }
     #endregion
 
+
+    public float chanceToTeleport;
+    [SerializeField] private float defaultChanceToTeleport = 25;
+    
+    
+    
 
     protected override void Awake()
     {
@@ -77,6 +89,31 @@ public class EnemyDeathBringer : Enemy
         base.OnDrawGizmos();
         Gizmos.DrawLine(transform.position, new Vector2(transform.position.x, transform.position.y - GroundBelow().distance));
         Gizmos.DrawWireCube(transform.position, surroundingCheckSize);
-        
     }
+    
+    
+    
+    public bool CanTeleport()
+    {
+        float chance = Random.Range(0, 100);
+        if (chance <= chanceToTeleport)
+        {
+            chanceToTeleport = defaultChanceToTeleport;
+            return true;
+        }
+        return false;
+    }
+
+    public bool CanSpellCast()
+    {
+        if (Time.time > lastTimeCast + spellCastCooldown)
+        {
+            lastTimeCast = Time.time;
+            return true;
+        }
+
+        return false;
+    }
+    
+    
 }
