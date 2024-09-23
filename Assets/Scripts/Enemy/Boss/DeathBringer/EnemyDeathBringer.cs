@@ -131,10 +131,12 @@ public class EnemyDeathBringer : Enemy
         {
             xOffset = player.facingDir * 3;
         }
-        Vector3 spellPos = new Vector3(transform.position.x + xOffset,
+        Vector3 spellPos = new Vector3(player.transform.position.x + xOffset,
             player.transform.position.y + 1.5f);
+        Debug.Log("Casting spell");
         GameObject spell = Instantiate(spellPrefab, spellPos, Quaternion.identity);
         spell.GetComponent<DeathBringerSpellController>().SetupSpell(stat);
+        Debug.Log("Casting spell setup end");
     }
     
     

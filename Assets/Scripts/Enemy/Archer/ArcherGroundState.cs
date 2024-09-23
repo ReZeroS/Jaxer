@@ -21,7 +21,7 @@ public class ArcherGroundState : ArcherState
     public override void Update()
     {
         base.Update();
-        if (enemyArcher.IsPlayerDetected() || Vector2.Distance(enemyArcher.transform.position, player.transform.position) < 2)
+        if (enemyArcher.IsPlayerDetected() || Vector2.Distance(enemyArcher.transform.position, player.transform.position) < 5)
         {
             stateMachine.ChangeState(enemyArcher.battleState);
         }

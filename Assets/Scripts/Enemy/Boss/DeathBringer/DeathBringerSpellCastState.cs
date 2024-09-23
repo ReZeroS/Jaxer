@@ -24,7 +24,7 @@ public class DeathBringerSpellCastState : DeathBringerState
     {
         base.Update();
         
-        stateTimer -= Time.deltaTime;
+        spellTimer -= Time.deltaTime;
         
         if (CanCastSpell())
         {
