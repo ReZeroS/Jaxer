@@ -24,10 +24,12 @@ public class DeathBringerIdleState : DeathBringerState
         {
             enemy.bossFightBegun = true;
         }
-        
-        
-        
-        stateMachine.ChangeState(enemy.teleportState);
+
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            stateMachine.ChangeState(enemy.teleportState);
+        }
 
 
         if (stateTimer <= 0 && enemy.bossFightBegun)
