@@ -1,6 +1,9 @@
+using UnityEngine;
+
 public class DeathBringerIdleState : DeathBringerState
 {
     
+    private Transform playerTransform;
     
     public DeathBringerIdleState(EnemyStateMachine stateMachine, Enemy baseEnemy, string animationName, EnemyDeathBringer curEnemy) : base(stateMachine, baseEnemy, animationName, curEnemy)
     {
@@ -10,13 +13,27 @@ public class DeathBringerIdleState : DeathBringerState
     {
         base.Enter();
         stateTimer = enemy.idleTime;
+        playerTransform = PlayerManager.instance.player.transform;
     }
     
     public override void Update()
     {
         base.Update();
+
+        if (Vector2.Distance(playerTransform.transform.position, enemy.transform.position) < 7)
+        {
+            enemy.bossFightBegun = true;
+        }
+        
+        
         
         stateMachine.ChangeState(enemy.teleportState);
+
+
+        if (stateTimer <= 0 && enemy.bossFightBegun)
+        {
+            stateMachine.ChangeState(enemy.battleState);   
+        }
     }
 
 

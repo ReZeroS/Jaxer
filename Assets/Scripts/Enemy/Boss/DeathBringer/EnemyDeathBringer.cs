@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class EnemyDeathBringer : Enemy
 {
+    
+    public bool bossFightBegun;
+    
+    
     [Header("Teleport Settings")]
     [SerializeField] private BoxCollider2D arena;
     [SerializeField] private Vector2 surroundingCheckSize;
@@ -10,8 +14,12 @@ public class EnemyDeathBringer : Enemy
     [Header("Spell cast settings")]
     [SerializeField] private GameObject spellPrefab;
 
-    private float lastTimeCast;
-    [SerializeField] private float spellCastCooldown = 2;
+    public float lastTimeCast;
+    [SerializeField] private float spellStateCooldown = 2;
+    
+    
+    public float spellCooldown;
+    public int amountOfSpells;
     
     
     
@@ -106,13 +114,27 @@ public class EnemyDeathBringer : Enemy
 
     public bool CanSpellCast()
     {
-        if (Time.time > lastTimeCast + spellCastCooldown)
+        if (Time.time > lastTimeCast + spellStateCooldown)
         {
-            lastTimeCast = Time.time;
             return true;
         }
 
         return false;
+    }
+    
+    
+    public void CastSpell()
+    {
+        Player player = PlayerManager.instance.player;
+        int xOffset = 0;
+        if (player.rb.velocity.x != 0)
+        {
+            xOffset = player.facingDir * 3;
+        }
+        Vector3 spellPos = new Vector3(transform.position.x + xOffset,
+            player.transform.position.y + 1.5f);
+        GameObject spell = Instantiate(spellPrefab, spellPos, Quaternion.identity);
+        spell.GetComponent<DeathBringerSpellController>().SetupSpell(stat);
     }
     
     

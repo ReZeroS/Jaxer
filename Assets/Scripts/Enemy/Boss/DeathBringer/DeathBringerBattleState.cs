@@ -38,16 +38,13 @@ public class DeathBringerBattleState : DeathBringerState
                 {
                     stateMachine.ChangeState(enemy.attackState);
                 }
+                else
+                {
+                    stateMachine.ChangeState(enemy.idleState);
+                }
             }
         }
-        // else boss does need idle
-        // {
-        //     if (stateTimer < 0 || Vector2.Distance(playerTransform.transform.position, enemy.transform.position) > 15)
-        //     {
-        //         stateMachine.ChangeState(enemy.idleState);
-        //     }
-        // }
-        
+    
         
         
         if (playerTransform.position.x > enemy.transform.position.x)
