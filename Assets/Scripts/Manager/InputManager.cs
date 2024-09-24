@@ -9,10 +9,16 @@ public class InputManager : MonoBehaviour
     private PlayerInput playerInput;
     // private InputAction jumpAction;
     private InputAction moveAction;
+    private InputAction submitAction;
 
-    public bool jumpJustPressed;
-    public bool jumpJustBeingHeld;
-    public bool jumpReleased;
+    public bool jumpJustPressed { get; private set; }
+    public bool jumpJustBeingHeld { get; private set; }
+    public bool jumpReleased { get; private set; }
+    
+    public bool submitJustPressed { get; private set; }
+    public bool submitJustBeingHeld { get; private set; }
+    public bool submitReleased { get; private set; }
+    
     
     public Vector2 moveInput;
 
@@ -30,6 +36,7 @@ public class InputManager : MonoBehaviour
     private void SetupInputActions()
     {
         moveAction = playerInput.actions["Movement"];
+        submitAction = playerInput.actions["Submit"];
     }
 
     private void Update()
@@ -40,6 +47,9 @@ public class InputManager : MonoBehaviour
     private void UpdateInputs()
     {
         moveInput = moveAction.ReadValue<Vector2>();
+        submitJustPressed = submitAction.WasPerformedThisFrame();
+        submitJustBeingHeld = submitAction.IsPressed();
+        submitReleased = submitAction.WasReleasedThisFrame();
     }
 
     // private void LateUpdate()

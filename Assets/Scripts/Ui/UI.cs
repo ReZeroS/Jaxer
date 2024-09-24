@@ -37,7 +37,7 @@ public class UI : MonoBehaviour, ISaveManager
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (InputManager.instance.submitReleased)
         {
             SwitWithKeysTo(characterUI);
         }
