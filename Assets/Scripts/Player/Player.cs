@@ -167,7 +167,7 @@ public class Player : Entity
         
         if (Input.GetKeyDown(KeyCode.L) && skillManager.dashSkill.CanUseSkill())
         {
-            dashDir = Input.GetAxis("Horizontal");
+            dashDir = InputManager.instance.moveInput.x;
             if (dashDir == 0)
             {
                 dashDir = facingDir;
