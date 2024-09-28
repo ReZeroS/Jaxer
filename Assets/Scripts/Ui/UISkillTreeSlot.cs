@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -45,27 +46,19 @@ public class UISkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void UnlockSkillSlot()
     {
-
-       
-        
         // check if all the skills that should not be unlocked are locked
-        for (int i = 0; i < shouldBeUnlocked.Length; i++)
+        if (shouldBeUnlocked.Any(t => t.unlocked == false))
         {
-            if (shouldBeUnlocked[i].unlocked == false)
-            {
-                return;
-            }
+            return;
         }
 
         // Check if all the skills that should be unlocked are unlocked
-        for (int i = 0; i < shouldBeLocked.Length; i++)
+        if (shouldBeLocked.Any(t => t.unlocked))
         {
-            if (shouldBeLocked[i].unlocked == true)
-            {
-                return;
-            }
+            return;
         }
         
+        // Check if the player has enough currency
         if (PlayerManager.instance.HaveEnoughCurrency(skillPrice) == false)
         {
             return;

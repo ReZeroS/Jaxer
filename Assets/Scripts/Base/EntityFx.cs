@@ -155,6 +155,10 @@ public class EntityFx : MonoBehaviour
 
     public void MakeTransparent(bool transparent)
     {
+        if (!myHealthBar)
+        {
+            return;
+        }
         if (transparent)
         {
             sr.color = Color.clear;

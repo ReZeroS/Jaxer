@@ -6,7 +6,7 @@ public class BlackholeSkillController : MonoBehaviour
 {
 
     [SerializeField] private GameObject hotkeyPrefab;
-    [SerializeField] private List<KeyCode> keyCodeList;
+    [SerializeField] private List<string> keyCodeList;
     
 
     private float maxSize;
@@ -71,7 +71,7 @@ public class BlackholeSkillController : MonoBehaviour
         
         
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (InputManager.instance.padUpJustPressed)
         {
             ReleaseCloneAttack();
         }
@@ -180,7 +180,7 @@ public class BlackholeSkillController : MonoBehaviour
         GameObject newHotkey = Instantiate(hotkeyPrefab, collision.transform.position + new Vector3(0, 2),
             Quaternion.identity);
         createdHotkeys.Add(newHotkey);
-        KeyCode chooseKey = keyCodeList[Random.Range(0, keyCodeList.Count)];
+        string chooseKey = keyCodeList[Random.Range(0, keyCodeList.Count)];
         keyCodeList.Remove(chooseKey);
 
         BlackholeHotkeyController hotkeyController = newHotkey.GetComponent<BlackholeHotkeyController>();

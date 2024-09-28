@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class PlayerGroundState : PlayerState
 {
     public PlayerGroundState(PlayerStateMachine stateMachine, Player player, string animBoolName) : base(stateMachine, player, animBoolName)
@@ -15,7 +13,7 @@ public class PlayerGroundState : PlayerState
     {
         base.Update();
 
-        if (Input.GetKeyDown(KeyCode.X) && player.skillManager.blackholeSkill.blackholeUnlocked)
+        if (InputManager.instance.padDownJustPressed && player.skillManager.blackholeSkill.blackholeUnlocked)
         {
             if (player.skillManager.blackholeSkill.IsInCoolDown())
             {
@@ -31,12 +29,12 @@ public class PlayerGroundState : PlayerState
             stateMachine.ChangeState(player.animSwordState);
         }
 
-        if (Input.GetKeyDown(KeyCode.I) && player.skillManager.parrySkill.parryUnlocked)
+        if (InputManager.instance.northBeingHeld && player.skillManager.parrySkill.parryUnlocked)
         {
             stateMachine.ChangeState(player.couterAttackState);
         }
         
-        if (InputManager.instance.lightAttackJustPressed)
+        if (InputManager.instance.westJustPressed)
         {
             stateMachine.ChangeState(player.primaryAttackState);
         }
@@ -46,7 +44,7 @@ public class PlayerGroundState : PlayerState
            stateMachine.ChangeState(player.playerAirState); 
         }
         
-        if (InputManager.instance.jumpJustPressed && player.IsGroundDetected())
+        if (InputManager.instance.southJustPressed && player.IsGroundDetected())
         {
             stateMachine.ChangeState(player.playerJumpState);
         }

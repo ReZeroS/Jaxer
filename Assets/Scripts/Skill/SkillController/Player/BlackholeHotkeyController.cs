@@ -5,14 +5,14 @@ public class BlackholeHotkeyController : MonoBehaviour
 {
 
     private SpriteRenderer sr;
-    private KeyCode myHotKey;
+    private string myHotKey;
     private TextMeshProUGUI myText;
 
     private Transform myEnemy;
     private BlackholeSkillController blackholeSkillController;
 
 
-    public void SetUpHotKey(KeyCode hotKey, Transform enemy, BlackholeSkillController blackholeController)
+    public void SetUpHotKey(string hotKey, Transform enemy, BlackholeSkillController blackholeController)
     {
         sr = GetComponent<SpriteRenderer>();
         
@@ -22,7 +22,7 @@ public class BlackholeHotkeyController : MonoBehaviour
         blackholeSkillController = blackholeController;
         
         myHotKey = hotKey;
-        myText.text = myHotKey.ToString();
+        myText.text = myHotKey;
 
     }
     
@@ -31,7 +31,7 @@ public class BlackholeHotkeyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(myHotKey))
+        if (InputManager.instance.MatchHotKey(myHotKey))
         {
             blackholeSkillController.AddTarget(myEnemy.transform);
             myText.color = Color.clear;

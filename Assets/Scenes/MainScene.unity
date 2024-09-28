@@ -2981,10 +2981,10 @@ RectTransform:
   - {fileID: 12344028}
   m_Father: {fileID: 583226951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1015.6216, y: -58.7388}
+  m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &286462785
 MonoBehaviour:
@@ -17587,7 +17587,8 @@ MonoBehaviour:
   skillDescription: 
   lockedSkillColor: {r: 0.5849056, g: 0.5655927, b: 0.5655927, a: 1}
   unlocked: 0
-  shouldBeUnlocked: []
+  shouldBeUnlocked:
+  - {fileID: 578724266}
   shouldBeLocked: []
 --- !u!114 &395271833
 MonoBehaviour:
@@ -17705,10 +17706,10 @@ RectTransform:
   - {fileID: 766763846}
   m_Father: {fileID: 583226951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1315.6216, y: -58.7388}
+  m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &395552173
 MonoBehaviour:
@@ -17996,7 +17997,8 @@ MonoBehaviour:
   skillDescription: 
   lockedSkillColor: {r: 0.5849056, g: 0.5655927, b: 0.5655927, a: 1}
   unlocked: 0
-  shouldBeUnlocked: []
+  shouldBeUnlocked:
+  - {fileID: 1321983133}
   shouldBeLocked: []
 --- !u!114 &409999604
 MonoBehaviour:
@@ -21601,7 +21603,8 @@ MonoBehaviour:
   skillDescription: 
   lockedSkillColor: {r: 0.5849056, g: 0.5655927, b: 0.5655927, a: 1}
   unlocked: 0
-  shouldBeUnlocked: []
+  shouldBeUnlocked:
+  - {fileID: 395271832}
   shouldBeLocked: []
 --- !u!114 &683657825
 MonoBehaviour:
@@ -21898,10 +21901,10 @@ RectTransform:
   - {fileID: 596145044}
   m_Father: {fileID: 583226951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 715.6216, y: -58.7388}
+  m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &691811510
 MonoBehaviour:
@@ -22664,8 +22667,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc02d4b88cd5448596b3e04fdc5e6bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveInput: {x: 0, y: 0}
-  rightStickInput: {x: 0, y: 0}
 --- !u!1 &744698063
 GameObject:
   m_ObjectHideFlags: 0
@@ -29537,8 +29538,10 @@ MonoBehaviour:
   skillDescription: 
   lockedSkillColor: {r: 0.5849056, g: 0.5655927, b: 0.5655927, a: 1}
   unlocked: 0
-  shouldBeUnlocked: []
-  shouldBeLocked: []
+  shouldBeUnlocked:
+  - {fileID: 1461408717}
+  shouldBeLocked:
+  - {fileID: 1123498081}
 --- !u!114 &865518902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29917,7 +29920,8 @@ MonoBehaviour:
   skillDescription: 
   lockedSkillColor: {r: 0.5849056, g: 0.5655927, b: 0.5655927, a: 1}
   unlocked: 0
-  shouldBeUnlocked: []
+  shouldBeUnlocked:
+  - {fileID: 261084135}
   shouldBeLocked: []
 --- !u!114 &905710279
 MonoBehaviour:
@@ -33901,10 +33905,10 @@ RectTransform:
   - {fileID: 1270143435}
   m_Father: {fileID: 583226951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 415.62158, y: -58.7388}
+  m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1119330666
 MonoBehaviour:
@@ -34186,8 +34190,10 @@ MonoBehaviour:
   skillDescription: 
   lockedSkillColor: {r: 0.5849056, g: 0.5655927, b: 0.5655927, a: 1}
   unlocked: 0
-  shouldBeUnlocked: []
-  shouldBeLocked: []
+  shouldBeUnlocked:
+  - {fileID: 1461408717}
+  shouldBeLocked:
+  - {fileID: 865518901}
 --- !u!114 &1123498082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36595,7 +36601,8 @@ MonoBehaviour:
   skillDescription: 
   lockedSkillColor: {r: 0.5849056, g: 0.5655927, b: 0.5655927, a: 1}
   unlocked: 0
-  shouldBeUnlocked: []
+  shouldBeUnlocked:
+  - {fileID: 601706556}
   shouldBeLocked: []
 --- !u!114 &1321983134
 MonoBehaviour:
@@ -38332,8 +38339,10 @@ MonoBehaviour:
   skillDescription: 
   lockedSkillColor: {r: 0.5849056, g: 0.5655927, b: 0.5655927, a: 1}
   unlocked: 0
-  shouldBeUnlocked: []
-  shouldBeLocked: []
+  shouldBeUnlocked:
+  - {fileID: 1726564610}
+  shouldBeLocked:
+  - {fileID: 2095700453}
 --- !u!114 &1425908928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38574,7 +38583,8 @@ MonoBehaviour:
   skillDescription: 
   lockedSkillColor: {r: 0.5849056, g: 0.5655927, b: 0.5655927, a: 1}
   unlocked: 0
-  shouldBeUnlocked: []
+  shouldBeUnlocked:
+  - {fileID: 1386330952}
   shouldBeLocked: []
 --- !u!114 &1461408718
 MonoBehaviour:
@@ -46530,7 +46540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1757868660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47297,7 +47307,8 @@ MonoBehaviour:
   skillDescription: 
   lockedSkillColor: {r: 0.5849056, g: 0.5655927, b: 0.5655927, a: 1}
   unlocked: 0
-  shouldBeUnlocked: []
+  shouldBeUnlocked:
+  - {fileID: 2095700453}
   shouldBeLocked: []
 --- !u!114 &1817636857
 MonoBehaviour:
@@ -49508,7 +49519,8 @@ MonoBehaviour:
   skillDescription: 
   lockedSkillColor: {r: 0.5849056, g: 0.5655927, b: 0.5655927, a: 1}
   unlocked: 0
-  shouldBeUnlocked: []
+  shouldBeUnlocked:
+  - {fileID: 1817636856}
   shouldBeLocked: []
 --- !u!114 &1962530315
 MonoBehaviour:
@@ -55785,7 +55797,8 @@ MonoBehaviour:
   skillDescription: 
   lockedSkillColor: {r: 0.5849056, g: 0.5655927, b: 0.5655927, a: 1}
   unlocked: 0
-  shouldBeUnlocked: []
+  shouldBeUnlocked:
+  - {fileID: 1386330952}
   shouldBeLocked: []
 --- !u!114 &2073474291
 MonoBehaviour:
@@ -56294,8 +56307,10 @@ MonoBehaviour:
   skillDescription: 
   lockedSkillColor: {r: 0.5849056, g: 0.5655927, b: 0.5655927, a: 1}
   unlocked: 0
-  shouldBeUnlocked: []
-  shouldBeLocked: []
+  shouldBeUnlocked:
+  - {fileID: 1726564610}
+  shouldBeLocked:
+  - {fileID: 1425908927}
 --- !u!114 &2095700454
 MonoBehaviour:
   m_ObjectHideFlags: 0
