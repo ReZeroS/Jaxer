@@ -1,16 +1,20 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UI : MonoBehaviour, ISaveManager
 {
     
     [SerializeField] public UIFadeScreen fadeScreen;
-    
-    
+
+    [SerializeField] private GameObject menuHeader;
+    [SerializeField] private GameObject backGround;
     [SerializeField] private GameObject characterUI;
     [SerializeField] private GameObject skillTreeUI;
     [SerializeField] private GameObject craftingUI;
     [SerializeField] private GameObject optionsUI;
     [SerializeField] private GameObject inGameUI;
+    [SerializeField] private GameObject firstTab;
     
     public UIItemtooltip itemTooltip;
     public UIStatTooltip statTooltip;
@@ -19,6 +23,10 @@ public class UI : MonoBehaviour, ISaveManager
     public UICraftWindow craftWindow;
 
     [SerializeField] private UIVolumeSlider[] volumeSettings;
+    
+    private int currentMenuIndex; 
+    private List<GameObject> menuList = new();
+    
     
 
     private void Awake()
@@ -32,6 +40,11 @@ public class UI : MonoBehaviour, ISaveManager
         SwitchTo(inGameUI);
         itemTooltip.gameObject.SetActive(false);
         statTooltip.gameObject.SetActive(false);
+        
+        menuList.Add(characterUI);
+        menuList.Add(skillTreeUI);
+        menuList.Add(craftingUI);
+        menuList.Add(optionsUI);
     }
 
     // Update is called once per frame
@@ -39,64 +52,46 @@ public class UI : MonoBehaviour, ISaveManager
     {
         if (InputManager.instance.menuJustPressed)
         {
-            SwitWithKeysTo(characterUI);
+            if (currentMenuIndex == 0)
+            {
+                SwitchWithKeysTo(characterUI);
+                ActiveBackground(true);
+                InputManager.instance.SwitchActionMap(InputManager.InputMapType.UI);
+            }
+            else
+            {
+                currentMenuIndex = 0;
+                SwitchWithKeysTo(inGameUI);
+                ActiveBackground(false);
+                InputManager.instance.SwitchActionMap(InputManager.InputMapType.GamePlay);
+            }
         }
         
-        
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            SwitWithKeysTo(skillTreeUI);
-        }
-        
-        
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            SwitWithKeysTo(craftingUI);
-        }
-        
-        
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            SwitWithKeysTo(optionsUI);
-        }
-        
-        
-        
+    }
+
+    private void ActiveBackground(bool active)
+    {
+        menuHeader.gameObject.SetActive(active);
+        backGround.gameObject.SetActive(active);
+        EventSystem.current.SetSelectedGameObject(firstTab);
     }
 
 
     public void SwitchTo(GameObject menu)
     {
-        for (int i = 0; i <  transform.childCount; i++)
-        {
-            bool fadeScreen = transform.GetChild(i).gameObject.GetComponent<UIFadeScreen>();
-            if (!fadeScreen)
-            {
-                transform.GetChild(i).gameObject.SetActive(false);
-            }
-        }
+        // 关闭所有的菜单，只开当前的菜单
+        menuList.ForEach(x => x.SetActive(false));
 
         if (menu)
         {
             AudioManager.instance?.PlaySFX(7);
             menu.SetActive(true);
         }
-
-        if (GameManager.instance != null)
-        {
-            if (menu == inGameUI)
-            {
-                GameManager.instance.PauseGame(false);
-            }
-            else
-            {
-                GameManager.instance.PauseGame(true);
-            }
-        }
         
+        GameManager.instance?.PauseGame(menu != inGameUI);
     }
 
-    public void SwitWithKeysTo(GameObject menu)
+    public void SwitchWithKeysTo(GameObject menu)
     {
         if (menu && menu.activeSelf)
         {

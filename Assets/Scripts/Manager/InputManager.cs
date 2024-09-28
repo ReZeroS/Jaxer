@@ -5,8 +5,14 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager instance;
 
-
+    public enum InputMapType
+    {
+        GamePlay,
+        UI
+    }
+    
     private PlayerInput playerInput;
+    private InputMapType currentInputMap = InputMapType.GamePlay;
 
     #region left part
 
@@ -35,7 +41,10 @@ public class InputManager : MonoBehaviour
     private InputAction rightStick;
 
     #endregion
-
+    
+    
+    
+    
 
     // left stick
     public Vector2 moveInput { get; private set; }
@@ -70,7 +79,7 @@ public class InputManager : MonoBehaviour
     public bool viewJustReleased { get; private set; }
 
     public bool menuJustPressed { get; private set; }
-    public bool menuJustBeingHeld { get; private set; }
+    public bool menuBeingHeld { get; private set; }
     public bool menuJustReleased { get; private set; }
 
 
@@ -101,7 +110,7 @@ public class InputManager : MonoBehaviour
     public bool rightTriggerJustPressed { get; private set; }
     public bool rightTriggerBeingHeld { get; private set; }
     public bool rightTriggerJustReleased { get; private set; }
-
+    
 
     private void Awake()
     {
@@ -142,6 +151,8 @@ public class InputManager : MonoBehaviour
         leftShoulderAction = playerInput.actions["LeftShoulder"]; // L1
         leftTriggerAction = playerInput.actions["LeftTrigger"]; // L2
         rightTriggerAction = playerInput.actions["RightTrigger"]; // R2
+        
+        
     }
 
     private void Update()
@@ -178,7 +189,7 @@ public class InputManager : MonoBehaviour
         viewJustBeingHeld = viewAction.IsPressed();
         viewJustReleased = viewAction.WasReleasedThisFrame();
         menuJustPressed = menuAction.WasPerformedThisFrame();
-        menuJustBeingHeld = menuAction.IsPressed();
+        menuBeingHeld = menuAction.IsPressed();
         menuJustReleased = menuAction.WasReleasedThisFrame();
 
 
@@ -203,40 +214,39 @@ public class InputManager : MonoBehaviour
         rightTriggerJustPressed = rightTriggerAction.WasPressedThisFrame();
         rightTriggerBeingHeld = rightTriggerAction.IsPressed();
         rightTriggerJustReleased = rightTriggerAction.WasReleasedThisFrame();
+        
+        
     }
 
+    
+    public void SwitchActionMap(InputMapType mapType)
+    {
+        if (currentInputMap == mapType) return;
 
-    // private void LateUpdate()
-    // {
-    //     // 重置一次性状态
-    //     isJumpKeyDown = false;
-    //     isJumpKeyUp = false;
-    // }
-    //
-
+        currentInputMap = mapType;
+        switch (mapType)
+        {
+            case InputMapType.GamePlay:
+                playerInput.SwitchCurrentActionMap("GamePlay");
+                Debug.Log("Switched to Gameplay ActionMap");
+                break;
+            case InputMapType.UI:
+                playerInput.SwitchCurrentActionMap("UI");
+                Debug.Log("Switched to UI ActionMap");
+                break;
+        }
+    }
+    
 
     public bool MatchHotKey(string myHotKey)
     {
-        if (myHotKey == "X")
+        return myHotKey switch
         {
-            return westJustPressed;
-        }
-
-        if (myHotKey == "Y")
-        {
-            return northJustPressed;
-        }
-
-        if (myHotKey == "A")
-        {
-            return southJustPressed;
-        }
-
-        if (myHotKey == "B")
-        {
-            return eastJustPressed;
-        }
-
-        return false;
+            "X" => westJustPressed,
+            "Y" => northJustPressed,
+            "A" => southJustPressed,
+            "B" => eastJustPressed,
+            _ => false
+        };
     }
 }
