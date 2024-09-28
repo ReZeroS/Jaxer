@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -41,15 +40,10 @@ public class SaveManager : MonoBehaviour
     {
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, encryptData);
         saveManagers = FindAllSaveManagers();
-        
-        StartCoroutine(LoadAfterGameManagerStart());
-    }
-    
-    private IEnumerator LoadAfterGameManagerStart()
-    {
-        yield return new WaitUntil(() => GameManager.instance);
+
         LoadGame();
     }
+    
 
     public void NewGame()
     {

@@ -2981,10 +2981,10 @@ RectTransform:
   - {fileID: 12344028}
   m_Father: {fileID: 583226951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1015.6216, y: -58.7388}
-  m_SizeDelta: {x: 300, y: 80}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &286462785
 MonoBehaviour:
@@ -17705,10 +17705,10 @@ RectTransform:
   - {fileID: 766763846}
   m_Father: {fileID: 583226951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1315.6216, y: -58.7388}
-  m_SizeDelta: {x: 300, y: 80}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &395552173
 MonoBehaviour:
@@ -19086,7 +19086,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 235.24677, y: -1.2283958, z: -9.974511}
+  m_LocalPosition: {x: 235.54839, y: -1.2283958, z: -9.974511}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21898,10 +21898,10 @@ RectTransform:
   - {fileID: 596145044}
   m_Father: {fileID: 583226951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 715.6216, y: -58.7388}
-  m_SizeDelta: {x: 300, y: 80}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &691811510
 MonoBehaviour:
@@ -22634,7 +22634,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: InGame
+  m_DefaultActionMap: GamePlay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!4 &744604683
@@ -22665,6 +22665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveInput: {x: 0, y: 0}
+  rightStickInput: {x: 0, y: 0}
 --- !u!1 &744698063
 GameObject:
   m_ObjectHideFlags: 0
@@ -33900,10 +33901,10 @@ RectTransform:
   - {fileID: 1270143435}
   m_Father: {fileID: 583226951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 415.62158, y: -58.7388}
-  m_SizeDelta: {x: 300, y: 80}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1119330666
 MonoBehaviour:
@@ -34504,7 +34505,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -34521,8 +34522,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.060255498, y: -0.22940361}
-  m_Size: {x: 0.8938922, y: 2.0591457}
+  m_Offset: {x: 0.060255498, y: -0.30140638}
+  m_Size: {x: 0.8938922, y: 1.9151402}
   m_Direction: 0
 --- !u!50 &1143869898
 Rigidbody2D:
@@ -46529,7 +46530,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1757868660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49657,7 +49658,7 @@ Transform:
   m_GameObject: {fileID: 1967789686}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 235.24677, y: -1.2283958, z: -9.974511}
+  m_LocalPosition: {x: 235.54839, y: -1.2283958, z: -9.974511}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -55042,7 +55043,7 @@ MonoBehaviour:
   hitCooldown: 0.35
   swordUnlockButton: {fileID: 1764883225}
   swordPrefab: {fileID: 7604839336934070932, guid: 3900f21b287c34d3b95600a2ff19f84e, type: 3}
-  launchFoce: {x: 35, y: 25}
+  launchForce: {x: 30, y: 30}
   swordGravity: 4.5
   freezeTimeDuration: 1.5
   returnSpeed: 15
@@ -55052,6 +55053,8 @@ MonoBehaviour:
   spaceBetweenDots: 0.07
   dotPrefab: {fileID: 2167536553319004673, guid: 32982a3e3ea1a4d5485f77e7de8de2e3, type: 3}
   dotsParent: {fileID: 1778331820}
+  aimSensitivity: 10
+  aimDirection: {x: 0, y: 0}
 --- !u!114 &2038865057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57439,11 +57442,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9220337456545624454, guid: f20c00e4fa42740f6a4a566b44f630db, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 240.2
+      value: 234.55
       objectReference: {fileID: 0}
     - target: {fileID: 9220337456545624454, guid: f20c00e4fa42740f6a4a566b44f630db, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.4
+      value: -5.43
       objectReference: {fileID: 0}
     - target: {fileID: 9220337456545624454, guid: f20c00e4fa42740f6a4a566b44f630db, type: 3}
       propertyPath: m_LocalPosition.z

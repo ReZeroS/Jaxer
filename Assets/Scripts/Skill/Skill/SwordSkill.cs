@@ -41,7 +41,7 @@ public class SwordSkill : Skill
 
     public bool swordUnlocked { get; private set; }
     [SerializeField] private GameObject swordPrefab;
-    [SerializeField] private Vector2 launchFoce;
+    [SerializeField] private Vector2 launchForce;
     [SerializeField] private float swordGravity;
     [SerializeField] private float freezeTimeDuration;
     [SerializeField] private float returnSpeed;
@@ -62,15 +62,16 @@ public class SwordSkill : Skill
     [SerializeField] private Transform dotsParent;
 
     private GameObject[] dots;
+    private bool isAiming;
+    [SerializeField] private float aimSensitivity = 10f;
+    public Vector2 aimDirection;
 
-
+    #region Init skill info
     protected override void Start()
     {
         base.Start();
         GenerateDots();
         SetUpGravity();
-        
-        
         
         swordUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockSword);
         timeStopUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockTimeStop);
@@ -95,25 +96,7 @@ public class SwordSkill : Skill
             swordGravity = spinGravity;
         }
     }
-
-    protected override void Update()
-    {
-        base.Update();
-        if (Input.GetKeyUp(KeyCode.Mouse1))
-        {
-            finalDir = new Vector2(AnimDirection().normalized.x * launchFoce.x,
-                AnimDirection().normalized.y * launchFoce.y);
-        }
-
-        if (Input.GetKey(KeyCode.Mouse1))
-        {
-            for (var i = 0; i < dots.Length; i++)
-            {
-                dots[i].transform.position = DotsPosition(i * spaceBetweenDots);
-            }
-        }
-    }
-
+    
     public override void CheckUnlock()
     {
         base.CheckUnlock();
@@ -124,38 +107,9 @@ public class SwordSkill : Skill
         UnlockPierce();
         UnlockSpin();   
     }
-
-    public void CreateSword()
-    {
-        GameObject createdSword = Instantiate(swordPrefab, player.transform.position,
-            transform.rotation);
-        SwordSkillController swordController = createdSword.GetComponent<SwordSkillController>();
-
-        if (swordType == SwordType.Bounce)
-        {
-            swordController.SetUpBounce(true, bounceSpeed, bounceAmount);
-        }
-        else if (swordType == SwordType.Pierce)
-        {
-            swordController.SetUpPierce(pierceAmount);
-        }
-        else if (swordType == SwordType.Spin)
-        {
-            swordController.SetUpSpin(true, maxTravelDistance, spinDuration, hitCooldown);
-        }
-
-
-        swordController.SetUpSword(finalDir, swordGravity, player, freezeTimeDuration, returnSpeed);
-        player.AssignSword(createdSword);
-        DotsActive(false);
-    }
+    #endregion
     
     #region UnlockSkills
-
-   
-
-
-   
     public void UnlockSword()
     {
         if (swordUnlockButton.unlocked)
@@ -205,35 +159,72 @@ public class SwordSkill : Skill
         }
     }
     
-    
-    
     #endregion
     
     
-    
-    
-    
-
-
-    #region AimRegion
-
-    public Vector2 AnimDirection()
+    public void ThrowSword()
     {
-        Vector2 playerPosition = player.transform.position;
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = mousePosition - playerPosition;
-        return direction;
-    }
+        GameObject createdSword = Instantiate(swordPrefab, player.transform.position,
+            transform.rotation);
+        SwordSkillController swordController = createdSword.GetComponent<SwordSkillController>();
 
-
-    public void DotsActive(bool isActive)
-    {
-        for (var i = 0; i < dots.Length; i++)
+        if (swordType == SwordType.Bounce)
         {
-            dots[i].SetActive(isActive);
+            swordController.SetUpBounce(true, bounceSpeed, bounceAmount);
+        }
+        else if (swordType == SwordType.Pierce)
+        {
+            swordController.SetUpPierce(pierceAmount);
+        }
+        else if (swordType == SwordType.Spin)
+        {
+            swordController.SetUpSpin(true, maxTravelDistance, spinDuration, hitCooldown);
+        }
+
+
+        swordController.SetUpSword(finalDir, swordGravity, player, freezeTimeDuration, returnSpeed);
+        player.AssignSword(createdSword);
+        isAiming = false;
+        DotsActive(false);
+    }
+    
+    
+    protected override void Update()
+    {
+        base.Update();
+        if (!isAiming)
+        {
+            return;
+        }
+        
+        if (!InputManager.instance.rightTriggerBeingHeld)
+        {
+            finalDir = new Vector2(aimDirection.normalized.x * launchForce.x,
+            aimDirection.normalized.y * launchForce.y);
+            // finalDir = new Vector2(15, 15);
+            Debug.Log("Sword skill controller set up " + finalDir + " gravity " + swordGravity);
+        }
+
+        
+        
+        // 检测right stick有输入(划定一块死区)
+        Vector2 rightStickInput = InputManager.instance.rightStickInput;
+        if (rightStickInput.magnitude > 0.1f)
+        {
+            aimDirection += rightStickInput * (aimSensitivity * Time.deltaTime);
+            for (var i = 0; i < dots.Length; i++)
+            {
+                dots[i].transform.position = DotsPosition(i * spaceBetweenDots);
+            }
         }
     }
 
+   
+
+  
+
+
+    #region AimRegion
     private void GenerateDots()
     {
         dots = new GameObject[numberOfDots];
@@ -243,17 +234,26 @@ public class SwordSkill : Skill
             dots[i].SetActive(false);
         }
     }
+    
 
-    public Vector2 DotsPosition(float t)
+
+    private void DotsActive(bool isActive)
     {
-        // d = vt * (at^2)/2
-        Vector2 postion = (Vector2)player.transform.position + new Vector2(
-                                                                 AnimDirection().normalized.x * launchFoce.x,
-                                                                 AnimDirection().normalized.y * launchFoce.y) * t
-                                                             + 0.5f * (Physics2D.gravity * swordGravity) * t * t;
-        return postion;
+        foreach (var t in dots)
+        {
+            t.SetActive(isActive);
+        }
     }
 
+    
+
+    // dest = initPos + vt * (at^2)/2
+    private Vector2 DotsPosition(float t)
+    {
+        return (Vector2)player.transform.position +  // initPos
+               aimDirection.normalized * launchForce * t + // vt
+               Physics2D.gravity * (0.5f * swordGravity * t * t); // at^2/2
+    }
     #endregion
 
     public override bool CanUseSkill()
@@ -265,4 +265,23 @@ public class SwordSkill : Skill
     {
         base.UseSkill();
     }
+
+    public void AimingSword()
+    {
+        isAiming = true;
+        DotsActive(true);
+    }
+    
+    
+    
+    
+    
+    // public Vector2 AnimDirection()
+    // {
+    //     Vector2 playerPosition = player.transform.position;
+    //     Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //     Vector2 direction = mousePosition - playerPosition;
+    //     return direction;
+    // }
+    //
 }

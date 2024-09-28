@@ -139,9 +139,14 @@ public class Player : Entity
         stateMachine.ChangeState(catchSwordState);
         Destroy(sword);
     }
-    
 
-    public IEnumerator BusyFor(float seconds)
+
+    public void SetBusyFor(float duration)
+    {
+        StartCoroutine(BusyFor(duration));
+    }
+    
+    private IEnumerator BusyFor(float seconds)
     {
         isBusy = true;
         yield return new WaitForSeconds(seconds);
@@ -152,9 +157,6 @@ public class Player : Entity
 
     private void CheckDashInput()
     {
-        
-        
-        
         if (IsWallDetected())
         {
             return;
@@ -165,7 +167,7 @@ public class Player : Entity
             return;
         }
         
-        if (Input.GetKeyDown(KeyCode.L) && skillManager.dashSkill.CanUseSkill())
+        if (InputManager.instance.dashJustPressed && skillManager.dashSkill.CanUseSkill())
         {
             dashDir = InputManager.instance.moveInput.x;
             if (dashDir == 0)

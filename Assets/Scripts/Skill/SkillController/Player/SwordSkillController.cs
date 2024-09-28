@@ -43,6 +43,7 @@ public class SwordSkillController : MonoBehaviour
 
     private float hitTimer;
     private float hitCooldown;
+    private static readonly int Rotate = Animator.StringToHash("Rotate");
 
 
     private void Awake()
@@ -68,9 +69,10 @@ public class SwordSkillController : MonoBehaviour
 
         if (pierceAmount <= 0)
         {
-            animator.SetBool("Rotate", true);
+            animator.SetBool(Rotate, true);
         }
 
+        // 确保在 -1 到 1 之间
         spinDirection = Mathf.Clamp(rb.velocity.x, -1, 1);
 
         // too far to return

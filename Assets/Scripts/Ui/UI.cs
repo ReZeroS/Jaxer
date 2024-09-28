@@ -37,7 +37,7 @@ public class UI : MonoBehaviour, ISaveManager
     // Update is called once per frame
     void Update()
     {
-        if (InputManager.instance.submitReleased)
+        if (InputManager.instance.menuJustPressed)
         {
             SwitWithKeysTo(characterUI);
         }

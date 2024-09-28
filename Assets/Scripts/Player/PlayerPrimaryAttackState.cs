@@ -57,6 +57,6 @@ public class PlayerPrimaryAttackState : PlayerState
         comboCounter++;
         lastTimeAttacked = Time.time;
         // for idlestate
-        player.StartCoroutine("BusyFor", 0.1f);
+        player.SetBusyFor(0.1f);
     }
 }

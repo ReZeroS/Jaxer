@@ -38,4 +38,5 @@ public class SkillManager : MonoBehaviour
         parrySkill = GetComponent<ParrySkill>();
         dodgeSkill = GetComponent<DodgeSkill>();
     }
+    
 }

@@ -22,9 +22,8 @@ public class UIInGame : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L) && skillManager.dashSkill.dashUnlocked)
+        if (InputManager.instance.dashJustPressed && skillManager.dashSkill.dashUnlocked)
         {
-            Debug.Log("cooldownImage.fillAmount = " + dashImage.fillAmount);
             SetCooldownOf(dashImage);
         }
 

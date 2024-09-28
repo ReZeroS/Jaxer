@@ -23,9 +23,10 @@ public class PlayerGroundState : PlayerState
             }
             stateMachine.ChangeState(player.blackholeState);
         }
+
         
         
-        if (Input.GetKeyDown(KeyCode.Mouse1) && HasNoSword() && player.skillManager.swordSkill.swordUnlocked)
+        if (InputManager.instance.rightTriggerJustPressed && HasNoSword() && player.skillManager.swordSkill.swordUnlocked)
         {
             stateMachine.ChangeState(player.animSwordState);
         }
@@ -35,7 +36,7 @@ public class PlayerGroundState : PlayerState
             stateMachine.ChangeState(player.couterAttackState);
         }
         
-        if (Input.GetKeyDown(KeyCode.J))
+        if (InputManager.instance.lightAttackJustPressed)
         {
             stateMachine.ChangeState(player.primaryAttackState);
         }
@@ -45,7 +46,7 @@ public class PlayerGroundState : PlayerState
            stateMachine.ChangeState(player.playerAirState); 
         }
         
-        if (Input.GetKeyDown(KeyCode.K) && player.IsGroundDetected())
+        if (InputManager.instance.jumpJustPressed && player.IsGroundDetected())
         {
             stateMachine.ChangeState(player.playerJumpState);
         }

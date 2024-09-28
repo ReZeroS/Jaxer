@@ -21,9 +21,9 @@ public class PlayerWallSlideState : PlayerState
             stateMachine.ChangeState(player.playerAirState);
             return;
         }
-        
 
-        if (Input.GetKeyDown(KeyCode.K))
+
+        if (InputManager.instance.jumpJustPressed)
         {
             stateMachine.ChangeState(player.playerWallJumpState);
             return;

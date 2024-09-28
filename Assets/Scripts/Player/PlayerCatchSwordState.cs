@@ -15,9 +15,8 @@ public class PlayerCatchSwordState : PlayerState
         base.Enter();
         sword = player.sword.transform;
 
-        player.fx.PlayDustFx();
-        player.fx.ScreenShakeForSwordImpact(player.facingDir);
-        
+        DustFxWhenCatchSword();
+
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (mousePosition.x < player.transform.position.x && player.facingRight)
         {
@@ -31,6 +30,12 @@ public class PlayerCatchSwordState : PlayerState
 
     }
 
+    private void DustFxWhenCatchSword()
+    {
+        player.fx.PlayDustFx();
+        player.fx.ScreenShakeForSwordImpact(player.facingDir);
+    }
+
     public override void Update()
     {
         base.Update();
@@ -38,14 +43,11 @@ public class PlayerCatchSwordState : PlayerState
         {
             stateMachine.ChangeState(player.playerIdleState);
         }
-        {
-            
-        }
     }
 
     public override void Exit()
     {
         base.Exit();
-        player.StartCoroutine("BusyFor", 0.1f);
+        player.SetBusyFor(0.1f);
     }
 }

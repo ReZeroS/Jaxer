@@ -12,34 +12,45 @@ public class PlayerAnimSwordState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        player.skillManager.swordSkill.DotsActive(true);
-        player.StartCoroutine("BusyFor", 0.2f);
+        player.skillManager.swordSkill.AimingSword();
+        player.SetBusyFor(0.2f);
     }
+    
 
+    public override void Exit()
+    {
+        base.Exit();
+        // 退出会进入throwSwordState状态，相当于状态结束直接扔剑
+    }
+    
+    
     public override void Update()
     {
         base.Update();
         
         player.SetZeroVelocity();
         
-        if (Input.GetKeyUp(KeyCode.Mouse1))
+        // rt released then give up aim direction
+        // change means  exi current state means throw sword
+        if (!InputManager.instance.rightTriggerBeingHeld)
         {
             stateMachine.ChangeState(player.playerIdleState);
         }
         
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (mousePosition.x < player.transform.position.x && player.facingRight)
+        // 根据aimDirection 反转方向
+        FlipPlayerByAimDirection();
+    }
+
+    private void FlipPlayerByAimDirection()
+    {
+        Vector2 swordSkillAimDirection = SkillManager.instance.swordSkill.aimDirection;
+        Debug.Log("PlayerAnimSwordState swordSkillAimDirection: " + swordSkillAimDirection);
+        if (swordSkillAimDirection.x < 0 && player.facingRight)
         {
             player.Flip();
-        } else if (mousePosition.x > player.transform.position.x && !player.facingRight)
+        } else if (swordSkillAimDirection.x > 0 && !player.facingRight)
         {
             player.Flip();
         }
-        
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
     }
 }

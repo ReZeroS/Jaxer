@@ -19,8 +19,8 @@ public class Skill : MonoBehaviour
 
     public virtual void CheckUnlock()
     {
-        
     }
+    
 
 
     public virtual bool CanUseSkill()
