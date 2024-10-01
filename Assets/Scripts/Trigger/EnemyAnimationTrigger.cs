@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class EnemyAnimationTrigger : MonoBehaviour
 {
-    private Enemy enemy => GetComponentInParent <Enemy>();
+    private Enemy enemy => GetComponentInParent<Enemy>();
 
     private void AnimationTrigger()
     {
         enemy.AnimationTrigger();
     }
-    
+
     private void AttackTrigger()
     {
         Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(enemy.attackCheck.position, enemy.attackRadius);
@@ -29,5 +29,4 @@ public class EnemyAnimationTrigger : MonoBehaviour
     {
         enemy.AnimationSpecialTrigger();
     }
-
 }
