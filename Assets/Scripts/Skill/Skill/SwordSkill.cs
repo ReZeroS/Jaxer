@@ -197,7 +197,7 @@ public class SwordSkill : Skill
             return;
         }
         
-        if (!InputManager.instance.rightTriggerBeingHeld)
+        if (!InputManager.instance.rightTrigger.beingHeld)
         {
             finalDir = new Vector2(aimDirection.normalized.x * launchForce.x,
             aimDirection.normalized.y * launchForce.y);

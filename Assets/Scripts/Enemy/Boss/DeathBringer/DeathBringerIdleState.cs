@@ -26,7 +26,7 @@ public class DeathBringerIdleState : DeathBringerState
         }
 
 
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Random.Range(0, 100) < 10)
         {
             stateMachine.ChangeState(enemy.teleportState);
         }

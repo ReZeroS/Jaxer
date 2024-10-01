@@ -35,6 +35,6 @@ public class Checkpoint : MonoBehaviour
             AudioManager.instance.PlaySFX(5, transform);
         }
         isActivated = true;
-        animator.SetBool(Active, true);
+        animator?.SetBool(Active, true);
     }
 }

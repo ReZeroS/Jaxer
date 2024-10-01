@@ -78,7 +78,6 @@ public class EnemyDeathBringer : Enemy
 
         if (!GroundBelow() || SomethingIsGround())
         {
-            Debug.Log("No ground found");
             FindPosition();
         }
         

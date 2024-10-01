@@ -22,12 +22,12 @@ public class UIInGame : MonoBehaviour
 
     private void Update()
     {
-        if (InputManager.instance.eastJustPressed && skillManager.dashSkill.dashUnlocked)
+        if (InputManager.instance.east.justPressed && skillManager.dashSkill.dashUnlocked)
         {
             SetCooldownOf(dashImage);
         }
 
-        if (InputManager.instance.northBeingHeld && skillManager.parrySkill.parryUnlocked)
+        if (InputManager.instance.north.beingHeld && skillManager.parrySkill.parryUnlocked)
         {
             SetCooldownOf(parryImage);
         }

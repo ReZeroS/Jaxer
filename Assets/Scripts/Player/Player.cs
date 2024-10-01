@@ -97,12 +97,12 @@ public class Player : Entity
 
         CheckDashInput();
 
-        if (InputManager.instance.padLeftJustPressed && skillManager.crystalSkill.crystalUnlocked)
+        if (InputManager.instance.padLeft.justPressed && skillManager.crystalSkill.crystalUnlocked)
         {
             skillManager.crystalSkill.CanUseSkill();
         }  
         
-        if (InputManager.instance.leftShoulderPressed)
+        if (InputManager.instance.leftShoulder.justPressed)
         {
             Inventory.instance.UseFlask();
         }
@@ -167,7 +167,7 @@ public class Player : Entity
             return;
         }
         
-        if (InputManager.instance.eastJustPressed && skillManager.dashSkill.CanUseSkill())
+        if (InputManager.instance.east.justPressed && skillManager.dashSkill.CanUseSkill())
         {
             dashDir = InputManager.instance.moveInput.x;
             if (dashDir == 0)

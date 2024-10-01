@@ -56,7 +56,7 @@ public class UIItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
             return;
         }
 
-        if (Input.GetKey(KeyCode.LeftControl))
+        if (InputManager.instance.leftShoulder.justPressed)
         {
             Inventory.instance.RemoveItem(item.data);
             return;

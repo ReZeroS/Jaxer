@@ -71,7 +71,7 @@ public class BlackholeSkillController : MonoBehaviour
         
         
 
-        if (InputManager.instance.padUpJustPressed)
+        if (InputManager.instance.padUp.justPressed)
         {
             ReleaseCloneAttack();
         }

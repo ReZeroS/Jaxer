@@ -13,7 +13,7 @@ public class PlayerGroundState : PlayerState
     {
         base.Update();
 
-        if (InputManager.instance.padDownJustPressed && player.skillManager.blackholeSkill.blackholeUnlocked)
+        if (InputManager.instance.padDown.justPressed && player.skillManager.blackholeSkill.blackholeUnlocked)
         {
             if (player.skillManager.blackholeSkill.IsInCoolDown())
             {
@@ -24,17 +24,17 @@ public class PlayerGroundState : PlayerState
 
         
         
-        if (InputManager.instance.rightTriggerJustPressed && HasNoSword() && player.skillManager.swordSkill.swordUnlocked)
+        if (InputManager.instance.rightTrigger.justPressed && HasNoSword() && player.skillManager.swordSkill.swordUnlocked)
         {
             stateMachine.ChangeState(player.animSwordState);
         }
 
-        if (InputManager.instance.northBeingHeld && player.skillManager.parrySkill.parryUnlocked)
+        if (InputManager.instance.north.beingHeld && player.skillManager.parrySkill.parryUnlocked)
         {
             stateMachine.ChangeState(player.couterAttackState);
         }
         
-        if (InputManager.instance.westJustPressed)
+        if (InputManager.instance.west.justPressed)
         {
             stateMachine.ChangeState(player.primaryAttackState);
         }
@@ -44,7 +44,7 @@ public class PlayerGroundState : PlayerState
            stateMachine.ChangeState(player.playerAirState); 
         }
         
-        if (InputManager.instance.southJustPressed && player.IsGroundDetected())
+        if (InputManager.instance.south.justPressed && player.IsGroundDetected())
         {
             stateMachine.ChangeState(player.playerJumpState);
         }

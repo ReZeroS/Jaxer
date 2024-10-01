@@ -25,12 +25,17 @@ public class UI : MonoBehaviour, ISaveManager
     [SerializeField] private UIVolumeSlider[] volumeSettings;
     
     private int currentMenuIndex; 
-    private List<GameObject> menuList = new();
+    private readonly List<GameObject> menuList = new();
     
     
 
     private void Awake()
     {
+        menuList.Add(characterUI);
+        menuList.Add(skillTreeUI);
+        menuList.Add(craftingUI);
+        menuList.Add(optionsUI);
+        
         SwitchTo(skillTreeUI); // we need to assign events on skill tree slots before assign events on skill scripts
         fadeScreen.gameObject.SetActive(true);
     }
@@ -41,39 +46,39 @@ public class UI : MonoBehaviour, ISaveManager
         itemTooltip.gameObject.SetActive(false);
         statTooltip.gameObject.SetActive(false);
         
-        menuList.Add(characterUI);
-        menuList.Add(skillTreeUI);
-        menuList.Add(craftingUI);
-        menuList.Add(optionsUI);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (InputManager.instance.menuJustPressed)
+        if (InputManager.instance.menu.justPressed)
         {
             if (currentMenuIndex == 0)
             {
                 SwitchWithKeysTo(characterUI);
-                ActiveBackground(true);
+                ActiveMenuDefaultConfig(true);
                 InputManager.instance.SwitchActionMap(InputManager.InputMapType.UI);
             }
-            else
-            {
-                currentMenuIndex = 0;
-                SwitchWithKeysTo(inGameUI);
-                ActiveBackground(false);
-                InputManager.instance.SwitchActionMap(InputManager.InputMapType.GamePlay);
-            }
+        }
+        
+        if (InputManager.instance.exitMenu.justPressed)
+        {
+            currentMenuIndex = 0;
+            SwitchWithKeysTo(inGameUI);
+            ActiveMenuDefaultConfig(false);
+            InputManager.instance.SwitchActionMap(InputManager.InputMapType.GamePlay);
         }
         
     }
 
-    private void ActiveBackground(bool active)
+    private void ActiveMenuDefaultConfig(bool active)
     {
         menuHeader.gameObject.SetActive(active);
         backGround.gameObject.SetActive(active);
-        EventSystem.current.SetSelectedGameObject(firstTab);
+        if (active)
+        {
+            EventSystem.current.SetSelectedGameObject(firstTab);
+        }
     }
 
 
@@ -91,14 +96,15 @@ public class UI : MonoBehaviour, ISaveManager
         GameManager.instance?.PauseGame(menu != inGameUI);
     }
 
-    public void SwitchWithKeysTo(GameObject menu)
+    private void SwitchWithKeysTo(GameObject menu)
     {
-        if (menu && menu.activeSelf)
-        {
-            menu.SetActive(false);
-            CheckForInGameUI();
-            return;
-        }
+        // if (menu && menu.activeSelf)
+        // {
+        //     Debug.Log("come to here " + menu.name);
+        //     menu.SetActive(false);
+        //     CheckForInGameUI();
+        //     return;
+        // }
         SwitchTo(menu);
     }
 

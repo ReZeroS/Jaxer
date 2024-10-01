@@ -32,7 +32,7 @@ public class PlayerAnimSwordState : PlayerState
         
         // rt released then give up aim direction
         // change means  exi current state means throw sword
-        if (!InputManager.instance.rightTriggerBeingHeld)
+        if (!InputManager.instance.rightTrigger.beingHeld)
         {
             stateMachine.ChangeState(player.playerIdleState);
         }
@@ -44,7 +44,6 @@ public class PlayerAnimSwordState : PlayerState
     private void FlipPlayerByAimDirection()
     {
         Vector2 swordSkillAimDirection = SkillManager.instance.swordSkill.aimDirection;
-        Debug.Log("PlayerAnimSwordState swordSkillAimDirection: " + swordSkillAimDirection);
         if (swordSkillAimDirection.x < 0 && player.facingRight)
         {
             player.Flip();

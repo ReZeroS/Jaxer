@@ -23,7 +23,7 @@ public class PlayerWallSlideState : PlayerState
         }
 
 
-        if (InputManager.instance.southJustPressed)
+        if (InputManager.instance.south.justPressed)
         {
             stateMachine.ChangeState(player.playerWallJumpState);
             return;

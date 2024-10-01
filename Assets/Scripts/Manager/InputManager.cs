@@ -28,13 +28,15 @@ public class InputManager : MonoBehaviour
 
     private InputAction viewAction;
     private InputAction menuAction;
+    // 给ui用来退出回到游戏的
+    private InputAction exitMenuAction;
 
     #region right part
 
-    private InputAction jumpAction;
-    private InputAction dashAction;
-    private InputAction lightAttackAction;
-    private InputAction heavyAttackAction;
+    private InputAction southAction;
+    private InputAction eastAction;
+    private InputAction westAction;
+    private InputAction northAction;
     private InputAction rightShoulderAction;
     private InputAction rightTriggerAction;
 
@@ -45,72 +47,26 @@ public class InputManager : MonoBehaviour
     
     
     
-
-    // left stick
     public Vector2 moveInput { get; private set; }
-
-    public bool leftShoulderPressed { get; private set; }
-    public bool leftShoulderJustBeingHeld { get; private set; }
-    public bool leftShoulderReleased { get; private set; }
-
-    public bool leftTriggerPressed { get; private set; }
-    public bool leftTriggerJustBeingHeld { get; private set; }
-    public bool leftTriggerReleased { get; private set; }
-
-    public bool padLeftJustPressed { get; private set; }
-    public bool padLeftJustBeingHeld { get; private set; }
-    public bool padLeftReleased { get; private set; }
-
-    public bool padRightPressed { get; private set; }
-    public bool padRightJustBeingHeld { get; private set; }
-    public bool padRightReleased { get; private set; }
-
-    public bool padUpJustPressed { get; private set; }
-    public bool padUpJustBeingHeld { get; private set; }
-    public bool padUpReleased { get; private set; }
-
-    public bool padDownJustPressed { get; private set; }
-    public bool padDownJustBeingHeld { get; private set; }
-    public bool padDownReleased { get; private set; }
-
-
-    public bool viewJustPressed { get; private set; }
-    public bool viewJustBeingHeld { get; private set; }
-    public bool viewJustReleased { get; private set; }
-
-    public bool menuJustPressed { get; private set; }
-    public bool menuBeingHeld { get; private set; }
-    public bool menuJustReleased { get; private set; }
-
-
-    // right part
     public Vector2 rightStickInput { get; private set; }
-
-
-    public bool southJustPressed { get; private set; }
-    public bool southBeingHeld { get; private set; }
-    public bool southJustReleased { get; private set; }
-
-    public bool eastJustPressed { get; private set; }
-    public bool eastBeingHeld { get; private set; }
-    public bool eastJustReleased { get; private set; }
-
-    public bool westJustPressed { get; private set; }
-    public bool westBeingHeld { get; private set; }
-    public bool westJustReleased { get; private set; }
-
-    public bool northJustPressed { get; private set; }
-    public bool northBeingHeld { get; private set; }
-    public bool northJustReleased { get; private set; }
-
-    public bool rightShoulderPressed { get; private set; }
-    public bool rightShoulderJustBeingHeld { get; private set; }
-    public bool rightShoulderReleased { get; private set; }
-
-    public bool rightTriggerJustPressed { get; private set; }
-    public bool rightTriggerBeingHeld { get; private set; }
-    public bool rightTriggerJustReleased { get; private set; }
     
+    #region Input States
+    public InputState leftShoulder { get; private set; }
+    public InputState rightShoulder { get; private set; }
+    public InputState leftTrigger { get; private set; }
+    public InputState rightTrigger { get; private set; }
+    public InputState padLeft { get; private set; }
+    public InputState padRight { get; private set; }
+    public InputState padUp { get; private set; }
+    public InputState padDown { get; private set; }
+    public InputState view { get; private set; }
+    public InputState menu { get; private set; }
+    public InputState exitMenu { get; private set; }
+    public InputState south { get; private set; }
+    public InputState east { get; private set; }
+    public InputState west { get; private set; }
+    public InputState north { get; private set; }
+    #endregion
 
     private void Awake()
     {
@@ -121,6 +77,7 @@ public class InputManager : MonoBehaviour
 
         playerInput = GetComponent<PlayerInput>();
         SetupInputActions();
+        InitializeInputStates();
     }
 
     private void SetupInputActions()
@@ -138,14 +95,15 @@ public class InputManager : MonoBehaviour
 
         viewAction = playerInput.actions["View"];
         menuAction = playerInput.actions["Menu"];
+        exitMenuAction = playerInput.actions["ExitMenu"];
 
 
         rightStick = playerInput.actions["RightStick"];
 
-        jumpAction = playerInput.actions["Jump"]; // A
-        dashAction = playerInput.actions["Dash"]; // B
-        lightAttackAction = playerInput.actions["LightAttack"]; // X
-        heavyAttackAction = playerInput.actions["HeavyAttack"]; // Y
+        southAction = playerInput.actions["South"]; // A
+        eastAction = playerInput.actions["East"]; // B
+        westAction = playerInput.actions["West"]; // X
+        northAction = playerInput.actions["North"]; // Y
 
         rightShoulderAction = playerInput.actions["RightShoulder"]; // R1
         leftShoulderAction = playerInput.actions["LeftShoulder"]; // L1
@@ -153,6 +111,25 @@ public class InputManager : MonoBehaviour
         rightTriggerAction = playerInput.actions["RightTrigger"]; // R2
         
         
+    }
+    
+    private void InitializeInputStates()
+    {
+        leftShoulder = new InputState(leftShoulderAction);
+        rightShoulder = new InputState(rightShoulderAction);
+        leftTrigger = new InputState(leftTriggerAction);
+        rightTrigger = new InputState(rightTriggerAction);
+        padLeft = new InputState(padLeftAction);
+        padRight = new InputState(padRightAction);
+        padUp = new InputState(padUpAction);
+        padDown = new InputState(padDownAction);
+        view = new InputState(viewAction);
+        menu = new InputState(menuAction);
+        exitMenu = new InputState(exitMenuAction);
+        south = new InputState(southAction);
+        east = new InputState(eastAction);
+        west = new InputState(westAction);
+        north = new InputState(northAction);
     }
 
     private void Update()
@@ -162,79 +139,38 @@ public class InputManager : MonoBehaviour
 
     private void UpdateInputs()
     {
-        leftShoulderPressed = leftShoulderAction.WasPerformedThisFrame();
-        leftShoulderJustBeingHeld = leftShoulderAction.IsPressed();
-        leftShoulderReleased = leftShoulderAction.WasReleasedThisFrame();
-        leftTriggerPressed = leftTriggerAction.WasPerformedThisFrame();
-        leftTriggerJustBeingHeld = leftTriggerAction.IsPressed();
-        leftTriggerReleased = leftTriggerAction.WasReleasedThisFrame();
-
+        // 左边部分
+        leftShoulder.Update();
+        leftTrigger.Update();
         moveInput = moveAction.ReadValue<Vector2>();
+        padLeft.Update();
+        padRight.Update();
+        padUp.Update();
+        padDown.Update();
+        
+        // 中间部分
+        view.Update();
+        menu.Update();
+        exitMenu.Update();
 
-        padLeftJustPressed = padLeftAction.WasPerformedThisFrame();
-        padLeftJustBeingHeld = padLeftAction.IsPressed();
-        padLeftReleased = padLeftAction.WasReleasedThisFrame();
-        padRightPressed = padRightAction.WasPerformedThisFrame();
-        padRightJustBeingHeld = padRightAction.IsPressed();
-        padRightReleased = padRightAction.WasReleasedThisFrame();
-        padUpJustPressed = padUpAction.WasPerformedThisFrame();
-        padUpJustBeingHeld = padUpAction.IsPressed();
-        padUpReleased = padUpAction.WasReleasedThisFrame();
-        padDownJustPressed = padDownAction.WasPerformedThisFrame();
-        padDownJustBeingHeld = padDownAction.IsPressed();
-        padDownReleased = padDownAction.WasReleasedThisFrame();
-
-
-        viewJustPressed = viewAction.WasPerformedThisFrame();
-        viewJustBeingHeld = viewAction.IsPressed();
-        viewJustReleased = viewAction.WasReleasedThisFrame();
-        menuJustPressed = menuAction.WasPerformedThisFrame();
-        menuBeingHeld = menuAction.IsPressed();
-        menuJustReleased = menuAction.WasReleasedThisFrame();
-
-
-        southJustPressed = jumpAction.WasPerformedThisFrame();
-        southBeingHeld = jumpAction.IsPressed();
-        southJustReleased = jumpAction.WasReleasedThisFrame();
-        eastJustPressed = dashAction.WasPerformedThisFrame();
-        eastBeingHeld = dashAction.IsPressed();
-        eastJustReleased = dashAction.WasReleasedThisFrame();
-        westJustPressed = lightAttackAction.WasPerformedThisFrame();
-        westBeingHeld = lightAttackAction.IsPressed();
-        westJustReleased = lightAttackAction.WasReleasedThisFrame();
-        northJustPressed = heavyAttackAction.WasPerformedThisFrame();
-        northBeingHeld = heavyAttackAction.IsPressed();
-        northJustReleased = heavyAttackAction.WasReleasedThisFrame();
-
+        // 右边部分
+        south.Update();
+        east.Update();
+        west.Update();
+        north.Update();
         rightStickInput = rightStick.ReadValue<Vector2>();
-
-        rightShoulderPressed = rightShoulderAction.IsPressed();
-        rightShoulderJustBeingHeld = rightShoulderAction.IsPressed();
-        rightShoulderReleased = rightShoulderAction.WasReleasedThisFrame();
-        rightTriggerJustPressed = rightTriggerAction.WasPressedThisFrame();
-        rightTriggerBeingHeld = rightTriggerAction.IsPressed();
-        rightTriggerJustReleased = rightTriggerAction.WasReleasedThisFrame();
-        
-        
+        rightShoulder.Update();
+        rightTrigger.Update();
     }
 
-    
+
     public void SwitchActionMap(InputMapType mapType)
     {
         if (currentInputMap == mapType) return;
 
         currentInputMap = mapType;
-        switch (mapType)
-        {
-            case InputMapType.GamePlay:
-                playerInput.SwitchCurrentActionMap("GamePlay");
-                Debug.Log("Switched to Gameplay ActionMap");
-                break;
-            case InputMapType.UI:
-                playerInput.SwitchCurrentActionMap("UI");
-                Debug.Log("Switched to UI ActionMap");
-                break;
-        }
+        playerInput.SwitchCurrentActionMap(mapType.ToString());
+        Debug.Log($"Switched to {mapType} ActionMap");
     }
     
 
@@ -242,10 +178,10 @@ public class InputManager : MonoBehaviour
     {
         return myHotKey switch
         {
-            "X" => westJustPressed,
-            "Y" => northJustPressed,
-            "A" => southJustPressed,
-            "B" => eastJustPressed,
+            "X" => west.justPressed,
+            "Y" => north.justPressed,
+            "A" => south.justPressed,
+            "B" => east.justPressed,
             _ => false
         };
     }

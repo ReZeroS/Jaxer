@@ -1,0 +1,941 @@
+fileFormatVersion: 2
+guid: 638b332cecf304f07b9ba1d39b5e2fa8
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_0
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 4
+        width: 78
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5ce41dedf1c044c2ac94f4525fbdb09
+      internalID: -1936000586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_1
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 6
+        width: 74
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ba19d65a97ef4711a18422112171993
+      internalID: 1228539543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 75
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65bce0f6a0b1d459d93d37539d605523
+      internalID: 878979164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_3
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 79
+        width: 11
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f91d71be7ac24bc5882c252aaf9af4c
+      internalID: 203980494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_4
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 68
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3ddf3447f24b4d20b8295ec75b96c89
+      internalID: 116717930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_5
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 16
+        width: 47
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2041fc9d4e9cd4e9e891e4b4aa6dc5ff
+      internalID: 577935842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_6
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 70
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25fe213b452da413fb5d4cd73a696c63
+      internalID: 69052454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_7
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 17
+        width: 48
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f4ce9b72a386485f8bd2d27100ac471
+      internalID: 64955148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_8
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 17
+        width: 51
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b4bf76d3f0af47c689f4f182137acc0
+      internalID: -1802891051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_9
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 17
+        width: 57
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5f6f8d4c11014a0cb2ef0cb170374c0
+      internalID: -409244478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_10
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 17
+        width: 53
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb2c806e703d34b60838ade31cd62a6a
+      internalID: -1485078398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_11
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 61
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f37d82bc905744353b5644a6c1b9ad73
+      internalID: 1226936401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_12
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 17
+        width: 46
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9160c17f5470d49cf876a732a3bf83be
+      internalID: 541241977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_13
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 19
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61cce487049c54caf95a04b30810ad1c
+      internalID: 979873413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_14
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 18
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6a18005fd37e40c3aab3062fc08665e
+      internalID: 252890301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_15
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 19
+        width: 45
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d982924035aa440a7818fe81bd8cb03c
+      internalID: 279222842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_16
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 18
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 121f3d013c10c4f83977df786c35ea85
+      internalID: 419594375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_17
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 19
+        width: 46
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eee7358a6528a4521ac731bded04308b
+      internalID: 567821363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_18
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 18
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd73df452f97e4beb8ea653887d9ce82
+      internalID: -1709914602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_19
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 11
+        width: 47
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09bce4987e6d745ab9f4363aa0597b5c
+      internalID: -1587192550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_20
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 50
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e3c07da1de574870b0c2f299550896a
+      internalID: -1619008147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_21
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 48
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85b5d5aaa5cc14deaa28d7e752e6efa6
+      internalID: 180071413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_22
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 30
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59f7072c19ddc4d198e05d4732490338
+      internalID: 2059461846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_23
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 26
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03a1dad0cd7804a3cb2c3dab3805c976
+      internalID: -868548733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_24
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 22
+        width: 39
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aa66ad612d15452e94085c84eb8444d
+      internalID: 212526633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_25
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 17
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfb3a4e39bafe4232ad1de318258323a
+      internalID: -261838252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_26
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 33
+        width: 5
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f21483b2bd4414d0f92841c1431f34ae
+      internalID: 1680562735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_27
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 37
+        width: 5
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d8c459b0216c43fba4a1a481966e0e0
+      internalID: -1492351752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_28
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 31
+        width: 30
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ade22103467c4fb7a1f93160789e1c0
+      internalID: -166461590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_29
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 23
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89e4d47f4309f46d0983f08a4ca4a485
+      internalID: 1301046744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_30
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 31
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc4731364b3a54c2499b462c2c7bf017
+      internalID: 1992257389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_31
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 25
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a870b49e6c02f4823a60f308ac6f45d0
+      internalID: -1497825759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_32
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 13
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bc4491406b1b4ead8daa1c1dd6a1a35
+      internalID: 1387629843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_33
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 13
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 266adce5866e3492eb122935333bfe32
+      internalID: 344376311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_34
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 5
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43dac61d24943441f8f2fcdecec88e94
+      internalID: 904158913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_35
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 25
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef87a79c119d74b8185fb32bcfa91f3a
+      internalID: -1841870082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubbleHurt-removebg-preview_36
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 3
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2bea25fddf05430faa565235c712896
+      internalID: 1035665129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      bubbleHurt-removebg-preview_0: -1936000586
+      bubbleHurt-removebg-preview_1: 1228539543
+      bubbleHurt-removebg-preview_10: -1485078398
+      bubbleHurt-removebg-preview_11: 1226936401
+      bubbleHurt-removebg-preview_12: 541241977
+      bubbleHurt-removebg-preview_13: 979873413
+      bubbleHurt-removebg-preview_14: 252890301
+      bubbleHurt-removebg-preview_15: 279222842
+      bubbleHurt-removebg-preview_16: 419594375
+      bubbleHurt-removebg-preview_17: 567821363
+      bubbleHurt-removebg-preview_18: -1709914602
+      bubbleHurt-removebg-preview_19: -1587192550
+      bubbleHurt-removebg-preview_2: 878979164
+      bubbleHurt-removebg-preview_20: -1619008147
+      bubbleHurt-removebg-preview_21: 180071413
+      bubbleHurt-removebg-preview_22: 2059461846
+      bubbleHurt-removebg-preview_23: -868548733
+      bubbleHurt-removebg-preview_24: 212526633
+      bubbleHurt-removebg-preview_25: -261838252
+      bubbleHurt-removebg-preview_26: 1680562735
+      bubbleHurt-removebg-preview_27: -1492351752
+      bubbleHurt-removebg-preview_28: -166461590
+      bubbleHurt-removebg-preview_29: 1301046744
+      bubbleHurt-removebg-preview_3: 203980494
+      bubbleHurt-removebg-preview_30: 1992257389
+      bubbleHurt-removebg-preview_31: -1497825759
+      bubbleHurt-removebg-preview_32: 1387629843
+      bubbleHurt-removebg-preview_33: 344376311
+      bubbleHurt-removebg-preview_34: 904158913
+      bubbleHurt-removebg-preview_35: -1841870082
+      bubbleHurt-removebg-preview_36: 1035665129
+      bubbleHurt-removebg-preview_4: 116717930
+      bubbleHurt-removebg-preview_5: 577935842
+      bubbleHurt-removebg-preview_6: 69052454
+      bubbleHurt-removebg-preview_7: 64955148
+      bubbleHurt-removebg-preview_8: -1802891051
+      bubbleHurt-removebg-preview_9: -409244478
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
