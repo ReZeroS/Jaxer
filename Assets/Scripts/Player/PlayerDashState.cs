@@ -30,7 +30,7 @@ public class PlayerDashState : PlayerState
     {
         base.Exit();
         player.skillManager.dashSkill.CloneOnArrival();
-        player.SetVelocity(0, rb.velocity.y);
+        player.SetVelocity(0, rb.linearVelocity.y);
         player.stat.MakeInvulnerable(false);
     }
 }

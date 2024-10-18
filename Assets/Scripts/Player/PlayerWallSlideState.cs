@@ -35,11 +35,11 @@ public class PlayerWallSlideState : PlayerState
         
         if (yInput < 0)
         {
-            rb.velocity = new Vector2(0, rb.velocity.y);
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         }
         else
         {
-            rb.velocity = new Vector2(0, rb.velocity.y * 0.7f);
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y * 0.7f);
         }
 
         

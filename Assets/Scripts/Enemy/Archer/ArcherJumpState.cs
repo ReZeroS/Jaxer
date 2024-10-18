@@ -13,7 +13,7 @@ public class ArcherJumpState : ArcherState
     {
         base.Enter();
         // jump back
-        enemyArcher.rb.velocity =
+        enemyArcher.rb.linearVelocity =
             new Vector2(enemyArcher.jumpVelocity.x * -enemyArcher.facingDir, enemyArcher.jumpVelocity.y);
     }
 
@@ -21,9 +21,9 @@ public class ArcherJumpState : ArcherState
     {
         base.Update();
         
-        enemyArcher.animator.SetFloat(YVelocity, enemyArcher.rb.velocity.y);
+        enemyArcher.animator.SetFloat(YVelocity, enemyArcher.rb.linearVelocity.y);
         
-        if (rb.velocity.y < 0 && enemyArcher.IsGroundDetected())
+        if (rb.linearVelocity.y < 0 && enemyArcher.IsGroundDetected())
         {
             stateMachine.ChangeState(enemyArcher.battleState);
         }

@@ -99,7 +99,7 @@ public class Entity : MonoBehaviour
     {
         isKnocked = true;
         if (knockedBackPower.x > 0 || knockedBackPower.y > 0) // this line makes freeze effect when get hit
-            rb.velocity = new Vector2(knockedBackPower.x * knockBackDir, knockedBackPower.y);
+            rb.linearVelocity = new Vector2(knockedBackPower.x * knockBackDir, knockedBackPower.y);
         yield return new WaitForSeconds(knockBackDuration);
         isKnocked = false;
         SetupZeroKnockBackPower();
@@ -115,7 +115,7 @@ public class Entity : MonoBehaviour
         {
             return;
         }
-        rb.velocity = new Vector2(0, 0);
+        rb.linearVelocity = new Vector2(0, 0);
     }
 
     public void SetVelocity(float xVelocity, float yVelocity)
@@ -124,7 +124,7 @@ public class Entity : MonoBehaviour
         {
             return;
         }
-        rb.velocity = new Vector2(xVelocity, yVelocity);
+        rb.linearVelocity = new Vector2(xVelocity, yVelocity);
         FlipController(xVelocity);
     }
     #endregion

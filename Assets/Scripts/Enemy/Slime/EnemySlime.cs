@@ -99,7 +99,7 @@ public class EnemySlime : Enemy
         Vector2 velocity = new Vector2(xVelocity * facingDir, yVelocity);
         
         isKnocked = true;
-        transform.GetComponent<Rigidbody2D>().velocity = velocity;
+        transform.GetComponent<Rigidbody2D>().linearVelocity = velocity;
         
         Invoke(nameof(CancelKnockback), 1.5f);
     }

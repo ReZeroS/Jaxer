@@ -38,7 +38,7 @@ public class PlayerState
         
         xInput = InputManager.instance.moveInput.x;
         yInput = InputManager.instance.moveInput.y;
-        player.animator.SetFloat("yVelocity", rb.velocity.y);
+        player.animator.SetFloat("yVelocity", rb.linearVelocity.y);
     }
 
     public virtual void Exit()

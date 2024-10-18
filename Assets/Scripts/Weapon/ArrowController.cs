@@ -25,7 +25,7 @@ public class ArrowController : MonoBehaviour
     {
         if (!canMove)
         {
-            rb.velocity = new Vector2(xVelocity, rb.velocity.y);
+            rb.linearVelocity = new Vector2(xVelocity, rb.linearVelocity.y);
         }
     }
 

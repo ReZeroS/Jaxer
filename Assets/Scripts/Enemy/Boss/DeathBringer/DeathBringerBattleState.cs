@@ -62,7 +62,7 @@ public class DeathBringerBattleState : DeathBringerState
         }
         
         
-        enemy.SetVelocity(enemy.moveSpeed*moveToBattleDir, rb.velocity.y);
+        enemy.SetVelocity(enemy.moveSpeed*moveToBattleDir, rb.linearVelocity.y);
     }
 
     public override void Exit()

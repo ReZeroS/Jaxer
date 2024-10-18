@@ -13,7 +13,7 @@ public class ArcherStunnedState : ArcherState
         enemyArcher.fx.RedColorBlinkFor(0, .1f);
 
         stateTimer = enemyArcher.stunnedDuration;
-        rb.velocity = new Vector2(-enemyArcher.facingDir * enemyArcher.stunnedDirection.x,
+        rb.linearVelocity = new Vector2(-enemyArcher.facingDir * enemyArcher.stunnedDirection.x,
             enemyArcher.stunnedDirection.y);
     }
 

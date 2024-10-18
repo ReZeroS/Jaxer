@@ -14,14 +14,14 @@ public class SlimeStunnedState : SlimeState
         enemySlime.fx.RedColorBlinkFor(0, .1f);
         
         stateTimer = enemySlime.stunnedDuration;
-        rb.velocity = new Vector2(-enemySlime.facingDir*enemySlime.stunnedDirection.x, enemySlime.stunnedDirection.y);
+        rb.linearVelocity = new Vector2(-enemySlime.facingDir*enemySlime.stunnedDirection.x, enemySlime.stunnedDirection.y);
     }
 
     public override void Update()
     {
         base.Update();
 
-        if (rb.velocity.y < 0.1f && enemySlime.IsGroundDetected())
+        if (rb.linearVelocity.y < 0.1f && enemySlime.IsGroundDetected())
         {
             enemySlime.fx.CancelColorFor(0);
             enemySlime.animator.SetTrigger(StunFold);

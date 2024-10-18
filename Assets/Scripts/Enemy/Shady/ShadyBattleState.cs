@@ -59,7 +59,7 @@ public class ShadyBattleState : ShadyState
             moveToBattleDir = -1;
         }
 
-        enemy.SetVelocity(enemy.moveSpeed * moveToBattleDir, rb.velocity.y);
+        enemy.SetVelocity(enemy.moveSpeed * moveToBattleDir, rb.linearVelocity.y);
     }
 
     public override void Exit()

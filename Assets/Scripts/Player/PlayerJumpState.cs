@@ -12,7 +12,7 @@ public class PlayerJumpState : PlayerState
     {
         base.Enter();
         // 空洞骑士信仰之跃时走这个，不能转向
-        rb.velocity = new Vector2(rb.velocity.x, player.jumpForce);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, player.jumpForce);
         // 这里后续看看
         // player.setVelocity(rb.velocity.x, player.jumpForce);
     }
@@ -21,7 +21,7 @@ public class PlayerJumpState : PlayerState
     {
         base.Update();
 
-        if (rb.velocity.y < 0)
+        if (rb.linearVelocity.y < 0)
         {
             stateMachine.ChangeState(player.playerAirState);
         }

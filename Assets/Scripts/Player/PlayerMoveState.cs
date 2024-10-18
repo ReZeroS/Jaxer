@@ -16,7 +16,7 @@ public class PlayerMoveState : PlayerGroundState
     public override void Update()
     {
         base.Update();
-        player.SetVelocity(calcSpeed(xInput), rb.velocity.y);
+        player.SetVelocity(calcSpeed(xInput), rb.linearVelocity.y);
         if (xInput == 0 || player.IsWallDetected()) {
             stateMachine.ChangeState(player.playerIdleState);
         }

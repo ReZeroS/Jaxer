@@ -26,7 +26,7 @@ public class PlayerCatchSwordState : PlayerState
             player.Flip();
         }
 
-        rb.velocity = new Vector2(player.swordReturnImpact * -player.facingDir, rb.velocity.y);
+        rb.linearVelocity = new Vector2(player.swordReturnImpact * -player.facingDir, rb.linearVelocity.y);
 
     }
 

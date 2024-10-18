@@ -1,4 +1,4 @@
-using Cinemachine;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class PlayerFx : EntityFx
@@ -46,7 +46,7 @@ public class PlayerFx : EntityFx
 
     private void ScreenShake(int facingDir, Vector3 shakePower)
     {
-        screenShakeSource.m_DefaultVelocity = new Vector3(shakePower.x * facingDir, shakePower.y) * shakeMultiplier;
+        screenShakeSource.DefaultVelocity = new Vector3(shakePower.x * facingDir, shakePower.y) * shakeMultiplier;
         screenShakeSource.GenerateImpulse();
     }
     

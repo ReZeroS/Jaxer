@@ -19,7 +19,7 @@ public class ItemObject : MonoBehaviour
     public void SetupItem(ItemData item, Vector2 vel)
     {
         itemData = item;
-        rb.velocity = vel;
+        rb.linearVelocity = vel;
         SetupVisuals();
     }
 
@@ -28,7 +28,7 @@ public class ItemObject : MonoBehaviour
     {
         if (!Inventory.instance.CanAddItem() && itemData.itemType == ItemType.Equipment)
         {
-            rb.velocity = new Vector2(0, 7);
+            rb.linearVelocity = new Vector2(0, 7);
             return;
         }
         
