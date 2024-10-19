@@ -48,6 +48,7 @@ public class Inventory : MonoBehaviour, ISaveManager
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {

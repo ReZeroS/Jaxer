@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour, ISaveManager
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
