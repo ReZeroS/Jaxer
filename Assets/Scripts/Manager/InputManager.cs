@@ -43,12 +43,10 @@ public class InputManager : MonoBehaviour
     private InputAction rightStick;
 
     #endregion
+
     
-    
-    
-    
-    public Vector2 moveInput { get; private set; }
-    public Vector2 rightStickInput { get; private set; }
+    public Vector2 moveInput => moveAction.ReadValue<Vector2>();
+    public Vector2 rightStickInput => rightStick.ReadValue<Vector2>();
     
     #region Input States
     public InputState leftShoulder { get; private set; }
@@ -74,7 +72,6 @@ public class InputManager : MonoBehaviour
         {
             instance = this;
         }
-
         playerInput = GetComponent<PlayerInput>();
         SetupInputActions();
         InitializeInputStates();
@@ -131,39 +128,8 @@ public class InputManager : MonoBehaviour
         west = new InputState(westAction);
         north = new InputState(northAction);
     }
-
-    private void Update()
-    {
-        UpdateInputs();
-    }
-
-    private void UpdateInputs()
-    {
-        // 左边部分
-        leftShoulder.Update();
-        leftTrigger.Update();
-        moveInput = moveAction.ReadValue<Vector2>();
-        padLeft.Update();
-        padRight.Update();
-        padUp.Update();
-        padDown.Update();
-        
-        // 中间部分
-        view.Update();
-        menu.Update();
-        exitMenu.Update();
-
-        // 右边部分
-        south.Update();
-        east.Update();
-        west.Update();
-        north.Update();
-        rightStickInput = rightStick.ReadValue<Vector2>();
-        rightShoulder.Update();
-        rightTrigger.Update();
-    }
-
-
+    
+    
     public void SwitchActionMap(InputMapType mapType)
     {
         if (currentInputMap == mapType) return;

@@ -277,7 +277,7 @@ public class SwordSkillController : MonoBehaviour
         canRotate = false;
         cd.enabled = false;
 
-        rb.isKinematic = true;
+        rb.bodyType = RigidbodyType2D.Kinematic;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
         if (isBouncing && enemyTargetList.Count > 0)
@@ -286,7 +286,7 @@ public class SwordSkillController : MonoBehaviour
         }
 
         // 插在敌人身上，跟随敌人
-        animator.SetBool("Rotate", false);
+        animator.SetBool(Rotate, false);
         transform.parent = collision.transform;
     }
 
