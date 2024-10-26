@@ -7588,7 +7588,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -14825,7 +14825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6924a1ba95ffb4069a28b60ee943c326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 2
+  cooldown: 1.5
   dashUnlockedButton: {fileID: 601706556}
   cloneOnDashUnlockedButton: {fileID: 1321983133}
   cloneOnArrivedUnlockedButton: {fileID: 409999603}
@@ -17122,7 +17122,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &4920159220789815326
 GameObject:
   m_ObjectHideFlags: 0

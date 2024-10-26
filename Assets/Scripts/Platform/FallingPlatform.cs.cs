@@ -22,10 +22,15 @@ public class FallingPlatform : MonoBehaviour
 
         if (collision.transform.CompareTag("Player"))
         {
-            falling = true;
-            Invoke(nameof(StartFall), fallDelay);
-            Invoke(nameof(DisablePlatform), fallDelay + destroyDelay);
-            Invoke(nameof(ResetPlatform), fallDelay + destroyDelay + respawnDelay);
+            // 确保从平台下面碰到不会触发
+            if (collision.transform.position.y > transform.position.y)
+            {
+                falling = true;
+                Invoke(nameof(StartFall), fallDelay);
+                Invoke(nameof(DisablePlatform), fallDelay + destroyDelay);
+                Invoke(nameof(ResetPlatform), fallDelay + destroyDelay + respawnDelay);
+            }
+
         }
     }
 
