@@ -23,6 +23,15 @@ public class Player : Entity
     public float dashDuration = 1.5f;
     public float dashDir { get; private set; }
     
+    
+    
+    [Header("Jump info")]
+    [SerializeField] private float dropDelay = 0.5f;
+
+
+    public bool canDropDown { get; private set; } = true;
+    
+
 
     public SkillManager skillManager { get; private set; }
     public GameObject sword { get; private set; }
@@ -34,7 +43,10 @@ public class Player : Entity
     public PlayerIdleState playerIdleState { get; private set; }
     public PlayerMoveState playerMoveState { get; private set; }
     public PlayerJumpState playerJumpState { get; private set; }
-    public PlayerAirState playerAirState { get; private set; }
+
+    public PlayerSwimState playerSwimState { get; private set; }
+
+    public PlayerFallingState playerFallingState { get; private set; }
     
     public PlayerWallSlideState playerWallSlideState { get; private set; }
     public PlayerWallJumpState playerWallJumpState { get; private set; }
@@ -59,7 +71,8 @@ public class Player : Entity
         playerIdleState = new PlayerIdleState(stateMachine, this, "Idle");
         playerMoveState = new PlayerMoveState(stateMachine, this, "Move");
         playerJumpState = new PlayerJumpState(stateMachine, this, "Jump");
-        playerAirState = new PlayerAirState(stateMachine, this, "Jump");
+        playerSwimState = new PlayerSwimState(stateMachine, this, "Swim");
+        playerFallingState = new PlayerFallingState(stateMachine, this, "Jump");
         playerWallJumpState = new PlayerWallJumpState(stateMachine, this, "Jump");
         playerWallSlideState = new PlayerWallSlideState(stateMachine, this, "WallSlide");
         playerDashState = new PlayerDashState(stateMachine, this, "Dash");
@@ -190,6 +203,29 @@ public class Player : Entity
         base.Die();
         stateMachine.ChangeState(deathState);
     }
-    
 
+
+    public void StartDropThroughPlatform()
+    {
+        StartCoroutine(DropThroughPlatform());
+    }
+    
+    
+    IEnumerator DropThroughPlatform()
+    {
+        canDropDown = false; // 防止连续下落
+        
+        
+        // todo 播放音效和动画
+        
+        int platformLayer = LayerMask.NameToLayer("Platform");
+        Physics2D.IgnoreLayerCollision(gameObject.layer, platformLayer, true);
+
+        yield return new WaitForSeconds(dropDelay);
+
+        Physics2D.IgnoreLayerCollision(gameObject.layer, platformLayer, false);
+        canDropDown = true;
+    }
+
+    
 }

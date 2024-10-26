@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Castle.unity
     guid: 2cc0ae0f7370c409f9159751f83878f7
+  - enabled: 1
+    path: Assets/Scenes/ForgivenForest.unity
+    guid: de18037f959f64d9884300b4cff5d17f
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

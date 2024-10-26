@@ -22,6 +22,17 @@ public class SceneTransitionManager : MonoBehaviour
         }
     }
     
+    // Start is called before the first frame update
+    void Start()
+    {
+        if (IsSceneLoaded(startSceneName))
+        {
+            Debug.Log("Start scene has loaded " + startSceneName);
+            return;
+        }
+        StartCoroutine(loadSceneAtActive(startSceneName));
+    }
+
     
     private void OnEnable()
     {
@@ -59,12 +70,13 @@ public class SceneTransitionManager : MonoBehaviour
         EventHandleManager.CallAfterSceneLoadedEvent();
  
     }
-    // Start is called before the first frame update
-    void Start()
+   
+    
+    private bool IsSceneLoaded(string name)
     {
-        StartCoroutine(loadSceneAtActive(startSceneName));
+        Scene scene = SceneManager.GetSceneByName(name);
+        return scene.isLoaded;
     }
-
     
     
     

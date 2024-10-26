@@ -17,9 +17,9 @@ public class Entity : MonoBehaviour
     [FormerlySerializedAs("knockedBackpower")]
     [FormerlySerializedAs("knockedDir")]
     [Header("Knocked info")] 
-    [SerializeField] protected Vector2 knockedBackPower = new Vector2(7, 12);
+    [SerializeField] protected Vector2 knockedBackPower = new(7, 12);
     [SerializeField] protected float knockBackDuration = 0.7f;
-    [SerializeField] protected Vector2 knockBackOffset = new Vector2(0.5f, 2);
+    [SerializeField] protected Vector2 knockBackOffset = new(0.5f, 2);
     protected bool isKnocked;
     public int knockBackDir { get; private set; }
     
@@ -29,7 +29,9 @@ public class Entity : MonoBehaviour
     [SerializeField] protected Transform wallCheck;
     [SerializeField] protected float wallCheckDistance = 0.8f;
     [SerializeField] protected LayerMask whatIsGround;
+    [SerializeField] protected LayerMask whatIsPlatform;
     [SerializeField] protected LayerMask whatIsWall;
+    [SerializeField] protected LayerMask whatIsWater;
     public Transform attackCheck;
     public float attackRadius = 1.2f;
 
@@ -131,7 +133,16 @@ public class Entity : MonoBehaviour
     
     
     #region Collision
-    public virtual bool IsGroundDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
+    public virtual bool IsGroundDetected() => 
+        Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround)
+        || Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsPlatform)
+
+        ;
+    
+    public virtual bool IsWaterDetected()
+    {
+        return Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsWater);
+    }
 
     public virtual bool IsWallDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir, wallCheckDistance, whatIsWall);
     

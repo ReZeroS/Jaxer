@@ -23,7 +23,6 @@ public class EventHandleManager
 
     public static void CallAfterSceneLoadedEvent()
     {
-        Debug.Log("call after scene load event");
         AfterSceneLoadedEvent?.Invoke();
     }
 

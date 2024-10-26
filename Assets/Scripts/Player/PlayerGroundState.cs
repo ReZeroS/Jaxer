@@ -1,69 +1,116 @@
 public class PlayerGroundState : PlayerState
 {
-    public PlayerGroundState(PlayerStateMachine stateMachine, Player player, string animBoolName) : base(stateMachine, player, animBoolName)
+    
+    // 定义状态转换检查的优先级顺序
+    private readonly StateTransitionCheck[] stateTransitions;
+
+    protected PlayerGroundState(PlayerStateMachine stateMachine, Player player, string animBoolName) 
+        : base(stateMachine, player, animBoolName)
     {
+        // 按优先级顺序初始化状态转换检查
+        stateTransitions = new[]
+        {
+            new StateTransitionCheck(CheckDropDown, () => player.playerFallingState),
+            new StateTransitionCheck(CheckBlackholeSkill, () => player.blackholeState),
+            new StateTransitionCheck(CheckSwordSkill, () => player.animSwordState),
+            new StateTransitionCheck(CheckCounterAttack, () => player.couterAttackState),
+            new StateTransitionCheck(CheckPrimaryAttack, () => player.primaryAttackState),
+            new StateTransitionCheck(CheckFalling, () => player.playerFallingState),
+            new StateTransitionCheck(CheckJump, () => player.playerJumpState)
+        };
     }
 
-    public override void Enter()
-    {
-        base.Enter();
-    }
+    public override void Enter() => base.Enter();
+
+    public override void Exit() => base.Exit();
 
     public override void Update()
     {
         base.Update();
-
-        if (InputManager.instance.padDown.justPressed && player.skillManager.blackholeSkill.blackholeUnlocked)
+        
+        foreach (var transition in stateTransitions)
         {
-            if (player.skillManager.blackholeSkill.IsInCoolDown())
-            {
+            if (transition.TryTransition(stateMachine))
                 return;
-            }
-            stateMachine.ChangeState(player.blackholeState);
         }
+    }
 
+    #region State Transition Checks
+    private bool CheckDropDown()
+    {
+        if (!ShouldDropDown()) return false;
         
-        
-        if (InputManager.instance.rightTrigger.justPressed && HasNoSword() && player.skillManager.swordSkill.swordUnlocked)
-        {
-            stateMachine.ChangeState(player.animSwordState);
-        }
+        player.StartDropThroughPlatform();
+        return true;
+    }
 
-        if (InputManager.instance.north.beingHeld && player.skillManager.parrySkill.parryUnlocked)
-        {
-            stateMachine.ChangeState(player.couterAttackState);
-        }
+    private bool CheckBlackholeSkill()
+    {
+        if (!CanUseBlackholeSkill()) return false;
         
-        if (InputManager.instance.west.justPressed)
-        {
-            stateMachine.ChangeState(player.primaryAttackState);
-        }
+        return !player.skillManager.blackholeSkill.IsInCoolDown();
+    }
+
+    private bool CheckSwordSkill()
+    {
+        if (!CanUseSwordSkill()) return false;
         
-        if (!player.IsGroundDetected())
-        {
-           stateMachine.ChangeState(player.playerAirState); 
-        }
-        
-        if (InputManager.instance.south.justPressed && player.IsGroundDetected())
-        {
-            stateMachine.ChangeState(player.playerJumpState);
-        }
+        return HasNoSword();
+    }
+
+    private bool CheckCounterAttack()
+    {
+        return CanUseCounterAttack();
+    }
+
+    private bool CheckPrimaryAttack()
+    {
+        return InputManager.instance.west.justPressed;
+    }
+
+    private bool CheckFalling()
+    {
+        return !player.IsGroundDetected();
+    }
+
+    private bool CheckJump()
+    {
+        return InputManager.instance.south.justPressed && player.IsGroundDetected();
+    }
+    #endregion
+
+    #region Condition Checks
+    private bool ShouldDropDown()
+    {
+        return player.canDropDown && 
+               InputManager.instance.moveInput.y < 0 && 
+               InputManager.instance.south.justPressed;
+    }
+
+    private bool CanUseBlackholeSkill()
+    {
+        return InputManager.instance.padDown.justPressed && 
+               player.skillManager.blackholeSkill.blackholeUnlocked;
+    }
+
+    private bool CanUseSwordSkill()
+    {
+        return InputManager.instance.rightTrigger.justPressed && 
+               player.skillManager.swordSkill.swordUnlocked;
+    }
+
+    private bool CanUseCounterAttack()
+    {
+        return InputManager.instance.north.beingHeld && 
+               player.skillManager.parrySkill.parryUnlocked;
     }
 
     private bool HasNoSword()
     {
-        if (!player.sword)
-        {
-            return true;
-        }
+        if (!player.sword) return true;
+        
         player.sword.GetComponent<SwordSkillController>().ReturnSword();
         return false;
     }
-    
-    
-    
-    public override void Exit()
-    {
-        base.Exit();
-    }
+    #endregion
 }

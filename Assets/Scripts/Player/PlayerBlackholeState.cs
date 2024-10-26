@@ -53,7 +53,7 @@ public class PlayerBlackholeState : PlayerState
 
         if (player.skillManager.blackholeSkill.SkillCompleted())
         {
-            stateMachine.ChangeState(player.playerAirState);
+            stateMachine.ChangeState(player.playerFallingState);
         }
         
         

@@ -13821,9 +13821,15 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  whatIsPlatform:
+    serializedVersion: 2
+    m_Bits: 0
   whatIsWall:
     serializedVersion: 2
     m_Bits: 8
+  whatIsWater:
+    serializedVersion: 2
+    m_Bits: 0
   attackCheck: {fileID: 624173004}
   attackRadius: 1.2
   whatIsPlayer:
@@ -15174,7 +15180,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -587848229
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -24905,7 +24911,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -587848229
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -25030,7 +25036,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -587848229
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -29831,9 +29837,15 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  whatIsPlatform:
+    serializedVersion: 2
+    m_Bits: 0
   whatIsWall:
     serializedVersion: 2
     m_Bits: 64
+  whatIsWater:
+    serializedVersion: 2
+    m_Bits: 0
   attackCheck: {fileID: 2107311754}
   attackRadius: 1.2
   whatIsPlayer:

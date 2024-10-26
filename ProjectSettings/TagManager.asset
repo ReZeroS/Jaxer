@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -16,7 +16,7 @@ TagManager:
   - Enemy
   - Sword
   - Item
-  - 
+  - Platform
   - 
   - 
   - 
@@ -59,6 +59,11 @@ TagManager:
   - name: Player
     uniqueID: 1877859097
     locked: 0
+  - name: Water
+    uniqueID: 1205237553
+    locked: 0
   - name: FX
     uniqueID: 3707119067
     locked: 0
+  m_RenderingLayers:
+  - Default

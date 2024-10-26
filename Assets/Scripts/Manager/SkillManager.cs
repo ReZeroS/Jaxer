@@ -25,7 +25,6 @@ public class SkillManager : MonoBehaviour
         else
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
     }
 

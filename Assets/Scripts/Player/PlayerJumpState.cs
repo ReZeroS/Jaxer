@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public class PlayerJumpState : PlayerState
+public class PlayerJumpState : PlayerOnAirState
 {
 
     public PlayerJumpState(PlayerStateMachine stateMachine, Player player, string animBoolName) : base(stateMachine, player, animBoolName)
@@ -12,9 +10,9 @@ public class PlayerJumpState : PlayerState
     {
         base.Enter();
         // 空洞骑士信仰之跃时走这个，不能转向
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, player.jumpForce);
+        // rb.linearVelocity = new Vector2(rb.linearVelocity.x, player.jumpForce);
         // 这里后续看看
-        // player.setVelocity(rb.velocity.x, player.jumpForce);
+        player.SetVelocity(rb.linearVelocity.x, player.jumpForce);
     }
 
     public override void Update()
@@ -23,7 +21,7 @@ public class PlayerJumpState : PlayerState
 
         if (rb.linearVelocity.y < 0)
         {
-            stateMachine.ChangeState(player.playerAirState);
+            stateMachine.ChangeState(player.playerFallingState);
         }
         
     }
