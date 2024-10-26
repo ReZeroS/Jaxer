@@ -1,3 +1,5 @@
+using Sound.SoundManager;
+
 public class EnemySkeletonIdleState : EnemySkeletonGroundState
 {
 
@@ -25,7 +27,8 @@ public class EnemySkeletonIdleState : EnemySkeletonGroundState
     public override void Exit()
     {
         base.Exit();
-        AudioManager.instance.PlaySFX(14, enemy.transform);
+        //todo 
+        SoundManager.PlaySound(SoundType.SWIM);
     }
 
 

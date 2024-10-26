@@ -3,14 +3,16 @@ using UnityEngine;
 public class AreaSound : MonoBehaviour
 {
 
-    [SerializeField] private int areaSoundIndex;
+    [SerializeField] private string areaSoundName;
 
+    private string lastTrackName;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.GetComponent<Player>())
         {
-            AudioManager.instance.FadeInSfxTime(areaSoundIndex, 1.5f);
+            lastTrackName = MusicManager.Instance.currentTrackName;
+            MusicManager.Instance.PlayMusic(areaSoundName);
         }
     }
     
@@ -18,7 +20,7 @@ public class AreaSound : MonoBehaviour
     {
         if (other.GetComponent<Player>())
         {
-            AudioManager.instance?.FadeOutSfxTime(areaSoundIndex, 2f);
+            MusicManager.Instance.PlayMusic(lastTrackName);
         }
     }
     

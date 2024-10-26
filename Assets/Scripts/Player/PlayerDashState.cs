@@ -1,3 +1,5 @@
+using Sound.SoundManager;
+
 public class PlayerDashState : PlayerState
 {
 
@@ -12,6 +14,8 @@ public class PlayerDashState : PlayerState
         stateTimer = player.dashDuration;
         // todo make invulnerable as a skill
         player.stat.MakeInvulnerable(true);
+        //
+        SoundManager.PlaySound(SoundType.DASH);
     }
 
     public override void Update()

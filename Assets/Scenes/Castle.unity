@@ -5403,9 +5403,83 @@ CompositeCollider2D:
   m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 190015187}
+    m_ColliderPaths:
+    - - X: -50000000
+        Y: 20000000
+      - X: 30000000
+        Y: 20000000
+      - X: 30000000
+        Y: 30000000
+      - X: -74062496
+        Y: 30000000
+      - X: -80000000
+        Y: 22812500
+      - X: -80000000
+        Y: 20000000
+      - X: -84062496
+        Y: 20000000
+      - X: -90000000
+        Y: 12812500
+      - X: -90000000
+        Y: 10000000
+      - X: -94062496
+        Y: 10000000
+      - X: -100000000
+        Y: 2812500
+      - X: -100000000
+        Y: 0
+      - X: -104062496
+        Y: 0
+      - X: -110000000
+        Y: -7187500
+      - X: -110000000
+        Y: -10000000
+      - X: -114062496
+        Y: -10000000
+      - X: -120000000
+        Y: -17187500
+      - X: -120000000
+        Y: -20000000
+      - X: -124062496
+        Y: -20000000
+      - X: -130000000
+        Y: -27187500
+      - X: -130000000
+        Y: -30000000
+      - X: -250000000
+        Y: -30000000
+      - X: -250000000
+        Y: -40000000
+      - X: -50000000
+        Y: -40000000
   m_CompositePaths:
-    m_Paths: []
+    m_Paths:
+    - - {x: -5.005858, y: -4}
+      - {x: -4.994142, y: 2}
+      - {x: 3, y: 2.005858}
+      - {x: 2.994142, y: 3}
+      - {x: -7.407824, y: 2.9980936}
+      - {x: -8, y: 2.2793975}
+      - {x: -8.005857, y: 2}
+      - {x: -8.4078245, y: 1.9980936}
+      - {x: -9, y: 1.2793974}
+      - {x: -9.005857, y: 1}
+      - {x: -9.4078245, y: 0.9980935}
+      - {x: -10, y: 0.2793974}
+      - {x: -10.005857, y: 0}
+      - {x: -10.4078245, y: -0.0019065}
+      - {x: -11, y: -0.72060263}
+      - {x: -11.005857, y: -1}
+      - {x: -11.4078245, y: -1.0019065}
+      - {x: -12, y: -1.7206026}
+      - {x: -12.005857, y: -2}
+      - {x: -12.4078245, y: -2.0019064}
+      - {x: -13, y: -2.7206028}
+      - {x: -13.005857, y: -3}
+      - {x: -25, y: -3.005858}
+      - {x: -24.994143, y: -4}
   m_VertexDistance: 0.01
   m_OffsetDistance: 0.01
   m_UseDelaunayMesh: 1
@@ -5469,7 +5543,7 @@ TilemapCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
@@ -6826,7 +6900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7705356de494f7b9b424611ab7da8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaSoundIndex: 30
+  areaSoundName: Wind
 --- !u!1 &552457187
 GameObject:
   m_ObjectHideFlags: 0
@@ -19209,7 +19283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adad0e7a898a84862968a366511c47cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallDelay: 1
+  fallDelay: 2
   destroyDelay: 2
   respawnDelay: 1
   rb: {fileID: 2093137274}

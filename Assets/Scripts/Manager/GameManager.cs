@@ -24,11 +24,6 @@ public class GameManager : MonoBehaviour, ISaveManager
     }
     
     
-    
-
-    
-    
-    
     public void RestartGame()
     {
         Scene scene = SceneManager.GetActiveScene();

@@ -1,3 +1,4 @@
+using Sound.SoundManager;
 using UnityEngine;
 
 public class PlayerAnimationTrigger : MonoBehaviour
@@ -11,7 +12,7 @@ public class PlayerAnimationTrigger : MonoBehaviour
 
     private void AttackTrigger()
     {
-        AudioManager.instance.PlaySFX(2);
+        SoundManager.PlaySound(SoundType.LIGHT_ATTACK);
 
         Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackRadius);
         foreach (var hit in collider2Ds)

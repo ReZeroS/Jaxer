@@ -1,3 +1,4 @@
+using Sound.SoundManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -39,6 +40,7 @@ public class ParrySkill : Skill
 
       if (parryRestoreUnlocked)
       {
+         SoundManager.PlaySound(SoundType.PARRY);
          var restoreHealth = restorePercentage * player.stat.GetMaxHealthVal();
          player.stat.IncreaseHealthBy((int)restoreHealth);
       }

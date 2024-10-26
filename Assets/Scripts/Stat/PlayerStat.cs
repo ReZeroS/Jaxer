@@ -1,3 +1,4 @@
+using Sound.SoundManager;
 using UnityEngine;
 
 public class PlayerStat : CharacterStat
@@ -37,7 +38,8 @@ public class PlayerStat : CharacterStat
         {
             player.SetKnockBackPower(new Vector2(6, 10));
             player.fx.ScreenShakeForHighDamageImpact(player.facingDir);
-            AudioManager.instance.PlaySFX(34);
+            // 暴击重声
+            SoundManager.PlaySound(SoundType.HEAVY_ATTACK);
         }
         
         ItemDataEquipment curEquipment = Inventory.instance.GetEquipment(EquipmentType.Armor);

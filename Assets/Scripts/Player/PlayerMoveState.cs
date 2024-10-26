@@ -1,3 +1,5 @@
+using Sound.SoundManager;
+
 public class PlayerMoveState : PlayerGroundState
 {
 
@@ -10,7 +12,8 @@ public class PlayerMoveState : PlayerGroundState
     public override void Enter()
     {
         base.Enter(); 
-        AudioManager.instance.PlaySFX(14);
+        // AudioManager.instance.PlaySFX(14);
+        SoundManager.PlaySound(SoundType.MOVEMENT);
     }
 
     public override void Update()
@@ -25,7 +28,7 @@ public class PlayerMoveState : PlayerGroundState
     public override void Exit()
     {
         base.Exit();
-        AudioManager.instance.StopSFX(14);
+        SoundManager.StopSound();
     }
 
 

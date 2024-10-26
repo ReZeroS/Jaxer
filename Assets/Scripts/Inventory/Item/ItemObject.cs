@@ -1,3 +1,4 @@
+using Sound.SoundManager;
 using UnityEngine;
 
 public class ItemObject : MonoBehaviour
@@ -32,7 +33,7 @@ public class ItemObject : MonoBehaviour
             return;
         }
         
-        AudioManager.instance.PlaySFX(18, transform);
+        SoundManager.PlaySound3d(SoundType.PICKUP);
         Inventory.instance.AddItem(itemData);
         Destroy(gameObject);
     }

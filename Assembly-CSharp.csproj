@@ -63,6 +63,7 @@
     <Compile Include="Assets/Scripts/Enemy/Slime/SlimeDeadState.cs" />
     <Compile Include="Assets/Scripts/UI/UIItemSlot.cs" />
     <Compile Include="Assets/Scripts/Enemy/Archer/ArcherJumpState.cs" />
+    <Compile Include="Assets/Scripts/Sound/SoundsSO.cs" />
     <Compile Include="Assets/Scripts/Skill/Skill/Skill.cs" />
     <Compile Include="Assets/Scripts/Enemy/Shady/ShadyState.cs" />
     <Compile Include="Assets/Scripts/Base/Entity.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Assets/Scripts/Player/PlayerWallJumpState.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerBlackholeState.cs" />
     <Compile Include="Assets/Scripts/Skill/Skill/CloneSkill.cs" />
+    <Compile Include="Assets/Scripts/Sound/MusicLibrary.cs" />
     <Compile Include="Assets/Scripts/Enemy/Shady/ShadyStunnedState.cs" />
     <Compile Include="Assets/Scripts/Backup/rpg-battle-system.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerDeathState.cs" />
@@ -135,9 +137,11 @@
     <Compile Include="Assets/Scripts/Player/PlayerCatchSwordState.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerState.cs" />
     <Compile Include="Assets/Scripts/LoadAndSave/SaveManager.cs" />
+    <Compile Include="Assets/Scripts/Manager/DialogueManager.cs" />
     <Compile Include="Assets/Scripts/Enemy/Slime/SlimeState.cs" />
     <Compile Include="Assets/Scripts/Skill/Skill/CrystalSkill.cs" />
     <Compile Include="Assets/Scripts/Enemy/Archer/ArcherStunnedState.cs" />
+    <Compile Include="Assets/Scripts/Trigger/DialogueTrigger.cs" />
     <Compile Include="Assets/Scripts/UI/UIStatTooltip.cs" />
     <Compile Include="Assets/Scripts/Inventory/Effects/HealEffects.cs" />
     <Compile Include="Assets/Scripts/Inventory/Effects/BuffEffects.cs" />
@@ -148,6 +152,7 @@
     <Compile Include="Assets/Scripts/Skill/Skill/DashSkill.cs" />
     <Compile Include="Assets/Scripts/Fx/PlayerFx.cs" />
     <Compile Include="Assets/Scripts/Skill/SkillController/Player/BlackholeHotkeyController.cs" />
+    <Compile Include="Assets/Scripts/Sound/SoundManager.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerPrimaryAttackState.cs" />
     <Compile Include="Assets/Scripts/Scene/SceneTransitionManager.cs" />
     <Compile Include="Assets/Scripts/Inventory/Effects/IceAndFireEffects.cs" />
@@ -169,12 +174,12 @@
     <Compile Include="Assets/Scripts/Player/PlayerDropDown.cs" />
     <Compile Include="Assets/Scripts/Manager/DeadZone.cs" />
     <Compile Include="Assets/Scripts/Enemy/Archer/ArcherAttackState.cs" />
-    <Compile Include="Assets/Scripts/Manager/AudioManager.cs" />
     <Compile Include="Assets/Scripts/Scene/Background/TileMapCleaner.cs" />
     <Compile Include="Assets/Scripts/Inventory/PlayerItemDrop.cs" />
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeletonBattleState.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerFallingState.cs" />
     <Compile Include="Assets/2DWater/Code/Water.cs" />
+    <Compile Include="Assets/Scripts/Manager/MusicManager.cs" />
     <Compile Include="Assets/Scripts/Scene/Background/ParallaxBackground.cs" />
     <Compile Include="Assets/Scripts/Trigger/EnemyDeathBringerTrigger.cs" />
     <Compile Include="Assets/Scripts/Skill/SkillController/Player/CloneSkillController.cs" />
@@ -185,6 +190,7 @@
     <Compile Include="Assets/Scripts/UI/UIEquipmentSlot.cs" />
     <Compile Include="Assets/Scripts/UI/UIItemtooltip.cs" />
     <Compile Include="Assets/Scripts/LoadAndSave/ISaveManager.cs" />
+    <Compile Include="Assets/Scripts/Sound/SoundValues.cs" />
     <Compile Include="Assets/Scripts/Enemy/BubbleDragon/BubbleDragonStunnedState.cs" />
     <Compile Include="Assets/Scripts/Inventory/Effects/ThunderStrikeEffects.cs" />
     <Compile Include="Assets/Scripts/Skill/Skill/BlackholeSkill.cs" />

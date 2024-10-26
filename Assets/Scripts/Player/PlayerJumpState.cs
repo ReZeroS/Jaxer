@@ -1,3 +1,5 @@
+using Sound.SoundManager;
+
 public class PlayerJumpState : PlayerOnAirState
 {
 
@@ -13,6 +15,8 @@ public class PlayerJumpState : PlayerOnAirState
         // rb.linearVelocity = new Vector2(rb.linearVelocity.x, player.jumpForce);
         // 这里后续看看
         player.SetVelocity(rb.linearVelocity.x, player.jumpForce);
+        
+        SoundManager.PlaySound(SoundType.JUMP);
     }
 
     public override void Update()
