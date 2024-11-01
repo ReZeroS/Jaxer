@@ -13,9 +13,9 @@ public class PlayerIdleState : PlayerGroundState{
         rb.linearVelocity = new Vector2(0, 0);
     }
 
-    public override void Update()
+    public override void LogicUpdate()
     {
-        base.Update();
+        base.LogicUpdate();
         if (Mathf.Sign(xInput) == Mathf.Sign(player.facingDir) && player.IsWallDetected())
         {
             return;

@@ -13,9 +13,9 @@ public class PlayerSwimState : PlayerOnAirState
         SoundManager.PlaySound(SoundType.SWIM);
     }
 
-    public override void Update()
+    public override void LogicUpdate()
     {
-        base.Update();
+        base.LogicUpdate();
         if (InputManager.instance.south.justPressed && player.IsWaterDetected())
         {
             stateMachine.ChangeState(player.playerJumpState);   

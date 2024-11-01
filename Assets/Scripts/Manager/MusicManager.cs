@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MusicManager : MonoBehaviour
 {
@@ -25,9 +27,32 @@ public class MusicManager : MonoBehaviour
 		}
 	}
 
+	private void OnEnable()
+	{
+		// 订阅场景加载事件
+		SceneManager.sceneLoaded += OnSceneLoaded;
+	}
+
+	private void OnDisable()
+	{
+		// 取消订阅场景加载事件，避免内存泄漏
+		SceneManager.sceneLoaded -= OnSceneLoaded;
+	}
+
+	private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+	{
+		string sceneName = scene.name;
+		Debug.Log("Play scene music " + sceneName);
+		PlayMusic(sceneName);
+	}
+
 
 	public void PlayMusic(string trackName, float fadeDuration = 0.5f)
 	{
+		if (string.Equals(trackName, "Persistence", StringComparison.Ordinal))
+		{
+			return;
+		}
 		StartCoroutine(AnimateMusicCrossFade(trackName, fadeDuration));
 	}
 

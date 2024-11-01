@@ -136,6 +136,7 @@
     <Compile Include="Assets/Scripts/LoadAndSave/FileDataHandler.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerCatchSwordState.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerState.cs" />
+    <Compile Include="Assets/Scripts/Player/PlayerCoyoteTimeState.cs" />
     <Compile Include="Assets/Scripts/LoadAndSave/SaveManager.cs" />
     <Compile Include="Assets/Scripts/Manager/DialogueManager.cs" />
     <Compile Include="Assets/Scripts/Enemy/Slime/SlimeState.cs" />

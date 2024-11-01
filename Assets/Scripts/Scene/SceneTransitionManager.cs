@@ -22,6 +22,16 @@ public class SceneTransitionManager : MonoBehaviour
         }
     }
     
+    private void OnEnable()
+    {
+        EventHandleManager.TransitionEvent += OnTransitionEvent;
+    }
+    
+    private void OnTransitionEvent(string sceneToGo, Vector3 teleportPos)
+    {
+        StartCoroutine(Transition(sceneToGo, teleportPos));
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -30,30 +40,16 @@ public class SceneTransitionManager : MonoBehaviour
             Debug.Log("Start scene has loaded " + startSceneName);
             return;
         }
-        StartCoroutine(loadSceneAtActive(startSceneName));
+        StartCoroutine(LoadSceneAtActive(startSceneName));
     }
 
     
-    private void OnEnable()
-    {
-        EventHandleManager.TransitionEvent += OnTransitionEvent;
-    }
 
-    private void OnDisable()
-    {
-        EventHandleManager.TransitionEvent -= OnTransitionEvent; 
-    }
-
-    private void OnTransitionEvent(string sceneToGo, Vector3 teleportPos)
-    {
-        StartCoroutine(Transition(sceneToGo, teleportPos));
-    }
-
-    private IEnumerator loadSceneAtActive(string sceneName)
+    private IEnumerator LoadSceneAtActive(string sceneName)
     {
         yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
-        EventHandleManager.CallAfterSceneLoadedEvent();
+        EventHandleManager.CallAfterSceneLoadedEvent(sceneName);
     }
 
 
@@ -63,11 +59,11 @@ public class SceneTransitionManager : MonoBehaviour
             
         yield return SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
 
-        yield return loadSceneAtActive(sceneName); 
+        yield return LoadSceneAtActive(sceneName); 
             
         EventHandleManager.CallMovePosition(position);
 
-        EventHandleManager.CallAfterSceneLoadedEvent();
+        EventHandleManager.CallAfterSceneLoadedEvent(sceneName);
  
     }
    
@@ -79,5 +75,10 @@ public class SceneTransitionManager : MonoBehaviour
     }
     
     
+
+    private void OnDisable()
+    {
+        EventHandleManager.TransitionEvent -= OnTransitionEvent; 
+    }
     
 }

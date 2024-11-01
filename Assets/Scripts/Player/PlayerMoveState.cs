@@ -16,9 +16,9 @@ public class PlayerMoveState : PlayerGroundState
         SoundManager.PlaySound(SoundType.MOVEMENT);
     }
 
-    public override void Update()
+    public override void LogicUpdate()
     {
-        base.Update();
+        base.LogicUpdate();
         player.SetVelocity(calcSpeed(xInput), rb.linearVelocity.y);
         if (xInput == 0 || player.IsWallDetected()) {
             stateMachine.ChangeState(player.playerIdleState);

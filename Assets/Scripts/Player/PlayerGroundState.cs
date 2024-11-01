@@ -15,18 +15,24 @@ public class PlayerGroundState : PlayerState
             new StateTransitionCheck(CheckSwordSkill, () => player.animSwordState),
             new StateTransitionCheck(CheckCounterAttack, () => player.couterAttackState),
             new StateTransitionCheck(CheckPrimaryAttack, () => player.primaryAttackState),
+            // 优先进入土狼时间？
             new StateTransitionCheck(CheckFalling, () => player.playerFallingState),
             new StateTransitionCheck(CheckJump, () => player.playerJumpState)
         };
     }
 
-    public override void Enter() => base.Enter();
+    public override void Enter()
+    {
+        base.Enter();
+        player.playerJumpState.ResetAmountOfJumpsLeft();
+
+    }
 
     public override void Exit() => base.Exit();
 
-    public override void Update()
+    public override void LogicUpdate()
     {
-        base.Update();
+        base.LogicUpdate();
         
         foreach (var transition in stateTransitions)
         {
@@ -75,7 +81,9 @@ public class PlayerGroundState : PlayerState
 
     private bool CheckJump()
     {
-        return InputManager.instance.south.justPressed && player.IsGroundDetected();
+        return InputManager.instance.south.justPressed 
+               && player.IsGroundDetected() 
+               && player.playerJumpState.CanJump();
     }
     #endregion
 

@@ -37,9 +37,9 @@ public class PlayerPrimaryAttackState : PlayerState
         stateTimer = 0.1f;
     }
 
-    public override void Update()
+    public override void LogicUpdate()
     {
-        base.Update();
+        base.LogicUpdate();
         if (stateTimer < 0)
         {
             rb.linearVelocity = new Vector2(0, 0);

@@ -23,6 +23,10 @@ namespace Sound.SoundManager
 
         public static void PlaySound(SoundType sound, float volume = 1)
         {
+            if (!instance)
+            {
+                return;
+            }
             SoundList soundList = instance.SO.sounds[(int)sound];
             AudioClip[] clips = soundList.sounds;
             AudioClip randomClip = clips[UnityEngine.Random.Range(0, clips.Length)];

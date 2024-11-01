@@ -46,6 +46,8 @@ public class InputManager : MonoBehaviour
 
     
     public Vector2 moveInput => moveAction.ReadValue<Vector2>();
+    public bool isMove => moveInput.x != 0;
+
     public Vector2 rightStickInput => rightStick.ReadValue<Vector2>();
     
     #region Input States

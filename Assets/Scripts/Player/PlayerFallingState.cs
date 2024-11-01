@@ -9,9 +9,9 @@ public class PlayerFallingState : PlayerOnAirState
         base.Enter();
     }
 
-    public override void Update()
+    public override void LogicUpdate()
     {
-        base.Update();
+        base.LogicUpdate();
         if (player.IsWaterDetected())
         {
             stateMachine.ChangeState(player.playerSwimState);

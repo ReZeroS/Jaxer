@@ -12,9 +12,9 @@ public class PlayerWallSlideState : PlayerState
         base.Enter();
     }
 
-    public override void Update()
+    public override void LogicUpdate()
     {
-        base.Update();
+        base.LogicUpdate();
 
         if (!player.IsWallDetected())
         {

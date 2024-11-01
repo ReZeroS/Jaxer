@@ -18,9 +18,9 @@ public class PlayerDashState : PlayerState
         SoundManager.PlaySound(SoundType.DASH);
     }
 
-    public override void Update()
+    public override void LogicUpdate()
     {
-        base.Update();
+        base.LogicUpdate();
         player.SetVelocity(player.dashSpeed * player.dashDir, 0);
         
         if (stateTimer < 0)

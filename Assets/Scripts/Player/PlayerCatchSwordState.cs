@@ -36,9 +36,9 @@ public class PlayerCatchSwordState : PlayerState
         player.fx.ScreenShakeForSwordImpact(player.facingDir);
     }
 
-    public override void Update()
+    public override void LogicUpdate()
     {
-        base.Update();
+        base.LogicUpdate();
         if (animationFinishedTriggerCalled)
         {
             stateMachine.ChangeState(player.playerIdleState);

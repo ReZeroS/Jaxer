@@ -31,9 +31,9 @@ public class PlayerBlackholeState : PlayerState
         rb.gravityScale = 0;
     }
 
-    public override void Update()
+    public override void LogicUpdate()
     {
-        base.Update();
+        base.LogicUpdate();
         if (stateTimer > 0)
         {
             rb.linearVelocity = new Vector2(0, 15);

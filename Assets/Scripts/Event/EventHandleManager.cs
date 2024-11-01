@@ -19,11 +19,11 @@ public class EventHandleManager
     }
         
 
-    public static event Action AfterSceneLoadedEvent;
+    public static event Action<string> AfterSceneLoadedEvent;
 
-    public static void CallAfterSceneLoadedEvent()
+    public static void CallAfterSceneLoadedEvent(string sceneName)
     {
-        AfterSceneLoadedEvent?.Invoke();
+        AfterSceneLoadedEvent?.Invoke(sceneName);
     }
 
 

@@ -1,75 +1,82 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class Player : Entity
 {
-
-    [Header("Attack details")] 
+    [Header("Attack details")]
     public Vector2[] attackMovements;
 
     public float counterAttackDuration;
-    
+
     public bool isBusy { get; private set; }
+
     [Header("Move info")]
-    public float moveSpeed = 12f; 
+    public float moveSpeed = 12f;
+
     public float jumpForce = 12f;
     public float swordReturnImpact;
     public float defaultMoveSpeed;
     public float defaultJumpForce;
     public float defaultDashSpeed;
-    
-    [Header("Dash info")] 
+
+    [Header("Dash info")]
     public float dashSpeed = 12f;
+
     public float dashDuration = 1.5f;
     public float dashDir { get; private set; }
-    
-    
-    
+
+
     [Header("Jump info")]
     [SerializeField] private float dropDelay = 0.5f;
 
+    public double coyoteTime = 0.2f;
+
 
     public bool canDropDown { get; private set; } = true;
-    
 
 
     public SkillManager skillManager { get; private set; }
     public GameObject sword { get; private set; }
-    
+
     public PlayerFx fx { get; private set; }
 
     #region States
+
     public PlayerStateMachine stateMachine { get; private set; }
+    public PlayerSwimState playerSwimState { get; private set; }
     public PlayerIdleState playerIdleState { get; private set; }
     public PlayerMoveState playerMoveState { get; private set; }
-    public PlayerJumpState playerJumpState { get; private set; }
-
-    public PlayerSwimState playerSwimState { get; private set; }
-
-    public PlayerFallingState playerFallingState { get; private set; }
     
+    public PlayerCoyoteTimeState playerCoyoteTimeState { get; private set; }
+    
+    public PlayerJumpState playerJumpState { get; private set; }
+    
+    public PlayerFallingState playerFallingState { get; private set; }
+
     public PlayerWallSlideState playerWallSlideState { get; private set; }
     public PlayerWallJumpState playerWallJumpState { get; private set; }
-    
+
     public PlayerDashState playerDashState { get; private set; }
 
     public PlayerPrimaryAttackState primaryAttackState { get; private set; }
     public PlayerCounterAttackState couterAttackState { get; private set; }
-    
+
     public PlayerAnimSwordState animSwordState { get; private set; }
     public PlayerCatchSwordState catchSwordState { get; private set; }
-    
+
     public PlayerBlackholeState blackholeState { get; private set; }
     public PlayerDeathState deathState { get; private set; }
-    
+
     #endregion
 
     protected override void Awake()
-    { 
+    {
         base.Awake();
         stateMachine = new PlayerStateMachine();
         playerIdleState = new PlayerIdleState(stateMachine, this, "Idle");
         playerMoveState = new PlayerMoveState(stateMachine, this, "Move");
+        playerCoyoteTimeState = new PlayerCoyoteTimeState(stateMachine, this, "Move");
         playerJumpState = new PlayerJumpState(stateMachine, this, "Jump");
         playerSwimState = new PlayerSwimState(stateMachine, this, "Swim");
         playerFallingState = new PlayerFallingState(stateMachine, this, "Jump");
@@ -104,22 +111,26 @@ public class Player : Entity
         {
             return;
         }
-        
+
         base.Update();
-        stateMachine.currentState.Update();
+        stateMachine.currentState.LogicUpdate();
 
         CheckDashInput();
 
         if (InputManager.instance.padLeft.justPressed && skillManager.crystalSkill.crystalUnlocked)
         {
             skillManager.crystalSkill.CanUseSkill();
-        }  
-        
+        }
+
         if (InputManager.instance.leftShoulder.justPressed)
         {
             Inventory.instance.UseFlask();
         }
+    }
 
+    private void FixedUpdate()
+    {
+        stateMachine.currentState.PhysicsUpdate();
     }
 
 
@@ -158,7 +169,7 @@ public class Player : Entity
     {
         StartCoroutine(BusyFor(duration));
     }
-    
+
     private IEnumerator BusyFor(float seconds)
     {
         isBusy = true;
@@ -179,7 +190,7 @@ public class Player : Entity
         {
             return;
         }
-        
+
         if (InputManager.instance.east.justPressed && skillManager.dashSkill.CanUseSkill())
         {
             dashDir = InputManager.instance.moveInput.x;
@@ -187,10 +198,9 @@ public class Player : Entity
             {
                 dashDir = facingDir;
             }
+
             stateMachine.ChangeState(playerDashState);
         }
-        
-        
     }
 
     public override void SetupZeroKnockBackPower()
@@ -209,15 +219,15 @@ public class Player : Entity
     {
         StartCoroutine(DropThroughPlatform());
     }
-    
-    
+
+
     IEnumerator DropThroughPlatform()
     {
         canDropDown = false; // 防止连续下落
-        
-        
+
+
         // todo 播放音效和动画
-        
+
         int platformLayer = LayerMask.NameToLayer("Platform");
         Physics2D.IgnoreLayerCollision(gameObject.layer, platformLayer, true);
 
@@ -227,5 +237,16 @@ public class Player : Entity
         canDropDown = true;
     }
 
-    
+
+    public void SetUseGravity(bool useGravity)
+    {
+        if (useGravity)
+        {
+            rb.gravityScale = 1;
+        }
+        else
+        {
+            rb.gravityScale = 0;
+        }
+    }
 }

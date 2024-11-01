@@ -11,9 +11,9 @@ public class PlayerWallJumpState : PlayerState
         player.SetVelocity(5 * -player.facingDir, player.jumpForce);
     }
 
-    public override void Update()
+    public override void LogicUpdate()
     {
-        base.Update();
+        base.LogicUpdate();
 
         if (stateTimer < 0)
         {
