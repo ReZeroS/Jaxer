@@ -26,7 +26,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\Bin\Debug\Assembly-CSharp\</OutputPath>
-    <DefineConstants>UNITY_6000_0_24;UNITY_6000_0;UNITY_6000;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_2023_1_OR_NEWER;UNITY_2023_2_OR_NEWER;UNITY_2023_3_OR_NEWER;UNITY_6000_0_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_MARSHALLING_TESTS;ENABLE_VIDEO;ENABLE_NAVIGATION_OFFMESHLINK_TO_NAVMESHLINK;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;TEXTCORE_1_0_OR_NEWER;EDITOR_ONLY_NAVMESH_BUILDER_DEPRECATED;PLATFORM_STANDALONE_OSX;PLATFORM_STANDALONE;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_GAMECENTER;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;ENABLE_SPATIALTRACKING;PLATFORM_HAS_CUSTOM_MUTEX;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_INPUT_SYSTEM;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;TEXTCORE_TEXT_ENGINE_1_5_OR_NEWER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>UNITY_6000_0_24;UNITY_6000_0;UNITY_6000;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_2023_1_OR_NEWER;UNITY_2023_2_OR_NEWER;UNITY_2023_3_OR_NEWER;UNITY_6000_0_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_MARSHALLING_TESTS;ENABLE_VIDEO;ENABLE_NAVIGATION_OFFMESHLINK_TO_NAVMESHLINK;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;TEXTCORE_1_0_OR_NEWER;EDITOR_ONLY_NAVMESH_BUILDER_DEPRECATED;PLATFORM_STANDALONE_OSX;PLATFORM_STANDALONE;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_GAMECENTER;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;ENABLE_SPATIALTRACKING;PLATFORM_HAS_CUSTOM_MUTEX;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_INPUT_SYSTEM;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;TEXTCORE_TEXT_ENGINE_1_5_OR_NEWER;DOTWEEN;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169,0649</NoWarn>
@@ -79,6 +79,7 @@
     <Compile Include="Assets/Scripts/Manager/InputState.cs" />
     <Compile Include="Assets/Scripts/Enemy/Archer/ArcherDeadState.cs" />
     <Compile Include="Assets/Scripts/Skill/SkillController/Player/IceAndFirecController.cs" />
+    <Compile Include="Assets/Packages/DOTween/Modules/DOTweenModuleUtils.cs" />
     <Compile Include="Assets/Scripts/Stat/PlayerStat.cs" />
     <Compile Include="Assets/Scripts/Manager/GameManager.cs" />
     <Compile Include="Assets/Scripts/Enemy/BubbleDragon/BubbleDragonGroundState.cs" />
@@ -91,7 +92,6 @@
     <Compile Include="Assets/Scripts/LoadAndSave/GameData.cs" />
     <Compile Include="Assets/Scripts/Enemy/Archer/ArcherGroundState.cs" />
     <Compile Include="Assets/Scripts/Platform/FallingPlatform.cs.cs" />
-    <Compile Include="Assets/2DWater/Code/MeshRendererSortingLayersEditor.cs" />
     <Compile Include="Assets/Scripts/Fx/ExplosiveController.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerGroundState.cs" />
     <Compile Include="Assets/Scripts/Enemy/BubbleDragon/BubbleDragonBattleState.cs" />
@@ -101,6 +101,7 @@
     <Compile Include="Assets/Scripts/Enemy/Archer/ArcherMoveState.cs" />
     <Compile Include="Assets/Scripts/UI/UIStatSlot.cs" />
     <Compile Include="Assets/Scripts/Enemy/BubbleDragon/BubbleDragonMoveState.cs" />
+    <Compile Include="Assets/Scripts/Scene/LevelManager.cs" />
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeletonGroundState.cs" />
     <Compile Include="Assets/Scripts/UI/UICraftSlot.cs" />
     <Compile Include="Assets/Scripts/Enemy/Shady/ShadyGroundState.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Assets/Scripts/UI/UIInGame.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerWallJumpState.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerBlackholeState.cs" />
+    <Compile Include="Assets/Packages/DOTween/Modules/DOTweenModulePhysics.cs" />
     <Compile Include="Assets/Scripts/Skill/Skill/CloneSkill.cs" />
     <Compile Include="Assets/Scripts/Sound/MusicLibrary.cs" />
     <Compile Include="Assets/Scripts/Enemy/Shady/ShadyStunnedState.cs" />
@@ -133,22 +135,26 @@
     <Compile Include="Assets/Scripts/UI/UICraftList.cs" />
     <Compile Include="Assets/Scripts/Skill/SkillController/Player/SwordSkillController.cs" />
     <Compile Include="Assets/Scripts/Enemy/Boss/DeathBringer/DeathBringerSpellCastState.cs" />
+    <Compile Include="Assets/Packages/DOTween/Modules/DOTweenModuleUI.cs" />
     <Compile Include="Assets/Scripts/LoadAndSave/FileDataHandler.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerCatchSwordState.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerState.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerCoyoteTimeState.cs" />
     <Compile Include="Assets/Scripts/LoadAndSave/SaveManager.cs" />
     <Compile Include="Assets/Scripts/Manager/DialogueManager.cs" />
+    <Compile Include="Assets/Packages/MovingPlatforms/Code/PlatformController.cs" />
     <Compile Include="Assets/Scripts/Enemy/Slime/SlimeState.cs" />
     <Compile Include="Assets/Scripts/Skill/Skill/CrystalSkill.cs" />
     <Compile Include="Assets/Scripts/Enemy/Archer/ArcherStunnedState.cs" />
     <Compile Include="Assets/Scripts/Trigger/DialogueTrigger.cs" />
+    <Compile Include="Assets/Scripts/Scene/SceneTransition.cs" />
     <Compile Include="Assets/Scripts/UI/UIStatTooltip.cs" />
     <Compile Include="Assets/Scripts/Inventory/Effects/HealEffects.cs" />
     <Compile Include="Assets/Scripts/Inventory/Effects/BuffEffects.cs" />
     <Compile Include="Assets/Scripts/Player/StateTransitionCheck.cs" />
     <Compile Include="Assets/Scripts/Trigger/EnemyAnimationTrigger.cs" />
     <Compile Include="Assets/Scripts/Enemy/BubbleDragon/BubbleDragonIdleState.cs" />
+    <Compile Include="Assets/Scripts/Scene/CrossFade.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerAnimSwordState.cs" />
     <Compile Include="Assets/Scripts/Skill/Skill/DashSkill.cs" />
     <Compile Include="Assets/Scripts/Fx/PlayerFx.cs" />
@@ -163,6 +169,7 @@
     <Compile Include="Assets/Scripts/Enemy/Archer/ArcherIdleState.cs" />
     <Compile Include="Assets/Scripts/Enemy/Shady/EnemyShady.cs" />
     <Compile Include="Assets/Scripts/Enemy/Slime/EnemySlime.cs" />
+    <Compile Include="Assets/Packages/DOTween/Modules/DOTweenModuleSprite.cs" />
     <Compile Include="Assets/Scripts/Enemy/Enemy.cs" />
     <Compile Include="Assets/Scripts/Skill/SkillController/Player/ShockStrikeController.cs" />
     <Compile Include="Assets/Scripts/LoadAndSave/SerializableDictionary.cs" />
@@ -179,16 +186,18 @@
     <Compile Include="Assets/Scripts/Inventory/PlayerItemDrop.cs" />
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeletonBattleState.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerFallingState.cs" />
-    <Compile Include="Assets/2DWater/Code/Water.cs" />
     <Compile Include="Assets/Scripts/Manager/MusicManager.cs" />
     <Compile Include="Assets/Scripts/Scene/Background/ParallaxBackground.cs" />
     <Compile Include="Assets/Scripts/Trigger/EnemyDeathBringerTrigger.cs" />
+    <Compile Include="Assets/Packages/DOTween/Modules/DOTweenModulePhysics2D.cs" />
     <Compile Include="Assets/Scripts/Skill/SkillController/Player/CloneSkillController.cs" />
+    <Compile Include="Assets/Packages/DOTween/Modules/DOTweenModuleEPOOutline.cs" />
     <Compile Include="Assets/Scripts/Enemy/Slime/SlimeAttackState.cs" />
     <Compile Include="Assets/Scripts/Enemy/Boss/DeathBringer/DeathBringerState.cs" />
     <Compile Include="Assets/Scripts/Player/Player.cs" />
     <Compile Include="Assets/Scripts/Inventory/Item/ItemObject.cs" />
     <Compile Include="Assets/Scripts/UI/UIEquipmentSlot.cs" />
+    <Compile Include="Assets/Scripts/Scene/CircleWipe.cs" />
     <Compile Include="Assets/Scripts/UI/UIItemtooltip.cs" />
     <Compile Include="Assets/Scripts/LoadAndSave/ISaveManager.cs" />
     <Compile Include="Assets/Scripts/Sound/SoundValues.cs" />
@@ -201,12 +210,14 @@
     <Compile Include="Assets/Scripts/Skill/SkillController/Player/CrystalSkillController.cs" />
     <Compile Include="Assets/Scripts/Enemy/Boss/DeathBringer/DeathBringerAttackState.cs" />
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeletonStunnedState.cs" />
+    <Compile Include="Assets/Packages/DOTween/Modules/DOTweenModuleAudio.cs" />
     <Compile Include="Assets/Scripts/Inventory/Item/ItemData.cs" />
     <Compile Include="Assets/Scripts/UI/UISkillTreeSlot.cs" />
-    <Compile Include="Assets/Samples/Input System/1.7.0/Custom Binding Composite/CustomComposite.cs" />
+    <Compile Include="Assets/Packages/DOTween/Modules/DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets/Scripts/Enemy/Slime/SlimeGroundState.cs" />
     <Compile Include="Assets/Scripts/Enemy/Slime/SlimeMoveState.cs" />
     <Compile Include="Assets/Scripts/Enemy/Slime/SlimeBattleState.cs" />
+    <Compile Include="Assets/Packages/2DWater/Code/Water.cs" />
     <Compile Include="Assets/Scripts/Stat/EnemyStat.cs" />
     <Compile Include="Assets/Scripts/Enemy/Slime/SlimeIdleState.cs" />
     <Compile Include="Assets/Scripts/Inventory/Effects/ItemEffects.cs" />
@@ -217,6 +228,7 @@
     <Compile Include="Assets/Scripts/Skill/SkillController/Enemy/BubbleController.cs" />
     <Compile Include="Assets/Scripts/Stat/CharacterStat.cs" />
     <Compile Include="Assets/Scripts/Enemy/Archer/ArcherState.cs" />
+    <Compile Include="Assets/Packages/2DWater/Code/MeshRendererSortingLayersEditor.cs" />
     <Compile Include="Assets/Scripts/UI/UIOnSelect.cs" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
@@ -230,11 +242,13 @@
     <None Include="Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF.shader" />
+    <None Include="Assets/TextMesh Pro/Fonts/chinese.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" />
     <None Include="Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt" />
+    <None Include="Assets/Packages/DOTween/readme.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" />
@@ -598,6 +612,9 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>/Users/rezero/Jaxer/Library/PackageCache/com.unity.visualscripting/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>/Users/rezero/Jaxer/Assets/Packages/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>/Users/rezero/Jaxer/Library/PackageCache/com.unity.nuget.mono-cecil/Mono.Cecil.dll</HintPath>

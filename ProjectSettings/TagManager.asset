@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
@@ -61,6 +62,9 @@ TagManager:
     locked: 0
   - name: Water
     uniqueID: 1205237553
+    locked: 0
+  - name: Platform
+    uniqueID: 293042497
     locked: 0
   - name: FX
     uniqueID: 3707119067

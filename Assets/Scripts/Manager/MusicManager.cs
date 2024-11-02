@@ -23,7 +23,6 @@ public class MusicManager : MonoBehaviour
 		else
 		{
 			Instance = this;
-			DontDestroyOnLoad(gameObject);
 		}
 	}
 
@@ -42,7 +41,6 @@ public class MusicManager : MonoBehaviour
 	private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 	{
 		string sceneName = scene.name;
-		Debug.Log("Play scene music " + sceneName);
 		PlayMusic(sceneName);
 	}
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : Entity
 {
+    #region Player Data
     [Header("Attack details")]
     public Vector2[] attackMovements;
 
@@ -13,6 +14,8 @@ public class Player : Entity
 
     [Header("Move info")]
     public float moveSpeed = 12f;
+
+    private float platformSpeed = 0f;
 
     public float jumpForce = 12f;
     public float swordReturnImpact;
@@ -34,13 +37,23 @@ public class Player : Entity
 
 
     public bool canDropDown { get; private set; } = true;
+    #endregion
 
 
+    #region Components
     public SkillManager skillManager { get; private set; }
     public GameObject sword { get; private set; }
-
     public PlayerFx fx { get; private set; }
 
+    public Transform defaultTransform;
+    #endregion
+
+    #region Material
+
+    [SerializeField] private PhysicsMaterial2D defaultMaterial;
+    #endregion
+    
+    
     #region States
 
     public PlayerStateMachine stateMachine { get; private set; }
@@ -97,12 +110,27 @@ public class Player : Entity
         base.Start();
         fx = GetComponent<PlayerFx>();
         skillManager = SkillManager.instance;
+
+        defaultMaterial = rb.sharedMaterial;
+        defaultTransform = transform.parent;
         stateMachine.Initialize(playerIdleState);
 
 
         defaultMoveSpeed = moveSpeed;
         defaultJumpForce = jumpForce;
         defaultDashSpeed = dashSpeed;
+    }
+
+    public void LeavePlatform()
+    {
+        rb.sharedMaterial = defaultMaterial;
+        transform.SetParent(defaultTransform);
+    }
+    
+    public void EnterPlatform(Transform platform)
+    {
+        rb.sharedMaterial = null;
+        transform.SetParent(platform); 
     }
 
     protected override void Update()
@@ -249,4 +277,32 @@ public class Player : Entity
             rb.gravityScale = 0;
         }
     }
+    
+    public void SetGravityScale(float gravity)
+    { 
+        rb.gravityScale = gravity;
+    }
+
+    public void AddPlatformVelocity(float platformVelocityX)
+    {
+        platformSpeed = platformVelocityX;
+    }
+
+    public void RemovePlatformVelocity()
+    {
+        platformSpeed = 0;
+    }
+    
+    public override void SetVelocity(float xVelocity, float yVelocity)
+    {
+        if (isKnocked)
+        {
+            return;
+        }
+        rb.linearVelocity = new Vector2(xVelocity, yVelocity);
+     
+        FlipController(xVelocity);
+    }
+    
+    
 }

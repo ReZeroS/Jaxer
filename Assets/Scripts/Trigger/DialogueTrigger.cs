@@ -1,14 +1,16 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-[System.Serializable]
+[Serializable]
 public class DialogueCharacter
 {
     public string name;
     public Sprite icon;
 }
 
-[System.Serializable]
+[Serializable]
 public class DialogueLine
 {
     public DialogueCharacter character;
@@ -16,19 +18,19 @@ public class DialogueLine
     public string line;
 }
 
-[System.Serializable]
-public class Dialogue
+[Serializable]
+public class SegmentDialogue
 {
     public List<DialogueLine> dialogueLines = new();
 }
 
 public class DialogueTrigger : MonoBehaviour
 {
-    public Dialogue dialogue;
+    [FormerlySerializedAs("dialogue")] public SegmentDialogue segmentDialogue;
 
     private void TriggerDialogue()
     {
-        DialogueManager.Instance.StartDialogue(dialogue);
+        DialogueManager.Instance.StartDialogue(segmentDialogue);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -38,4 +40,5 @@ public class DialogueTrigger : MonoBehaviour
             TriggerDialogue();
         }
     }
+    
 }

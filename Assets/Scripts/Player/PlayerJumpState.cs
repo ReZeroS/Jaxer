@@ -3,7 +3,7 @@ using Sound.SoundManager;
 public class PlayerJumpState : PlayerOnAirState
 {
     
-    private static int MAX_JUMPS = 1;
+    private static int MAX_JUMPS = 2;
 
     private int amountOfJumpsLeft;
 

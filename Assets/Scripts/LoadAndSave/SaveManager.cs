@@ -72,7 +72,8 @@ public class SaveManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        SaveGame();
+        // TODO:
+        // SaveGame();
     }
 
 

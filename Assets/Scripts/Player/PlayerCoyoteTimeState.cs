@@ -2,7 +2,7 @@ public class PlayerCoyoteTimeState : PlayerOnAirState
 {
     // 应该有个 playerData 替代成员变量
 
-    float runSpeed = 5f;
+    // float runSpeed = 5f;
     float coyoteTime = 0.1f;
 
     public PlayerCoyoteTimeState(PlayerStateMachine stateMachine, Player player, string animBoolName)
@@ -26,7 +26,7 @@ public class PlayerCoyoteTimeState : PlayerOnAirState
             stateMachine.ChangeState(player.playerJumpState);
         }
 
-        if (stateTimer < 0 || !InputManager.instance.isMove)
+        if (stateTimer < 0 || xInput != 0)
         {
             stateMachine.ChangeState(player.playerFallingState);
         }

@@ -30,6 +30,8 @@ public class InputManager : MonoBehaviour
     private InputAction menuAction;
     // 给ui用来退出回到游戏的
     private InputAction exitMenuAction;
+    // 确认
+    private InputAction confirmAction;
 
     #region right part
 
@@ -43,10 +45,8 @@ public class InputManager : MonoBehaviour
     private InputAction rightStick;
 
     #endregion
-
     
     public Vector2 moveInput => moveAction.ReadValue<Vector2>();
-    public bool isMove => moveInput.x != 0;
 
     public Vector2 rightStickInput => rightStick.ReadValue<Vector2>();
     
@@ -61,12 +61,16 @@ public class InputManager : MonoBehaviour
     public InputState padDown { get; private set; }
     public InputState view { get; private set; }
     public InputState menu { get; private set; }
-    public InputState exitMenu { get; private set; }
     public InputState south { get; private set; }
     public InputState east { get; private set; }
     public InputState west { get; private set; }
     public InputState north { get; private set; }
+    
+    public InputState exitMenu { get; private set; }
+    public InputState confirm { get; private set; }
+
     #endregion
+    
 
     private void Awake()
     {
@@ -94,7 +98,6 @@ public class InputManager : MonoBehaviour
 
         viewAction = playerInput.actions["View"];
         menuAction = playerInput.actions["Menu"];
-        exitMenuAction = playerInput.actions["ExitMenu"];
 
 
         rightStick = playerInput.actions["RightStick"];
@@ -110,6 +113,10 @@ public class InputManager : MonoBehaviour
         rightTriggerAction = playerInput.actions["RightTrigger"]; // R2
         
         
+        
+        
+        exitMenuAction = playerInput.actions["ExitMenu"];
+        confirmAction = playerInput.actions["Confirm"];
     }
     
     private void InitializeInputStates()
@@ -124,11 +131,13 @@ public class InputManager : MonoBehaviour
         padDown = new InputState(padDownAction);
         view = new InputState(viewAction);
         menu = new InputState(menuAction);
-        exitMenu = new InputState(exitMenuAction);
         south = new InputState(southAction);
         east = new InputState(eastAction);
         west = new InputState(westAction);
         north = new InputState(northAction);
+        
+        exitMenu = new InputState(exitMenuAction);
+        confirm = new InputState(confirmAction);
     }
     
     

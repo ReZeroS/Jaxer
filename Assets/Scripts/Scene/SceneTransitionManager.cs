@@ -1,19 +1,22 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneTransitionManager : MonoBehaviour
 {
-    public static SceneTransitionManager Instance { get; private set; } // 单例模式
+    public static SceneTransitionManager instance { get; private set; } // 单例模式
 
     // 初始关卡
     [SerializeField] private string startSceneName; 
 
+    public Slider progressBar;
+
     private void Awake()
     {
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -37,7 +40,6 @@ public class SceneTransitionManager : MonoBehaviour
     {
         if (IsSceneLoaded(startSceneName))
         {
-            Debug.Log("Start scene has loaded " + startSceneName);
             return;
         }
         StartCoroutine(LoadSceneAtActive(startSceneName));

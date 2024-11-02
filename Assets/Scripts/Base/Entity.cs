@@ -13,9 +13,7 @@ public class Entity : MonoBehaviour
     
     public CapsuleCollider2D cd { get; private set; }
     #endregion
-
-    [FormerlySerializedAs("knockedBackpower")]
-    [FormerlySerializedAs("knockedDir")]
+    
     [Header("Knocked info")] 
     [SerializeField] protected Vector2 knockedBackPower = new(7, 12);
     [SerializeField] protected float knockBackDuration = 0.7f;
@@ -120,7 +118,7 @@ public class Entity : MonoBehaviour
         rb.linearVelocity = new Vector2(0, 0);
     }
 
-    public void SetVelocity(float xVelocity, float yVelocity)
+    public virtual void SetVelocity(float xVelocity, float yVelocity)
     {
         if (isKnocked)
         {

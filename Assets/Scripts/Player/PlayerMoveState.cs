@@ -19,7 +19,7 @@ public class PlayerMoveState : PlayerGroundState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        player.SetVelocity(calcSpeed(xInput), rb.linearVelocity.y);
+        player.SetVelocity(CalcSpeed(xInput), rb.linearVelocity.y);
         if (xInput == 0 || player.IsWallDetected()) {
             stateMachine.ChangeState(player.playerIdleState);
         }
@@ -32,7 +32,7 @@ public class PlayerMoveState : PlayerGroundState
     }
 
 
-    private float calcSpeed(float xInput)
+    private float CalcSpeed(float xInput)
     {
         return xInput * player.moveSpeed;
         // 计算目标速度和加速/减速率

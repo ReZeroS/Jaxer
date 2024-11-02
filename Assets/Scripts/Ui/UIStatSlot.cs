@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -27,12 +28,16 @@ public class UIStatSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         
     }
 
+    private void Awake()
+    {
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         UpdateStatValueUI();
-
         ui = GetComponentInParent<UI>();
+
     }
 
     // Update is called once per frame
@@ -43,7 +48,8 @@ public class UIStatSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void UpdateStatValueUI()
     {
-        PlayerStat playerStat = PlayerManager.instance.player.GetComponent<PlayerStat>();
+        
+        PlayerStat playerStat = PlayerManager.instance.player?.GetComponent<PlayerStat>();
         if (playerStat)
         {
             statValueText.text = playerStat.StatOfType(statType).GetValue().ToString();
