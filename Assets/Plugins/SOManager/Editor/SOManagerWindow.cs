@@ -114,16 +114,35 @@ public class SOManagerWindow : EditorWindow
 
         if (_soInstances.Count > 0)
         {
-            var instanceType = _soInstances[0].GetType();
-            var fields = instanceType.GetFields();
-
-            DrawTableHeader(fields);
-
-            foreach (var instance in _soInstances)
+            // Group instances by their actual type
+            var instancesByType = _soInstances.GroupBy(instance => instance.GetType());
+        
+            foreach (var typeGroup in instancesByType)
             {
-                EditorGUILayout.BeginHorizontal();
-                DrawTableRow(instance, fields);
-                EditorGUILayout.EndHorizontal();
+                var instanceType = typeGroup.Key;
+                var instances = typeGroup.ToList();
+            
+                // Get fields for this specific type
+                var fields = instanceType.GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+                var baseType = instanceType.BaseType;
+                while (baseType != null && baseType != typeof(ScriptableObject))
+                {
+                    fields = fields.Concat(baseType.GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly)).ToArray();
+                    baseType = baseType.BaseType;
+                }
+
+                // Draw section header for this type
+                EditorGUILayout.Space(10);
+                EditorGUILayout.LabelField($"Type: {instanceType.Name}", EditorStyles.boldLabel);
+            
+                DrawTableHeader(fields);
+
+                foreach (var instance in instances)
+                {
+                    EditorGUILayout.BeginHorizontal();
+                    DrawTableRow(instance, fields);
+                    EditorGUILayout.EndHorizontal();
+                }
             }
         }
         else
@@ -139,7 +158,6 @@ public class SOManagerWindow : EditorWindow
     {
         EditorGUILayout.BeginHorizontal();
 
-        Debug.Log("fields.Length" + fields.Length);
         for (int i = 0; i < fields.Length; i++)
         {
             EditorGUILayout.LabelField(fields[i].Name, EditorStyles.boldLabel, GUILayout.Width(getColumnWidth(i)));
@@ -154,7 +172,20 @@ public class SOManagerWindow : EditorWindow
 
         foreach (var field in fields)
         {
-            DrawField(instance, field, GUILayout.Width(getColumnWidth(Array.IndexOf(fields, field))));
+            try
+            {
+                EditorGUILayout.BeginHorizontal();
+                DrawField(instance, field, GUILayout.Width(getColumnWidth(Array.IndexOf(fields, field))));
+                EditorGUILayout.EndHorizontal();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Error drawing field {field.Name}: {e.Message}");
+                if (Event.current.type == EventType.Layout)
+                {
+                    EditorGUILayout.EndHorizontal();
+                }
+            }
         }
 
         EditorGUILayout.EndHorizontal();
@@ -322,48 +353,54 @@ public class SOManagerWindow : EditorWindow
         {
             return EditorGUILayout.TextField(item as string, width ?? GUILayout.Width(DEFAULT_LENGTH));
         }
-        else if (elementType == typeof(int))
+
+        if (elementType == typeof(int))
         {
             return EditorGUILayout.IntField(item != null ? (int)item : 0, width ?? GUILayout.Width(DEFAULT_LENGTH));
         }
-        else if (elementType == typeof(float))
+
+        if (elementType == typeof(float))
         {
             return EditorGUILayout.FloatField(item != null ? (float)item : 0f,
                 width ?? GUILayout.Width(DEFAULT_LENGTH));
         }
-        else if (elementType == typeof(bool))
+
+        if (elementType == typeof(bool))
         {
             return EditorGUILayout.Toggle(item != null && (bool)item, width ?? GUILayout.Width(DEFAULT_LENGTH));
         }
-        else if (elementType.IsEnum)
+
+        if (elementType.IsEnum)
         {
             return EditorGUILayout.EnumPopup(item as Enum, width ?? GUILayout.Width(DEFAULT_LENGTH));
         }
-        else if (elementType == typeof(Vector2))
+
+        if (elementType == typeof(Vector2))
         {
             return EditorGUILayout.Vector2Field("", item != null ? (Vector2)item : Vector2.zero,
                 width ?? GUILayout.Width(DEFAULT_LENGTH));
         }
-        else if (elementType == typeof(Vector3))
+
+        if (elementType == typeof(Vector3))
         {
             return EditorGUILayout.Vector3Field("", item != null ? (Vector3)item : Vector3.zero,
                 width ?? GUILayout.Width(DEFAULT_LENGTH));
         }
-        else if (elementType == typeof(Color))
+
+        if (elementType == typeof(Color))
         {
             return EditorGUILayout.ColorField(item != null ? (Color)item : Color.white,
                 width ?? GUILayout.Width(DEFAULT_LENGTH));
         }
-        else if (typeof(Object).IsAssignableFrom(elementType))
+
+        if (typeof(Object).IsAssignableFrom(elementType))
         {
             return EditorGUILayout.ObjectField(item as Object, elementType, true,
                 width ?? GUILayout.Width(DEFAULT_LENGTH));
         }
-        else
-        {
-            EditorGUILayout.LabelField($"Unsupported ({elementType.Name})", width ?? GUILayout.Width(DEFAULT_LENGTH));
-            return item;
-        }
+
+        EditorGUILayout.LabelField($"Unsupported ({elementType.Name})", width ?? GUILayout.Width(DEFAULT_LENGTH));
+        return item;
     }
 
     private void BuildTree()
@@ -460,4 +497,5 @@ public class SOManagerWindow : EditorWindow
             EditorGUI.indentLevel--;
         }
     }
+
 }
