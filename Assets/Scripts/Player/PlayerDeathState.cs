@@ -17,9 +17,9 @@ public class PlayerDeathState : PlayerState
         // GameManager.instance.RestartGame();
     }
 
-    public override void Update()
+    public override void LogicUpdate()
     {
-        base.Update();
+        base.LogicUpdate();
     }
 
     public override void Exit()

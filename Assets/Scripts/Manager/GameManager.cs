@@ -20,13 +20,8 @@ public class GameManager : MonoBehaviour, ISaveManager
 
     private void Start()
     {
-        checkpoints = FindObjectsOfType<Checkpoint>(true);
+        checkpoints = FindObjectsByType<Checkpoint>(FindObjectsSortMode.None);
     }
-    
-    
-    
-
-    
     
     
     public void RestartGame()

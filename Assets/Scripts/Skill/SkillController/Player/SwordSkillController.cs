@@ -60,7 +60,7 @@ public class SwordSkillController : MonoBehaviour
 
     public void SetUpSword(Vector2 velocity, float gravity, Player curPlayer, float freezeTimeDelta, float backSpeed)
     {
-        rb.velocity = velocity;
+        rb.linearVelocity = velocity;
         rb.gravityScale = gravity;
 
         player = curPlayer;
@@ -73,7 +73,7 @@ public class SwordSkillController : MonoBehaviour
         }
 
         // 确保在 -1 到 1 之间
-        spinDirection = Mathf.Clamp(rb.velocity.x, -1, 1);
+        spinDirection = Mathf.Clamp(rb.linearVelocity.x, -1, 1);
 
         // too far to return
         // god of war 4 Leviathan Axe 这里后面改成弹射也得弹回来，不用destroy了，控制最大的弹射速度，看重力影响最多多远
@@ -110,7 +110,7 @@ public class SwordSkillController : MonoBehaviour
     {
         if (canRotate)
         {
-            transform.right = rb.velocity;
+            transform.right = rb.linearVelocity;
         }
 
         if (isReturning)
@@ -277,7 +277,7 @@ public class SwordSkillController : MonoBehaviour
         canRotate = false;
         cd.enabled = false;
 
-        rb.isKinematic = true;
+        rb.bodyType = RigidbodyType2D.Kinematic;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
         if (isBouncing && enemyTargetList.Count > 0)
@@ -286,7 +286,7 @@ public class SwordSkillController : MonoBehaviour
         }
 
         // 插在敌人身上，跟随敌人
-        animator.SetBool("Rotate", false);
+        animator.SetBool(Rotate, false);
         transform.parent = collision.transform;
     }
 

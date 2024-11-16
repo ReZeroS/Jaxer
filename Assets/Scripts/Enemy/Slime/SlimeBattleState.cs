@@ -61,7 +61,7 @@ public class SlimeBattleState : SlimeState
             return;
         }
         
-        enemySlime.SetVelocity(enemySlime.moveSpeed*moveToBattleDir, rb.velocity.y);
+        enemySlime.SetVelocity(enemySlime.moveSpeed*moveToBattleDir, rb.linearVelocity.y);
     }
 
     public override void Exit()

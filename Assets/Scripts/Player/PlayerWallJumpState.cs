@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class PlayerWallJumpState : PlayerState
 {
     public PlayerWallJumpState(PlayerStateMachine stateMachine, Player player, string animBoolName) : base(stateMachine, player, animBoolName)
@@ -15,13 +11,13 @@ public class PlayerWallJumpState : PlayerState
         player.SetVelocity(5 * -player.facingDir, player.jumpForce);
     }
 
-    public override void Update()
+    public override void LogicUpdate()
     {
-        base.Update();
+        base.LogicUpdate();
 
         if (stateTimer < 0)
         {
-            stateMachine.ChangeState(player.playerAirState);
+            stateMachine.ChangeState(player.playerFallingState);
         }
 
         if (player.IsGroundDetected())

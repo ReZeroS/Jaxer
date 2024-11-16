@@ -10,12 +10,12 @@ public class PlayerIdleState : PlayerGroundState{
     public override void Enter()
     {
         base.Enter();
-        rb.velocity = new Vector2(0, 0);
+        rb.linearVelocity = new Vector2(0, 0);
     }
 
-    public override void Update()
+    public override void LogicUpdate()
     {
-        base.Update();
+        base.LogicUpdate();
         if (Mathf.Sign(xInput) == Mathf.Sign(player.facingDir) && player.IsWallDetected())
         {
             return;

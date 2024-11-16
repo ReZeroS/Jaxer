@@ -72,14 +72,15 @@ public class SaveManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        SaveGame();
+        // TODO:
+        // SaveGame();
     }
 
 
     private List<ISaveManager> FindAllSaveManagers()
     {
-        IEnumerable<ISaveManager> saveManagers = FindObjectsOfType<MonoBehaviour>(true).OfType<ISaveManager>();
-        return saveManagers.ToList();
+        IEnumerable<ISaveManager> curSaveManagers = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<ISaveManager>();
+        return curSaveManagers.ToList();
     }
 
 

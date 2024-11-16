@@ -1,3 +1,5 @@
+using Sound.SoundManager;
+
 public class PlayerMoveState : PlayerGroundState
 {
 
@@ -10,13 +12,14 @@ public class PlayerMoveState : PlayerGroundState
     public override void Enter()
     {
         base.Enter(); 
-        AudioManager.instance.PlaySFX(14);
+        // AudioManager.instance.PlaySFX(14);
+        SoundManager.PlaySound(SoundType.MOVEMENT);
     }
 
-    public override void Update()
+    public override void LogicUpdate()
     {
-        base.Update();
-        player.SetVelocity(calcSpeed(xInput), rb.velocity.y);
+        base.LogicUpdate();
+        player.SetVelocity(CalcSpeed(xInput), rb.linearVelocity.y);
         if (xInput == 0 || player.IsWallDetected()) {
             stateMachine.ChangeState(player.playerIdleState);
         }
@@ -25,11 +28,11 @@ public class PlayerMoveState : PlayerGroundState
     public override void Exit()
     {
         base.Exit();
-        AudioManager.instance.StopSFX(14);
+        SoundManager.StopSound();
     }
 
 
-    private float calcSpeed(float xInput)
+    private float CalcSpeed(float xInput)
     {
         return xInput * player.moveSpeed;
         // 计算目标速度和加速/减速率

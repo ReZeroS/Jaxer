@@ -12,13 +12,13 @@ public class PlayerWallSlideState : PlayerState
         base.Enter();
     }
 
-    public override void Update()
+    public override void LogicUpdate()
     {
-        base.Update();
+        base.LogicUpdate();
 
         if (!player.IsWallDetected())
         {
-            stateMachine.ChangeState(player.playerAirState);
+            stateMachine.ChangeState(player.playerFallingState);
             return;
         }
 
@@ -35,11 +35,11 @@ public class PlayerWallSlideState : PlayerState
         
         if (yInput < 0)
         {
-            rb.velocity = new Vector2(0, rb.velocity.y);
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         }
         else
         {
-            rb.velocity = new Vector2(0, rb.velocity.y * 0.7f);
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y * 0.7f);
         }
 
         

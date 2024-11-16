@@ -15,7 +15,7 @@ public class EnemySkeletonStunnedState : EnemyState
         enemySkeleton.fx.RedColorBlinkFor(0, .1f);
         
         stateTimer = enemySkeleton.stunnedDuration;
-        rb.velocity = new Vector2(-enemySkeleton.facingDir*enemySkeleton.stunnedDirection.x, enemySkeleton.stunnedDirection.y);
+        rb.linearVelocity = new Vector2(-enemySkeleton.facingDir*enemySkeleton.stunnedDirection.x, enemySkeleton.stunnedDirection.y);
     }
 
     public override void Update()

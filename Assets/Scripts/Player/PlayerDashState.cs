@@ -1,3 +1,5 @@
+using Sound.SoundManager;
+
 public class PlayerDashState : PlayerState
 {
 
@@ -12,11 +14,13 @@ public class PlayerDashState : PlayerState
         stateTimer = player.dashDuration;
         // todo make invulnerable as a skill
         player.stat.MakeInvulnerable(true);
+        //
+        SoundManager.PlaySound(SoundType.DASH);
     }
 
-    public override void Update()
+    public override void LogicUpdate()
     {
-        base.Update();
+        base.LogicUpdate();
         player.SetVelocity(player.dashSpeed * player.dashDir, 0);
         
         if (stateTimer < 0)
@@ -30,7 +34,7 @@ public class PlayerDashState : PlayerState
     {
         base.Exit();
         player.skillManager.dashSkill.CloneOnArrival();
-        player.SetVelocity(0, rb.velocity.y);
+        player.SetVelocity(0, rb.linearVelocity.y);
         player.stat.MakeInvulnerable(false);
     }
 }

@@ -13,7 +13,7 @@ public class IceAndFireEffects : ItemEffects
         if (instancePlayer.primaryAttackState.comboCounter == 2)
         {
             GameObject iceAndFireCreated = Instantiate(iceFirePrefab, respawnPosition.position, playerTransform.rotation);
-            iceAndFireCreated.GetComponent<Rigidbody2D>().velocity = new Vector2(moveVelocity * instancePlayer.facingDir, 0);
+            iceAndFireCreated.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(moveVelocity * instancePlayer.facingDir, 0);
             Destroy(iceAndFireCreated, 10f);
         }
         

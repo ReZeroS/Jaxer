@@ -12,7 +12,7 @@ public class ArcherMoveState : ArcherGroundState
     public override void Update()
     {
         base.Update();
-        enemyArcher.SetVelocity(enemyArcher.moveSpeed * enemyArcher.facingDir, enemyArcher.rb.velocity.y);
+        enemyArcher.SetVelocity(enemyArcher.moveSpeed * enemyArcher.facingDir, enemyArcher.rb.linearVelocity.y);
         if (enemyArcher.IsWallDetected() || !enemyArcher.IsGroundDetected())
         {
             enemyArcher.Flip();

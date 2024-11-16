@@ -1,3 +1,4 @@
+using Sound.SoundManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,8 +45,7 @@ public class BlackholeSkill : Skill
         GameObject newBlackhole = Instantiate(blackholePrefab, player.transform.position, Quaternion.identity);
         skillController = newBlackhole.GetComponent<BlackholeSkillController>();
         skillController.SetupBlackhole(maxSize, growSpeed, shrinkSpeed, amountOfAttacks, cloneAttackCooldown, blackholeDuration);
-        AudioManager.instance.PlaySFX(3);
-        AudioManager.instance.PlaySFX(6);
+        SoundManager.PlaySound(SoundType.BLACKHOLE_SKILL);
     }
 
     private void UnlockBlackhole()

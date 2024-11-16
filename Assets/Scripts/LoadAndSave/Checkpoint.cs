@@ -1,4 +1,5 @@
 using System;
+using Sound.SoundManager;
 using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
@@ -32,7 +33,7 @@ public class Checkpoint : MonoBehaviour
     {
         if (!isActivated)
         {
-            AudioManager.instance.PlaySFX(5, transform);
+            SoundManager.PlaySound3d(SoundType.CHECKPOINT_ACTIVATED, transform);
         }
         isActivated = true;
         animator?.SetBool(Active, true);

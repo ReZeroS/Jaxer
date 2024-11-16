@@ -16,11 +16,12 @@ public class PlayerCounterAttackState : PlayerState
         canCreateClone = true;
         stateTimer = player.counterAttackDuration;
         player.animator.SetBool(CounterAttackSuccessful, false);
+        
     }
 
-    public override void Update()
+    public override void LogicUpdate()
     {
-        base.Update();
+        base.LogicUpdate();
         player.SetZeroVelocity();
         
         Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackRadius);

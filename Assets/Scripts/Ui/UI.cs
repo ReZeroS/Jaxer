@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Sound.SoundManager;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -89,7 +90,7 @@ public class UI : MonoBehaviour, ISaveManager
 
         if (menu)
         {
-            AudioManager.instance?.PlaySFX(7);
+            SoundManager.PlaySound(SoundType.UI_SELECT);
             menu.SetActive(true);
         }
         

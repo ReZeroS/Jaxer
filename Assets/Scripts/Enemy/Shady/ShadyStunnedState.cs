@@ -13,7 +13,7 @@ public class ShadyStunnedState : ShadyState
         enemy.fx.RedColorBlinkFor(0, .1f);
         
         stateTimer = enemy.stunnedDuration;
-        rb.velocity = new Vector2(-enemy.facingDir*enemy.stunnedDirection.x, enemy.stunnedDirection.y);
+        rb.linearVelocity = new Vector2(-enemy.facingDir*enemy.stunnedDirection.x, enemy.stunnedDirection.y);
     }
 
     public override void Update()

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,14 @@ public class InputManager : MonoBehaviour
         GamePlay,
         UI
     }
+
+
+    #region Components
+
+    private Camera cam;
+
+
+    #endregion
     
     private PlayerInput playerInput;
     private InputMapType currentInputMap = InputMapType.GamePlay;
@@ -30,6 +39,8 @@ public class InputManager : MonoBehaviour
     private InputAction menuAction;
     // 给ui用来退出回到游戏的
     private InputAction exitMenuAction;
+    // 确认
+    private InputAction confirmAction;
 
     #region right part
 
@@ -44,11 +55,9 @@ public class InputManager : MonoBehaviour
 
     #endregion
     
-    
-    
-    
-    public Vector2 moveInput { get; private set; }
-    public Vector2 rightStickInput { get; private set; }
+    public Vector2 moveInput => moveAction.ReadValue<Vector2>();
+
+    public Vector2 rightStickInput => rightStick.ReadValue<Vector2>();
     
     #region Input States
     public InputState leftShoulder { get; private set; }
@@ -61,12 +70,21 @@ public class InputManager : MonoBehaviour
     public InputState padDown { get; private set; }
     public InputState view { get; private set; }
     public InputState menu { get; private set; }
-    public InputState exitMenu { get; private set; }
     public InputState south { get; private set; }
     public InputState east { get; private set; }
     public InputState west { get; private set; }
     public InputState north { get; private set; }
+    
+    public InputState exitMenu { get; private set; }
+    public InputState confirm { get; private set; }
+    
+    
+    public Vector2 RawDashDirectionInput { get; private set; }
+    public Vector2Int DashDirectionInput { get; private set; }
+
+
     #endregion
+    
 
     private void Awake()
     {
@@ -74,7 +92,6 @@ public class InputManager : MonoBehaviour
         {
             instance = this;
         }
-
         playerInput = GetComponent<PlayerInput>();
         SetupInputActions();
         InitializeInputStates();
@@ -95,7 +112,6 @@ public class InputManager : MonoBehaviour
 
         viewAction = playerInput.actions["View"];
         menuAction = playerInput.actions["Menu"];
-        exitMenuAction = playerInput.actions["ExitMenu"];
 
 
         rightStick = playerInput.actions["RightStick"];
@@ -111,8 +127,17 @@ public class InputManager : MonoBehaviour
         rightTriggerAction = playerInput.actions["RightTrigger"]; // R2
         
         
+        
+        
+        exitMenuAction = playerInput.actions["ExitMenu"];
+        confirmAction = playerInput.actions["Confirm"];
     }
-    
+
+    private void Start()
+    {
+        cam = Camera.main;
+    }
+
     private void InitializeInputStates()
     {
         leftShoulder = new InputState(leftShoulderAction);
@@ -125,45 +150,16 @@ public class InputManager : MonoBehaviour
         padDown = new InputState(padDownAction);
         view = new InputState(viewAction);
         menu = new InputState(menuAction);
-        exitMenu = new InputState(exitMenuAction);
         south = new InputState(southAction);
         east = new InputState(eastAction);
         west = new InputState(westAction);
         north = new InputState(northAction);
-    }
-
-    private void Update()
-    {
-        UpdateInputs();
-    }
-
-    private void UpdateInputs()
-    {
-        // 左边部分
-        leftShoulder.Update();
-        leftTrigger.Update();
-        moveInput = moveAction.ReadValue<Vector2>();
-        padLeft.Update();
-        padRight.Update();
-        padUp.Update();
-        padDown.Update();
         
-        // 中间部分
-        view.Update();
-        menu.Update();
-        exitMenu.Update();
-
-        // 右边部分
-        south.Update();
-        east.Update();
-        west.Update();
-        north.Update();
-        rightStickInput = rightStick.ReadValue<Vector2>();
-        rightShoulder.Update();
-        rightTrigger.Update();
+        exitMenu = new InputState(exitMenuAction);
+        confirm = new InputState(confirmAction);
     }
-
-
+    
+    
     public void SwitchActionMap(InputMapType mapType)
     {
         if (currentInputMap == mapType) return;
@@ -173,6 +169,19 @@ public class InputManager : MonoBehaviour
         Debug.Log($"Switched to {mapType} ActionMap");
     }
     
+    
+    
+    public void OnDashDirectionInput(InputAction.CallbackContext context)
+    {
+        RawDashDirectionInput = context.ReadValue<Vector2>();
+
+        if(playerInput.currentControlScheme == "Keyboard")
+        {
+            RawDashDirectionInput = cam.ScreenToWorldPoint((Vector3)RawDashDirectionInput) - transform.position;
+        }
+
+        DashDirectionInput = Vector2Int.RoundToInt(RawDashDirectionInput.normalized);
+    }
 
     public bool MatchHotKey(string myHotKey)
     {

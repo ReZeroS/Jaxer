@@ -31,17 +31,17 @@ public class PlayerBlackholeState : PlayerState
         rb.gravityScale = 0;
     }
 
-    public override void Update()
+    public override void LogicUpdate()
     {
-        base.Update();
+        base.LogicUpdate();
         if (stateTimer > 0)
         {
-            rb.velocity = new Vector2(0, 15);
+            rb.linearVelocity = new Vector2(0, 15);
         }
 
         if (stateTimer < 0)
         {
-            rb.velocity = new Vector2(0, -0.1f);
+            rb.linearVelocity = new Vector2(0, -0.1f);
             if (!skillUsed)
             {
                 if (player.skillManager.blackholeSkill.CanUseSkill())
@@ -53,7 +53,7 @@ public class PlayerBlackholeState : PlayerState
 
         if (player.skillManager.blackholeSkill.SkillCompleted())
         {
-            stateMachine.ChangeState(player.playerAirState);
+            stateMachine.ChangeState(player.playerFallingState);
         }
         
         

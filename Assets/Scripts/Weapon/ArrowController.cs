@@ -25,7 +25,7 @@ public class ArrowController : MonoBehaviour
     {
         if (!canMove)
         {
-            rb.velocity = new Vector2(xVelocity, rb.velocity.y);
+            rb.linearVelocity = new Vector2(xVelocity, rb.linearVelocity.y);
         }
     }
 
@@ -55,7 +55,7 @@ public class ArrowController : MonoBehaviour
         GetComponentInChildren<ParticleSystem>().Stop();
         GetComponent<Collider2D>().enabled = false;
         canMove = false;
-        rb.isKinematic = true;
+        rb.bodyType = RigidbodyType2D.Kinematic;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         transform.parent = other.transform;
         Destroy(gameObject, Random.Range(2, 5));

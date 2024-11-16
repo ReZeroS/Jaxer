@@ -26,7 +26,7 @@ public class PlayerCatchSwordState : PlayerState
             player.Flip();
         }
 
-        rb.velocity = new Vector2(player.swordReturnImpact * -player.facingDir, rb.velocity.y);
+        rb.linearVelocity = new Vector2(player.swordReturnImpact * -player.facingDir, rb.linearVelocity.y);
 
     }
 
@@ -36,9 +36,9 @@ public class PlayerCatchSwordState : PlayerState
         player.fx.ScreenShakeForSwordImpact(player.facingDir);
     }
 
-    public override void Update()
+    public override void LogicUpdate()
     {
-        base.Update();
+        base.LogicUpdate();
         if (animationFinishedTriggerCalled)
         {
             stateMachine.ChangeState(player.playerIdleState);

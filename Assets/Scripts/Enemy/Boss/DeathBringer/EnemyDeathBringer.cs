@@ -126,7 +126,7 @@ public class EnemyDeathBringer : Enemy
     {
         Player player = PlayerManager.instance.player;
         int xOffset = 0;
-        if (player.rb.velocity.x != 0)
+        if (player.rb.linearVelocity.x != 0)
         {
             xOffset = player.facingDir * 3;
         }

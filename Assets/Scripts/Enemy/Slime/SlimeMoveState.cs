@@ -17,7 +17,7 @@ public class SlimeMoveState : SlimeGroundState
     public override void Update()
     {
         base.Update();
-        enemySlime.SetVelocity(enemySlime.moveSpeed * enemySlime.facingDir, enemySlime.rb.velocity.y);
+        enemySlime.SetVelocity(enemySlime.moveSpeed * enemySlime.facingDir, enemySlime.rb.linearVelocity.y);
         if (enemySlime.IsWallDetected() || !enemySlime.IsGroundDetected())
         {
             enemySlime.Flip();

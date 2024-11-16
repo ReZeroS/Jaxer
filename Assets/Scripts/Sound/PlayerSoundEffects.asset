@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f0c3558dc65747e8b1b1d27abeacda1, type: 3}
+  m_Name: PlayerSoundEffects
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: MOVEMENT
+    volume: 0.48
+    mixer: {fileID: -8458497694684626364, guid: b7725e6b8fda8d845bed26b071ee56d1, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: 2ac3ff039b189174d8b2eb0a80346aba, type: 3}
+  - name: JUMP
+    volume: 1
+    mixer: {fileID: -8458497694684626364, guid: b7725e6b8fda8d845bed26b071ee56d1, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: ea2b027c6b96a254f825b9249d0e575a, type: 3}
+  - name: DASH
+    volume: 1
+    mixer: {fileID: -8458497694684626364, guid: b7725e6b8fda8d845bed26b071ee56d1, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: 61c76c1b40a94704889e3e4fc3e1b381, type: 3}
+  - name: SWIM
+    volume: 1
+    mixer: {fileID: -8458497694684626364, guid: b7725e6b8fda8d845bed26b071ee56d1, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: 2c587cc6603fe284cbf430cb6d913306, type: 3}
+  - name: LIGHT_ATTACK
+    volume: 1
+    mixer: {fileID: -8458497694684626364, guid: b7725e6b8fda8d845bed26b071ee56d1, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: ce2abc53bdc2d6145a070b4f15171a7d, type: 3}
+    - {fileID: 8300000, guid: 8781b57efc315124691b0f3911fb262e, type: 3}
+    - {fileID: 8300000, guid: 648e0af3d7b918549b58e745bff5e5d9, type: 3}
+  - name: HEAVY_ATTACK
+    volume: 1
+    mixer: {fileID: -8458497694684626364, guid: b7725e6b8fda8d845bed26b071ee56d1, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: 59adf39d26621e443b3c02a1fc499a86, type: 3}
+  - name: PARRY
+    volume: 1
+    mixer: {fileID: -8458497694684626364, guid: b7725e6b8fda8d845bed26b071ee56d1, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: 84dfa719858ab844684997fbe61fee19, type: 3}
+  - name: BLACKHOLE_SKILL
+    volume: 1
+    mixer: {fileID: -8458497694684626364, guid: b7725e6b8fda8d845bed26b071ee56d1, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: 8dc8fde242a12544eb5c14646271a2fb, type: 3}
+  - name: PICKUP
+    volume: 1
+    mixer: {fileID: -8458497694684626364, guid: b7725e6b8fda8d845bed26b071ee56d1, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: 8f397150faf31264bb32d32283c6b851, type: 3}
+  - name: UI_SELECT
+    volume: 1
+    mixer: {fileID: -8458497694684626364, guid: b7725e6b8fda8d845bed26b071ee56d1, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: b0008c6a4d9382249bddb0dfeaffa8ec, type: 3}
+  - name: CHECKPOINT_ACTIVATED
+    volume: 1
+    mixer: {fileID: -8458497694684626364, guid: b7725e6b8fda8d845bed26b071ee56d1, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: decfc7d0b2addf842b4b38e046500f85, type: 3}
