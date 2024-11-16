@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,14 @@ public class InputManager : MonoBehaviour
         GamePlay,
         UI
     }
+
+
+    #region Components
+
+    private Camera cam;
+
+
+    #endregion
     
     private PlayerInput playerInput;
     private InputMapType currentInputMap = InputMapType.GamePlay;
@@ -68,6 +77,11 @@ public class InputManager : MonoBehaviour
     
     public InputState exitMenu { get; private set; }
     public InputState confirm { get; private set; }
+    
+    
+    public Vector2 RawDashDirectionInput { get; private set; }
+    public Vector2Int DashDirectionInput { get; private set; }
+
 
     #endregion
     
@@ -118,7 +132,12 @@ public class InputManager : MonoBehaviour
         exitMenuAction = playerInput.actions["ExitMenu"];
         confirmAction = playerInput.actions["Confirm"];
     }
-    
+
+    private void Start()
+    {
+        cam = Camera.main;
+    }
+
     private void InitializeInputStates()
     {
         leftShoulder = new InputState(leftShoulderAction);
@@ -150,6 +169,19 @@ public class InputManager : MonoBehaviour
         Debug.Log($"Switched to {mapType} ActionMap");
     }
     
+    
+    
+    public void OnDashDirectionInput(InputAction.CallbackContext context)
+    {
+        RawDashDirectionInput = context.ReadValue<Vector2>();
+
+        if(playerInput.currentControlScheme == "Keyboard")
+        {
+            RawDashDirectionInput = cam.ScreenToWorldPoint((Vector3)RawDashDirectionInput) - transform.position;
+        }
+
+        DashDirectionInput = Vector2Int.RoundToInt(RawDashDirectionInput.normalized);
+    }
 
     public bool MatchHotKey(string myHotKey)
     {

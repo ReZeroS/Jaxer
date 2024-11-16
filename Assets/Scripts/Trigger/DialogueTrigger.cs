@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [Serializable]
 public class DialogueCharacter
@@ -26,19 +25,37 @@ public class SegmentDialogue
 
 public class DialogueTrigger : MonoBehaviour
 {
-    [FormerlySerializedAs("dialogue")] public SegmentDialogue segmentDialogue;
+    public SegmentDialogue segmentDialogue;
 
+    private bool hasTriggered;
+    
+    
     private void TriggerDialogue()
     {
         DialogueManager.Instance.StartDialogue(segmentDialogue);
+    }
+    
+    private void Update()
+    {
+        if (hasTriggered && InputManager.instance.padUp.justPressed)
+        {
+            TriggerDialogue();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
         {
-            TriggerDialogue();
+            hasTriggered = true;
         }
     }
-    
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Player"))
+        {
+            hasTriggered = false;
+        }
+    }
 }
