@@ -15,13 +15,14 @@ MonoBehaviour:
   itemType: 1
   itemName: StolenSword
   icon: {fileID: 1526008332, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
-  dropChance: 20
+  dropChance: 16.2
+  itemId: 0a47c89daeee143c5954fdef919f324a
   equipmentType: 0
   itemEffects: []
   itemCooldown: 0
   lastTimeUsed: 0
   itemStartCooldown: 0
-  itemEffectDescription: hahahah22
+  itemEffectDescription: ' stolen player 16,2'
   strength: 0
   agility: 5
   intelligence: 0

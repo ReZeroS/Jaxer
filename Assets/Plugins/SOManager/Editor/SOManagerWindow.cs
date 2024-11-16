@@ -1,27 +1,30 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 public class SOManagerWindow : EditorWindow
 {
     private Vector2 _leftPanelScroll;
-    private SOManager.MenuNode _menuRoot;
     private List<ScriptableObject> _soInstances = new();
     private string _selectedSOType;
     private Vector2 _rightPanelScroll;
-
-    private float DEFAULT_LENGTH = 150;
 
     private TreeNode rootNode = new("Root");
 
     private TreeNode _selectedNode = null;
 
     private GUIStyle _selectedStyle;
+
+
+    // Function registration
+    private List<FunctionWrapper> _functions = new();
+    private FunctionWrapper _selectedFunction = null;
+    private Dictionary<string, object> _functionParameters = new();
+   
+    private FunctionExecutor _functionExecutor;
 
     [MenuItem("Window/SO Manager")]
     public static void ShowWindow()
@@ -30,7 +33,8 @@ public class SOManagerWindow : EditorWindow
         window.minSize = new Vector2(800, 600);
     }
 
-    private readonly float[] columnWidths = { 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, }; // Adjust column widths
+    private readonly float[]
+        columnWidths = { 150 }; // Adjust column widths
 
     private List<Type> _scriptableObjectTypes = new List<Type>();
 
@@ -50,8 +54,24 @@ public class SOManagerWindow : EditorWindow
             return columnWidths[i];
         }
 
-        return 150;
+        return columnWidths[0];
     }
+
+
+    private void OnEnable()
+    {
+        LoadAllScriptableObjectTypes();
+        BuildTree();
+        RegisterFunctions();
+    }
+
+    private void RegisterFunctions()
+    {
+        // 初始化 FunctionExecutor
+        _functionExecutor = new FunctionExecutor(_soInstances);
+    }
+    
+
 
     private void OnGUI()
     {
@@ -72,18 +92,9 @@ public class SOManagerWindow : EditorWindow
         DrawBottomPanel();
     }
 
-    private void OnEnable()
-    {
-        LoadAllScriptableObjectTypes();
-        BuildTree();
-
-      
-    }
-
     private void DrawBottomPanel()
-    {
-        EditorGUILayout.LabelField("SQL-like Command Panel", GUILayout.Height(50));
-        // TODO: Implement text box and execution functionality
+    { 
+        _functionExecutor.DrawBottomPanel();
     }
 
     private void DrawLeftPanel()
@@ -116,25 +127,28 @@ public class SOManagerWindow : EditorWindow
         {
             // Group instances by their actual type
             var instancesByType = _soInstances.GroupBy(instance => instance.GetType());
-        
+
             foreach (var typeGroup in instancesByType)
             {
                 var instanceType = typeGroup.Key;
                 var instances = typeGroup.ToList();
-            
+
                 // Get fields for this specific type
-                var fields = instanceType.GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+                var fields =
+                    instanceType.GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
                 var baseType = instanceType.BaseType;
                 while (baseType != null && baseType != typeof(ScriptableObject))
                 {
-                    fields = fields.Concat(baseType.GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly)).ToArray();
+                    fields = fields
+                        .Concat(baseType.GetFields(BindingFlags.Public | BindingFlags.Instance |
+                                                   BindingFlags.DeclaredOnly)).ToArray();
                     baseType = baseType.BaseType;
                 }
 
                 // Draw section header for this type
                 EditorGUILayout.Space(10);
                 EditorGUILayout.LabelField($"Type: {instanceType.Name}", EditorStyles.boldLabel);
-            
+
                 DrawTableHeader(fields);
 
                 foreach (var instance in instances)
@@ -170,238 +184,40 @@ public class SOManagerWindow : EditorWindow
     {
         EditorGUILayout.BeginHorizontal();
 
+        var serializedObject = new SerializedObject(instance);
+
+        // 在这行中应用任何修改
+        bool modified = false;
+
         foreach (var field in fields)
         {
-            try
+            var property = serializedObject.FindProperty(field.Name);
+            if (property != null)
             {
-                EditorGUILayout.BeginHorizontal();
-                DrawField(instance, field, GUILayout.Width(getColumnWidth(Array.IndexOf(fields, field))));
-                EditorGUILayout.EndHorizontal();
+                EditorGUILayout.PropertyField(property, GUIContent.none,
+                    GUILayout.Width(getColumnWidth(Array.IndexOf(fields, field))));
+                modified = true; // 标记已经修改
             }
-            catch (Exception e)
+            else
             {
-                Debug.LogError($"Error drawing field {field.Name}: {e.Message}");
-                if (Event.current.type == EventType.Layout)
-                {
-                    EditorGUILayout.EndHorizontal();
-                }
+                EditorGUILayout.LabelField($"Unsupported ({field.FieldType.Name})",
+                    GUILayout.Width(getColumnWidth(Array.IndexOf(fields, field))));
             }
+        }
+
+        if (modified)
+        {
+            // 如果数据被修改，应用更改
+            serializedObject.ApplyModifiedProperties();
+
+            // 保存修改
+            AssetDatabase.SaveAssets();
         }
 
         EditorGUILayout.EndHorizontal();
     }
 
-    private void DrawField(ScriptableObject instance, FieldInfo field, GUILayoutOption width = null)
-    {
-        var value = field.GetValue(instance);
-
-        if (field.FieldType == typeof(string))
-        {
-            var newValue = EditorGUILayout.TextField((string)value, width ?? GUILayout.Width(DEFAULT_LENGTH));
-            if (newValue != (string)value)
-            {
-                field.SetValue(instance, newValue);
-                EditorUtility.SetDirty(instance);
-            }
-        }
-        else if (field.FieldType == typeof(int))
-        {
-            var newValue = EditorGUILayout.IntField((int)value, width ?? GUILayout.Width(DEFAULT_LENGTH));
-            if (newValue != (int)value)
-            {
-                field.SetValue(instance, newValue);
-                EditorUtility.SetDirty(instance);
-            }
-        }
-        else if (field.FieldType == typeof(float))
-        {
-            var newValue = EditorGUILayout.FloatField((float)value, width ?? GUILayout.Width(DEFAULT_LENGTH));
-            if (newValue != (float)value)
-            {
-                field.SetValue(instance, newValue);
-                EditorUtility.SetDirty(instance);
-            }
-        }
-        else if (field.FieldType == typeof(bool))
-        {
-            var newValue = EditorGUILayout.Toggle((bool)value, width ?? GUILayout.Width(DEFAULT_LENGTH));
-            if (newValue != (bool)value)
-            {
-                field.SetValue(instance, newValue);
-                EditorUtility.SetDirty(instance);
-            }
-        }
-        else if (field.FieldType.IsEnum)
-        {
-            var newValue = EditorGUILayout.EnumPopup((Enum)value, width ?? GUILayout.Width(DEFAULT_LENGTH));
-            if (!newValue.Equals(value))
-            {
-                field.SetValue(instance, newValue);
-                EditorUtility.SetDirty(instance);
-            }
-        }
-        else if (field.FieldType == typeof(Vector2))
-        {
-            var newValue = EditorGUILayout.Vector2Field("", (Vector2)value, width ?? GUILayout.Width(DEFAULT_LENGTH));
-            if (newValue != (Vector2)value)
-            {
-                field.SetValue(instance, newValue);
-                EditorUtility.SetDirty(instance);
-            }
-        }
-        else if (field.FieldType == typeof(Vector3))
-        {
-            var newValue = EditorGUILayout.Vector3Field("", (Vector3)value, width ?? GUILayout.Width(DEFAULT_LENGTH));
-            if (newValue != (Vector3)value)
-            {
-                field.SetValue(instance, newValue);
-                EditorUtility.SetDirty(instance);
-            }
-        }
-        else if (field.FieldType == typeof(Color))
-        {
-            var newValue = EditorGUILayout.ColorField((Color)value, width ?? GUILayout.Width(DEFAULT_LENGTH));
-            if (newValue != (Color)value)
-            {
-                field.SetValue(instance, newValue);
-                EditorUtility.SetDirty(instance);
-            }
-        }
-        else if (field.FieldType.IsArray ||
-                 (field.FieldType.IsGenericType && field.FieldType.GetGenericTypeDefinition() == typeof(List<>)))
-        {
-            // Get array or list value
-            var elementType = field.FieldType.IsArray
-                ? field.FieldType.GetElementType()
-                : field.FieldType.GetGenericArguments()[0];
-
-            if (value == null)
-            {
-                // Initialize empty list
-                if (field.FieldType.IsArray)
-                {
-                    value = Array.CreateInstance(elementType, 0);
-                }
-                else
-                {
-                    value = Activator.CreateInstance(typeof(List<>).MakeGenericType(elementType));
-                }
-
-                field.SetValue(instance, value);
-                EditorUtility.SetDirty(instance);
-            }
-
-            // Convert to list operation (compatible with arrays and lists)
-            var list = value as IList;
-
-            EditorGUILayout.BeginVertical("box");
-
-            EditorGUILayout.LabelField($"List<{elementType.Name}> ({list.Count} items)", EditorStyles.boldLabel);
-
-            for (int i = 0; i < list.Count; i++)
-            {
-                EditorGUILayout.BeginHorizontal();
-
-                // Element editing
-                var item = list[i];
-                var newItem = DrawListElement(item, elementType, width);
-                if (!Equals(item, newItem))
-                {
-                    list[i] = newItem;
-                    EditorUtility.SetDirty(instance);
-                }
-
-                // Delete button
-                if (GUILayout.Button("-", GUILayout.Width(25)))
-                {
-                    list.RemoveAt(i);
-                    EditorUtility.SetDirty(instance);
-                }
-
-                EditorGUILayout.EndHorizontal();
-            }
-
-            // Add button
-            if (GUILayout.Button("+ Add Item", GUILayout.Width(100)))
-            {
-                object newItem = null;
-                if (elementType == typeof(string))
-                {
-                    newItem = "";
-                }
-                else if (elementType.IsValueType)
-                {
-                    newItem = Activator.CreateInstance(elementType);
-                }
-
-                list.Add(newItem);
-                EditorUtility.SetDirty(instance);
-            }
-
-            EditorGUILayout.EndVertical();
-        }
-        else
-        {
-            EditorGUILayout.LabelField($"Unsupported ({field.FieldType.Name})",
-                width ?? GUILayout.Width(DEFAULT_LENGTH));
-        }
-    }
-
-    private object DrawListElement(object item, Type elementType, GUILayoutOption width = null)
-    {
-        if (elementType == typeof(string))
-        {
-            return EditorGUILayout.TextField(item as string, width ?? GUILayout.Width(DEFAULT_LENGTH));
-        }
-
-        if (elementType == typeof(int))
-        {
-            return EditorGUILayout.IntField(item != null ? (int)item : 0, width ?? GUILayout.Width(DEFAULT_LENGTH));
-        }
-
-        if (elementType == typeof(float))
-        {
-            return EditorGUILayout.FloatField(item != null ? (float)item : 0f,
-                width ?? GUILayout.Width(DEFAULT_LENGTH));
-        }
-
-        if (elementType == typeof(bool))
-        {
-            return EditorGUILayout.Toggle(item != null && (bool)item, width ?? GUILayout.Width(DEFAULT_LENGTH));
-        }
-
-        if (elementType.IsEnum)
-        {
-            return EditorGUILayout.EnumPopup(item as Enum, width ?? GUILayout.Width(DEFAULT_LENGTH));
-        }
-
-        if (elementType == typeof(Vector2))
-        {
-            return EditorGUILayout.Vector2Field("", item != null ? (Vector2)item : Vector2.zero,
-                width ?? GUILayout.Width(DEFAULT_LENGTH));
-        }
-
-        if (elementType == typeof(Vector3))
-        {
-            return EditorGUILayout.Vector3Field("", item != null ? (Vector3)item : Vector3.zero,
-                width ?? GUILayout.Width(DEFAULT_LENGTH));
-        }
-
-        if (elementType == typeof(Color))
-        {
-            return EditorGUILayout.ColorField(item != null ? (Color)item : Color.white,
-                width ?? GUILayout.Width(DEFAULT_LENGTH));
-        }
-
-        if (typeof(Object).IsAssignableFrom(elementType))
-        {
-            return EditorGUILayout.ObjectField(item as Object, elementType, true,
-                width ?? GUILayout.Width(DEFAULT_LENGTH));
-        }
-
-        EditorGUILayout.LabelField($"Unsupported ({elementType.Name})", width ?? GUILayout.Width(DEFAULT_LENGTH));
-        return item;
-    }
+    #region Draw Tree
 
     private void BuildTree()
     {
@@ -498,4 +314,32 @@ public class SOManagerWindow : EditorWindow
         }
     }
 
+    #endregion
+
+    private void ExecuteFunction()
+    {
+        if (_selectedFunction != null)
+        {
+            // Collect parameters
+            var parameterValues = _functionParameters.Values.ToArray();
+            _selectedFunction.Execute(parameterValues);
+        }
+    }
+
+
+    #region Function Usage
+
+    private void GetAllSOInstances(params object[] parameters)
+    {
+        // Return all instances of ScriptableObject
+        return ;
+    }
+
+    private void FilterSOInstancesByType(params object[] parameters)
+    {
+        var type = (string)parameters[0]; // Get the type from the parameters
+        // return _soInstances.Where(so => so.GetType().Name.Contains(type)).ToList();
+    }
+
+    #endregion
 }
