@@ -26,7 +26,7 @@ public class SOManagerWindow : EditorWindow
    
     private FunctionExecutor _functionExecutor;
 
-    [MenuItem("Window/SO Manager")]
+    [MenuItem("Window/Bin/SO Manager")]
     public static void ShowWindow()
     {
         var window = GetWindow<SOManagerWindow>("SO Manager");

@@ -25,7 +25,7 @@ public class ScriptableObjectManager : EditorWindow
     private List<ScriptableObject> filteredInstances;
 
     // 工作区调整布局
-    private int columnsPerRow = 3; // 默认每行显示 3 个实例
+    private int columnsPerRow = 4; // 默认每行显示 3 个实例
     private float columnWidth = 300; // 每列的宽度
     private float rowSpacing = 10f; // 行间间隙
 
@@ -38,7 +38,7 @@ public class ScriptableObjectManager : EditorWindow
     private Dictionary<ScriptableObject, Editor> cachedEditors = new Dictionary<ScriptableObject, Editor>();
 
 
-    [MenuItem("Window/Scriptable Object Manager")]
+    [MenuItem("Tools/Scriptable Object Manager")]
     public static void OpenWindow()
     {
         GetWindow<ScriptableObjectManager>("SO Manager");
@@ -183,18 +183,12 @@ public class ScriptableObjectManager : EditorWindow
         if (selectedType == null || filteredInstances == null) return;
         EditorGUILayout.BeginVertical();
 
-        // 调整列数的滑块
-        EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Columns Per Row:", GUILayout.Width(120));
-        columnsPerRow = EditorGUILayout.IntSlider(columnsPerRow, 1, 10);
-        EditorGUILayout.EndHorizontal();
+        columnsPerRow = EditorGUILayout.IntSlider("Columns Per Row", columnsPerRow, 1, 10);
 
-        // 开始滚动区域
         workScrollPos = EditorGUILayout.BeginScrollView(workScrollPos);
 
-        bool isFirstRow = true; // 用于判断是否是第一行
-        int currentColumn = 0; // 当前列数
-        EditorGUILayout.BeginHorizontal(); // 开始行
+        int currentColumn = 0;
+        EditorGUILayout.BeginHorizontal();
 
         foreach (var instance in filteredInstances)
         {
@@ -203,36 +197,70 @@ public class ScriptableObjectManager : EditorWindow
                 cachedEditors[instance] = Editor.CreateEditor(instance);
             }
 
-            // 每列绘制一个实例
             EditorGUILayout.BeginVertical(GUILayout.Width(columnWidth));
-            EditorGUILayout.LabelField(instance.name, EditorStyles.boldLabel); // 实例名称
-            cachedEditors[instance].OnInspectorGUI(); // 实例内容
+            EditorGUILayout.LabelField(instance.name, EditorStyles.boldLabel);
+
+            // 使用自定义的绘制方法
+            DrawFilteredInspector(cachedEditors[instance]);
+
             EditorGUILayout.EndVertical();
 
             currentColumn++;
 
-
-            // 到达列数上限时换行
             if (currentColumn >= columnsPerRow)
             {
-                EditorGUILayout.EndHorizontal(); // 结束当前行
-                if (!isFirstRow)
-                {
-                    // 添加行间间隙或分隔线
-                    GUILayout.Space(rowSpacing); // 行间间隙
-                    DrawHorizontalLine(); // 分隔线
-                }
+                EditorGUILayout.EndHorizontal();
 
-                isFirstRow = false;
-
-                EditorGUILayout.BeginHorizontal(); // 开始新行
+                GUILayout.Space(rowSpacing);
+                DrawHorizontalLine();
+                EditorGUILayout.BeginHorizontal();
                 currentColumn = 0;
             }
         }
 
-        EditorGUILayout.EndHorizontal(); // 结束最后一行
-        EditorGUILayout.EndScrollView(); // 结束滚动区域
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.EndScrollView();
         EditorGUILayout.EndVertical();
+    }
+
+    private void DrawFilteredInspector(Editor editor)
+    {
+        EditorGUI.BeginChangeCheck();
+
+        // 获取序列化对象
+        SerializedObject serializedObject = editor.serializedObject;
+        SerializedProperty iterator = serializedObject.GetIterator();
+
+        // 跳过脚本字段
+        iterator.NextVisible(true);
+
+        while (iterator.NextVisible(false))
+        {
+            // 检查是否勾选了该字段的显示
+            if (!fieldToggles.ContainsKey(iterator.name) || !fieldToggles[iterator.name])
+                continue;
+
+            // 检查是否有筛选条件，如果有则进行匹配
+            if (fieldFilters.ContainsKey(iterator.name) &&
+                !string.IsNullOrEmpty(fieldFilters[iterator.name]))
+            {
+                string filterValue = fieldFilters[iterator.name];
+                string currentValue = iterator.stringValue;
+
+                if (!string.IsNullOrEmpty(filterValue) &&
+                    !Regex.IsMatch(currentValue ?? "", filterValue))
+                    continue;
+            }
+
+            // 绘制字段
+            EditorGUILayout.PropertyField(iterator, true);
+        }
+
+        // 应用修改
+        if (EditorGUI.EndChangeCheck())
+        {
+            serializedObject.ApplyModifiedProperties();
+        }
     }
 
     private void DrawExecutionArea()
@@ -407,7 +435,7 @@ public class ScriptableObjectManager : EditorWindow
     // 绘制分隔线
     private void DrawHorizontalLine()
     {
-        Color lineColor = new Color(1f, 1f, 1f, 1f); // More visible gray color
+        Color lineColor = new Color(0.4f, 1f, 0.66f); // More visible gray color
         Rect rect = EditorGUILayout.GetControlRect(false, 1);
         EditorGUI.DrawRect(rect, lineColor);
     }

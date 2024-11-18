@@ -23,7 +23,7 @@ MonoBehaviour:
   itemCooldown: 0
   lastTimeUsed: 0
   itemStartCooldown: 0
-  itemEffectDescription: 
+  itemEffectDescription: amulet of god desc
   strength: 0
   agility: 0
   intelligence: 0

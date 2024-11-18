@@ -35,7 +35,7 @@ public class SOBrowserWindow : EditorWindow
         public bool enabled = true;
     }
 
-    [MenuItem("Window/Custom/SO Browser")]
+    [MenuItem("Window/Bin/SO Browser")]
     public static void ShowWindow()
     {
         GetWindow<SOBrowserWindow>("SO Browser");
