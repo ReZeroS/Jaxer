@@ -46,6 +46,7 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/6000.0.26f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/Scripts/Editor/ScriptableObjectManager.cs" />
     <Compile Include="Assets/Scripts/Editor/SoundsSOEditor.cs" />
     <Compile Include="Assets/Packages/MovingPlatforms/Code/Editor/PlatformControllerEditor.cs" />
     <Compile Include="Assets/Packages/2DWater/Code/Editor/WaterEditor.cs" />
@@ -1059,6 +1060,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{4e6e6996-b8a5-e7ff-25a5-38a72b772d00}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{aafe8479-e230-6a7c-dbf1-2a1737a4bca0}</Project>
       <Name>Assembly-CSharp</Name>
