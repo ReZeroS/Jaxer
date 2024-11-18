@@ -240,18 +240,6 @@ public class ScriptableObjectManager : EditorWindow
             if (!fieldToggles.ContainsKey(iterator.name) || !fieldToggles[iterator.name])
                 continue;
 
-            // 检查是否有筛选条件，如果有则进行匹配
-            if (fieldFilters.ContainsKey(iterator.name) &&
-                !string.IsNullOrEmpty(fieldFilters[iterator.name]))
-            {
-                string filterValue = fieldFilters[iterator.name];
-                string currentValue = iterator.stringValue;
-
-                if (!string.IsNullOrEmpty(filterValue) &&
-                    !Regex.IsMatch(currentValue ?? "", filterValue))
-                    continue;
-            }
-
             // 绘制字段
             EditorGUILayout.PropertyField(iterator, true);
         }
@@ -307,7 +295,17 @@ public class ScriptableObjectManager : EditorWindow
             EditorGUILayout.BeginHorizontal();
             fieldToggles[field.Name] =
                 EditorGUILayout.ToggleLeft(field.Name, fieldToggles[field.Name], GUILayout.Width(100));
-            fieldFilters[field.Name] = EditorGUILayout.TextField(fieldFilters[field.Name]);
+
+            // 只读文本框，不响应实时输入
+            string newFilter = EditorGUILayout.TextField(fieldFilters[field.Name],
+                GUILayout.Width(position.width / 4));
+
+            // 只在应用按钮点击时更新过滤条件
+            if (GUI.changed)
+            {
+                fieldFilters[field.Name] = newFilter;
+            }
+
             EditorGUILayout.EndHorizontal();
         }
 
@@ -317,6 +315,42 @@ public class ScriptableObjectManager : EditorWindow
         }
 
         EditorGUILayout.EndVertical();
+    }
+
+    private void ApplyFilters()
+    {
+        filteredInstances = instances.Where(instance =>
+        {
+            foreach (var field in selectedType.GetFields())
+            {
+                // 只检查有筛选条件的字段
+                string filter = fieldFilters[field.Name];
+                if (string.IsNullOrEmpty(filter)) continue;
+
+                object value = field.GetValue(instance);
+
+                // 使用更精确的匹配方法
+                try
+                {
+                    // 对于字符串类型，使用包含匹配
+                    if (value == null && !string.IsNullOrEmpty(filter)) return false;
+
+                    string stringValue = value?.ToString() ?? "";
+                    if (!stringValue.Contains(filter, StringComparison.OrdinalIgnoreCase))
+                        return false;
+                }
+                catch
+                {
+                    // 如果转换失败，不匹配
+                    return false;
+                }
+            }
+
+            return true;
+        }).ToList();
+
+        // 触发重绘
+        Repaint();
     }
 
     private void DrawUpdateArea()
@@ -334,27 +368,6 @@ public class ScriptableObjectManager : EditorWindow
         }
 
         EditorGUILayout.EndVertical();
-    }
-
-    private void ApplyFilters()
-    {
-        filteredInstances = instances.Where(instance =>
-        {
-            foreach (var field in selectedType.GetFields())
-            {
-                // 只检查被勾选的字段
-                if (!fieldToggles[field.Name]) continue;
-
-                object value = field.GetValue(instance);
-                string filter = fieldFilters[field.Name];
-
-                // 如果有筛选条件，则进行正则匹配
-                if (!string.IsNullOrEmpty(filter) && !Regex.IsMatch(value?.ToString() ?? "", filter))
-                    return false;
-            }
-
-            return true;
-        }).ToList();
     }
 
 

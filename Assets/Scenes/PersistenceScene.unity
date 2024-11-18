@@ -3034,7 +3034,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3084,7 +3084,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.262674, y: 1.9916043, z: -9.974511}
+  m_LocalPosition: {x: -10.262674, y: 1.9916043, z: -10.704511}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14999,7 +14999,7 @@ Transform:
   m_GameObject: {fileID: 1967789686}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.262674, y: 1.9916043, z: -9.974511}
+  m_LocalPosition: {x: -10.262674, y: 1.9916043, z: -10.704511}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15027,7 +15027,7 @@ MonoBehaviour:
     AmplitudeGain: 1
     FrequencyGain: 1
     Duration: 1
-    m_NoiseOffsets: {x: 0, y: 0, z: 0}
+    m_NoiseOffsets: {x: 293.35278, y: 565.4869, z: -914.8767}
 --- !u!114 &1967789691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15083,8 +15083,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886251e9a18ece04ea8e61686c173e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraDistance: 10
-  DeadZoneDepth: 0
+  CameraDistance: 10.73
+  DeadZoneDepth: 0.19
   Composition:
     ScreenPosition: {x: -0.000000033527613, y: 0.000000007450581}
     DeadZone:
