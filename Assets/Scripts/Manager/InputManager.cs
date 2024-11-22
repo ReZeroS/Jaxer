@@ -93,6 +93,7 @@ public class InputManager : MonoBehaviour
             instance = this;
         }
         playerInput = GetComponent<PlayerInput>();
+        Debug.Log("current actions map " + playerInput.currentActionMap);
         SetupInputActions();
         InitializeInputStates();
     }

@@ -20,5 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ForgivenForest.unity
     guid: de18037f959f64d9884300b4cff5d17f
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 4b58717300c684594a6079c486c7a04a, type: 3}
   m_UseUCBPForAssetBundles: 0

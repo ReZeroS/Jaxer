@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using ReZeros.Jaxer.Base;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]

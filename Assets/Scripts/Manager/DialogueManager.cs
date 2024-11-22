@@ -10,25 +10,26 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
 
-	public Image characterIcon;
-	public TextMeshProUGUI characterName;
+    public Image characterIcon;
+    public TextMeshProUGUI characterName;
     public TextMeshProUGUI dialogueArea;
 
     private RectTransform dialogBox;
-    
+
     [SerializeField] private float targetYPosition = -320f;
-    
+
     private Queue<DialogueLine> lines;
-    
+
     private bool isTyping = false;
-    
-	public bool isDialogueActive = false;
 
-	public float typingSpeed = 0.1f;
+    public bool isDialogueActive = false;
 
-	private List<string> currentLines = new List<string>();
+    public float typingSpeed = 0.1f;
 
-	private string currentTypingLine = "";
+    private List<string> currentLines = new List<string>();
+
+    private string currentTypingLine = "";
+
     private void Awake()
     {
         if (Instance == null)
@@ -39,92 +40,93 @@ public class DialogueManager : MonoBehaviour
 
 
     private void Start()
-    {		
-	    lines = new Queue<DialogueLine>();
-	    // 将对话框初始位置设置在 Canvas 下方
-	    dialogBox.anchoredPosition = new Vector2(dialogBox.anchoredPosition.x, -Screen.height * 2);
+    {
+        lines = new Queue<DialogueLine>();
+        // 将对话框初始位置设置在 Canvas 下方
+        dialogBox.anchoredPosition = new Vector2(dialogBox.anchoredPosition.x, -Screen.height * 2);
     }
 
     public void StartDialogue(SegmentDialogue segmentDialogue)
-	{
-		isDialogueActive = true;
-		InputManager.instance.SwitchActionMap(InputManager.InputMapType.UI);
-		currentLines.Clear(); // 清空之前的行
-		// 从下方弹出到指定位置
-		dialogBox.DOAnchorPosY(targetYPosition, 0.5f).SetEase(Ease.OutBounce);
-		
-		lines.Clear();
+    {
+        isDialogueActive = true;
+        InputManager.instance.SwitchActionMap(InputManager.InputMapType.UI);
+        currentLines.Clear(); // 清空之前的行
+        // 从下方弹出到指定位置
+        dialogBox.DOAnchorPosY(targetYPosition, 0.5f).SetEase(Ease.OutBounce);
 
-		foreach (DialogueLine dialogueLine in segmentDialogue.dialogueLines)
-		{
-			lines.Enqueue(dialogueLine);
-		}
+        lines.Clear();
 
-		DisplayNextDialogueLine();
-		
-	}
+        foreach (DialogueLine dialogueLine in segmentDialogue.dialogueLines)
+        {
+            lines.Enqueue(dialogueLine);
+        }
 
-	public void DisplayNextDialogueLine()
-	{
-		if (lines.Count == 0 && !isTyping)
-		{
-			EndDialogue();
-			return;
-		}
+        DisplayNextDialogueLine();
+    }
 
-		if (isTyping)
-		{
-			StopAllCoroutines(); // 停止当前的协程
-			dialogueArea.text = currentTypingLine; // 直接显示完整文本
-			isTyping = false; // 设置为不正在打字
-		}
-		else
-		{
-			DialogueLine currentLine = lines.Dequeue();
+    public void DisplayNextDialogueLine()
+    {
+        if (lines.Count == 0 && !isTyping)
+        {
+            EndDialogue();
+            return;
+        }
 
-			characterIcon.sprite = currentLine.character.icon;
-			characterName.text = currentLine.character.name;
+        if (isTyping)
+        {
+            StopAllCoroutines(); // 停止当前的协程
+            dialogueArea.text = currentTypingLine; // 直接显示完整文本
+            isTyping = false; // 设置为不正在打字
+        }
+        else
+        {
+            DialogueLine currentLine = lines.Dequeue();
 
-			StopAllCoroutines();
-			StartCoroutine(TypeSentence(currentLine));
-		}
-		
-	}
-	
+            characterIcon.sprite = currentLine.character.icon;
+            characterName.text = currentLine.character.name;
 
-	IEnumerator TypeSentence(DialogueLine dialogueLine)
-	{
-		isTyping = true;
-		currentTypingLine = dialogueLine.line;
-		dialogueArea.text = "";
-		foreach (char letter in dialogueLine.line)
-		{
-			dialogueArea.text += letter;
-			yield return new WaitForSeconds(typingSpeed);
-		}
-		isTyping = false; // 打字完成
-	}
+            StopAllCoroutines();
+            StartCoroutine(TypeSentence(currentLine));
+        }
+    }
 
 
+    IEnumerator TypeSentence(DialogueLine dialogueLine)
+    {
+        isTyping = true;
+        currentTypingLine = dialogueLine.line;
+        dialogueArea.text = "";
+        foreach (char letter in dialogueLine.line)
+        {
+            dialogueArea.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
 
-	private void Update()
-	{
-		bool confirmJustPressed = InputManager.instance.confirm.justPressed;
-		if (isDialogueActive && confirmJustPressed) // 可以替换为其他按键
-		{
-			DisplayNextDialogueLine();
-		}
-	}
+        isTyping = false; // 打字完成
+    }
 
-	void EndDialogue()
-	{
-		Debug.Log("end dialog ");
-		isDialogueActive = false;
-		dialogBox.DOAnchorPosY(-Screen.height * 2, 0.5f).SetEase(Ease.InCubic)
-			.OnComplete(() => 
-			{
-				// 动画完成后启用输入
-				InputManager.instance.SwitchActionMap(InputManager.InputMapType.GamePlay);
-			});
-	}
+
+    private void Update()
+    {
+        if (isDialogueActive) // 可以替换为其他按键
+        {
+            bool confirmJustPressed = InputManager.instance.confirm.justPressed;
+            if (confirmJustPressed)
+            {
+                DisplayNextDialogueLine();
+            }
+        }
+    }
+
+    void EndDialogue()
+    {
+        Debug.Log("end dialog ");
+        isDialogueActive = false;
+        dialogBox.DOAnchorPosY(-Screen.height * 2, 0.5f).SetEase(Ease.InCubic)
+            .OnComplete(() =>
+            {
+                // 动画完成后启用输入
+                InputManager.instance.SwitchActionMap(InputManager.InputMapType.GamePlay);
+            });
+    }
 }

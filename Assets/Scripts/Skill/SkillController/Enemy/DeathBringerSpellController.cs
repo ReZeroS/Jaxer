@@ -1,3 +1,4 @@
+using ReZeros.Jaxer.Base;
 using UnityEngine;
 
 public class DeathBringerSpellController : MonoBehaviour

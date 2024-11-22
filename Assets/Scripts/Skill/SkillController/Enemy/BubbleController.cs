@@ -1,4 +1,5 @@
 using System.Collections;
+using ReZeros.Jaxer.Base;
 using UnityEngine;
 
 public class BubbleController : MonoBehaviour
