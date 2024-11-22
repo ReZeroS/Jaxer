@@ -40,7 +40,7 @@ namespace ReZeroS.Jaxer.Plugins
         private Dictionary<ScriptableObject, Editor> cachedEditors = new Dictionary<ScriptableObject, Editor>();
 
 
-        [MenuItem("Tools/Scriptable Object Manager")]
+        [MenuItem("Window/Bin/Scriptable Object Manager")]
         public static void OpenWindow()
         {
             GetWindow<ScriptableObjectManager>("SO Manager");
