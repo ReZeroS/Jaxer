@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2a10db382eeae8646b845fc7c0b70d2c
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid3D/Dungeon1/Prefabs/Floor_Modular.prefab
+  uploadId: 706307

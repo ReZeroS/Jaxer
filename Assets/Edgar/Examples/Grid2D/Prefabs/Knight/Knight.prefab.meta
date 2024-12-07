@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7505d303cbf6ea346a6259c66c5fb785
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/Prefabs/Knight/Knight.prefab
+  uploadId: 706307

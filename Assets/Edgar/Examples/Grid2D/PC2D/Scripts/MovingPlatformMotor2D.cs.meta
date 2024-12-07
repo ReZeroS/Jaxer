@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 16551b72c1c21a549bb2d95a308df64b
+timeCreated: 1429145598
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: -20
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/PC2D/Scripts/MovingPlatformMotor2D.cs
+  uploadId: 706307

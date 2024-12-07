@@ -1,3 +1,4 @@
+using ReZeros.Jaxer.Manager;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Buff effect", menuName = "Data/Item effect/Buff effect")]

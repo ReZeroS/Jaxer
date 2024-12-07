@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 8dede91dd4773884192d91f0d49381af
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid3D/Dungeon1/Prefabs/Torch.prefab
+  uploadId: 706307

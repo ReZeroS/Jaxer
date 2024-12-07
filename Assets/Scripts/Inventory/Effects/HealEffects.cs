@@ -1,3 +1,4 @@
+using ReZeros.Jaxer.Manager;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Item Data", menuName = "Data/Item effect/Heal effect")]

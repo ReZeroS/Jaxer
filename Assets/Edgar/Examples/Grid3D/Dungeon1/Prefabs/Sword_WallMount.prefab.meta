@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b5ad5bb139e9d9b4abc0c57b4b6f35e3
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid3D/Dungeon1/Prefabs/Sword_WallMount.prefab
+  uploadId: 706307

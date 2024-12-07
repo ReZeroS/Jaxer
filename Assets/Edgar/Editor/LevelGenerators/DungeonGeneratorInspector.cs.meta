@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: fe24c0b3225c1ef4a9dfa353b31aae87
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Editor/LevelGenerators/DungeonGeneratorInspector.cs
+  uploadId: 706307

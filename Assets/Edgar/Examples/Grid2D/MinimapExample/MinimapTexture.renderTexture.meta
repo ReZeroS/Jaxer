@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 35cfd15e1c7377c409b23fafb24bcfdf
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/MinimapExample/MinimapTexture.renderTexture
+  uploadId: 706307

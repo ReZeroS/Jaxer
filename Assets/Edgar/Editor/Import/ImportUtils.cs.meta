@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 50dd351f0ca54a9792c3fd02be303ed7
+timeCreated: 1714648478
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Editor/Import/ImportUtils.cs
+  uploadId: 706307

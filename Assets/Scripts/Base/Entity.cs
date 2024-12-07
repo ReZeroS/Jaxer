@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
+using ReZeros.Jaxer.Core;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace ReZeros.Jaxer.Base
 {
-    public class Entity : MonoBehaviour
+    public class Entity : CoreComponent
     {
         #region Component
 
@@ -45,7 +46,7 @@ namespace ReZeros.Jaxer.Base
         public event Action onFlipped;
 
 
-        protected virtual void Awake()
+        protected override void Awake()
         {
         }
 
@@ -137,9 +138,14 @@ namespace ReZeros.Jaxer.Base
 
         #region Collision
 
-        public virtual bool IsGroundDetected() =>
-            Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround)
-            || Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsPlatform);
+        public virtual bool IsGroundDetected()
+        {
+            bool groundDetected =
+                Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
+            bool platformDetected =
+                Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsPlatform);
+            return groundDetected || platformDetected;
+        }
 
         public virtual bool IsWaterDetected()
         {

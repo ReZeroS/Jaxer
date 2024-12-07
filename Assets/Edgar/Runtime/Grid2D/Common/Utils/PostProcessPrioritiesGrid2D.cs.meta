@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 8f609bb023e54473993ec9705d018adc
+timeCreated: 1591449710
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Runtime/Grid2D/Common/Utils/PostProcessPrioritiesGrid2D.cs
+  uploadId: 706307

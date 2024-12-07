@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 7c5ce8e29d0761b459b182ab33829c35
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/PC2D/Scripts/PlatformerMotor2DEditor.cs
+  uploadId: 706307

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d4fd4a7e7273bdd47b92f3668414e682
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/Metroidvania/Tiles/metroidvania_main_18.asset
+  uploadId: 706307

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 86ca5bd627e09cc479c1a68807c65685
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Runtime/Grid2D/Common/Minimap/MinimapSingleColorTile.shader
+  uploadId: 706307

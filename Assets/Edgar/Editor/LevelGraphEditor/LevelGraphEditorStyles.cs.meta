@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 2464f7ba3189f6147ae294d60cd557ff
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Editor/LevelGraphEditor/LevelGraphEditorStyles.cs
+  uploadId: 706307

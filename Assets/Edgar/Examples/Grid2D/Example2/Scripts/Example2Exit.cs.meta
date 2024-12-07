@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 6ed46cf1797192b4c9f62a68b1c8def3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/Example2/Scripts/Example2Exit.cs
+  uploadId: 706307

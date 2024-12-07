@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: bdbb88a0be10d734b811c1d92e25e9d7
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid3D/Dungeon1/Room templates/Prison.prefab
+  uploadId: 706307

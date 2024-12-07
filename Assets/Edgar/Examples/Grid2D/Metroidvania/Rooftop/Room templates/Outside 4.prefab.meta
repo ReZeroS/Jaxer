@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bc7c611124d0cc24d88af53616e22f6f
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/Metroidvania/Rooftop/Room templates/Outside
+    4.prefab
+  uploadId: 706307

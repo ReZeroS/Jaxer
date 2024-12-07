@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 843d7854534a5594ea2acbf5fe253601
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/Prefabs/Ogre/Ogre.prefab
+  uploadId: 706307

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 99b5d7b2e5e30674d9c4001fb04a0f7a
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/Gungeon/Room templates/Hor 5.prefab
+  uploadId: 706307

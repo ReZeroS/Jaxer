@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 88fd33eaf001eb04db0aca22415a447d
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid3D/Dungeon1/Room templates/Dining.prefab
+  uploadId: 706307

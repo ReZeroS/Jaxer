@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 103848f55ffe99c428d640682bbe6105
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/PC2D/Scripts/Globals.cs
+  uploadId: 706307

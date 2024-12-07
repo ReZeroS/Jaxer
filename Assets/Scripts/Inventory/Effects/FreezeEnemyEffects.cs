@@ -1,3 +1,4 @@
+using ReZeros.Jaxer.Manager;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Freeze Enemies", menuName = "Data/Item effect/Freeze Enemies")]

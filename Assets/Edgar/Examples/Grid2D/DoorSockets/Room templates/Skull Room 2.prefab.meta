@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d93c85d49090b504aa070304535f58bd
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/DoorSockets/Room templates/Skull Room 2.prefab
+  uploadId: 706307

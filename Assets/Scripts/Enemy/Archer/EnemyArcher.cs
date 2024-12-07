@@ -74,7 +74,6 @@ public class EnemyArcher : Enemy
     {
         GameObject arrow = Instantiate(arrowPrefab, attackCheck.position, Quaternion.identity);
         arrow.GetComponent<ArrowController>().SetupArrow(arrowSpeed * facingDir, stat);
-        
     }
     
     

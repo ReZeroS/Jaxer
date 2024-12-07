@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7d5755032503e5141a6e10feb94d9cbb
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid3D/Dungeon1/Room templates/DCorridor 2.prefab
+  uploadId: 706307

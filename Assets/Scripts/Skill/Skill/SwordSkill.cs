@@ -1,3 +1,4 @@
+using ReZeros.Jaxer.Manager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -65,7 +66,9 @@ public class SwordSkill : Skill
     private bool isAiming;
     [SerializeField] private float aimSensitivity = 10f;
     public Vector2 aimDirection;
-
+    
+    
+    
     #region Init skill info
     protected override void Start()
     {

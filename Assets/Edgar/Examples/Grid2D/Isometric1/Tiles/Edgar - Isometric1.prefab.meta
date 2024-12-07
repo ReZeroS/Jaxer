@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 3bcf9c695d467f14f9d86a7bcf5d27d2
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/Isometric1/Tiles/Edgar - Isometric1.prefab
+  uploadId: 706307

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 32bd81b20f5a7c147bc69faae0d501ba
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid3D/Basics/Room templates/Corridor 1.prefab
+  uploadId: 706307

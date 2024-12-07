@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5df363ec29f6d024eb61520b3dac87c0
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid3D/DifferentElevations/DirectedCycle.asset
+  uploadId: 706307

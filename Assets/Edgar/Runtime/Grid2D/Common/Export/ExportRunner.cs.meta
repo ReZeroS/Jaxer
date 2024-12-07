@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 8f2888350abf4fcb982b5b77f4d4d34c
+timeCreated: 1701782283
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Runtime/Grid2D/Common/Export/ExportRunner.cs
+  uploadId: 706307

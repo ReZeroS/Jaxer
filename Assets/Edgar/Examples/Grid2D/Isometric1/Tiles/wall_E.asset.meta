@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fc9f9b0c2fa38c841afa53cf85a2d1c5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/Isometric1/Tiles/wall_E.asset
+  uploadId: 706307

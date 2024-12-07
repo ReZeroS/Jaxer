@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a486412b724b8924a9d94bc132464a9e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/Isometric1/Assets/blockHalf_W.asset
+  uploadId: 706307

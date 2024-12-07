@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: d93b601378ce48ee922ec6100206b14d
+timeCreated: 1591382827
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Runtime/Common/Utils/VersionedMonoBehaviour.cs
+  uploadId: 706307

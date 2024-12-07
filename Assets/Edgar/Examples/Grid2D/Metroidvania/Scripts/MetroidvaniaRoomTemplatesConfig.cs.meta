@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 48f8a3d9d5e5460f9d19380f3ea95274
+timeCreated: 1591529631
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/Metroidvania/Scripts/MetroidvaniaRoomTemplatesConfig.cs
+  uploadId: 706307

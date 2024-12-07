@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: aba2fca241510804f91cea3b0245ad05
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Runtime/Legacy/Payloads/Interfaces/IRandomGeneratorPayload.cs
+  uploadId: 706307

@@ -1,3 +1,4 @@
+using ReZeros.Jaxer.Manager;
 using UnityEngine;
 
 public class ShadyGroundState : ShadyState

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 124970a74e093994881f9de4979b5396
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/package.json
+  uploadId: 706307

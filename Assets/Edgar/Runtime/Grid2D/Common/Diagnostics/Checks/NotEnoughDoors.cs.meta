@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 878fd06d72ce4741a1dafd026e3c8a37
+timeCreated: 1702625812
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Runtime/Grid2D/Common/Diagnostics/Checks/NotEnoughDoors.cs
+  uploadId: 706307

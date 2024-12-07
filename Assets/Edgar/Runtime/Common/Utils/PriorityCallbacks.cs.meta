@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 2bebdf849a5e4197afed8ae8e970f1f1
+timeCreated: 1591449426
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Runtime/Common/Utils/PriorityCallbacks.cs
+  uploadId: 706307

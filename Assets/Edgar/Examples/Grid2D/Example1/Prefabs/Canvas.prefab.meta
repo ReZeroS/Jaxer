@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a5ca14c626bd2ef40bc419cf48f0820a
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/Example1/Prefabs/Canvas.prefab
+  uploadId: 706307

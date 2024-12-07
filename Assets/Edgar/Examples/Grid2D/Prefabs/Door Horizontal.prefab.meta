@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0e4de68c78649fc4caf845233188bd26
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/Prefabs/Door Horizontal.prefab
+  uploadId: 706307

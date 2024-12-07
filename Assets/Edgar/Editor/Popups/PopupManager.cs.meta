@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 8fb590f61247490cbd5c0b003b9caf4b
+timeCreated: 1603973978
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Editor/Popups/PopupManager.cs
+  uploadId: 706307

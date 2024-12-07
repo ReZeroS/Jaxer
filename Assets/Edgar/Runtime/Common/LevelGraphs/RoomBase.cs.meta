@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: e8f3bf3cac494ee98f30b986956767ce
+timeCreated: 1591723493
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Runtime/Common/LevelGraphs/RoomBase.cs
+  uploadId: 706307

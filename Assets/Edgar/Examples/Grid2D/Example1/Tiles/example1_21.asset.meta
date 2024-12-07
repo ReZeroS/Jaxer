@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 335c4fb442b036349ba9095429e9d119
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/Example1/Tiles/example1_21.asset
+  uploadId: 706307

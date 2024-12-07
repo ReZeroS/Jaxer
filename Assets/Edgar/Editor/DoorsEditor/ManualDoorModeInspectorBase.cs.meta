@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f9e22ebba94eed64881eb98542e74727
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Editor/DoorsEditor/ManualDoorModeInspectorBase.cs
+  uploadId: 706307

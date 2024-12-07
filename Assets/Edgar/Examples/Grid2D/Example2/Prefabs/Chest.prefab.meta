@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b4cffa748a5dc3942a5af6182e8107a2
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/Example2/Prefabs/Chest.prefab
+  uploadId: 706307

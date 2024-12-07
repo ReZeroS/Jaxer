@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 1216ccf9a4f33c14694a61803f75c09e
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid3D/Dungeon1/Prefabs/Stairs_SideCover.prefab
+  uploadId: 706307

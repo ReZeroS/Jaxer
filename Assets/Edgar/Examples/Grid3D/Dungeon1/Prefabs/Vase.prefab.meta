@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c6f8012113bbfb24b8f6672edf1d3377
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid3D/Dungeon1/Prefabs/Vase.prefab
+  uploadId: 706307

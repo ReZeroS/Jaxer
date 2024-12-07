@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using ReZeros.Jaxer.Manager;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

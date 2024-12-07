@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 55f8a633dac355749a01c14a348df67d
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Runtime/Grid2D/Common/FogOfWar/FogOfWarURP.shader
+  uploadId: 706307

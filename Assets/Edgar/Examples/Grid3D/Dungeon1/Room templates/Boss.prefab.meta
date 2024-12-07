@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c0cf5e086254eed4591d98f8b8647b0b
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid3D/Dungeon1/Room templates/Boss.prefab
+  uploadId: 706307

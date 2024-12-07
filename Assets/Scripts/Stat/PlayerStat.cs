@@ -1,3 +1,4 @@
+using ReZeros.Jaxer.Manager;
 using Sound.SoundManager;
 using UnityEngine;
 

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7dda127bcaea293428907dba23c4678f
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid3D/DifferentElevations/DifferentElevations.unity
+  uploadId: 706307

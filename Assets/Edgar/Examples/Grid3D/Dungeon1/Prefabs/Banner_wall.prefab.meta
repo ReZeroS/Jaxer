@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e525e2293ea0c1d4e87e51cfa5323ae9
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid3D/Dungeon1/Prefabs/Banner_wall.prefab
+  uploadId: 706307

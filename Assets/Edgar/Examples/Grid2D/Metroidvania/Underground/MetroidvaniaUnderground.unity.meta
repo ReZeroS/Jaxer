@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7ed53d0ac15278b45baa49fc8aa61643
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/Metroidvania/Underground/MetroidvaniaUnderground.unity
+  uploadId: 706307

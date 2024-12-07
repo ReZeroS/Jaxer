@@ -1,43 +1,52 @@
-using UnityEngine;
+using ReZeros.Jaxer.Core;
 
-public class PlayerManager : MonoBehaviour, ISaveManager
+namespace ReZeros.Jaxer.Manager
 {
-    public static PlayerManager instance;
-    public Player player;
-    public int currency;
-    
-    private void Awake()
+    public class PlayerManager : CoreComponent, ISaveManager
     {
-        if (instance == null)
+        public static PlayerManager instance;
+        public Player player;
+
+        public Player Player
         {
-            instance = this;
+            get => player ?? core.GetCoreComponent(ref player);
         }
-        else
+
+        public int currency;
+
+        protected override void Awake()
         {
-            Destroy(gameObject);
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
-    }
 
 
-
-    public bool HaveEnoughCurrency(int amount)
-    {
-        if (currency >= amount)
+        public bool HaveEnoughCurrency(int amount)
         {
-            currency -= amount;
-            return true;
+            if (currency >= amount)
+            {
+                currency -= amount;
+                return true;
+            }
+
+            return false;
         }
-        return false;
-    }
 
 
-    public void LoadData(GameData gameData)
-    {
-        currency = gameData.currency;
-    }
+        public void LoadData(GameData gameData)
+        {
+            currency = gameData.currency;
+        }
 
-    public void SaveData(ref GameData gameData)
-    {
-        gameData.currency = currency;
+        public void SaveData(ref GameData gameData)
+        {
+            gameData.currency = currency;
+        }
     }
 }

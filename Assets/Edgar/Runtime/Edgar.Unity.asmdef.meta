@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 44bc044120c18384b8aa8cc7905a65d2
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Runtime/Edgar.Unity.asmdef
+  uploadId: 706307

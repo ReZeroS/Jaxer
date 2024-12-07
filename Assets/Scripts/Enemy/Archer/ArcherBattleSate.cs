@@ -1,3 +1,4 @@
+using ReZeros.Jaxer.Manager;
 using UnityEngine;
 
 public class ArcherBattleSate : ArcherState
@@ -92,7 +93,8 @@ public class ArcherBattleSate : ArcherState
     
     private bool CanJump()
     {
-        if (!enemyArcher.GroundBehindCheck() || enemyArcher.WallBehindCheck())
+        bool groundBehindCheck = enemyArcher.GroundBehindCheck();
+        if (!groundBehindCheck || enemyArcher.WallBehindCheck())
         {
             return false;
         }

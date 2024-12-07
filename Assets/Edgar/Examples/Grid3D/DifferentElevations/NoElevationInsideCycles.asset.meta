@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 83cc50b3fc6f8d34bb0bb4e204b1b12a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid3D/DifferentElevations/NoElevationInsideCycles.asset
+  uploadId: 706307

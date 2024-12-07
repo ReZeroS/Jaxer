@@ -1,5 +1,5 @@
-
 using System;
+using ReZeros.Jaxer.Util;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -9,12 +9,12 @@ namespace Sound.SoundManager
     public class SoundManager : MonoBehaviour
     {
         [SerializeField] private SoundsSO SO;
-        private static SoundManager instance;
+        public static SoundManager instance;
         private AudioSource audioSource;
 
         private void Awake()
         {
-            if(!instance)
+            if (!instance)
             {
                 instance = this;
                 audioSource = GetComponent<AudioSource>();
@@ -27,6 +27,7 @@ namespace Sound.SoundManager
             {
                 return;
             }
+
             SoundList soundList = instance.SO.sounds[(int)sound];
             AudioClip[] clips = soundList.sounds;
             AudioClip randomClip = clips[UnityEngine.Random.Range(0, clips.Length)];
@@ -34,7 +35,8 @@ namespace Sound.SoundManager
             instance.audioSource.outputAudioMixerGroup = soundList.mixer;
             instance.audioSource.PlayOneShot(randomClip, volume * soundList.volume);
         }
-         public static void PlaySound3d(SoundType sound, Transform trans = default, float volume = 1)
+
+        public static void PlaySound3d(SoundType sound, Transform trans = default, float volume = 1)
         {
             SoundList soundList = instance.SO.sounds[(int)sound];
             AudioClip[] clips = soundList.sounds;
@@ -43,7 +45,7 @@ namespace Sound.SoundManager
             instance.audioSource.outputAudioMixerGroup = soundList.mixer;
             instance.audioSource.PlayOneShot(randomClip, volume * soundList.volume);
         }
-        
+
         public static void StopSound(AudioSource source = null)
         {
             if (source)
@@ -56,8 +58,29 @@ namespace Sound.SoundManager
             }
         }
 
-      
-        
+
+        public void PlaySoundAtLocation(AudioClip clip, Vector3 position, float volume = 1.0f)
+        {
+            if (clip == null) return;
+
+            var tempAudioSource = new GameObject("TempAudio")
+            {
+                transform =
+                {
+                    position = position
+                }
+            };
+            var src = tempAudioSource.AddComponent<AudioSource>();
+            src.clip = clip;
+            src.volume = volume;
+            src.spatialBlend = 1.0f;
+            src.rolloffMode = AudioRolloffMode.Linear;
+            src.minDistance = 5.0f;
+            src.maxDistance = 15.0f;
+            src.dopplerLevel = 0;
+            tempAudioSource.AddComponent<Disposable>().lifetime = clip.length;
+            src.Play();
+        }
     }
 
     [Serializable]

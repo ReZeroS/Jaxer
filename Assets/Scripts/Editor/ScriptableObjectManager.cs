@@ -10,11 +10,11 @@ namespace ReZeroS.Jaxer.Plugins
 {
     public class ScriptableObjectManager : EditorWindow
     {
-        // 整体布局
-        private float navAreaWidth = 150f;
-        private float executionAreaHeight = 150f;
+        // 布局相关变量
+        private float navAreaWidth = 200f;
+        private float executionAreaHeight = 200f;
+        private float filterAreaWidth = 300f;
         private bool resizingNavArea = false;
-        private bool resizingExecutionArea = false;
 
         // 导航区相关变量
         private Vector2 navScrollPos;
@@ -25,22 +25,26 @@ namespace ReZeroS.Jaxer.Plugins
         private Vector2 workScrollPos;
         private List<ScriptableObject> instances;
         private List<ScriptableObject> filteredInstances;
-
-        // 工作区调整布局
-        private int columnsPerRow = 4; // 默认每行显示 3 个实例
-        private float columnWidth = 300; // 每列的宽度
-        private float rowSpacing = 10f; // 行间间隙
-
-        // 执行区相关变量
-        // 在类的其他成员变量中添加
-        private Vector2 executionScrollPos;
-        private Dictionary<string, bool> fieldToggles = new Dictionary<string, bool>();
-        private Dictionary<string, string> fieldFilters = new Dictionary<string, string>();
-        private Dictionary<string, string> updateFields = new Dictionary<string, string>();
         private Dictionary<ScriptableObject, Editor> cachedEditors = new Dictionary<ScriptableObject, Editor>();
 
+        // 工作区布局
+        private int columnsPerRow = 3;
+        private float columnWidth = 300f;
 
-        [MenuItem("Window/Bin/Scriptable Object Manager")]
+        // 执行区相关变量
+        private Vector2 executionFilterScrollPos;
+        private Vector2 executionUpdateScrollPos;
+        private Dictionary<string, bool> fieldToggles = new Dictionary<string, bool>();
+        private Dictionary<string, string> fieldFilters = new Dictionary<string, string>();
+
+        // 虚拟SO相关变量
+        private ScriptableObject virtualSO;
+        private Editor virtualSOEditor;
+        private bool isDragging = false;
+        private object draggedValue;
+        private string draggedFieldName;
+
+        [MenuItem("Tools/Scriptable Object Manager V2")]
         public static void OpenWindow()
         {
             GetWindow<ScriptableObjectManager>("SO Manager");
@@ -48,7 +52,6 @@ namespace ReZeroS.Jaxer.Plugins
 
         private void OnEnable()
         {
-            // 获取所有用户自定义的 ScriptableObject 类型
             soTypes = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(a => a.GetTypes())
                 .Where(t => t.IsSubclassOf(typeof(ScriptableObject))
@@ -57,107 +60,67 @@ namespace ReZeroS.Jaxer.Plugins
                 .ToArray();
         }
 
-
         private void OnGUI()
+        {
+            DrawLayout();
+        }
+
+        private void DrawLayout()
         {
             Rect totalRect = position;
 
-            // Navigation and Workspace areas
+            // 导航区
             Rect navRect = new Rect(0, 0, navAreaWidth, totalRect.height - executionAreaHeight);
-            Rect workspaceRect = new Rect(navAreaWidth, 0, totalRect.width - navAreaWidth,
-                totalRect.height - executionAreaHeight);
-
-            // Draw nav area
-            GUILayout.BeginArea(navRect);
+            GUILayout.BeginArea(navRect, EditorStyles.helpBox);
             DrawNavigationArea();
             GUILayout.EndArea();
 
-            // Resize handle for nav area
+            // 导航区调整手柄
             Rect navResizeRect = new Rect(navAreaWidth - 5, 0, 10, navRect.height);
             EditorGUIUtility.AddCursorRect(navResizeRect, MouseCursor.ResizeHorizontal);
+            HandleNavAreaResize(navResizeRect);
 
-            // Draw workspace
+            // 工作区
+            Rect workspaceRect = new Rect(navAreaWidth, 0, totalRect.width - navAreaWidth,
+                totalRect.height - executionAreaHeight);
             GUILayout.BeginArea(workspaceRect);
             DrawWorkspace();
             GUILayout.EndArea();
 
-            // Handle navigation area resizing
-            HandleNavAreaResize(navResizeRect);
-
-            // Execution area
+            // 执行区
             Rect executionRect = new Rect(0, totalRect.height - executionAreaHeight, totalRect.width,
                 executionAreaHeight);
-            GUILayout.BeginArea(executionRect);
+            GUILayout.BeginArea(executionRect, EditorStyles.helpBox);
             DrawExecutionArea();
             GUILayout.EndArea();
 
-            // Resize handle for execution area
+            // 执行区调整手柄
             Rect executionResizeRect = new Rect(0, totalRect.height - executionAreaHeight - 5, totalRect.width, 10);
             EditorGUIUtility.AddCursorRect(executionResizeRect, MouseCursor.ResizeVertical);
-
-            // Handle execution area resizing
-            HandleExecutionAreaResize(executionResizeRect);
+            // HandleExecutionAreaResize(executionResizeRect);
         }
-
-        private void HandleNavAreaResize(Rect resizeRect)
-        {
-            Event e = Event.current;
-
-            if (e.type == EventType.MouseDown && resizeRect.Contains(e.mousePosition))
-            {
-                resizingNavArea = true;
-            }
-
-            if (resizingNavArea && e.type == EventType.MouseDrag)
-            {
-                navAreaWidth = Mathf.Clamp(e.mousePosition.x, 100f, position.width - 200f);
-                Repaint();
-            }
-
-            if (e.type == EventType.MouseUp)
-            {
-                resizingNavArea = false;
-            }
-        }
-
-        private void HandleExecutionAreaResize(Rect resizeRect)
-        {
-            Event e = Event.current;
-
-            if (e.type == EventType.MouseDown && resizeRect.Contains(e.mousePosition))
-            {
-                resizingExecutionArea = true;
-            }
-
-            if (resizingExecutionArea && e.type == EventType.MouseDrag)
-            {
-                executionAreaHeight = Mathf.Clamp(position.height - e.mousePosition.y, 100f, position.height - 200f);
-                Repaint();
-            }
-
-            if (e.type == EventType.MouseUp)
-            {
-                resizingExecutionArea = false;
-            }
-        }
-
 
         private void DrawNavigationArea()
         {
-            EditorGUILayout.BeginVertical(GUILayout.Width(150));
+            EditorGUILayout.LabelField("Scriptable Object Types", EditorStyles.boldLabel);
             navScrollPos = EditorGUILayout.BeginScrollView(navScrollPos);
 
             foreach (var type in soTypes)
             {
+                bool isSelected = selectedType == type;
+                GUI.backgroundColor = isSelected ? Color.cyan : Color.white;
+
                 if (GUILayout.Button(type.Name, EditorStyles.toolbarButton))
                 {
                     selectedType = type;
                     LoadInstances();
+                    CreateVirtualSO();
                 }
+
+                GUI.backgroundColor = Color.white;
             }
 
             EditorGUILayout.EndScrollView();
-            EditorGUILayout.EndVertical();
         }
 
         private void LoadInstances()
@@ -171,22 +134,119 @@ namespace ReZeroS.Jaxer.Plugins
             // 初始化字段筛选器
             fieldToggles.Clear();
             fieldFilters.Clear();
-            updateFields.Clear();
 
             foreach (var field in selectedType.GetFields())
             {
                 fieldToggles[field.Name] = true;
                 fieldFilters[field.Name] = "";
-                updateFields[field.Name] = "";
+            }
+        }
+
+        private void CreateVirtualSO()
+        {
+            if (selectedType == null) return;
+
+            // 创建虚拟SO实例
+            virtualSO = CreateInstance(selectedType);
+
+            // 如果有筛选后的实例，使用第一个实例的值初始化虚拟SO
+            if (filteredInstances != null && filteredInstances.Count > 0)
+            {
+                var sourceInstance = filteredInstances[0];
+                foreach (var field in selectedType.GetFields())
+                {
+                    field.SetValue(virtualSO, field.GetValue(sourceInstance));
+                }
+            }
+
+            virtualSOEditor = Editor.CreateEditor(virtualSO);
+        }
+
+        private void HandleDragAndDrop()
+        {
+            Event evt = Event.current;
+
+            switch (evt.type)
+            {
+                case EventType.MouseDown when evt.button == 0:
+                    if (selectedType != null && filteredInstances != null)
+                    {
+                        draggedFieldName = GetFieldUnderMouse(evt.mousePosition);
+                        if (!string.IsNullOrEmpty(draggedFieldName))
+                        {
+                            isDragging = true;
+                            evt.Use();
+                        }
+                    }
+
+                    break;
+
+                case EventType.MouseDrag when isDragging:
+                    DragAndDrop.PrepareStartDrag();
+                    evt.Use();
+                    break;
+
+                case EventType.MouseUp:
+                    if (isDragging)
+                    {
+                        ApplyDraggedValueToVirtualSO();
+                        isDragging = false;
+                        DragAndDrop.AcceptDrag();
+                        evt.Use();
+                    }
+                    else
+                    {
+                        isDragging = false; // 确保鼠标抬起时清理状态
+                    }
+
+                    break;
+            }
+        }
+
+        private string GetFieldUnderMouse(Vector2 mousePosition)
+        {
+            if (filteredInstances == null || filteredInstances.Count == 0) return null;
+
+            foreach (var instance in filteredInstances)
+            {
+                var fields = selectedType.GetFields();
+                foreach (var field in fields)
+                {
+                    // 计算字段在界面上的矩形区域
+                    // 这里需要根据你的具体布局来计算
+                    // 如果鼠标在字段区域内，返回字段名
+                    if (fieldToggles.ContainsKey(field.Name) && fieldToggles[field.Name])
+                    {
+                        return field.Name;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        private void ApplyDraggedValueToVirtualSO()
+        {
+            if (virtualSO == null || string.IsNullOrEmpty(draggedFieldName)) return;
+
+            var field = selectedType.GetField(draggedFieldName);
+            if (field != null)
+            {
+                try
+                {
+                    field.SetValue(virtualSO, draggedValue);
+                    EditorUtility.SetDirty(virtualSO);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"Failed to set value: {e.Message}");
+                }
             }
         }
 
         private void DrawWorkspace()
         {
             if (selectedType == null || filteredInstances == null) return;
-            EditorGUILayout.BeginVertical();
-
-            columnsPerRow = EditorGUILayout.IntSlider("Columns Per Row", columnsPerRow, 1, 10);
 
             workScrollPos = EditorGUILayout.BeginScrollView(workScrollPos);
 
@@ -200,30 +260,34 @@ namespace ReZeroS.Jaxer.Plugins
                     cachedEditors[instance] = Editor.CreateEditor(instance);
                 }
 
-                EditorGUILayout.BeginVertical(GUILayout.Width(columnWidth));
-                EditorGUILayout.LabelField(instance.name, EditorStyles.boldLabel);
+                EditorGUILayout.BeginVertical("box", GUILayout.Width(columnWidth));
 
-                // 使用自定义的绘制方法
+                // 实例标题
+                EditorGUILayout.BeginHorizontal();
+                EditorGUILayout.LabelField(instance.name, EditorStyles.boldLabel);
+                EditorGUILayout.EndHorizontal();
+
+                // 绘制过滤后的Inspector
                 DrawFilteredInspector(cachedEditors[instance]);
 
                 EditorGUILayout.EndVertical();
 
                 currentColumn++;
-
                 if (currentColumn >= columnsPerRow)
                 {
                     EditorGUILayout.EndHorizontal();
-
-                    GUILayout.Space(rowSpacing);
                     DrawHorizontalLine();
                     EditorGUILayout.BeginHorizontal();
                     currentColumn = 0;
                 }
             }
 
-            EditorGUILayout.EndHorizontal();
+            if (currentColumn > 0)
+            {
+                EditorGUILayout.EndHorizontal();
+            }
+
             EditorGUILayout.EndScrollView();
-            EditorGUILayout.EndVertical();
         }
 
         private void DrawFilteredInspector(Editor editor)
@@ -256,24 +320,58 @@ namespace ReZeroS.Jaxer.Plugins
 
         private void DrawExecutionArea()
         {
-            if (selectedType == null || filteredInstances == null) return;
-
-            // 创建一个垂直滚动视图
-            executionScrollPos = EditorGUILayout.BeginScrollView(
-                executionScrollPos,
-                GUILayout.Height(150),
-                GUILayout.ExpandWidth(true)
-            );
+            if (selectedType == null) return;
 
             EditorGUILayout.BeginHorizontal();
+            // 筛选区
+            executionFilterScrollPos = EditorGUILayout.BeginScrollView(executionFilterScrollPos);
+            EditorGUILayout.BeginVertical("box", GUILayout.Width(filterAreaWidth));
             DrawFilterArea();
-            DrawUpdateArea();
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.EndScrollView();
+            
+
+            // 分隔线和调整手柄
+            Rect filterResizeRect = GUILayoutUtility.GetRect(5, 0);
+            EditorGUIUtility.AddCursorRect(filterResizeRect, MouseCursor.ResizeHorizontal);
+         
+            // 更新区（虚拟SO Inspector）
+            executionUpdateScrollPos = EditorGUILayout.BeginScrollView(executionUpdateScrollPos);
+            EditorGUILayout.BeginVertical("box");
+            DrawVirtualInspector();
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.EndScrollView();
+            
             EditorGUILayout.EndHorizontal();
 
-            EditorGUILayout.EndScrollView();
+            // 按钮区
+            DrawButtons();
+        }
 
-            // 按钮区域
+        private void DrawVirtualInspector()
+        {
+            if (!virtualSO || !virtualSOEditor) return;
+
+            EditorGUILayout.LabelField("Virtual Inspector (Drag values here)", EditorStyles.boldLabel);
+
+            EditorGUI.BeginChangeCheck();
+            virtualSOEditor.OnInspectorGUI();
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                EditorUtility.SetDirty(virtualSO);
+            }
+        }
+
+        private void DrawButtons()
+        {
             EditorGUILayout.BeginHorizontal();
+
+            if (GUILayout.Button("Import", GUILayout.Width(100)))
+            {
+                ImportInstances();
+            }
+
             if (GUILayout.Button("Export", GUILayout.Width(100)))
             {
                 ExportInstances();
@@ -281,11 +379,115 @@ namespace ReZeroS.Jaxer.Plugins
 
             if (GUILayout.Button("Apply Updates", GUILayout.Width(100)))
             {
-                ApplyUpdates();
+                ApplyVirtualSOToInstances();
             }
 
             EditorGUILayout.EndHorizontal();
         }
+
+        private void ApplyVirtualSOToInstances()
+        {
+            if (virtualSO == null || filteredInstances == null) return;
+
+            Undo.RecordObjects(filteredInstances.ToArray(), "Update SO Instances");
+
+            foreach (var instance in filteredInstances)
+            {
+                foreach (var field in selectedType.GetFields())
+                {
+                    if (!fieldToggles.ContainsKey(field.Name) || !fieldToggles[field.Name]) continue;
+
+                    try
+                    {
+                        field.SetValue(instance, field.GetValue(virtualSO));
+                        EditorUtility.SetDirty(instance);
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.LogError($"Failed to update {instance.name}.{field.Name}: {e.Message}");
+                    }
+                }
+            }
+
+            AssetDatabase.SaveAssets();
+        }
+
+        private void ImportInstances()
+        {
+            string path = EditorUtility.OpenFilePanel("Import Instances", "", "json");
+            if (string.IsNullOrEmpty(path)) return;
+
+            try
+            {
+                string json = File.ReadAllText(path);
+                var importedData = JsonUtility.FromJson<SOImportData>(json);
+
+                // 实现导入逻辑...
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Import failed: {e.Message}");
+            }
+        }
+
+        private void ExportInstances()
+        {
+            string path =
+                EditorUtility.SaveFilePanel("Export Instances", "", $"{selectedType.Name}_Instances.json", "json");
+            if (string.IsNullOrEmpty(path)) return;
+
+            try
+            {
+                var exportData = new SOExportData
+                {
+                    typeName = selectedType.FullName,
+                    instances = filteredInstances.Select(instance =>
+                    {
+                        var instanceData = new Dictionary<string, object>();
+                        foreach (var field in selectedType.GetFields())
+                        {
+                            instanceData[field.Name] = field.GetValue(instance);
+                        }
+
+                        return instanceData;
+                    }).ToList()
+                };
+
+                string json = JsonUtility.ToJson(exportData, true);
+                File.WriteAllText(path, json);
+                Debug.Log($"Exported {filteredInstances.Count} instances to {path}");
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Export failed: {e.Message}");
+            }
+        }
+
+        // 辅助类用于JSON序列化
+        [Serializable]
+        private class SOExportData
+        {
+            public string typeName;
+            public List<Dictionary<string, object>> instances;
+        }
+
+        [Serializable]
+        private class SOImportData
+        {
+            public string typeName;
+            public List<Dictionary<string, object>> instances;
+        }
+
+        // 其他辅助方法和处理程序...
+        // HandleNavAreaResize, HandleExecutionAreaResize, HandleFilterAreaResize 等保持不变
+        // 绘制分隔线
+        private void DrawHorizontalLine()
+        {
+            Color lineColor = new Color(0.4f, 1f, 0.66f); // More visible gray color
+            Rect rect = EditorGUILayout.GetControlRect(false, 1);
+            EditorGUI.DrawRect(rect, lineColor);
+        }
+
 
         private void DrawFilterArea()
         {
@@ -356,104 +558,25 @@ namespace ReZeroS.Jaxer.Plugins
             Repaint();
         }
 
-        private void DrawUpdateArea()
+        private void HandleNavAreaResize(Rect resizeRect)
         {
-            EditorGUILayout.BeginVertical("box", GUILayout.Width(position.width / 2 - 100));
+            Event e = Event.current;
 
-            EditorGUILayout.LabelField("Update Options", EditorStyles.boldLabel);
-
-            foreach (var field in selectedType.GetFields())
+            if (e.type == EventType.MouseDown && resizeRect.Contains(e.mousePosition))
             {
-                EditorGUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField(field.Name, GUILayout.Width(100));
-                updateFields[field.Name] = EditorGUILayout.TextField(updateFields[field.Name]);
-                EditorGUILayout.EndHorizontal();
+                resizingNavArea = true;
             }
 
-            EditorGUILayout.EndVertical();
-        }
-
-
-        private void ApplyUpdates()
-        {
-            foreach (var instance in filteredInstances)
+            if (resizingNavArea && e.type == EventType.MouseDrag)
             {
-                foreach (var field in selectedType.GetFields())
-                {
-                    if (!updateFields.ContainsKey(field.Name)) continue;
-                    string value = updateFields[field.Name];
-                    if (string.IsNullOrEmpty(value)) continue;
-
-                    try
-                    {
-                        object parsedValue = Convert.ChangeType(value, field.FieldType);
-                        field.SetValue(instance, parsedValue);
-                        EditorUtility.SetDirty(instance);
-                    }
-                    catch (Exception e)
-                    {
-                        Debug.LogError($"Failed to update field {field.Name} with value {value}: {e.Message}");
-                    }
-                }
+                navAreaWidth = Mathf.Clamp(e.mousePosition.x, 100f, position.width - 200f);
+                Repaint();
             }
 
-            AssetDatabase.SaveAssets();
-        }
-
-        private void ExportInstances()
-        {
-            // 选择保存路径
-            string path =
-                EditorUtility.SaveFilePanel("Export Instances", "", $"{selectedType.Name}_Instances.json", "json");
-            if (string.IsNullOrEmpty(path)) return;
-
-            // 构建数据
-            List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
-            foreach (var instance in filteredInstances)
+            if (e.type == EventType.MouseUp)
             {
-                var dict = new Dictionary<string, object>();
-                foreach (var field in selectedType.GetFields(BindingFlags.Public | BindingFlags.NonPublic |
-                                                             BindingFlags.Instance))
-                {
-                    dict[field.Name] = field.GetValue(instance);
-                }
-
-                data.Add(dict);
+                resizingNavArea = false;
             }
-
-            // 调用用户实现的 JSON 生成方法
-            string json = GenerateJson(data);
-
-            // 写入文件
-            if (!string.IsNullOrEmpty(json))
-            {
-                File.WriteAllText(path, json);
-                Debug.Log($"Exported {filteredInstances.Count} instances to {path}");
-            }
-            else
-            {
-                Debug.LogError("Failed to generate JSON. Ensure the GenerateJson method is implemented correctly.");
-            }
-        }
-
-        /// <summary>
-        /// 将 ScriptableObject 数据序列化为 JSON 字符串。
-        /// </summary>
-        /// <param name="data">包含每个实例字段及其值的字典列表。</param>
-        /// <returns>序列化后的 JSON 字符串。</returns>
-        private string GenerateJson(List<Dictionary<string, object>> data)
-        {
-            // 你来实现具体的 JSON 序列化逻辑，并返回生成的 JSON 字符串
-            throw new NotImplementedException("Please implement the GenerateJson method.");
-        }
-
-
-        // 绘制分隔线
-        private void DrawHorizontalLine()
-        {
-            Color lineColor = new Color(0.4f, 1f, 0.66f); // More visible gray color
-            Rect rect = EditorGUILayout.GetControlRect(false, 1);
-            EditorGUI.DrawRect(rect, lineColor);
         }
     }
 }

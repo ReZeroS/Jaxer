@@ -1,4 +1,5 @@
 using System.Linq;
+using ReZeros.Jaxer.Manager;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;

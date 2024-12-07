@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 894d7b037bf548a47a6b298265a865c1
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid3D/Dungeon1/Prefabs/Arch_Door_bottompivot.prefab
+  uploadId: 706307

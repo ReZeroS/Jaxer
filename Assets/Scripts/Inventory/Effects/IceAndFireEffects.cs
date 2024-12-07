@@ -1,3 +1,4 @@
+using ReZeros.Jaxer.Manager;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ice and fire effect", menuName = "Data/Item effect/IceAndFire")]

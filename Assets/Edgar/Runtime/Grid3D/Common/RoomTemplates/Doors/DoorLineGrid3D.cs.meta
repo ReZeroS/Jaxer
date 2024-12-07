@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: ecbfe1ed0515e7f498d1575df785cfdb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Runtime/Grid3D/Common/RoomTemplates/Doors/DoorLineGrid3D.cs
+  uploadId: 706307

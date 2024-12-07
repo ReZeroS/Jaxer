@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 98905938260bae448a32d5991ed05577
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid3D/Dungeon1/Prefabs/Statue_Horse.prefab
+  uploadId: 706307

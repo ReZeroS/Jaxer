@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d1db4776b575a704dbdc329f14e49d6c
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/Metroidvania/Underground/Room templates/Room
+    1.prefab
+  uploadId: 706307

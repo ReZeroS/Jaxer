@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 25f31320883347649e1b7c3c8bddef07
+timeCreated: 1701676795
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Runtime/Grid2D/Common/Diagnostics/Checks/CorridorTypes.cs
+  uploadId: 706307

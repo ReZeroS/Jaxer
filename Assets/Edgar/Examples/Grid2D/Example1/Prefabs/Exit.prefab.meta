@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ad5765553b8c84e4f97fd122fcd9623a
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/Example1/Prefabs/Exit.prefab
+  uploadId: 706307

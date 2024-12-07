@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f2b54381683e02747b5cbc65fa6d8f0f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Runtime/Common/Utils/IPriorityCallbacks.cs
+  uploadId: 706307

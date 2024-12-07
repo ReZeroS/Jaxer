@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 0c2eae384381e404eaafc61e02e5bb4d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Editor/RoomTemplates/RoomTemplateScreenshots.cs
+  uploadId: 706307

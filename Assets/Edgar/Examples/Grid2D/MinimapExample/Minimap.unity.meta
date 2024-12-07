@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a26a297ba8e62124e9124a4dc91df72e
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/MinimapExample/Minimap.unity
+  uploadId: 706307

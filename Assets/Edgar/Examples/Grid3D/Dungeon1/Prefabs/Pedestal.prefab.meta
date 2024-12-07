@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 039fc065363fbcc4ea27a99eaa6f6a90
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid3D/Dungeon1/Prefabs/Pedestal.prefab
+  uploadId: 706307

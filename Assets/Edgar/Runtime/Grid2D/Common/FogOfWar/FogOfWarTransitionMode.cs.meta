@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: c3a80e9e9b594762a3265090feaced8b
+timeCreated: 1601665004
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Runtime/Grid2D/Common/FogOfWar/FogOfWarTransitionMode.cs
+  uploadId: 706307

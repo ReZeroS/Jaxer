@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 22819956f0c4e3b46a3c600ae3ea27c0
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/Platformer1/Room templates/Room 4.prefab
+  uploadId: 706307

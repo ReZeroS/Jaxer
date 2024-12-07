@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6fb508db680d5a541b2695f92d21f09d
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 212735
+  packageName: Edgar Pro - Procedural Level Generator
+  packageVersion: 2.0.9
+  assetPath: Assets/Edgar/Examples/Grid2D/DirectedLevelGraphs/Room templates/Hor
+    6x1 2.prefab
+  uploadId: 706307
