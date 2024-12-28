@@ -1,3 +1,4 @@
+using ReZeros.Jaxer.Core.Combat;
 using Sound.SoundManager;
 using UnityEngine;
 
@@ -23,6 +24,11 @@ public class PlayerAnimationTrigger : MonoBehaviour
                 player.stat.DoDamage(enemyStat);
                 Inventory.instance.GetEquipment(EquipmentType.Weapon)?.Effect(hit.transform);
                 
+            }
+            var hittable = hit.GetComponent<Hittable>();
+            if (hittable != null)
+            {
+                hittable.OnAttackHit(hit.transform.position, new Vector2(3, 5), 5);
             }
         }
     }

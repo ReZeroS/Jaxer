@@ -26,9 +26,13 @@ namespace ReZeros.Jaxer.Core.Combat.Projectile
             if (splatterSound != null)
                 SoundManager.instance.PlaySoundAtLocation(splatterSound, transform.position, 0.75f);
 
-            EffectManager.Instance.PlayOneShot(explosionEffect, transform.position);
-
-            Destroy(gameObject);
+            if (explosionEffect != null)
+            {
+                Debug.Log("Destroy Projectile "+ explosionEffect.name);
+                EffectManager.Instance.PlayOneShot(explosionEffect, transform.position);
+            }
+          
+            // Destroy(gameObject);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -42,9 +46,11 @@ namespace ReZeros.Jaxer.Core.Combat.Projectile
             if (player != null)
             {
                 var target = collision.GetComponent<Entity>();
-                if (!target) return;
-                target.SetKnockBackDir(transform);
-                target.stat.TakeDamage(damage);
+                if (target)
+                {
+                    target.SetKnockBackDir(transform);
+                    target.stat.TakeDamage(damage);
+                }
             }
 
             DestroyProjectile();

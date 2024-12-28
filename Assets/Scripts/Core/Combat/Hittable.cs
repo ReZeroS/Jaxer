@@ -14,8 +14,8 @@ namespace ReZeros.Jaxer.Core.Combat
             Color
         }
 
-        private static readonly Color DeadColor = new Color(0.4f, 0.4f, 0.4f);
-        private static readonly Color HitColor = new Color(0.2f, 0.0f, 0.0f);
+        private static readonly Color DeadColor = new(0.4f, 0.4f, 0.4f);
+        private static readonly Color HitColor = new(0.2f, 0.0f, 0.0f);
 
         public HitType hitType = HitType.None;
         public bool disableHitEffect = false;

@@ -28,7 +28,7 @@ public class EffectManager : MonoBehaviour
         effect.Play();
 
         var duration = effect.main.duration + effect.main.startLifetime.constantMax;
-        effect.gameObject.AddComponent<Disposable>().lifetime = duration;
+        // effect.gameObject.AddComponent<Disposable>().lifetime = duration;
     }
 
     public void PlaySpriteOneShot(SpriteRenderer spriteEffect, Vector3 position, bool flipX)

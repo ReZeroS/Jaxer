@@ -1,6 +1,5 @@
 using BehaviorDesigner.Runtime.Tasks;
 using DG.Tweening;
-using Edgar.Unity.Examples;
 using ReZeros.Jaxer.Manager;
 using UnityEngine;
 
@@ -37,7 +36,7 @@ namespace ReZeros.Jaxer.Core.AI.Tasks
             {
                 hasLanded = true;
                 if (shakeCameraOnLanding)
-                    CameraManager.Instance.ShakeCamera(10.5f);
+                    CameraManager.Instance.ShakeCamera(5f);
             }, false);
         }
 

@@ -22,7 +22,7 @@ namespace ReZeros.Jaxer.Core.Combat.Projectile
 
         void Update()
         {
-            velocity += direction * speed * Time.deltaTime;
+            velocity += direction * (speed * Time.deltaTime);
             transform.position += velocity * Time.deltaTime;
         }
     }

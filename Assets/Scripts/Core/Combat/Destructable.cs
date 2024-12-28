@@ -5,7 +5,7 @@ namespace ReZeros.Jaxer.Core.Combat
 {
     public class Destructable : Hittable
     {
-        public int health = 10;
+        public int health = 100;
 
         public int CurrentHealth { get; set; }
         public bool Invincible { get; set; }
@@ -21,6 +21,7 @@ namespace ReZeros.Jaxer.Core.Combat
 
         public override void OnAttackHit(Vector2 position, Vector2 force, int damage)
         {
+            Debug.Log("Destructable false knight" + CurrentHealth);
             if (CurrentHealth <= 0 || Invincible)
                 return;
 
