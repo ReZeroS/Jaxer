@@ -1,32 +1,22 @@
 fileFormatVersion: 2
-guid: f74cb64808b8ac44fb9e3b96444c9c1b
-AssetOrigin:
-  serializedVersion: 1
-  productId: 212735
-  packageName: Edgar Pro - Procedural Level Generator
-  packageVersion: 2.0.9
-  assetPath: Assets/Edgar/Examples/Grid2D/Metroidvania/metroidvania_minimap.png
-  uploadId: 706307
+guid: d9e3f94f321cd4b7da0c7fe6529e3000
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 21300000
-    second: dead_cells_minimap_0
+      213: -8715582822002977682
+    second: particle-debris-1_0
   - first:
-      213: 21300002
-    second: dead_cells_minimap_1
+      213: -5542398518481986567
+    second: particle-debris-1_1
   - first:
-      213: 21300004
-    second: dead_cells_minimap_2
-  - first:
-      213: 21300006
-    second: dead_cells_minimap_3
+      213: -3182154802145044750
+    second: particle-debris-1_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
-    sRGBTexture: 1
+    enableMipMap: 1
+    sRGBTexture: 0
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -53,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -67,13 +57,13 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   spriteTessellationDetail: -1
-  textureType: 8
+  textureType: 1
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -82,149 +72,101 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dead_cells_minimap_0
+      name: particle-debris-1_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 6
         y: 0
-        width: 16
-        height: 16
+        width: 19
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 42248d52bf086464c852142d8c9f72bd
-      internalID: 21300000
+      spriteID: e64140cb9970c0780800000000000000
+      internalID: -8715582822002977682
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dead_cells_minimap_1
+      name: particle-debris-1_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 39
         y: 0
-        width: 16
-        height: 16
+        width: 12
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 08208a3db50a13443afc4062a8956ca3
-      internalID: 21300002
+      spriteID: 9fbda3e89e17513b0800000000000000
+      internalID: -5542398518481986567
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dead_cells_minimap_2
+      name: particle-debris-1_2
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 67
+        y: 1
         width: 16
-        height: 16
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 4ade6e61b02257547bb04a010bad19c0
-      internalID: 21300004
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dead_cells_minimap_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cea1a043d2605f44b998a8fc1a21a0bd
-      internalID: 21300006
+      spriteID: 2f657d53117b6d3d0800000000000000
+      internalID: -3182154802145044750
       vertices: []
       indices: 
       edges: []
@@ -233,7 +175,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c7501d33283e206498f487ca73b3b0f5
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -242,11 +184,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      dead_cells_minimap_0: 21300000
-      dead_cells_minimap_1: 21300002
-      dead_cells_minimap_2: 21300004
-      dead_cells_minimap_3: 21300006
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
