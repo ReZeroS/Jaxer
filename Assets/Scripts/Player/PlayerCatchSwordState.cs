@@ -17,14 +17,14 @@ public class PlayerCatchSwordState : PlayerState
 
         DustFxWhenCatchSword();
 
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (mousePosition.x < player.transform.position.x && player.facingRight)
-        {
-            player.Flip();
-        } else if (mousePosition.x > player.transform.position.x && !player.facingRight)
-        {
-            player.Flip();
-        }
+        // Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        // if (mousePosition.x < player.transform.position.x && player.facingRight)
+        // {
+        //     player.Flip();
+        // } else if (mousePosition.x > player.transform.position.x && !player.facingRight)
+        // {
+        //     player.Flip();
+        // }
 
         rb.linearVelocity = new Vector2(player.swordReturnImpact * -player.facingDir, rb.linearVelocity.y);
 

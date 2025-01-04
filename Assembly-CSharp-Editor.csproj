@@ -936,9 +936,6 @@
     <Reference Include="Unity.Rendering.LightTransport.Editor">
       <HintPath>/Users/rezero/Jaxer/Library/ScriptAssemblies/Unity.Rendering.LightTransport.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="FindReference2.Editor">
-      <HintPath>/Users/rezero/Jaxer/Library/ScriptAssemblies/FindReference2.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.VisualScripting.Core">
       <HintPath>/Users/rezero/Jaxer/Library/ScriptAssemblies/Unity.VisualScripting.Core.dll</HintPath>
     </Reference>

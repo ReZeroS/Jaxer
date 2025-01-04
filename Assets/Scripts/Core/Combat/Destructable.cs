@@ -21,12 +21,9 @@ namespace ReZeros.Jaxer.Core.Combat
 
         public override void OnAttackHit(Vector2 position, Vector2 force, int damage)
         {
-            Debug.Log("Destructable false knight" + CurrentHealth);
             if (CurrentHealth <= 0 || Invincible)
                 return;
-
             DealDamage(damage);
-
             base.OnAttackHit(position, force, damage); // Order of this call is important
         }
 

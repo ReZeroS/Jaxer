@@ -3,6 +3,7 @@ using System.Collections;
 using ReZeros.Jaxer.Base;
 using UnityEngine;
 
+[SelectionBase]
 public class Player : Entity
 {
     #region Player Data
@@ -18,7 +19,8 @@ public class Player : Entity
 
     private float platformSpeed = 0f;
 
-    public float jumpForce = 12f;
+    public float jumpForce = 16f;
+    public float wallJumpForce = 16f;
     public float swordReturnImpact;
     public float defaultMoveSpeed;
     public float defaultJumpForce;
@@ -234,7 +236,7 @@ public class Player : Entity
 
     public override void SetupZeroKnockBackPower()
     {
-        knockedBackPower = new Vector2(0, 0);
+        SetKnockBackPower(Vector2.zero);
     }
 
     public override void Die()

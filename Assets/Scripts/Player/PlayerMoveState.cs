@@ -12,7 +12,6 @@ public class PlayerMoveState : PlayerGroundState
     public override void Enter()
     {
         base.Enter(); 
-        // AudioManager.instance.PlaySFX(14);
         SoundManager.PlaySound(SoundType.MOVEMENT);
     }
 

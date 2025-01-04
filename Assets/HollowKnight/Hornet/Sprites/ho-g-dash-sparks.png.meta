@@ -1,0 +1,338 @@
+fileFormatVersion: 2
+guid: 99cec999fcc36ae4283b2947889bb970
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ho-g-dash-sparks_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 747
+        width: 309
+        height: 150
+      alignment: 9
+      pivot: {x: 0.0546013, y: 0.10401652}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b14a3233388d28f4b89b2e0fa98e583c
+      internalID: -2055933215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ho-g-dash-sparks_1
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 734
+        width: 566
+        height: 283
+      alignment: 9
+      pivot: {x: 0.07767047, y: 0.12118282}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec35e030ea16d9a4283aa1f20e5d70f7
+      internalID: -2005263662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ho-g-dash-sparks_2
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 370
+        width: 741
+        height: 308
+      alignment: 9
+      pivot: {x: 0.05228556, y: 0.090783946}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30cf28593352e6342abd2fb4a77a45dc
+      internalID: -1715420012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ho-g-dash-sparks_4
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 667
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7745bc42a729754da722a0489f55dbe
+      internalID: -1066275620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ho-g-dash-sparks_6
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 368
+        width: 676
+        height: 330
+      alignment: 9
+      pivot: {x: 0.07781441, y: 0.074164465}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2676e05300d750a428ead9a5206a9ec0
+      internalID: 801887346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ho-g-dash-sparks_11
+      rect:
+        serializedVersion: 2
+        x: 1607
+        y: 286
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a93d8a737e4496046957bb6af6d2d84f
+      internalID: -1418237548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ho-g-dash-sparks_17
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 0
+        width: 648
+        height: 352
+      alignment: 9
+      pivot: {x: 0.06627884, y: 0.10077918}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96b379efa8925c14bbb32c6c5f13f753
+      internalID: 1962939965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ho-g-dash-sparks_18
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 23
+        width: 567
+        height: 322
+      alignment: 9
+      pivot: {x: 0.06563981, y: 0.095078714}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efd973046525d424288a4d02effa3f62
+      internalID: 1869494068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ho-g-dash-sparks_0: -2055933215
+      ho-g-dash-sparks_1: -2005263662
+      ho-g-dash-sparks_10: -68160197
+      ho-g-dash-sparks_11: -1418237548
+      ho-g-dash-sparks_12: -270550160
+      ho-g-dash-sparks_13: 1575904604
+      ho-g-dash-sparks_14: 1148615769
+      ho-g-dash-sparks_15: 153602926
+      ho-g-dash-sparks_16: -609475111
+      ho-g-dash-sparks_17: 1962939965
+      ho-g-dash-sparks_18: 1869494068
+      ho-g-dash-sparks_2: -1715420012
+      ho-g-dash-sparks_3: -1950117070
+      ho-g-dash-sparks_4: -1066275620
+      ho-g-dash-sparks_5: 217402583
+      ho-g-dash-sparks_6: 801887346
+      ho-g-dash-sparks_7: 221026974
+      ho-g-dash-sparks_8: -1926719221
+      ho-g-dash-sparks_9: -1563780168
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

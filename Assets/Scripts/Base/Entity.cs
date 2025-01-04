@@ -106,7 +106,7 @@ namespace ReZeros.Jaxer.Base
                 rb.linearVelocity = new Vector2(knockedBackPower.x * knockBackDir, knockedBackPower.y);
             yield return new WaitForSeconds(knockBackDuration);
             isKnocked = false;
-            SetupZeroKnockBackPower();
+            // SetupZeroKnockBackPower();
         }
 
 

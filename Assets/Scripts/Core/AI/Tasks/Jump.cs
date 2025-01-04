@@ -14,6 +14,13 @@ namespace ReZeros.Jaxer.Core.AI.Tasks
         public float jumpTime;
 
         public string animationTriggerName;
+        
+        public string mainAnimationTriggerName;
+        
+        
+        public SpriteRenderer jumpEffect;
+        public Vector3 effectOffset;
+        
         public bool shakeCameraOnLanding;
 
         private bool hasLanded;
@@ -29,12 +36,23 @@ namespace ReZeros.Jaxer.Core.AI.Tasks
 
         private void StartJump()
         {
+            if (!string.IsNullOrEmpty(mainAnimationTriggerName))
+            {
+                animator.SetTrigger(mainAnimationTriggerName);
+            }
+            
             var direction = player.transform.position.x < transform.position.x ? -1 : 1;
             body.AddForce(new Vector2(horizontalForce * direction, jumpForce), ForceMode2D.Impulse);
 
+            if (jumpEffect != null)
+            {
+                EffectManager.Instance.PlaySpriteOneShot(jumpEffect, transform.position + effectOffset, direction > 0);
+            }
+            
             jumpTween = DOVirtual.DelayedCall(jumpTime, () =>
             {
                 hasLanded = true;
+                body.linearVelocity = Vector2.zero; 
                 if (shakeCameraOnLanding)
                     CameraManager.Instance.ShakeCamera(5f);
             }, false);

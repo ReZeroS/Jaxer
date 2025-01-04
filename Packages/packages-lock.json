@@ -10,7 +10,7 @@
       "hash": "46bf30ea95250b6814d273203e91bfd113465b48"
     },
     "com.cammin.ldtkunity": {
-      "version": "6.5.1",
+      "version": "6.6.2",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -19,13 +19,6 @@
         "com.unity.modules.tilemap": "1.0.0"
       },
       "url": "https://package.openupm.com"
-    },
-    "com.gameframex.unity.vietlabs.fr2": {
-      "version": "https://github.com/AlianBlank/com.vietlabs.fr2.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "7ff3dbec198a4a211f1105a4da05410c2e5e8ac9"
     },
     "com.unity.2d.animation": {
       "version": "10.1.4",

@@ -59,7 +59,7 @@ namespace ReZeros.Jaxer.Core.Combat
             else if (hitType == HitType.Push)
             {
                 // Push object quickly by a small amount and return to its original position
-                float hitAmount = 0.05f;
+                // float hitAmount = 0.05f;
                 // Tween.Position(transform, transform.position,
                 //     transform.position + new Vector3(UnityEngine.Random.Range(-hitAmount, hitAmount),
                 //         UnityEngine.Random.Range(-hitAmount, hitAmount), 0),

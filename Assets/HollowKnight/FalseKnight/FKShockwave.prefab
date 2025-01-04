@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6663610555040821325}
   - component: {fileID: 2976839656943038169}
   - component: {fileID: 7775081680801785146}
+  - component: {fileID: 2742409829365816081}
   m_Layer: 0
   m_Name: FKShockwave
   m_TagString: Untagged
@@ -897,3 +898,25 @@ MonoBehaviour:
   explosionEffect: {fileID: 2584399184050191048, guid: 9ec318cbc9cee4b2ab60da76d4008f90, type: 3}
   splatterSound: {fileID: 0}
   speed: 5
+--- !u!95 &2742409829365816081
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7104392578216328786}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0fbaa6ef6661343439836926a46f5239, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -16,6 +16,14 @@ public class PlayerWallSlideState : PlayerState
     {
         base.LogicUpdate();
 
+        
+        if (InputManager.instance.south.justPressed)
+        {
+            stateMachine.ChangeState(player.playerWallJumpState);
+            return;
+        }
+
+        
         if (!player.IsWallDetected())
         {
             stateMachine.ChangeState(player.playerFallingState);
@@ -23,12 +31,6 @@ public class PlayerWallSlideState : PlayerState
         }
 
 
-        if (InputManager.instance.south.justPressed)
-        {
-            stateMachine.ChangeState(player.playerWallJumpState);
-            return;
-        }
-       
         if (xInput != 0 && Math.Sign(xInput) != Math.Sign(player.facingDir)){
             stateMachine.ChangeState(player.playerIdleState);
         }
