@@ -33,8 +33,8 @@ public class UIInGame : MonoBehaviour
         }
         
 
-        CheckCooldownOf(dashImage, skillManager.dashSkill.cooldown);
-        CheckCooldownOf(parryImage, skillManager.parrySkill.cooldown);
+        // CheckCooldownOf(dashImage, skillManager.dashSkill.cooldown);
+        // CheckCooldownOf(parryImage, skillManager.parrySkill.cooldown);
     }
 
     private void UpdateHealthSlider()

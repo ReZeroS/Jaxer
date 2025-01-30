@@ -64,6 +64,22 @@
     },
     "customData": [
       {
+        "data": "animatedSprites 56,57,58,59",
+        "tileId": 56
+      },
+      {
+        "data": "animatedSprites 57,58,59,56",
+        "tileId": 57
+      },
+      {
+        "data": "animatedSprites 58,59,56,57",
+        "tileId": 58
+      },
+      {
+        "data": "57,",
+        "tileId": 59
+      },
+      {
         "data": "animatedSprites 61,61,73,72,72,73,61",
         "tileId": 72
       },
