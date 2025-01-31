@@ -9,7 +9,7 @@ public class HealEffects : ItemEffects
     
     public override void ExecuteEffect(Transform respawnPosition)
     {
-        PlayerStat playerStat = PlayerManager.instance.player.GetComponent<PlayerStat>();
+        PlayerStat playerStat = PlayerManager.instance.Player.GetComponent<PlayerStat>();
 
         int healAmount = (int)(playerStat.GetMaxHealthVal() * healPercent);
         

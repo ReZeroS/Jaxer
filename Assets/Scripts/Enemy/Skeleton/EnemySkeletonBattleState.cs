@@ -1,4 +1,5 @@
 using ReZeros.Jaxer.Manager;
+using ReZeros.Jaxer.PlayerBase;
 using UnityEngine;
 
 public class EnemySkeletonBattleState : EnemyState
@@ -15,9 +16,9 @@ public class EnemySkeletonBattleState : EnemyState
     {
         base.Enter();
 
-        Player instancePlayer = PlayerManager.instance.player;
-        playerTransform = instancePlayer.transform;
-        if (instancePlayer.GetComponent<PlayerStat>().isDead)
+        MainPlayer instanceMainPlayer = PlayerManager.instance.Player;
+        playerTransform = instanceMainPlayer.transform;
+        if (instanceMainPlayer.GetComponent<PlayerStat>().isDead)
         {
             stateMachine.ChangeState(enemy.moveState);
         }

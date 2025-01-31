@@ -1,4 +1,5 @@
 using ReZeros.Jaxer.Base;
+using ReZeros.Jaxer.PlayerBase;
 using UnityEngine;
 
 public class DeathBringerSpellController : MonoBehaviour
@@ -22,7 +23,7 @@ public class DeathBringerSpellController : MonoBehaviour
 
         foreach (Collider2D collider in overlapBox)
         {
-            Player target = collider.GetComponent<Player>();
+            MainPlayer target = collider.GetComponent<MainPlayer>();
             if (target != null)
             {
                 collider.GetComponent<Entity>().SetKnockBackDir(transform);

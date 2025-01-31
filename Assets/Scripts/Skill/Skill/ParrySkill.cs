@@ -41,8 +41,8 @@ public class ParrySkill : Skill
       if (parryRestoreUnlocked)
       {
          SoundManager.PlaySound(SoundType.PARRY);
-         var restoreHealth = restorePercentage * player.stat.GetMaxHealthVal();
-         player.stat.IncreaseHealthBy((int)restoreHealth);
+         var restoreHealth = restorePercentage * mainPlayer.stat.GetMaxHealthVal();
+         mainPlayer.stat.IncreaseHealthBy((int)restoreHealth);
       }
       
    }

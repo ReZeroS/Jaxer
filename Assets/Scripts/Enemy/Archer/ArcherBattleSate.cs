@@ -1,4 +1,5 @@
 using ReZeros.Jaxer.Manager;
+using ReZeros.Jaxer.PlayerBase;
 using UnityEngine;
 
 public class ArcherBattleSate : ArcherState
@@ -16,9 +17,9 @@ public class ArcherBattleSate : ArcherState
     {
         base.Enter();
 
-        Player instancePlayer = PlayerManager.instance.player;
-        playerTransform = instancePlayer.transform;
-        if (instancePlayer.GetComponent<PlayerStat>().isDead)
+        MainPlayer instanceMainPlayer = PlayerManager.instance.Player;
+        playerTransform = instanceMainPlayer.transform;
+        if (instanceMainPlayer.GetComponent<PlayerStat>().isDead)
         {
             stateMachine.ChangeState(enemyArcher.moveState);
         }

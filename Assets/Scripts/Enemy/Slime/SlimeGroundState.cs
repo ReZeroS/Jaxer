@@ -13,7 +13,7 @@ public class SlimeGroundState : SlimeState
     public override void Enter()
     {
         base.Enter();
-        playerTransform = PlayerManager.instance.player.transform;
+        playerTransform = PlayerManager.instance.Player.transform;
     }
 
     public override void Update()

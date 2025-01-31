@@ -1,16 +1,15 @@
 using ReZeros.Jaxer.Core;
+using ReZeros.Jaxer.PlayerBase;
+using UnityEngine.Serialization;
 
 namespace ReZeros.Jaxer.Manager
 {
     public class PlayerManager : CoreComponent, ISaveManager
     {
         public static PlayerManager instance;
-        public Player player;
+        // private MainPlayer player;
 
-        public Player Player
-        {
-            get => player ?? core.GetCoreComponent(ref player);
-        }
+        public MainPlayer Player;
 
         public int currency;
 

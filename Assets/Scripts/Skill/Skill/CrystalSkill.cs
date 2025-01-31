@@ -123,8 +123,8 @@ public class CrystalSkill : Skill
             {
                 return;
             }
-            Vector2 playPos = player.transform.position;
-            player.transform.position = currentCrystal.transform.position;
+            Vector2 playPos = mainPlayer.transform.position;
+            mainPlayer.transform.position = currentCrystal.transform.position;
             currentCrystal.transform.position = playPos;
             
             if (cloneInsteadOfCrystal)
@@ -143,10 +143,10 @@ public class CrystalSkill : Skill
 
     public void CreateCrystal()
     {
-        currentCrystal = Instantiate(crystalPrefb, player.transform.position, Quaternion.identity);
+        currentCrystal = Instantiate(crystalPrefb, mainPlayer.transform.position, Quaternion.identity);
         CrystalSkillController controller = currentCrystal.GetComponent<CrystalSkillController>();
         controller.SetupCrystal(crystalDuration, canExplode, canMoveToEnemy, moveSpeed,
-            FindClosestEnemy(currentCrystal.transform), player);
+            FindClosestEnemy(currentCrystal.transform), mainPlayer);
     }
 
     public void CurrentCrystalChooseRandomTarget() =>
@@ -166,11 +166,11 @@ public class CrystalSkill : Skill
                 cooldown = 0;
                 // use last one 
                 GameObject crystalSpawn = crystalLeft[^1];
-                GameObject newCrystal = Instantiate(crystalSpawn, player.transform.position, Quaternion.identity);
+                GameObject newCrystal = Instantiate(crystalSpawn, mainPlayer.transform.position, Quaternion.identity);
                 crystalLeft.Remove(crystalSpawn); 
                 CrystalSkillController skillController = newCrystal.GetComponent<CrystalSkillController>();
                 skillController.SetupCrystal(crystalDuration, canExplode, canMoveToEnemy, moveSpeed,
-                    FindClosestEnemy(newCrystal.transform), player);
+                    FindClosestEnemy(newCrystal.transform), mainPlayer);
 
                 if (crystalLeft.Count <= 0)
                 {

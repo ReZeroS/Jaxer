@@ -1,15 +1,16 @@
 using ReZeros.Jaxer.Manager;
+using ReZeros.Jaxer.PlayerBase;
 using UnityEngine;
 
 public class Skill : MonoBehaviour
 {
     public float cooldown;
     protected float coolDownTimer;
-    protected Player player;
+    protected MainPlayer mainPlayer;
 
     protected virtual void Start()
     {
-        player = PlayerManager.instance.player;
+        mainPlayer = PlayerManager.instance.Player;
         CheckUnlock();
     }
 

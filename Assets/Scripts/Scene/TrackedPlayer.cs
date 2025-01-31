@@ -18,7 +18,7 @@ namespace ReZeros.Jaxer
 
         private void Start()
         {
-            mainCamera.Follow = PlayerManager.instance.player.transform;
+            mainCamera.Follow = PlayerManager.instance.Player.transform;
         }
 
        

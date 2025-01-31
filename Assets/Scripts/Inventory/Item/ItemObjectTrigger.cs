@@ -1,3 +1,4 @@
+using ReZeros.Jaxer.PlayerBase;
 using UnityEngine;
 
 public class ItemObjectTrigger : MonoBehaviour
@@ -17,7 +18,7 @@ public class ItemObjectTrigger : MonoBehaviour
             return;
         }
         
-        if (other.GetComponent<Player>() != null)
+        if (other.GetComponent<MainPlayer>() != null)
         {
             getItemObject.PickUpItem();
         }

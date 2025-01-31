@@ -10055,7 +10055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0caa34f52654346cf896fe4c0f08181f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 7996552591868172885}
+  Player: {fileID: 7996552591868172885}
   currency: 0
 --- !u!222 &5452025439661647899
 CanvasRenderer:
@@ -11050,7 +11050,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 1
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!1 &6043241253186154206
@@ -14835,17 +14835,20 @@ MonoBehaviour:
   - {x: 1, y: 1}
   - {x: 10, y: 3}
   counterAttackDuration: 0.2
-  moveSpeed: 12
+  maxMoveSpeed: 10
+  accelerationTime: 0.1
+  decelerationTime: 0.05
+  airAccelerationMultiplier: 0.5
   jumpForce: 16
   wallJumpForce: 16
   swordReturnImpact: 0.5
-  defaultMoveSpeed: 0
+  defaultMoveSpeed: 0.03
   defaultJumpForce: 0
   defaultDashSpeed: 0
   dashSpeed: 18
   dashDuration: 0.5
   dropDelay: 0.5
-  coyoteTime: 0.20000000298023224
+  coyoteTime: 0.2
   defaultTransform: {fileID: 0}
   defaultMaterial: {fileID: 0}
 --- !u!114 &8012688939028582353

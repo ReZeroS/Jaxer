@@ -1,11 +1,12 @@
 using ReZeros.Jaxer.Base;
+using ReZeros.Jaxer.PlayerBase;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class CloneSkillController : MonoBehaviour
 {
 
-    private Player player;
+    private MainPlayer mainPlayer;
     private SpriteRenderer sr;
     private Animator animator;
     [SerializeField] private float loseSpeed;
@@ -31,7 +32,7 @@ public class CloneSkillController : MonoBehaviour
     }
 
     public void SetupClone(Transform newTransform, float cloneDuration, bool canAttack, Vector3 offset,
-        Transform findClosestEnemy, bool canCreateDuplicateClone, float duplicateCloneTriggerRate, Player pl, float atkMultiplier)
+        Transform findClosestEnemy, bool canCreateDuplicateClone, float duplicateCloneTriggerRate, MainPlayer pl, float atkMultiplier)
     {
         if (canAttack)
         {
@@ -42,7 +43,7 @@ public class CloneSkillController : MonoBehaviour
         closestEnemy = findClosestEnemy;
         canDuplicateClone = canCreateDuplicateClone;
         duplicateCloneRate = duplicateCloneTriggerRate;
-        player = pl;
+        mainPlayer = pl;
         attackMultiplier = atkMultiplier;
         FaceClosestTarget();
     }
@@ -75,12 +76,12 @@ public class CloneSkillController : MonoBehaviour
             {
                 
                 hit.GetComponent<Entity>()?.SetKnockBackDir(transform);
-                PlayerStat playerStat = player.GetComponent<PlayerStat>();
+                PlayerStat playerStat = mainPlayer.GetComponent<PlayerStat>();
                 EnemyStat enemyStat = hit.GetComponent<EnemyStat>();
                 playerStat.CloneDoDamage(enemyStat, attackMultiplier);
 
 
-                if (player.skillManager.cloneSkill.canApplyOnHitEffect)
+                if (mainPlayer.skillManager.cloneSkill.canApplyOnHitEffect)
                 {
                     Inventory.instance.GetEquipment(EquipmentType.Weapon)?.Effect(hit.transform);
                 }

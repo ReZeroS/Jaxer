@@ -1,4 +1,5 @@
 using ReZeros.Jaxer.Manager;
+using ReZeros.Jaxer.PlayerBase;
 using UnityEngine;
 
 public class ShadyBattleState : ShadyState
@@ -22,9 +23,9 @@ public class ShadyBattleState : ShadyState
         
         enemy.moveSpeed = enemy.battleMoveSpeed;
         
-        Player instancePlayer = PlayerManager.instance.player;
-        playerTransform = instancePlayer.transform;
-        if (instancePlayer.GetComponent<PlayerStat>().isDead)
+        MainPlayer instanceMainPlayer = PlayerManager.instance.Player;
+        playerTransform = instanceMainPlayer.transform;
+        if (instanceMainPlayer.GetComponent<PlayerStat>().isDead)
         {
             stateMachine.ChangeState(enemy.moveState);
         }

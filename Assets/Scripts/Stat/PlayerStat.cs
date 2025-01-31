@@ -1,16 +1,17 @@
 using ReZeros.Jaxer.Manager;
+using ReZeros.Jaxer.PlayerBase;
 using Sound.SoundManager;
 using UnityEngine;
 
 public class PlayerStat : CharacterStat
 {
 
-    private Player player;
+    private MainPlayer mainPlayer;
     protected override void Start()
     {
         base.Start();
 
-        player = PlayerManager.instance.player;
+        mainPlayer = PlayerManager.instance.Player;
     }
 
     public override void TakeDamage(int dam)
@@ -21,14 +22,14 @@ public class PlayerStat : CharacterStat
     protected override void Die()
     {
         base.Die();
-        player.Die();
+        mainPlayer.Die();
         GetComponent<PlayerItemDrop>()?.GenerateDrop();
     }
 
     public override void OnEvasion()
     {
         base.OnEvasion();
-        player.skillManager.dodgeSkill.CreateMirageDodge();
+        mainPlayer.skillManager.dodgeSkill.CreateMirageDodge();
     }
 
     protected override void DecreaseHealthBy(int dam)
@@ -37,8 +38,8 @@ public class PlayerStat : CharacterStat
 
         if (dam > GetMaxHealthVal() * 0.3f)
         {
-            player.SetKnockBackPower(new Vector2(6, 10));
-            player.fx.ScreenShakeForHighDamageImpact(player.facingDir);
+            mainPlayer.SetKnockBackPower(new Vector2(6, 10));
+            mainPlayer.fx.ScreenShakeForHighDamageImpact(mainPlayer.facingDir);
             // 暴击重声
             SoundManager.PlaySound(SoundType.HEAVY_ATTACK);
         }
@@ -46,7 +47,7 @@ public class PlayerStat : CharacterStat
         ItemDataEquipment curEquipment = Inventory.instance.GetEquipment(EquipmentType.Armor);
         if (curEquipment != null)
         {
-            curEquipment.Effect(player.transform);
+            curEquipment.Effect(mainPlayer.transform);
         }
     }
 

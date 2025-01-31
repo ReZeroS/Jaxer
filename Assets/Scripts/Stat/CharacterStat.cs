@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using ReZeros.Jaxer.Base;
+using ReZeros.Jaxer.PlayerBase;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -269,7 +270,7 @@ public class CharacterStat : MonoBehaviour
             }
             else
             {
-                if (GetComponent<Player>() != null)
+                if (GetComponent<MainPlayer>() != null)
                 {
                     return;
                 }

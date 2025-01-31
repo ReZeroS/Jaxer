@@ -2,40 +2,42 @@ using ReZeros.Jaxer.Core.Combat;
 using Sound.SoundManager;
 using UnityEngine;
 
-public class PlayerAnimationTrigger : MonoBehaviour
+namespace ReZeros.Jaxer.Trigger
 {
-    private Player player => GetComponentInParent <Player>();
-
-    private void AnimationTrigger()
+    public class PlayerAnimationTrigger : MonoBehaviour
     {
-        player.AnimationTrigger();
-    }
+        private PlayerBase.MainPlayer mainPlayer => GetComponentInParent<PlayerBase.MainPlayer>();
 
-    private void AttackTrigger()
-    {
-        SoundManager.PlaySound(SoundType.LIGHT_ATTACK);
-
-        Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackRadius);
-        foreach (var hit in collider2Ds)
+        private void AnimationTrigger()
         {
-            if (hit.GetComponent<Enemy>() != null)
+            mainPlayer.AnimationTrigger();
+        }
+
+        private void AttackTrigger()
+        {
+            SoundManager.PlaySound(SoundType.LIGHT_ATTACK);
+
+            Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(mainPlayer.attackCheck.position, mainPlayer.attackRadius);
+            foreach (var hit in collider2Ds)
             {
-                EnemyStat enemyStat = hit.GetComponent<EnemyStat>();
-                player.stat.DoDamage(enemyStat);
-                Inventory.instance.GetEquipment(EquipmentType.Weapon)?.Effect(hit.transform);
-                
-            }
-            var hittable = hit.GetComponent<Hittable>();
-            if (hittable != null)
-            {
-                hittable.OnAttackHit(hit.transform.position, new Vector2(3, 5), 5);
+                if (hit.GetComponent<Enemy>() != null)
+                {
+                    EnemyStat enemyStat = hit.GetComponent<EnemyStat>();
+                    mainPlayer.stat.DoDamage(enemyStat);
+                    Inventory.instance.GetEquipment(EquipmentType.Weapon)?.Effect(hit.transform);
+                }
+
+                var hittable = hit.GetComponent<Hittable>();
+                if (hittable != null)
+                {
+                    hittable.OnAttackHit(hit.transform.position, new Vector2(3, 5), 5);
+                }
             }
         }
-    }
 
-    private void ThrowSword()
-    {
-        SkillManager.instance.swordSkill.ThrowSword();
+        private void ThrowSword()
+        {
+            SkillManager.instance.swordSkill.ThrowSword();
+        }
     }
-    
 }

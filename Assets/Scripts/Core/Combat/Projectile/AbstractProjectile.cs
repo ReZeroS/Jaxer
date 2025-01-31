@@ -42,7 +42,7 @@ namespace ReZeros.Jaxer.Core.Combat.Projectile
                 return;
 
             // Projectile hit player
-            var player = collision.GetComponent<Player>();
+            var player = collision.GetComponent<PlayerBase.MainPlayer>();
             if (player != null)
             {
                 var target = collision.GetComponent<Entity>();

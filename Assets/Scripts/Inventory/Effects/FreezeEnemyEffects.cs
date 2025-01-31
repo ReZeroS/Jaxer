@@ -9,7 +9,7 @@ public class FreezeEnemyEffects : ItemEffects
     
     public override void ExecuteEffect(Transform respawnPosition)
     {
-        var playerStat = PlayerManager.instance.player.GetComponent<PlayerStat>();
+        var playerStat = PlayerManager.instance.Player.GetComponent<PlayerStat>();
         // only triggered when player health is less than 10%
         if (playerStat.currentHealth > playerStat.GetMaxHealthVal() * 0.1f)
         {

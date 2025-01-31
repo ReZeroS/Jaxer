@@ -14,7 +14,7 @@ public class DeathBringerIdleState : DeathBringerState
     {
         base.Enter();
         stateTimer = enemy.idleTime;
-        playerTransform = PlayerManager.instance.player.transform;
+        playerTransform = PlayerManager.instance.Player.transform;
     }
     
     public override void Update()

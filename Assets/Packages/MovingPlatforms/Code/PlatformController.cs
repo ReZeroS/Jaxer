@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ReZeros.Jaxer.PlayerBase;
 using UnityEditor;
 using UnityEngine;
 
@@ -156,8 +157,8 @@ public class PlatformController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Player player = collision.GetComponent<Player>();
-            player.EnterPlatform(transform);
+            MainPlayer mainPlayer = collision.GetComponent<MainPlayer>();
+            mainPlayer.EnterPlatform(transform);
         }
     }
 
@@ -165,8 +166,8 @@ public class PlatformController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Player player = collision.GetComponent<Player>();
-            player.LeavePlatform();
+            MainPlayer mainPlayer = collision.GetComponent<MainPlayer>();
+            mainPlayer.LeavePlatform();
         }
     }
 

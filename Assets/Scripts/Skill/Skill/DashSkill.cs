@@ -69,7 +69,7 @@ public class DashSkill : Skill
     {
         if (cloneOnDashUnlocked)
         {
-            SkillManager.instance.cloneSkill.CreateClone(player.transform, Vector3.zero);
+            SkillManager.instance.cloneSkill.CreateClone(mainPlayer.transform, Vector3.zero);
         }
     }
 
@@ -77,7 +77,7 @@ public class DashSkill : Skill
     {
         if (cloneOnArrivedUnlocked)
         {
-            SkillManager.instance.cloneSkill.CreateClone(player.transform, Vector3.zero);
+            SkillManager.instance.cloneSkill.CreateClone(mainPlayer.transform, Vector3.zero);
         }
     }
 

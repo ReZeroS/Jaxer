@@ -12,7 +12,7 @@ public class BuffEffects : ItemEffects
 
     public override void ExecuteEffect(Transform respawnPosition)
     {
-        stats = PlayerManager.instance.player.GetComponent<PlayerStat>();
+        stats = PlayerManager.instance.Player.GetComponent<PlayerStat>();
         stats.IncreaseStatBy(buffAmount, buffDuration, stats.StatOfType(buffType));
     }
 

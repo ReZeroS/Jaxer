@@ -167,7 +167,7 @@ public class SwordSkill : Skill
     
     public void ThrowSword()
     {
-        GameObject createdSword = Instantiate(swordPrefab, player.transform.position,
+        GameObject createdSword = Instantiate(swordPrefab, mainPlayer.transform.position,
             transform.rotation);
         SwordSkillController swordController = createdSword.GetComponent<SwordSkillController>();
 
@@ -185,8 +185,8 @@ public class SwordSkill : Skill
         }
 
 
-        swordController.SetUpSword(finalDir, swordGravity, player, freezeTimeDuration, returnSpeed);
-        player.AssignSword(createdSword);
+        swordController.SetUpSword(finalDir, swordGravity, mainPlayer, freezeTimeDuration, returnSpeed);
+        mainPlayer.AssignSword(createdSword);
         isAiming = false;
         DotsActive(false);
     }
@@ -233,7 +233,7 @@ public class SwordSkill : Skill
         dots = new GameObject[numberOfDots];
         for (var i = 0; i < dots.Length; i++)
         {
-            dots[i] = Instantiate(dotPrefab, player.transform.position, Quaternion.identity, dotsParent);
+            dots[i] = Instantiate(dotPrefab, mainPlayer.transform.position, Quaternion.identity, dotsParent);
             dots[i].SetActive(false);
         }
     }
@@ -253,7 +253,7 @@ public class SwordSkill : Skill
     // dest = initPos + vt * (at^2)/2
     private Vector2 DotsPosition(float t)
     {
-        return (Vector2)player.transform.position +  // initPos
+        return (Vector2)mainPlayer.transform.position +  // initPos
                aimDirection.normalized * launchForce * t + // vt
                Physics2D.gravity * (0.5f * swordGravity * t * t); // at^2/2
     }

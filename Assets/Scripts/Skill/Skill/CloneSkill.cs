@@ -96,7 +96,7 @@ public class CloneSkill : Skill
         
         GameObject newGameObject = Instantiate(gb);
         newGameObject.GetComponent<CloneSkillController>().SetupClone(trans, cloneDuration, canAttack, 
-            offset, FindClosestEnemy(newGameObject.transform), canCreateDuplicateClone, duplicateCloneTriggerRate, player, attackMultiplier);
+            offset, FindClosestEnemy(newGameObject.transform), canCreateDuplicateClone, duplicateCloneTriggerRate, mainPlayer, attackMultiplier);
     }
 
  
@@ -105,7 +105,7 @@ public class CloneSkill : Skill
 
     public void CreateCloneWithDelay(Transform enemyTransform)
     {
-        StartCoroutine(CreateCloneWithDelayCoroutine(enemyTransform, new Vector3(2 * player.facingDir, 0)));
+        StartCoroutine(CreateCloneWithDelayCoroutine(enemyTransform, new Vector3(2 * mainPlayer.facingDir, 0)));
     }
 
     private IEnumerator CreateCloneWithDelayCoroutine(Transform trans, Vector3 offset)

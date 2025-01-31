@@ -47,6 +47,7 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/6000.0.36f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/Scripts/PlayerBase/StateTransitionCheck.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/String/GetRandomString.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Animation/Play.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody/SetLinearVelocity.cs" />
@@ -54,10 +55,10 @@
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody/GetLinearDamping.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/GameObject/SendMessage.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/AudioSource/GetTimeSamples.cs" />
-    <Compile Include="Assets/Scripts/Player/PlayerWallSlideState.cs" />
-    <Compile Include="Assets/Scripts/Enemy/Boss/DeathBringer/DeathBringerIdleState.cs" />
+    <Compile Include="Assets/Scripts/PlayerBase/PlayerCatchSwordState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Animator/GetStringToHash.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/ParticleSystem/Play.cs" />
+    <Compile Include="Assets/Scripts/Enemy/Boss/DeathBringer/DeathBringerIdleState.cs" />
     <Compile Include="Assets/Scripts/Inventory/Item/ItemDrop.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Transform/GetLocalEulerAngles.cs" />
     <Compile Include="Assets/Scripts/Enemy/Boss/DeathBringer/EnemyDeathBringer.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Assets/Scripts/Util/Rotator.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/GameObject/CompareTag.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Animation/SetWrapMode.cs" />
+    <Compile Include="Assets/Scripts/PlayerBase/PlayerDropDown.cs" />
     <Compile Include="Assets/Scripts/Enemy/BubbleDragon/BubbleDragonJumpState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody2D/GetRigidbodyType.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/AudioSource/PlayDelayed.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="Assets/Scripts/Core/AI/Tasks/FalseKnight/SpawnMaggot.cs" />
     <Compile Include="Assets/Scripts/Enemy/EnemyState.cs" />
     <Compile Include="Assets/Scripts/Trigger/PlayerAnimationTrigger.cs" />
+    <Compile Include="Assets/Scripts/PlayerBase/PlayerOnAirState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Timeline/Resume.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/NavMeshAgent/GetRemainingDistance.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/CapsuleCollider/SetRadius.cs" />
@@ -86,7 +89,6 @@
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody/SetDrag.cs" />
     <Compile Include="Assets/Scripts/Enemy/Shady/ShadyMoveState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Math/SetFloat.cs" />
-    <Compile Include="Assets/Scripts/Player/PlayerJumpState.cs" />
     <Compile Include="Assets/Scripts/Enemy/BubbleDragon/BubbleDragonSleepState.cs" />
     <Compile Include="Assets/Scripts/Core/Combat/Projectile/Projectile.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/GameObject/ActiveInHierarchy.cs" />
@@ -108,6 +110,7 @@
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/SharedVariables/SetSharedRect.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/AudioSource/PlayOneShot.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Light/SetShadows.cs" />
+    <Compile Include="Assets/Scripts/PlayerBase/PlayerDeathState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Variables/SharedVector3Int.cs" />
     <Compile Include="Assets/Scripts/Sound/SoundsSO.cs" />
     <Compile Include="Assets/Scripts/Skill/Skill/Skill.cs" />
@@ -157,11 +160,13 @@
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody2D/SetAngularVelocity.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/ParticleSystem/GetEnableEmission.cs" />
     <Compile Include="Assets/Scripts/Core/AI/Tasks/CheckForPeriodicEvent.cs" />
+    <Compile Include="Assets/Scripts/PlayerBase/PlayerMoveState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/GameObject/FindWithTag.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Transform/SetLocalPosition.cs" />
     <Compile Include="Assets/Scripts/Enemy/BubbleDragon/BubbleDragonState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Variables/SharedInt.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Composites/SelectorEvaluator.cs" />
+    <Compile Include="Assets/Scripts/PlayerBase/PlayerStateMachine.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Transform/GetPosition.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/PlayerPrefs/Save.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/SharedVariables/SetSharedQuaternion.cs" />
@@ -203,7 +208,6 @@
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/CircleCollider2D/SetRadius.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/GameObject/CompareLayer.cs" />
     <Compile Include="Assets/Scripts/Enemy/BubbleDragon/BubbleDragonGroundState.cs" />
-    <Compile Include="Assets/Scripts/Player/PlayerIdleState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/PlayerPrefs/HasKey.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Vector3/RotateTowards.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Conditionals/Physics/HasEnteredCollision2D.cs" />
@@ -223,6 +227,7 @@
     <Compile Include="Assets/Scripts/Enemy/Archer/ArcherGroundState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Conditionals/Physics/HasExitedTrigger.cs" />
     <Compile Include="Assets/Scripts/Platform/FallingPlatform.cs.cs" />
+    <Compile Include="Assets/Scripts/PlayerBase/PlayerSwimState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/SharedVariables/SetSharedTransformList.cs" />
     <Compile Include="Assets/Scripts/Fx/ExplosiveController.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Actions/Reflection/GetPropertyValue.cs" />
@@ -234,6 +239,7 @@
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Vector2/Dot.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/SharedVariables/CompareSharedBool.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Composites/Sequence.cs" />
+    <Compile Include="Assets/Scripts/PlayerBase/PlayerCoyoteTimeState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/String/CompareTo.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Composites/PrioritySelector.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/AudioSource/Play.cs" />
@@ -244,7 +250,6 @@
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Math/FloatOperator.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/LayerMask/GetLayer.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/SharedVariables/CompareSharedString.cs" />
-    <Compile Include="Assets/Scripts/Player/PlayerGroundState.cs" />
     <Compile Include="Assets/Scripts/Scene/LevelBoundTrigger.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/ParticleSystem/Stop.cs" />
     <Compile Include="Assets/Scripts/Enemy/BubbleDragon/BubbleDragonBattleState.cs" />
@@ -260,7 +265,6 @@
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Math/RandomBool.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/CapsuleCollider/GetCenter.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Animator/WaitForState.cs" />
-    <Compile Include="Assets/Scripts/Player/PlayerDashState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Light/SetColor.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/BoxCollider/GetSize.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/AudioSource/PlayScheduled.cs" />
@@ -289,7 +293,6 @@
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody/SetDamping.cs" />
     <Compile Include="Assets/Scripts/Inventory/Effects/FreezeEnemyEffects.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Light/SetShadowStrength.cs" />
-    <Compile Include="Assets/Scripts/Player/PlayerCounterAttackState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Transform/GetChild.cs" />
     <Compile Include="Assets/Scripts/Core/Character/Hazard.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Transform/GetUpVector.cs" />
@@ -311,7 +314,6 @@
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody2D/SetMass.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Vector2/Multiply.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody/Sleep.cs" />
-    <Compile Include="Assets/Scripts/Player/PlayerSwimState.cs" />
     <Compile Include="Assets/Scripts/Core/AI/Tasks/SetHealth.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody2D/GetRotation.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/SharedVariables/SetSharedColor.cs" />
@@ -328,8 +330,6 @@
     <Compile Include="Assets/Scripts/UI/UIInGame.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/GameObject/SetActive.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Animator/SetLookAtPosition.cs" />
-    <Compile Include="Assets/Scripts/Player/PlayerWallJumpState.cs" />
-    <Compile Include="Assets/Scripts/Player/PlayerBlackholeState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/AudioSource/SetIgnoreListenerVolume.cs" />
     <Compile Include="Assets/Scripts/Core/AI/Tasks/Hornet/ThrowNeedle.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/CharacterController/GetVelocity.cs" />
@@ -345,9 +345,10 @@
     <Compile Include="Assets/Scripts/Sound/MusicLibrary.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/SharedVariables/CompareSharedVector3.cs" />
     <Compile Include="Assets/Scripts/Enemy/Shady/ShadyStunnedState.cs" />
+    <Compile Include="Assets/Scripts/PlayerBase/PlayerCounterAttackState.cs" />
     <Compile Include="Assets/Scripts/Core/CoreComponent.cs" />
     <Compile Include="Assets/Scripts/Backup/rpg-battle-system.cs" />
-    <Compile Include="Assets/Scripts/Player/PlayerDeathState.cs" />
+    <Compile Include="Assets/Scripts/PlayerBase/PlayerFallingState.cs" />
     <Compile Include="Assets/Scripts/Finder/FindUtil.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/EntryTask.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Timeline/IsPlaying.cs" />
@@ -359,6 +360,7 @@
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Transform/GetLocalPosition.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Light/SetCullingMask.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Animation/GetAnimatePhysics.cs" />
+    <Compile Include="Assets/Scripts/PlayerBase/PlayerBlackholeState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/NavMeshAgent/Warp.cs" />
     <Compile Include="Assets/Scripts/Enemy/EnemyStateMachine.cs" />
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeleton.cs" />
@@ -394,14 +396,11 @@
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/AudioSource/GetMinDistance.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Actions/BehaviorTreeReference.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody2D/SetDrag.cs" />
-    <Compile Include="Assets/Scripts/Player/PlayerCatchSwordState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/BoxCollider/SetCenter.cs" />
-    <Compile Include="Assets/Scripts/Player/PlayerState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Actions/SendEvent.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Input/IsMouseDown.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody2D/GetPosition.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/CharacterController/GetSlopeLimit.cs" />
-    <Compile Include="Assets/Scripts/Player/PlayerCoyoteTimeState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Math/FloatAbs.cs" />
     <Compile Include="Assets/Scripts/LoadAndSave/SaveManager.cs" />
     <Compile Include="Assets/Scripts/Manager/MainCameraSwitcher.cs" />
@@ -446,6 +445,7 @@
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Decorators/TaskGuard.cs" />
     <Compile Include="Assets/Scripts/Scene/SceneTransition.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/AudioSource/Pause.cs" />
+    <Compile Include="Assets/Scripts/PlayerBase/PlayerAnimSwordState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Vector3/GetUpVector.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody2D/GetGravtyScale.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/SharedVariables/SetSharedInt.cs" />
@@ -464,16 +464,15 @@
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody2D/MoveRotation.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody/AddRelativeForce.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Variables/SharedUInt.cs" />
-    <Compile Include="Assets/Scripts/Player/StateTransitionCheck.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Quaternion/Euler.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/ParticleSystem/SetStartColor.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/AudioSource/SetMaxDistance.cs" />
     <Compile Include="Assets/Scripts/Trigger/EnemyAnimationTrigger.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Animator/SetTrigger.cs" />
+    <Compile Include="Assets/Scripts/PlayerBase/PlayerState.cs" />
     <Compile Include="Assets/Scripts/Enemy/BubbleDragon/BubbleDragonIdleState.cs" />
     <Compile Include="Assets/Scripts/Scene/CrossFade.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Variables/SharedVector4.cs" />
-    <Compile Include="Assets/Scripts/Player/PlayerAnimSwordState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody/SetFreezeRotation.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/NavMeshAgent/IsStopped.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Animation/CrossFadeQueued.cs" />
@@ -491,7 +490,6 @@
     <Compile Include="Assets/Scripts/Core/AI/Tasks/FreezeTime.cs" />
     <Compile Include="Assets/Scripts/Sound/SoundManager.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/SharedVariables/SetSharedGameObject.cs" />
-    <Compile Include="Assets/Scripts/Player/PlayerPrimaryAttackState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Quaternion/FromToRotation.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Debug/DrawRay.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody2D/GetAngularDamping.cs" />
@@ -549,9 +547,9 @@
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/PlayerPrefs/DeleteAll.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Quaternion/Angle.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Math/Lerp.cs" />
-    <Compile Include="Assets/Scripts/Player/PlayerOnAirState.cs" />
     <Compile Include="Assets/Scripts/Stat/Stat.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/SharedVariables/SetSharedVector2.cs" />
+    <Compile Include="Assets/Scripts/PlayerBase/MainPlayer.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/SharedVariables/CompareSharedObjectList.cs" />
     <Compile Include="Assets/Scripts/Inventory/Item/ItemObjectTrigger.cs" />
     <Compile Include="Assets/Scripts/Backup/OnTriggerTest.cs" />
@@ -569,10 +567,8 @@
     <Compile Include="Assets/Scripts/Enemy/Skeleton/EnemySkeletonDeadState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Decorators/UntilSuccess.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Light/SetSpotAngle.cs" />
-    <Compile Include="Assets/Scripts/Player/PlayerMoveState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Variables/SharedRigidbodyType2D.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Math/LerpAngle.cs" />
-    <Compile Include="Assets/Scripts/Player/PlayerDropDown.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Light/SetIntensity.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/ParticleSystem/Clear.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Animator/GetFloatParameter.cs" />
@@ -623,7 +619,6 @@
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Physics2D/Linecast.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Timeline/Play.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Variables/SharedVector3.cs" />
-    <Compile Include="Assets/Scripts/Player/PlayerFallingState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/NavMeshAgent/SetIsStopped.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Time/SetTimeScale.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody/GetMass.cs" />
@@ -632,7 +627,9 @@
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody2D/GetAngularVelocity.cs" />
     <Compile Include="Assets/Scripts/Core/Combat/Projectile/AbstractProjectile.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/CharacterController/SetStepOffset.cs" />
+    <Compile Include="Assets/Scripts/PlayerBase/PlayerJumpState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody/SetAngularVelocity.cs" />
+    <Compile Include="Assets/Scripts/PlayerBase/PlayerDashState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Actions/Reflection/InvokeMethod.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/BehaviorTree.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Animator/GetDeltaPosition.cs" />
@@ -651,9 +648,11 @@
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Composites/Selector.cs" />
     <Compile Include="Assets/Scripts/Core/AI/Tasks/Patrol.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/AudioSource/SetMute.cs" />
+    <Compile Include="Assets/Scripts/PlayerBase/PlayerPrimaryAttackState.cs" />
     <Compile Include="Assets/Scripts/Trigger/EnemyDeathBringerTrigger.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/CharacterController/GetCenter.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/NavMeshAgent/GetAngularSpeed.cs" />
+    <Compile Include="Assets/Scripts/PlayerBase/PlayerGroundState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/SharedVariables/SharedGameObjectsToGameObjectList.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Vector3/Dot.cs" />
     <Compile Include="Assets/Packages/DOTween/Modules/DOTweenModulePhysics2D.cs" />
@@ -671,7 +670,6 @@
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Input/IsKeyDown.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/SharedVariables/SharedGameObjectToTransform.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/AudioSource/SetTime.cs" />
-    <Compile Include="Assets/Scripts/Player/Player.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/CharacterController/SetRadius.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Vector3/GetForwardVector.cs" />
     <Compile Include="Assets/Scripts/Inventory/Item/ItemObject.cs" />
@@ -689,6 +687,7 @@
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Light/GetRange.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Actions/StartBehaviorTree.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/CharacterController/GetStepOffset.cs" />
+    <Compile Include="Assets/Scripts/PlayerBase/PlayerWallJumpState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Transform/SetPosition.cs" />
     <Compile Include="Assets/Scripts/Core/AI/Tasks/GotoNextStage.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/NavMeshAgent/GetSpeed.cs" />
@@ -757,6 +756,7 @@
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Math/BoolFlip.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody2D/GetAngularDrag.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/CircleCollider2D/GetRadius.cs" />
+    <Compile Include="Assets/Scripts/PlayerBase/PlayerIdleState.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/AudioSource/SetPriority.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody/MoveRotation.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Input/IsButtonUp.cs" />
@@ -793,9 +793,9 @@
     <Compile Include="Assets/Scripts/UI/UITooltip.cs" />
     <Compile Include="Assets/Scripts/Skill/SkillController/Enemy/DeathBringerSpellController.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Animator/StopPlayback.cs" />
-    <Compile Include="Assets/Scripts/Player/PlayerStateMachine.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/AudioSource/SetLoop.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Rigidbody/GetPosition.cs" />
+    <Compile Include="Assets/Scripts/PlayerBase/PlayerWallSlideState.cs" />
     <Compile Include="Assets/Scripts/Skill/SkillController/Enemy/BubbleController.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Unity/Input/GetMouseButton.cs" />
     <Compile Include="Assets/Behavior Designer/Runtime/Tasks/Decorators/Interrupt.cs" />

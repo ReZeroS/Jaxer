@@ -1,11 +1,12 @@
 using ReZeros.Jaxer.Base;
+using ReZeros.Jaxer.PlayerBase;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class CrystalSkillController : MonoBehaviour
 {
 
-    private Player player;
+    private MainPlayer mainPlayer;
     private Animator animator => GetComponent<Animator>();
     private CircleCollider2D cd => GetComponent<CircleCollider2D>();
 
@@ -25,14 +26,14 @@ public class CrystalSkillController : MonoBehaviour
     private static readonly int Explode = Animator.StringToHash("Explode");
 
     public void SetupCrystal(float crystalDuration, bool canEx, bool canMv, float moveSp,
-        Transform findClosestEnemy, Player pl)
+        Transform findClosestEnemy, MainPlayer pl)
     {
         crystalExistTimer = crystalDuration;
         canExplode = canEx;
         canMove = canMv;
         moveSpeed = moveSp;
         closestTarget = findClosestEnemy;
-        player = pl;
+        mainPlayer = pl;
     }
 
     public void ChooseRandomEnemy()
@@ -103,7 +104,7 @@ public class CrystalSkillController : MonoBehaviour
             if (enemy)
             {
                 
-                player.stat.DoMagicalDamage(enemy.GetComponent<CharacterStat>());
+                mainPlayer.stat.DoMagicalDamage(enemy.GetComponent<CharacterStat>());
                 ItemDataEquipment amulet = Inventory.instance.GetEquipment(EquipmentType.Amulet);
                 amulet?.Effect(enemy.transform);
             }

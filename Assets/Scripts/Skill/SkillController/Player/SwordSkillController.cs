@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using ReZeros.Jaxer.PlayerBase;
 using UnityEngine;
 
 public class SwordSkillController : MonoBehaviour
@@ -6,7 +7,7 @@ public class SwordSkillController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private CircleCollider2D cd;
-    private Player player;
+    private MainPlayer mainPlayer;
 
     
     [Header("Base info")]
@@ -58,12 +59,12 @@ public class SwordSkillController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void SetUpSword(Vector2 velocity, float gravity, Player curPlayer, float freezeTimeDelta, float backSpeed)
+    public void SetUpSword(Vector2 velocity, float gravity, MainPlayer curMainPlayer, float freezeTimeDelta, float backSpeed)
     {
         rb.linearVelocity = velocity;
         rb.gravityScale = gravity;
 
-        player = curPlayer;
+        mainPlayer = curMainPlayer;
         returnSpeed = backSpeed;
         freezeTimeDuration = freezeTimeDelta;
 
@@ -115,12 +116,12 @@ public class SwordSkillController : MonoBehaviour
 
         if (isReturning)
         {
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position,
+            transform.position = Vector2.MoveTowards(transform.position, mainPlayer.transform.position,
                 returnSpeed * Time.deltaTime);
 
-            if (Vector2.Distance(player.transform.position, transform.position) < 1)
+            if (Vector2.Distance(mainPlayer.transform.position, transform.position) < 1)
             {
-                player.CatchSword();
+                mainPlayer.CatchSword();
             }
         }
 
@@ -133,7 +134,7 @@ public class SwordSkillController : MonoBehaviour
     {
         if (isSpinning)
         {
-            if (Vector2.Distance(player.transform.position, transform.position) > maxTravelDistance && !spinWasStopped)
+            if (Vector2.Distance(mainPlayer.transform.position, transform.position) > maxTravelDistance && !spinWasStopped)
             {
                 StopWhenSpinning();
             }
@@ -226,13 +227,13 @@ public class SwordSkillController : MonoBehaviour
         }
 
         CharacterStat enemyStat = enemy.GetComponent<CharacterStat>();
-        player.stat.DoDamage(enemyStat);
-        if (player.skillManager.swordSkill.timeStopUnlocked)
+        mainPlayer.stat.DoDamage(enemyStat);
+        if (mainPlayer.skillManager.swordSkill.timeStopUnlocked)
         {
             enemy.FreezeTimeFor(freezeTimeDuration);
         }
 
-        if (player.skillManager.swordSkill.vulnerableUnlocked)
+        if (mainPlayer.skillManager.swordSkill.vulnerableUnlocked)
         {
             enemyStat?.MakeVulnerable(freezeTimeDuration + 1f);
         }

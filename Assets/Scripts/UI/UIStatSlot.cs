@@ -50,7 +50,7 @@ public class UIStatSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void UpdateStatValueUI()
     {
         
-        PlayerStat playerStat = PlayerManager.instance.player?.GetComponent<PlayerStat>();
+        PlayerStat playerStat = PlayerManager.instance.Player?.GetComponent<PlayerStat>();
         if (playerStat)
         {
             statValueText.text = playerStat.StatOfType(statType).GetValue().ToString();

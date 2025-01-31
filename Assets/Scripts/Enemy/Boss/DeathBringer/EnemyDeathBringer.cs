@@ -1,4 +1,5 @@
 using ReZeros.Jaxer.Manager;
+using ReZeros.Jaxer.PlayerBase;
 using UnityEngine;
 
 public class EnemyDeathBringer : Enemy
@@ -125,14 +126,14 @@ public class EnemyDeathBringer : Enemy
     
     public void CastSpell()
     {
-        Player player = PlayerManager.instance.player;
+        MainPlayer mainPlayer = PlayerManager.instance.Player;
         int xOffset = 0;
-        if (player.rb.linearVelocity.x != 0)
+        if (mainPlayer.rb.linearVelocity.x != 0)
         {
-            xOffset = player.facingDir * 3;
+            xOffset = mainPlayer.facingDir * 3;
         }
-        Vector3 spellPos = new Vector3(player.transform.position.x + xOffset,
-            player.transform.position.y + 1.5f);
+        Vector3 spellPos = new Vector3(mainPlayer.transform.position.x + xOffset,
+            mainPlayer.transform.position.y + 1.5f);
         Debug.Log("Casting spell");
         GameObject spell = Instantiate(spellPrefab, spellPos, Quaternion.identity);
         spell.GetComponent<DeathBringerSpellController>().SetupSpell(stat);

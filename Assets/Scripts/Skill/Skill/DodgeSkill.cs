@@ -39,7 +39,7 @@ public class DodgeSkill : Skill
     {
         if (unlockDodgeButton.unlocked && !dodgeUnlocked)
         {
-            player.stat.evasion.AddModifer(evasionAmount);
+            mainPlayer.stat.evasion.AddModifer(evasionAmount);
             Inventory.instance.UpdateStatSlotsUI();
             dodgeUnlocked = true;
         }
@@ -57,7 +57,7 @@ public class DodgeSkill : Skill
     {
         if (mirageDodgeUnlocked)
         {
-            SkillManager.instance.cloneSkill.CreateClone(player.transform, new Vector3(2 * player.facingDir, 0));
+            SkillManager.instance.cloneSkill.CreateClone(mainPlayer.transform, new Vector3(2 * mainPlayer.facingDir, 0));
         }
     }
     

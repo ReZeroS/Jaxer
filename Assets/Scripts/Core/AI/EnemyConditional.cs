@@ -1,6 +1,7 @@
 ﻿using BehaviorDesigner.Runtime.Tasks;
 using ReZeros.Jaxer.Core.Combat;
 using ReZeros.Jaxer.Manager;
+using ReZeros.Jaxer.PlayerBase;
 using UnityEngine;
 
 namespace ReZeros.Jaxer.Core.AI
@@ -10,7 +11,7 @@ namespace ReZeros.Jaxer.Core.AI
         protected Rigidbody2D body;
         protected Animator animator;
         protected Destructable destructable;
-        protected Player player;
+        protected MainPlayer player;
         
         public override void OnAwake()
         {

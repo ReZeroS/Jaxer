@@ -1,4 +1,5 @@
 using System;
+using ReZeros.Jaxer.PlayerBase;
 using Sound.SoundManager;
 using UnityEngine;
 
@@ -23,7 +24,7 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<Player>() != null)
+        if (other.GetComponent<MainPlayer>() != null)
         {
             ActivatedCheckpoint();
         }

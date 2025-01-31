@@ -42,7 +42,7 @@ public class BlackholeSkill : Skill
     public override void UseSkill()
     {
         base.UseSkill();
-        GameObject newBlackhole = Instantiate(blackholePrefab, player.transform.position, Quaternion.identity);
+        GameObject newBlackhole = Instantiate(blackholePrefab, mainPlayer.transform.position, Quaternion.identity);
         skillController = newBlackhole.GetComponent<BlackholeSkillController>();
         skillController.SetupBlackhole(maxSize, growSpeed, shrinkSpeed, amountOfAttacks, cloneAttackCooldown, blackholeDuration);
         SoundManager.PlaySound(SoundType.BLACKHOLE_SKILL);

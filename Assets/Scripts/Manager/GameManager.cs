@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour, ISaveManager
         {
             if (gameData.closestCheckpointId == checkpoint.checkpointId)
             {
-                PlayerManager.instance.player.transform.position = checkpoint.transform.position;
+                PlayerManager.instance.Player.transform.position = checkpoint.transform.position;
                 break;
             }
         }
@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour, ISaveManager
 
     private Checkpoint FindClosestCheckpoint()
     {
-        var playerPosition = PlayerManager.instance.player.transform.position;
+        var playerPosition = PlayerManager.instance.Player.transform.position;
         float closestDistance = Mathf.Infinity;
         Checkpoint closestCheckpoint = null;
 

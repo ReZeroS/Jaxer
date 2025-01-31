@@ -57,7 +57,7 @@ public class ItemDataEquipment : ItemData
     
     public void AddModifiers()
     {
-        PlayerStat playerStat = PlayerManager.instance.player.GetComponent<PlayerStat>();
+        PlayerStat playerStat = PlayerManager.instance.Player.GetComponent<PlayerStat>();
 
         playerStat.strength.AddModifer(strength);
         playerStat.agility.AddModifer(agility);
@@ -81,7 +81,7 @@ public class ItemDataEquipment : ItemData
 
     public void RemoveModifiers()
     {
-        PlayerStat playerStat = PlayerManager.instance.player.GetComponent<PlayerStat>();
+        PlayerStat playerStat = PlayerManager.instance.Player.GetComponent<PlayerStat>();
 
         playerStat.strength.RemoveModifer(strength);
         playerStat.agility.RemoveModifer(agility);

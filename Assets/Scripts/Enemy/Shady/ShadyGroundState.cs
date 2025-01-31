@@ -14,7 +14,7 @@ public class ShadyGroundState : ShadyState
     public override void Enter()
     {
         base.Enter();
-        player = PlayerManager.instance.player.transform;
+        player = PlayerManager.instance.Player.transform;
     }
 
     public override void Update()

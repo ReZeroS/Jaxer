@@ -1,4 +1,5 @@
 using ReZeros.Jaxer.Manager;
+using ReZeros.Jaxer.PlayerBase;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ice and fire effect", menuName = "Data/Item effect/IceAndFire")]
@@ -9,12 +10,12 @@ public class IceAndFireEffects : ItemEffects
 
     public override void ExecuteEffect(Transform respawnPosition)
     {
-        Player instancePlayer = PlayerManager.instance.player;
-        Transform playerTransform = instancePlayer.transform;
-        if (instancePlayer.primaryAttackState.comboCounter == 2)
+        MainPlayer instanceMainPlayer = PlayerManager.instance.Player;
+        Transform playerTransform = instanceMainPlayer.transform;
+        if (instanceMainPlayer.primaryAttackState.comboCounter == 2)
         {
             GameObject iceAndFireCreated = Instantiate(iceFirePrefab, respawnPosition.position, playerTransform.rotation);
-            iceAndFireCreated.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(moveVelocity * instancePlayer.facingDir, 0);
+            iceAndFireCreated.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(moveVelocity * instanceMainPlayer.facingDir, 0);
             Destroy(iceAndFireCreated, 10f);
         }
         
